@@ -1,0 +1,16 @@
+gene_name	chrom	pos	consequence	consequence_class	snp_or_indel
+LONP1	19	5719746	missense_variant	missense	DENOVO-SNP
+LONP1	19	5719746	missense_variant	missense	DENOVO-SNP
+LONP1	19	5713154	missense_variant	missense	DENOVO-SNP
+LONP1	19	5707094	missense_variant	missense	DENOVO-SNP
+LONP1	19	5699149	missense_variant	missense	DENOVO-SNP
+LONP1	19	5699099	stop_gained_variant	lof	DENOVO-SNP
+LONP1	19	5696745	missense_variant	missense	DENOVO-SNP
+LONP1	19	5696367	stop_gained_variant	lof	DENOVO-SNP
+LONP1	19	5696165	missense_variant	missense	DENOVO-SNP
+LONP1	19	5696165	missense_variant	missense	DENOVO-SNP
+LONP1	19	5694804	missense_variant	missense	DENOVO-SNP
+LONP1	19	5694804	missense_variant	missense	DENOVO-SNP
+LONP1	19	5694455	missense_variant	missense	DENOVO-SNP
+LONP1	19	5694455	missense_variant	missense	DENOVO-SNP
+LONP1	19	5693640	missense_variant	missense	DENOVO-SNP

@@ -1,0 +1,11 @@
+*.pyc
+*.pdf
+*.log
+*__pycache__/
+cache/
+build/
+dist/
+results/
+denovonear/*.cpp
+*.egg-info/
+*.so
