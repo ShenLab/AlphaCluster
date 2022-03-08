@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DHX30	missense	8	12.3	1.0888888767901241e-06
+DHX30	missense_comb	8	12.3	6.883418535238778e-08
+DHX30	missense_pois	8	12.3	0.0030817670000000004
+DHX30	nonsense	0	nan	nan

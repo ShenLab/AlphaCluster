@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GIGYF2	missense	3	476.3,nan	0.16306250929930544
+GIGYF2	missense_comb	3	476.3,nan	0.45879620794456333
+GIGYF2	missense_pois	3	476.3,nan	1.0
+GIGYF2	nonsense	0	nan,nan	nan

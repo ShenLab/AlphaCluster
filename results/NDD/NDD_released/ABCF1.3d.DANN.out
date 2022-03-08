@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ABCF1	missense	4	23.7	0.011905522089938649
+ABCF1	missense_comb	4	23.7	0.011708739814588495
+ABCF1	missense_pois	4	23.7	0.131894381
+ABCF1	nonsense	0	nan	nan

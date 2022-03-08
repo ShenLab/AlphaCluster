@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DGUOK	missense	2	19.8	0.2576140082487332
+DGUOK	missense_comb	2	19.8	0.00018649635666943967
+DGUOK	missense_pois	2	19.8	5.993587630670484e-05
+DGUOK	nonsense	0	nan	nan

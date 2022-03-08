@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KCNQ5	missense	5	301.3,nan	0.05125587720826803
+KCNQ5	missense_comb	5	301.3,nan	0.011933712457749653
+KCNQ5	missense_pois	5	301.3,nan	0.03131690499999999
+KCNQ5	nonsense	0	nan,nan	nan

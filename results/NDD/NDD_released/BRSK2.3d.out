@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BRSK2	missense	3	23.2	0.07791575468982496
+BRSK2	missense_comb	3	23.2	0.09555945926188533
+BRSK2	missense_pois	3	23.2	0.24793042499999998
+BRSK2	nonsense	0	nan	nan

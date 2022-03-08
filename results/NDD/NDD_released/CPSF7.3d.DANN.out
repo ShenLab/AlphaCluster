@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CPSF7	missense	5	66.0	0.08183471020183655
+CPSF7	missense_comb	5	66.0	0.008057144057128707
+CPSF7	missense_pois	5	66.0	0.012484433
+CPSF7	nonsense	0	nan	nan

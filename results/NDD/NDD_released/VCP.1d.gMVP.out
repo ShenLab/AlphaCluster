@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+VCP	missense	9	444.8	0.16114197598731136
+VCP	missense_comb	9	444.8	3.451046090163703e-05
+VCP	missense_pois	9	444.8	1.5399999999999988e-05
+VCP	nonsense	0	nan	nan

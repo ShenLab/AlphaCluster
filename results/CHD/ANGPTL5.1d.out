@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ANGPTL5	missense	2	389.0	0.560529938216334
+ANGPTL5	missense_comb	2	389.0	0.0003715333613059902
+ANGPTL5	missense_pois	2	389.0	5.852826470109646e-05
+ANGPTL5	nonsense	0	nan	nan

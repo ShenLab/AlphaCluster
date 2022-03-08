@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DLL1	missense	3	244.0	0.22096711976703196
+DLL1	missense_comb	3	244.0	0.23874310450161967
+DLL1	missense_pois	3	244.0	0.287687803
+DLL1	nonsense	0	nan	nan

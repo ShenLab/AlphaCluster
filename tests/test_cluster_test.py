@@ -5,8 +5,8 @@ import unittest
 import asyncio
 import math
 
-from denovonear.rate_limiter import RateLimiter
-from denovonear.cluster_test import fishers_method, cluster_de_novos
+from alphacluster.rate_limiter import RateLimiter
+from alphacluster.cluster_test import fishers_method, cluster_de_novos
 
 async def call(func, *args, **kwargs):
     ''' call ensembl rest API function

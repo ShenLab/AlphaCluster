@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RELN	missense	9	2549.4	0.5904925378834163
+RELN	missense_comb	9	2549.4	0.4446773494235058
+RELN	missense_pois	9	2549.4	0.263134621
+RELN	nonsense	0	nan	nan

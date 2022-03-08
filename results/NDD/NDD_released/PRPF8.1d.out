@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PRPF8	missense	19	932.4,nan	0.0025743333047296307
+PRPF8	missense_comb	19	932.4,nan	4.879329824868589e-08
+PRPF8	missense_pois	19	932.4,nan	9.079999999999997e-07
+PRPF8	nonsense	0	nan,nan	nan

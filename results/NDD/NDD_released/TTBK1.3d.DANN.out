@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TTBK1	missense	2	142.7	0.6723547036405033
+TTBK1	missense_comb	2	142.7	0.9392588426599585
+TTBK1	missense_pois	2	142.7	1.0
+TTBK1	nonsense	0	nan	nan

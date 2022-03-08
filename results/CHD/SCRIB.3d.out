@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SCRIB	missense	2	43.5	0.24065753065936074
+SCRIB	missense_comb	2	43.5	0.038928871692613845
+SCRIB	missense_pois	2	43.5	0.026758051438938703
+SCRIB	nonsense	0	nan	nan

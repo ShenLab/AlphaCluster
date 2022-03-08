@@ -22,7 +22,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import math
 import unittest
 
-from denovonear.weights import get_distances, geomean, WeightedChoice, \
+from alphacluster.weights import get_distances, geomean, WeightedChoice, \
     analyse_de_novos, simulate_distribution
 
 class TestSimulationsPy(unittest.TestCase):

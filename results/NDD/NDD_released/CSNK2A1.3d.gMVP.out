@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CSNK2A1	missense	28	15.3,nan,nan,nan,nan,nan,nan,nan	1.1111110987654311e-08
+CSNK2A1	missense_comb	28	15.3,nan,nan,nan,nan,nan,nan,nan	5.7279456631697405e-21
+CSNK2A1	missense_pois	28	15.3,nan,nan,nan,nan,nan,nan,nan	9.999999999999995e-15
+CSNK2A1	nonsense	0	nan,nan,nan,nan,nan,nan,nan,nan	nan

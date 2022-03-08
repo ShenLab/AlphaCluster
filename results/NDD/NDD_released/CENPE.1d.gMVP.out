@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CENPE	missense	5	1861.9	0.42634687304059027
+CENPE	missense_comb	5	1861.9	0.22452469144800463
+CENPE	missense_pois	5	1861.9	0.13717840300000003
+CENPE	nonsense	0	nan	nan

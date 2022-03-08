@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TEK	missense	3	92.6	0.9323162118631532
+TEK	missense_comb	3	92.6	0.7593023388061515
+TEK	missense_pois	3	92.6	0.420683797
+TEK	nonsense	0	nan	nan

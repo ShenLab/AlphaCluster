@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MEF2C	missense	4	295.7	0.32866682968147964
+MEF2C	missense_comb	4	295.7	0.0022589244263677617
+MEF2C	missense_pois	4	295.7	0.0007370000000000001
+MEF2C	nonsense	1	nan	nan

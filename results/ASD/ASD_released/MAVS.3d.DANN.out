@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+MAVS	missense	0	nan	nan
+MAVS	nonsense	2	42.0	0.3726944069700621

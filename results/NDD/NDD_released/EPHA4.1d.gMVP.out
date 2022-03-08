@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EPHA4	missense	7	919.0,nan	0.914489167616787
+EPHA4	missense_comb	7	919.0,nan	0.005664510133918842
+EPHA4	missense_pois	7	919.0,nan	0.0007473319999999996
+EPHA4	nonsense	0	nan,nan	nan

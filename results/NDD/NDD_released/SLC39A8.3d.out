@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLC39A8	missense	4	25.1,nan,nan,nan,nan	0.14960849833768336
+SLC39A8	missense_comb	4	25.1,nan,nan,nan,nan	0.0014498073088717838
+SLC39A8	missense_pois	4	25.1,nan,nan,nan,nan	0.0009867470000000005
+SLC39A8	nonsense	0	nan,nan,nan,nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATP1A3	missense	31	26.5	0.00298203330019963
+ATP1A3	missense_comb	31	26.5	1.164523998685504e-15
+ATP1A3	missense_pois	31	26.5	9.999999999999995e-15
+ATP1A3	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CLK3	missense	2	221.5,nan	0.4954665278281499
+CLK3	missense_comb	2	221.5,nan	0.008477727075410967
+CLK3	missense_pois	2	221.5,nan	0.0021858131034872006
+CLK3	nonsense	0	nan,nan	nan

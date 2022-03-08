@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+ZNF821	missense	2	880.0,nan	0.9356750896036101
+ZNF821	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NR3C2	missense	3	79.7,nan	0.19673918670289794
+NR3C2	missense_comb	3	79.7,nan	0.09696214965369193
+NR3C2	missense_pois	3	79.7,nan	0.10000000000000003
+NR3C2	nonsense	1	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FAT4	missense	2	6058.0	0.6197612375582083
+FAT4	missense_comb	2	6058.0	0.2786579020138009
+FAT4	missense_pois	2	6058.0	0.126916908133532
+FAT4	nonsense	0	nan	nan

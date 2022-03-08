@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ITPR3	missense	2	1140.1,nan	0.9672420670306437
+ITPR3	missense_comb	2	1140.1,nan	0.22679679702806368
+ITPR3	missense_pois	2	1140.1,nan	0.06129576096083669
+ITPR3	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CAMK2A	missense	5	193.8	0.07432404361862174
+CAMK2A	missense_comb	5	193.8	0.0003683980629587729
+CAMK2A	missense_pois	5	193.8	0.0004373189999999998
+CAMK2A	nonsense	0	nan	nan

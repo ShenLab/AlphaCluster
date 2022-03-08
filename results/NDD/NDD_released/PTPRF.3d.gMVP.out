@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PTPRF	missense	9	256.9	0.6146845042812833
+PTPRF	missense_comb	9	256.9	0.09516217065624444
+PTPRF	missense_pois	9	256.9	0.03126333900000001
+PTPRF	nonsense	0	nan	nan

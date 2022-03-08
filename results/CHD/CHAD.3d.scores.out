@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CHAD	missense	2	29.0,nan	0.04166375509262495
+CHAD	missense_comb	2	29.0,nan	0.00016204955763654086
+CHAD	missense_pois	2	29.0,nan	0.00031798377903813303
+CHAD	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LEO1	missense	2	216.0	0.20740070880665884
+LEO1	missense_comb	2	216.0	0.11770035576669258
+LEO1	missense_pois	2	216.0	0.12116530400000006
+LEO1	nonsense	0	nan	nan

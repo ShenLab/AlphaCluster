@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SMCR8	missense	2	30.1	0.16975400922495543
+SMCR8	missense_comb	2	30.1	0.0027962681831027966
+SMCR8	missense_pois	2	30.1	0.00181290511917864
+SMCR8	nonsense	0	nan	nan

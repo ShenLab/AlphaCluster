@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MED13L	missense	28	68.3	1.1111110987654311e-08
+MED13L	missense_comb	28	68.3	9.523626346965351e-19
+MED13L	missense_pois	28	68.3	1.8499999999999968e-12
+MED13L	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HNF4A	missense	5	61.1	0.10282105441309942
+HNF4A	missense_comb	5	61.1	0.003513819154214082
+HNF4A	missense_pois	5	61.1	0.003870620999999999
+HNF4A	nonsense	0	nan	nan

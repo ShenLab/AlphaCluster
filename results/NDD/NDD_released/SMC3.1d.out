@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SMC3	missense	12	719.5	0.21908598645460015
+SMC3	missense_comb	12	719.5	1.9878153967356284e-06
+SMC3	missense_pois	12	719.5	5.35e-07
+SMC3	nonsense	0	nan	nan

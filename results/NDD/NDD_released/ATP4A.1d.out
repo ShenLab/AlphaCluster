@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATP4A	missense	3	1309.9	0.8740141902887313
+ATP4A	missense_comb	3	1309.9	0.9917077764680164
+ATP4A	missense_pois	3	1309.9	1.0
+ATP4A	nonsense	0	nan	nan

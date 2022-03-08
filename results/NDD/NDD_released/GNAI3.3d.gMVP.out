@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GNAI3	missense	5	52.9	0.17650172026109198
+GNAI3	missense_comb	5	52.9	0.00025839126824240557
+GNAI3	missense_pois	5	52.9	0.00012488399999999997
+GNAI3	nonsense	0	nan	nan

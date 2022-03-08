@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GLIS3	missense	2	55.8	0.46765376147051374
+GLIS3	missense_comb	2	55.8	0.011529673789465678
+GLIS3	missense_pois	2	55.8	0.0032985414677553196
+GLIS3	nonsense	0	nan	nan

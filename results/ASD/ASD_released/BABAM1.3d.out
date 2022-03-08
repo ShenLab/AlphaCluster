@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+BABAM1	missense	2	31.8,nan,nan	0.5802999268855564
+BABAM1	nonsense	0	nan,nan,nan	nan

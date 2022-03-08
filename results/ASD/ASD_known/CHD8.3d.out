@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CHD8	missense	16	39.4,nan,nan	4.56666661592593e-06
+CHD8	missense_comb	16	39.4,nan,nan	5.25180190282621e-13
+CHD8	missense_pois	16	39.4,nan,nan	3.510000000000009e-09
+CHD8	nonsense	14	69.9,nan,nan	0.4478319505796452

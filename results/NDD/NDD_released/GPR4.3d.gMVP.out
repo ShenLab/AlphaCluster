@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GPR4	missense	2	30.9	0.10202042108866204
+GPR4	missense_comb	2	30.9	0.040242043636854526
+GPR4	missense_pois	2	30.9	0.06568135799999998
+GPR4	nonsense	0	nan	nan

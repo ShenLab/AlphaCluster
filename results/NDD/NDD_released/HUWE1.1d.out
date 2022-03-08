@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HUWE1	missense	36	2404.9,nan	0.021603488648850123
+HUWE1	missense_comb	36	2404.9,nan	8.00864910204625e-15
+HUWE1	missense_pois	36	2404.9,nan	9.999999999999995e-15
+HUWE1	nonsense	0	nan,nan	nan

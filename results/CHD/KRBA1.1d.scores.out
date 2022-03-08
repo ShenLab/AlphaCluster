@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KRBA1	missense	2	1322.0	0.632165370753718
+KRBA1	missense_comb	2	1322.0	0.014315006129246039
+KRBA1	missense_pois	2	1322.0	0.0031346796607421025
+KRBA1	nonsense	0	nan	nan

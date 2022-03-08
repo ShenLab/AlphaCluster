@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TRIO	missense	29	454.1	1.010100999897969e-08
+TRIO	missense_comb	29	454.1	6.161023250694366e-17
+TRIO	missense_pois	29	454.1	1.4500000000000017e-10
+TRIO	nonsense	0	nan	nan

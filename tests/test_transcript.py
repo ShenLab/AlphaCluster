@@ -3,7 +3,7 @@
 
 import unittest
 
-from denovonear.transcript import Transcript
+from alphacluster.transcript import Transcript
 
 class TestTranscriptPy(unittest.TestCase):
     """ unit test the Transcript class

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KBTBD6	missense	3	49.0	0.05783738824625125
+KBTBD6	missense_comb	3	49.0	0.06542681955378343
+KBTBD6	missense_pois	3	49.0	0.20885781199999995
+KBTBD6	nonsense	0	nan	nan

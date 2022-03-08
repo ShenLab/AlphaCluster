@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+ZNF462	missense	11	65.9	0.3586362626818192
+ZNF462	nonsense	2	23.9	0.03870509956994333

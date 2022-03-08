@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZBTB7A	missense	2	109.4,nan	0.49115615009826485
+ZBTB7A	missense_comb	2	109.4,nan	0.840364821712117
+ZBTB7A	missense_pois	2	109.4,nan	1.0
+ZBTB7A	nonsense	0	nan,nan	nan

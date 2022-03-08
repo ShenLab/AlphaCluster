@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DEAF1	missense	8	28.3	1.777777758024691e-07
+DEAF1	missense_comb	8	28.3	6.5154363850688824e-15
+DEAF1	missense_pois	8	28.3	9.830000000000002e-10
+DEAF1	nonsense	0	nan	nan

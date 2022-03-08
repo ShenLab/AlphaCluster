@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RYR3	missense	2	8542.0	0.8323951463067206
+RYR3	missense_comb	2	8542.0	0.3546278117342572
+RYR3	missense_pois	2	8542.0	0.13314516524906703
+RYR3	nonsense	1	nan	nan

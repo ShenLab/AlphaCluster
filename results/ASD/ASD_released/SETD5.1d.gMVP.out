@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SETD5	missense	9	1245.1	0.8736899680701115
+SETD5	missense_comb	9	1245.1	0.27859157810369434
+SETD5	missense_pois	9	1245.1	0.08999999999999998
+SETD5	nonsense	2	1681.0	0.6102922598856415

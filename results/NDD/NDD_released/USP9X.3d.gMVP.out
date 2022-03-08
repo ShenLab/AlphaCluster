@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+USP9X	missense	8	45.4	3.557777738246915e-05
+USP9X	missense_comb	8	45.4	1.4474332329050228e-07
+USP9X	missense_pois	8	45.4	0.0002061970000000001
+USP9X	nonsense	0	nan	nan

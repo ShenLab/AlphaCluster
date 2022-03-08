@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CRB2	missense	2	78.0	0.6301682152203532
+CRB2	missense_comb	2	78.0	0.05437834558018693
+CRB2	missense_pois	2	78.0	0.015294447967807693
+CRB2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DNM1L	missense	11	43.2	0.026414855262057176
+DNM1L	missense_comb	11	43.2	3.4302693729163955e-09
+DNM1L	missense_pois	11	43.2	5.490000000000007e-09
+DNM1L	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PHLDB1	missense	7	291.2,nan	0.1743293202852298
+PHLDB1	missense_comb	7	291.2,nan	0.017672425246730426
+PHLDB1	missense_pois	7	291.2,nan	0.014526384999999994
+PHLDB1	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HEPACAM	missense	2	42.1	0.2764145302620607
+HEPACAM	missense_comb	2	42.1	0.0014763900822165376
+HEPACAM	missense_pois	2	42.1	0.0005449888782800279
+HEPACAM	nonsense	0	nan	nan

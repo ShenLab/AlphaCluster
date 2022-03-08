@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SRPRA	missense	3	781.4	0.8316443018706188
+SRPRA	missense_comb	3	781.4	0.011825944342883058
+SRPRA	missense_pois	3	781.4	0.0019099999999999994
+SRPRA	nonsense	2	399.0	0.39472036228088486

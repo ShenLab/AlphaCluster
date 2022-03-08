@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SNX14	missense	2	63.0	0.6257955152689387
+SNX14	missense_comb	2	63.0	0.0051123340085807035
+SNX14	missense_pois	2	63.0	0.0009719711992848274
+SNX14	nonsense	0	nan	nan

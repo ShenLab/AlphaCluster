@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TAF4	missense	4	468.7	0.24391979728978003
+TAF4	missense_comb	4	468.7	0.37341442497959904
+TAF4	missense_pois	4	468.7	0.4899999999999999
+TAF4	nonsense	2	101.8	0.8715944014267288

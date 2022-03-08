@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SIN3A	missense	4	57.8,nan,nan	0.501701605536649
+SIN3A	missense_comb	4	57.8,nan,nan	0.25419808647637404
+SIN3A	missense_pois	4	57.8,nan,nan	0.13806635799999997
+SIN3A	nonsense	0	nan,nan,nan	nan

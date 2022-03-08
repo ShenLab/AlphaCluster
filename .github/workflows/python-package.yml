@@ -1,4 +1,4 @@
-name: denovonear
+name: alphacluster
 
 on: [push]
 
@@ -30,10 +30,10 @@ jobs:
     - name: Run tests
       run: |
         python -m unittest discover
-        denovonear cluster --in data/example_de_novos.txt --out output.txt
-        denovonear transcripts --de-novos data/example_de_novos.txt --out output.txt --all-transcripts
-        denovonear rates --genes data/example_gene_ids.txt --out output.txt
-        python -m coverage run --source=./denovonear -m unittest discover
+        alphacluster cluster --in data/example_de_novos.txt --out output.txt
+        alphacluster transcripts --de-novos data/example_de_novos.txt --out output.txt --all-transcripts
+        alphacluster rates --genes data/example_gene_ids.txt --out output.txt
+        python -m coverage run --source=./alphacluster -m unittest discover
     - name: Coveralls
       env:
         GITHUB_TOKEN: ${{ secrets.github_token }}

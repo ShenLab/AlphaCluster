@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EHMT1	missense	17	993.8	0.834855546279383
+EHMT1	missense_comb	17	993.8	0.224394946833953
+EHMT1	missense_pois	17	993.8	0.07
+EHMT1	nonsense	3	1828.1	0.9515580005382445

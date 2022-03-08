@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GTF3C5	missense	7	100.0	0.28068421910350866
+GTF3C5	missense_comb	7	100.0	0.0004208726709928722
+GTF3C5	missense_pois	7	100.0	0.00013402300000000007
+GTF3C5	nonsense	0	nan	nan

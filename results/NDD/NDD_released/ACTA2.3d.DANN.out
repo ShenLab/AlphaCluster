@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ACTA2	missense	3	28.0	0.03554874404945839
+ACTA2	missense_comb	3	28.0	0.0021720472083276926
+ACTA2	missense_pois	3	28.0	0.0065211809999999966
+ACTA2	nonsense	0	nan	nan

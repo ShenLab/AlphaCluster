@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+ARVCF	missense	2	218.0	0.1486617650148692
+ARVCF	nonsense	0	nan	nan

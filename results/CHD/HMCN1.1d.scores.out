@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HMCN1	missense	5	2463.9	0.12980898744656677
+HMCN1	missense_comb	5	2463.9	0.0023373083961780094
+HMCN1	missense_pois	5	2463.9	0.0019387257436006605
+HMCN1	nonsense	1	nan	nan

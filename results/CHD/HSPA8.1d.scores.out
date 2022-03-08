@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HSPA8	missense	2	597.0,nan,nan	0.5305421385495317
+HSPA8	missense_comb	2	597.0,nan,nan	0.003010128428688918
+HSPA8	missense_pois	2	597.0,nan,nan	0.0006301732484943485
+HSPA8	nonsense	0	nan,nan,nan	nan

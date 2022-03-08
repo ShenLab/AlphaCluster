@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ALOX15	missense	2	139.0,nan	0.13613306515407703
+ALOX15	missense_comb	2	139.0,nan	0.0013091269410228919
+ALOX15	missense_pois	2	139.0,nan	0.0009680027192822133
+ALOX15	nonsense	0	nan,nan	nan

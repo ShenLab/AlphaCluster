@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SEMA6B	missense	4	466.0,nan	0.2513027083188588
+SEMA6B	missense_comb	4	466.0,nan	0.2563912461671109
+SEMA6B	missense_pois	4	466.0,nan	0.2789123050000001
+SEMA6B	nonsense	0	nan,nan	nan

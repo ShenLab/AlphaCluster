@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CHAMP1	missense	2	1031.0,nan	0.6694916925612034
+CHAMP1	nonsense	0	nan,nan	nan

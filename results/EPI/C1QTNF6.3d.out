@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+C1QTNF6	missense	2	13.6,nan	0.10573237660297359
+C1QTNF6	missense_comb	2	13.6,nan	1.7886215404626145e-07
+C1QTNF6	missense_pois	2	13.6,nan	8.671815587835121e-08
+C1QTNF6	nonsense	0	nan,nan	nan

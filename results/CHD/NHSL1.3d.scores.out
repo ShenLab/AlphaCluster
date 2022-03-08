@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NHSL1	missense	2	1710.0	0.6735658147381576
+NHSL1	missense_comb	2	1710.0	0.0473598300288687
+NHSL1	missense_pois	2	1710.0	0.012103014795899895
+NHSL1	nonsense	0	nan	nan

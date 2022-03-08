@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PCDH19	missense	2	1418.0	0.6570258704774903
+PCDH19	missense_comb	2	1418.0	0.14506356449154736
+PCDH19	missense_pois	2	1418.0	0.05000000000000002
+PCDH19	nonsense	2	502.0	0.2915796412046708

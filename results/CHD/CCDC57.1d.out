@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CCDC57	missense	2	2833.0	0.9930498667438904
+CCDC57	missense_comb	2	2833.0	0.024234361956352805
+CCDC57	missense_pois	2	2833.0	0.003692920805141281
+CCDC57	nonsense	0	nan	nan

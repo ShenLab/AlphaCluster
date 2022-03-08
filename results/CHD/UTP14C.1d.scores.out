@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UTP14C	missense	2	17.0	0.01648983315011296
+UTP14C	missense_comb	2	17.0	0.00012791134226320498
+UTP14C	missense_pois	2	17.0	0.0006211039902157544
+UTP14C	nonsense	0	nan	nan

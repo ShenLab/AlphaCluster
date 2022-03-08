@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AADAT	missense	3	58.9	0.22132881976301316
+AADAT	missense_comb	3	58.9	0.033036324388159725
+AADAT	missense_pois	3	58.9	0.023915292999999997
+AADAT	nonsense	0	nan	nan

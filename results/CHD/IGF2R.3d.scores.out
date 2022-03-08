@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IGF2R	missense	3	132.9	0.23802700846636657
+IGF2R	missense_comb	3	132.9	0.010525741532521418
+IGF2R	missense_pois	3	132.9	0.00583436927712677
+IGF2R	nonsense	0	nan	nan

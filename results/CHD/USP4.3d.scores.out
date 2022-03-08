@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+USP4	missense	2	122.0	0.2829202746342191
+USP4	missense_comb	2	122.0	0.004724306060085908
+USP4	missense_pois	2	122.0	0.001965797727995321
+USP4	nonsense	0	nan	nan

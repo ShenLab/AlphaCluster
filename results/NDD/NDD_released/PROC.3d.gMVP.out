@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PROC	missense	5	45.9	0.36424588484171233
+PROC	missense_comb	5	45.9	0.005284909393239232
+PROC	missense_pois	5	45.9	0.0017340500000000017
+PROC	nonsense	0	nan	nan

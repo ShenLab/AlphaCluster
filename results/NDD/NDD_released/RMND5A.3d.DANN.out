@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RMND5A	missense	2	8.2	0.014206255397708267
+RMND5A	missense_comb	2	8.2	0.005404720100753588
+RMND5A	missense_pois	2	8.2	0.045607481000000005
+RMND5A	nonsense	0	nan	nan

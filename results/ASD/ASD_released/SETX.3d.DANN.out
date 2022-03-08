@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SETX	missense	2	101.0	0.1678479092461344
+SETX	nonsense	0	nan	nan

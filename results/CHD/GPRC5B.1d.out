@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GPRC5B	missense	2	237.0	0.35702480714416895
+GPRC5B	missense_comb	2	237.0	0.001291554674542919
+GPRC5B	missense_pois	2	237.0	0.00036359382487649594
+GPRC5B	nonsense	0	nan	nan

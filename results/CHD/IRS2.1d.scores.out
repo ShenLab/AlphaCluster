@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IRS2	missense	2	319.0	0.15424787606391255
+IRS2	missense_comb	2	319.0	0.03063346194971497
+IRS2	missense_pois	2	319.0	0.031368572388427295
+IRS2	nonsense	0	nan	nan

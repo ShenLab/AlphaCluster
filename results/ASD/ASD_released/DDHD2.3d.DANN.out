@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+DDHD2	missense	2	6222.0,nan	0.9994734000058512
+DDHD2	nonsense	0	nan,nan	nan

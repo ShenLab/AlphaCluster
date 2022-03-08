@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BRWD1	missense	10	572.0	0.05875234379164062
+BRWD1	missense_comb	10	572.0	0.01000086252622619
+BRWD1	missense_pois	10	572.0	0.022285287000000008
+BRWD1	nonsense	0	nan	nan

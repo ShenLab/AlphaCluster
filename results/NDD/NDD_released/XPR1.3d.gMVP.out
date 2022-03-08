@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+XPR1	missense	3	35.8	0.0801944324422841
+XPR1	missense_comb	3	35.8	0.021658788886948412
+XPR1	missense_pois	3	35.8	0.040068169000000015
+XPR1	nonsense	0	nan	nan

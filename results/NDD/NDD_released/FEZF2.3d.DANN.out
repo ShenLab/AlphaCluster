@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FEZF2	missense	2	179.6,nan,nan	0.7187441809028423
+FEZF2	missense_comb	2	179.6,nan,nan	0.9561092907062095
+FEZF2	missense_pois	2	179.6,nan,nan	1.0
+FEZF2	nonsense	0	nan,nan,nan	nan

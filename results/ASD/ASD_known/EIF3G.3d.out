@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EIF3G	missense	5	17.0	0.011958577644904688
+EIF3G	missense_comb	5	17.0	8.562649399716031e-05
+EIF3G	missense_pois	5	17.0	0.0005539999999999998
+EIF3G	nonsense	1	nan	nan

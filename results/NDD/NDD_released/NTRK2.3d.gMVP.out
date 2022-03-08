@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NTRK2	missense	6	38.0	0.019000166455553705
+NTRK2	missense_comb	6	38.0	0.0013279561589753322
+NTRK2	missense_pois	6	38.0	0.007046598999999999
+NTRK2	nonsense	0	nan	nan

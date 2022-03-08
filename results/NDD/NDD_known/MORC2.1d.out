@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MORC2	missense	11	425.2	0.020401810884424325
+MORC2	missense_comb	11	425.2	9.279793340221531e-07
+MORC2	missense_pois	11	425.2	2.560000000000002e-06
+MORC2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PHF21A	missense	2	61.8	0.027185710809047654
+PHF21A	missense_comb	2	61.8	0.028057470245311744
+PHF21A	missense_pois	2	61.8	0.160375903
+PHF21A	nonsense	0	nan	nan

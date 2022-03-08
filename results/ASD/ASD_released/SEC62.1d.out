@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SEC62	missense	2	206.0,nan	0.3061486299316819
+SEC62	nonsense	0	nan,nan	nan

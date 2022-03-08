@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MORN5	missense	1	nan	nan
+MORN5	missense_comb	1	nan	0.0011967708834283999
+MORN5	missense_pois	1	nan	0.0011967708834283999
+MORN5	nonsense	1	nan	nan

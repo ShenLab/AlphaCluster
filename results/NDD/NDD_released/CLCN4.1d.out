@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CLCN4	missense	11	442.6	0.20757946436022814
+CLCN4	missense_comb	11	442.6	1.564678789223921e-09
+CLCN4	missense_pois	11	442.6	3.080000000000006e-10
+CLCN4	nonsense	0	nan	nan

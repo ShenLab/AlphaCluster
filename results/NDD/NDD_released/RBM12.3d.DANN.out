@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RBM12	missense	5	78.8,nan,nan	0.013730477625216918
+RBM12	missense_comb	5	78.8,nan,nan	0.0018352147947600986
+RBM12	missense_pois	5	78.8,nan,nan	0.013984136
+RBM12	nonsense	0	nan,nan,nan	nan

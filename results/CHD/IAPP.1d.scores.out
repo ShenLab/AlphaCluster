@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IAPP	missense	1	nan,nan	nan
+IAPP	missense_comb	1	nan,nan	0.00025353531065097585
+IAPP	missense_pois	1	nan,nan	0.00025353531065097585
+IAPP	nonsense	1	nan,nan	nan

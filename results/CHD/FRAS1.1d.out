@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FRAS1	missense	2	6537.0	0.7890304134552175
+FRAS1	missense_comb	2	6537.0	0.23384446864558148
+FRAS1	missense_pois	2	6537.0	0.07832507893912942
+FRAS1	nonsense	0	nan	nan

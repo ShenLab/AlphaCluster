@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HECW2	missense	20	267.7	1.010100999897969e-08
+HECW2	missense_comb	20	267.7	2.5665233995611157e-19
+HECW2	missense_pois	20	267.7	5.329999999999985e-13
+HECW2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CUL3	missense	3	99.2	0.3677530514694106
+CUL3	missense_comb	3	99.2	0.36156496172315145
+CUL3	missense_pois	3	99.2	0.31
+CUL3	nonsense	6	51.4	0.5262392941528967

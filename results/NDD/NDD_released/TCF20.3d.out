@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TCF20	missense	9	85.2,nan,nan	0.7659957248222697
+TCF20	missense_comb	9	85.2,nan,nan	0.04350878832445993
+TCF20	missense_pois	9	85.2,nan,nan	0.009608066
+TCF20	nonsense	0	nan,nan,nan	nan

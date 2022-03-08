@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+QRICH1	missense	2	35.1,nan,nan	0.05224887719723472
+QRICH1	missense_comb	2	35.1,nan,nan	0.039470055675189596
+QRICH1	missense_pois	2	35.1,nan,nan	0.12530351999999995
+QRICH1	nonsense	0	nan,nan,nan	nan

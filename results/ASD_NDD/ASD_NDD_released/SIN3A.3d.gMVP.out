@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SIN3A	missense	7	151.7,nan,nan	0.01718047758688359
+SIN3A	nonsense	2	31.6,nan,nan	0.14501232061097422

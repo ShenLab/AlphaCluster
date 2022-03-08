@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MTOR	missense	1	nan	nan
+MTOR	missense_comb	1	nan	0.156480970735255
+MTOR	missense_pois	1	nan	0.156480970735255
+MTOR	nonsense	1	nan	nan

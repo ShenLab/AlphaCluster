@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NFE2L3	missense	3	65.0	0.5814546935393923
+NFE2L3	missense_comb	3	65.0	0.011744052249196491
+NFE2L3	missense_pois	3	65.0	0.002710000000000001
+NFE2L3	nonsense	2	39.3	0.1873992868066746

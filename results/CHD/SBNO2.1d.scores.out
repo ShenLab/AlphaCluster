@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SBNO2	missense	2	406.0	0.1918316645352037
+SBNO2	missense_comb	2	406.0	0.029446337847499744
+SBNO2	missense_pois	2	406.0	0.024067070289760004
+SBNO2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ACTL6B	missense	6	12.5	9.477777672469133e-06
+ACTL6B	missense_comb	6	12.5	6.292202171381975e-06
+ACTL6B	missense_pois	6	12.5	0.042200273999999996
+ACTL6B	nonsense	0	nan	nan

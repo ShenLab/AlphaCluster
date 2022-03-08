@@ -35,7 +35,7 @@ import random
 import hashlib
 import time
 
-from denovonear.ensembl_cache import EnsemblCache
+from alphacluster.ensembl_cache import EnsemblCache
 
 IS_PYTHON2 = sys.version_info[0] == 2
 IS_PYTHON3 = sys.version_info[0] == 3

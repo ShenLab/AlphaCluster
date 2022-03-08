@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RNF208	missense	2	395.0,nan	0.7733440136295109
+RNF208	missense_comb	2	395.0,nan	0.0011627224152293235
+RNF208	missense_pois	2	395.0,nan	0.00014936161083756202
+RNF208	nonsense	0	nan,nan	nan

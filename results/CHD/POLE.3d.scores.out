@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+POLE	missense	3	446.6	0.8405043239943965
+POLE	missense_comb	3	446.6	0.03333387834869318
+POLE	missense_pois	3	446.6	0.00636519286635906
+POLE	nonsense	0	nan	nan

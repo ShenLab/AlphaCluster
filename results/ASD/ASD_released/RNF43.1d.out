@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+RNF43	missense	2	1140.0,nan,nan	0.7614758915391566
+RNF43	nonsense	0	nan,nan,nan	nan

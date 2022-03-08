@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EML6	missense	2	41.0,nan	0.289226596786371
+EML6	missense_comb	2	41.0,nan	0.02864470530688882
+EML6	missense_pois	2	41.0,nan	0.015448853418254
+EML6	nonsense	0	nan,nan	nan

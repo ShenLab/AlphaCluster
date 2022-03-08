@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LDB1	missense	3	34.5	0.038575010682499876
+LDB1	missense_comb	3	34.5	0.006924550523351403
+LDB1	missense_pois	3	34.5	0.022272827999999998
+LDB1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BRD3	missense	6	115.9	0.24681336392429595
+BRD3	missense_comb	6	115.9	0.00579840587312822
+BRD3	missense_pois	6	115.9	0.0028435730000000003
+BRD3	nonsense	0	nan	nan

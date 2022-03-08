@@ -24,11 +24,11 @@ import unittest
 import tempfile
 from pathlib import Path
 
-from denovonear.load_gene import get_transcript_lengths, construct_gene_object, \
+from alphacluster.load_gene import get_transcript_lengths, construct_gene_object, \
     get_de_novos_in_transcript, get_transcript_ids, load_gene, \
     count_de_novos_per_transcript, minimise_transcripts
-from denovonear.transcript import Transcript
-from denovonear.rate_limiter import RateLimiter
+from alphacluster.transcript import Transcript
+from alphacluster.rate_limiter import RateLimiter
 
 async def call(func, *args, **kwargs):
     ''' call ensembl rest API function

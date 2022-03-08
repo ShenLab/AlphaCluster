@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SPG7	missense	2	375.0	0.28506864127701514
+SPG7	missense_comb	2	375.0	0.007918339872958927
+SPG7	missense_pois	2	375.0	0.003513302769214351
+SPG7	nonsense	0	nan	nan

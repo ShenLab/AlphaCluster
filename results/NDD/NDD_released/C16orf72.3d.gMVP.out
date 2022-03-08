@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+C16orf72	missense	2	39.9	0.1126484320816841
+C16orf72	missense_comb	2	39.9	0.10098895793108771
+C16orf72	missense_pois	2	39.9	0.183808356
+C16orf72	nonsense	0	nan	nan

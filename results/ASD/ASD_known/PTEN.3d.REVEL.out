@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PTEN	missense	19	23.6	0.0006449999928333335
+PTEN	missense_comb	19	23.6	2.617568096161569e-16
+PTEN	missense_pois	19	23.6	9.999999999999995e-15
+PTEN	nonsense	4	19.5	0.2818472857572523

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FOXG1	missense	27	106.7	1.010100999897969e-08
+FOXG1	missense_comb	27	106.7	4.384984813846206e-11
+FOXG1	missense_pois	27	106.7	0.00015400000000000017
+FOXG1	nonsense	0	nan	nan

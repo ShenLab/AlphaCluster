@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WDHD1	missense	2	675.8	0.7445564361715952
+WDHD1	missense_comb	2	675.8	0.00011128712666542882
+WDHD1	missense_pois	2	675.8	1.1824707520480302e-05
+WDHD1	nonsense	0	nan	nan

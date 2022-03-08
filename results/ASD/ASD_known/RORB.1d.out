@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RORB	missense	5	416.0	0.7676234581375171
+RORB	missense_comb	5	416.0	0.01586893330632428
+RORB	missense_pois	5	416.0	0.00291
+RORB	nonsense	3	525.6	0.7856170246042553

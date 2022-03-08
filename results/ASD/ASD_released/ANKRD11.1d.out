@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+ANKRD11	missense	9	1360.0,nan,nan	0.10292702107858866
+ANKRD11	nonsense	9	1461.2,nan,nan	0.2348887085012366

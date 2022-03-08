@@ -6,11 +6,11 @@ import os
 import unittest
 import math
 
-from denovonear.weights import WeightedChoice
-from denovonear.transcript import Transcript
-from denovonear.site_specific_rates import SiteRates
-from denovonear.load_mutation_rates import load_mutation_rates
-from denovonear.simulate import get_p_value
+from alphacluster.weights import WeightedChoice
+from alphacluster.transcript import Transcript
+from alphacluster.site_specific_rates import SiteRates
+from alphacluster.load_mutation_rates import load_mutation_rates
+from alphacluster.simulate import get_p_value
 
 class TestGetPValuePy(unittest.TestCase):
     """ unit test the simulation of p-values

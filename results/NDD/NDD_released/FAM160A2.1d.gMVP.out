@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FAM160A2	missense	9	852.9,nan	0.8922536123082931
+FAM160A2	missense_comb	9	852.9,nan	0.003935168197054245
+FAM160A2	missense_pois	9	852.9,nan	0.0005068650000000001
+FAM160A2	nonsense	0	nan,nan	nan

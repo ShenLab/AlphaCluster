@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RERE	missense	12	370.6,nan	0.00014212222064308657
+RERE	missense_comb	12	370.6,nan	1.688129547886909e-07
+RERE	missense_pois	12	370.6,nan	6.070000000000006e-05
+RERE	nonsense	0	nan,nan	nan

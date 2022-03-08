@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ANGPT4	missense	2	562.0	0.6174020598066438
+ANGPT4	missense_comb	2	562.0	0.0027211036640736597
+ANGPT4	missense_pois	2	562.0	0.000483428920417195
+ANGPT4	nonsense	0	nan	nan

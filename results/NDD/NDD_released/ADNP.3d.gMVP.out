@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ADNP	missense	4	49.3	0.0003307666629914816
+ADNP	missense_comb	4	49.3	0.00020113241287885464
+ADNP	missense_pois	4	49.3	0.050689629999999986
+ADNP	nonsense	0	nan	nan

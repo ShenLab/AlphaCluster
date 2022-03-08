@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+USP34	missense	3	5522.7	0.969107478121028
+USP34	missense_comb	3	5522.7	0.04395862353665382
+USP34	missense_pois	3	5522.7	0.007688968789086649
+USP34	nonsense	0	nan	nan

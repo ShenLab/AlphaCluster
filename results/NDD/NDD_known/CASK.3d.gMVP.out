@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CASK	missense	16	41.7	1.3111110965432112e-06
+CASK	missense_comb	16	41.7	8.349228687047329e-23
+CASK	missense_pois	16	41.7	1.1400000000000026e-18
+CASK	nonsense	0	nan	nan

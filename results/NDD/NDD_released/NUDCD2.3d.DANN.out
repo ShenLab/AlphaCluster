@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NUDCD2	missense	2	6.7	0.010460633217104073
+NUDCD2	missense_comb	2	6.7	0.0005822013140874052
+NUDCD2	missense_pois	2	6.7	0.005138565999999999
+NUDCD2	nonsense	0	nan	nan

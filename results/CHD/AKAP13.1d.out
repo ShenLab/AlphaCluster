@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AKAP13	missense	3	741.3	0.08988993233455628
+AKAP13	missense_comb	3	741.3	0.004111669914308269
+AKAP13	missense_pois	3	741.3	0.005286969029934197
+AKAP13	nonsense	0	nan	nan

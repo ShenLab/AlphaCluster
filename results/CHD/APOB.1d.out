@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+APOB	missense	2	679.0	0.0968835655901826
+APOB	missense_comb	2	679.0	0.04530510835805023
+APOB	missense_pois	2	679.0	0.07975858528875247
+APOB	nonsense	0	nan	nan

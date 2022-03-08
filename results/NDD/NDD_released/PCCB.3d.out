@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PCCB	missense	3	25.0	0.23189030853455206
+PCCB	missense_comb	3	25.0	0.09130894471405075
+PCCB	missense_pois	3	25.0	0.07869391999999997
+PCCB	nonsense	0	nan	nan

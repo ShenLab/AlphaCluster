@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GALK1	missense	2	84.0,nan	0.7216185142042388
+GALK1	missense_comb	2	84.0,nan	0.0030097000622374016
+GALK1	missense_pois	2	84.0,nan	0.0004632363688288337
+GALK1	nonsense	0	nan,nan	nan

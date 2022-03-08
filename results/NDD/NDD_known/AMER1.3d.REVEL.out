@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AMER1	missense	2	23.5	0.0026022777488635797
+AMER1	missense_comb	2	23.5	0.0018010396094892524
+AMER1	missense_pois	2	23.5	0.07225222799999999
+AMER1	nonsense	0	nan	nan

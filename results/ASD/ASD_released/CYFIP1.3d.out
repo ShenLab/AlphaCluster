@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CYFIP1	missense	4	90.1,nan,nan	0.9619953893111624
+CYFIP1	nonsense	0	nan,nan,nan	nan

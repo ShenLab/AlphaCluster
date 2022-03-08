@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BICD1	missense	2	264.2	0.1670482648105748
+BICD1	missense_comb	2	264.2	0.0034468209433365913
+BICD1	missense_pois	2	264.2	0.002331275664759211
+BICD1	nonsense	0	nan	nan

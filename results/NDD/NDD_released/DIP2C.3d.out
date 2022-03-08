@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DIP2C	missense	4	55.8	0.6827115701920938
+DIP2C	missense_comb	4	55.8	0.9432908386781189
+DIP2C	missense_pois	4	55.8	1.0
+DIP2C	nonsense	0	nan	nan

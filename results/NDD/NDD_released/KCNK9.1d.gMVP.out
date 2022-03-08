@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KCNK9	missense	4	125.8,nan,nan,nan	0.09433125450743048
+KCNK9	missense_comb	4	125.8,nan,nan,nan	0.00497494879672378
+KCNK9	missense_pois	4	125.8,nan,nan,nan	0.006251803000000002
+KCNK9	nonsense	0	nan,nan,nan,nan	nan

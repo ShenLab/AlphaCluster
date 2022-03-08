@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZIC1	missense	3	85.2	0.6499816150002041
+ZIC1	missense_comb	3	85.2	0.2012333917238498
+ZIC1	missense_pois	3	85.2	0.07766946599999999
+ZIC1	nonsense	0	nan	nan

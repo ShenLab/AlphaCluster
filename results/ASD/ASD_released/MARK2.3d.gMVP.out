@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MARK2	missense	4	54.2	0.10601880993312432
+MARK2	missense_comb	4	54.2	0.00832174392022704
+MARK2	missense_pois	4	54.2	0.010000000000000004
+MARK2	nonsense	2	47.7	0.48355886129379044

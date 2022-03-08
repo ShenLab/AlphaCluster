@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DPYSL5	missense	7	14.9,nan,nan	1.636666648481481e-05
+DPYSL5	missense_comb	7	14.9,nan,nan	2.9193714692815073e-08
+DPYSL5	missense_pois	7	14.9,nan,nan	8.330000000000011e-05
+DPYSL5	nonsense	0	nan,nan,nan	nan

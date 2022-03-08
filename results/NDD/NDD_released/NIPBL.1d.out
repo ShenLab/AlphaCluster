@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NIPBL	missense	12	2067.0	0.6519953705333849
+NIPBL	missense_comb	12	2067.0	0.004075791842443594
+NIPBL	missense_pois	12	2067.0	0.0007217220000000004
+NIPBL	nonsense	0	nan	nan

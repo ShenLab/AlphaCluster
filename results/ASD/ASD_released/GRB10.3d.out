@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+GRB10	missense	2	65.8	0.8624166348620373
+GRB10	nonsense	0	nan	nan

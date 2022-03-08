@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MYH14	missense	6	49.0	0.09330751007436099
+MYH14	missense_comb	6	49.0	0.1800892598195033
+MYH14	missense_pois	6	49.0	0.4669424579999999
+MYH14	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UBN2	missense	2	314.4	0.9628793781902292
+UBN2	missense_comb	2	314.4	0.9993023428761159
+UBN2	missense_pois	2	314.4	1.0
+UBN2	nonsense	2	138.0	0.9853007001633256

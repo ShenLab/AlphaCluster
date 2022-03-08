@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TNFRSF11A	missense	2	31.2	0.0492933661189626
+TNFRSF11A	missense_comb	2	31.2	0.021917405796036606
+TNFRSF11A	missense_pois	2	31.2	0.066101196
+TNFRSF11A	nonsense	0	nan	nan

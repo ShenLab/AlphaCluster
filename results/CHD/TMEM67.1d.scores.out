@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TMEM67	missense	2	556.0	0.31804995202166714
+TMEM67	missense_comb	2	556.0	0.0034248787002732336
+TMEM67	missense_pois	2	556.0	0.0012156641762306503
+TMEM67	nonsense	0	nan	nan

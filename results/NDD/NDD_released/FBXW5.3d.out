@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FBXW5	missense	7	32.0	0.45406657273259377
+FBXW5	missense_comb	7	32.0	0.0006071423602917996
+FBXW5	missense_pois	7	32.0	0.00012398099999999998
+FBXW5	nonsense	0	nan	nan

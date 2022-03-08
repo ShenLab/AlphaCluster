@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HSD3B1	missense	5	204.1,nan	0.6140569265104786
+HSD3B1	missense_comb	5	204.1,nan	0.0032300995497158156
+HSD3B1	missense_pois	5	204.1,nan	0.0005894520000000001
+HSD3B1	nonsense	0	nan,nan	nan

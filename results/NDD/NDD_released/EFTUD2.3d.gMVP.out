@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EFTUD2	missense	12	33.8,nan	3.722222180864194e-06
+EFTUD2	missense_comb	12	33.8,nan	1.715041399692533e-11
+EFTUD2	missense_pois	12	33.8,nan	1.5799999999999993e-07
+EFTUD2	nonsense	0	nan,nan	nan

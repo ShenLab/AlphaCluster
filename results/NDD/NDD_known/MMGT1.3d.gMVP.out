@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MMGT1	missense	3	1.1,nan	1.7211110919876523e-05
+MMGT1	missense_comb	3	1.1,nan	1.3192781826830694e-07
+MMGT1	missense_pois	3	1.1,nan	0.00038658599999999996
+MMGT1	nonsense	0	nan,nan	nan

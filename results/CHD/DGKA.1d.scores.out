@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DGKA	missense	2	230.0,nan,nan	0.20094063110065966
+DGKA	missense_comb	2	230.0,nan,nan	0.0018072109006302506
+DGKA	missense_pois	2	230.0,nan,nan	0.0009392817985076636
+DGKA	nonsense	0	nan,nan,nan	nan

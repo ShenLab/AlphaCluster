@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UVSSA	missense	2	145.0	0.11982494311305622
+UVSSA	missense_comb	2	145.0	0.002456497850644588
+UVSSA	missense_pois	2	145.0	0.00222069794031721
+UVSSA	nonsense	0	nan	nan

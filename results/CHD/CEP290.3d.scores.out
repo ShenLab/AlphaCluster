@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CEP290	missense	3	2361.7	0.8329084574121283
+CEP290	missense_comb	3	2361.7	0.008050969057976885
+CEP290	missense_pois	3	2361.7	0.0012255408145822608
+CEP290	nonsense	0	nan	nan

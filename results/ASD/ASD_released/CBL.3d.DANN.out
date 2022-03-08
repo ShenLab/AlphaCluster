@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CBL	missense	4	24.1	0.0018466777572591357
+CBL	missense_comb	4	24.1	8.919707370455635e-05
+CBL	missense_pois	4	24.1	0.0037499999999999977
+CBL	nonsense	0	nan	nan

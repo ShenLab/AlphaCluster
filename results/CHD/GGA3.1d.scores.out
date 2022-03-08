@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GGA3	missense	2	nan,nan	nan
+GGA3	missense_comb	2	nan,nan	0.0012636510050858497
+GGA3	missense_pois	2	nan,nan	0.0012636510050858497
+GGA3	nonsense	0	nan,nan	nan

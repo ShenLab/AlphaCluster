@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BAIAP3	missense	2	2008.0	0.7821059246432676
+BAIAP3	missense_comb	2	2008.0	0.04370671627519596
+BAIAP3	missense_pois	2	2008.0	0.00946170675364288
+BAIAP3	nonsense	1	nan	nan

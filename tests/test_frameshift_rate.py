@@ -23,7 +23,7 @@ import math
 import unittest
 import tempfile
 
-from denovonear.frameshift_rate import include_frameshift_rates
+from alphacluster.frameshift_rate import include_frameshift_rates
 
 class TestIncludeFrameshiftRatesPy(unittest.TestCase):
     """ unit test the geomean function

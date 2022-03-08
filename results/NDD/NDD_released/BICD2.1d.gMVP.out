@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BICD2	missense	9	306.8	0.014222888730856791
+BICD2	missense_comb	9	306.8	8.052176957856356e-06
+BICD2	missense_pois	9	306.8	3.66e-05
+BICD2	nonsense	0	nan	nan

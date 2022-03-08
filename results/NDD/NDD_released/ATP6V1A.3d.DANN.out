@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATP6V1A	missense	13	22.0	3.376666629148149e-05
+ATP6V1A	missense_comb	13	22.0	6.0796088167860746e-15
+ATP6V1A	missense_pois	13	22.0	4.81999999999999e-12
+ATP6V1A	nonsense	0	nan	nan

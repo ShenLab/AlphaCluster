@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SRRM2	missense	7	1859.1	0.43158995076011175
+SRRM2	missense_comb	7	1859.1	0.7942460652286023
+SRRM2	missense_pois	7	1859.1	1.0
+SRRM2	nonsense	0	nan	nan

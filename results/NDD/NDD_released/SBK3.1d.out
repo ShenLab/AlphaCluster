@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SBK3	missense	5	188.9	0.2679642081337309
+SBK3	missense_comb	5	188.9	0.0012846316447099487
+SBK3	missense_pois	5	188.9	0.00048155200000000005
+SBK3	nonsense	0	nan	nan

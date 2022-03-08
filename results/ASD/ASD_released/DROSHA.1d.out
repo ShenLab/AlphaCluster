@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+DROSHA	missense	4	480.1,nan	0.10789776546780269
+DROSHA	nonsense	0	nan,nan	nan

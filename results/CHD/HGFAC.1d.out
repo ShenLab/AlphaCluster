@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HGFAC	missense	2	421.0	0.3845243846163957
+HGFAC	missense_comb	2	421.0	0.007215140777700478
+HGFAC	missense_pois	2	421.0	0.00234179109132759
+HGFAC	nonsense	0	nan	nan

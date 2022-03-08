@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NGFR	missense	3	559.9	0.8863337123740699
+NGFR	missense_comb	3	559.9	0.0003242669256512382
+NGFR	missense_pois	3	559.9	3.1885219770599916e-05
+NGFR	nonsense	0	nan	nan

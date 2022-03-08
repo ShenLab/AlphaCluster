@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TNNI2	missense	3	42.0,nan,nan,nan,nan	0.36423482928627976
+TNNI2	missense_comb	3	42.0,nan,nan,nan,nan	0.0032308138972676342
+TNNI2	missense_pois	3	42.0,nan,nan,nan,nan	0.000993993999999999
+TNNI2	nonsense	0	nan,nan,nan,nan,nan	nan

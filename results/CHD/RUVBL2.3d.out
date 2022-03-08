@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RUVBL2	missense	2	30.4	0.398226628908593
+RUVBL2	missense_comb	2	30.4	0.003655431462977115
+RUVBL2	missense_pois	2	30.4	0.0010449358518184201
+RUVBL2	nonsense	0	nan	nan

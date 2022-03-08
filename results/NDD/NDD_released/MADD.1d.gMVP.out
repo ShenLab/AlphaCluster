@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MADD	missense	7	1708.4	0.9881166112431488
+MADD	missense_comb	7	1708.4	0.25775772960008736
+MADD	missense_pois	7	1708.4	0.07145536999999999
+MADD	nonsense	0	nan	nan

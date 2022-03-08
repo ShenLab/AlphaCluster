@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BOD1L1	missense	2	8074.0	0.9763688780403458
+BOD1L1	missense_comb	2	8074.0	0.13623681988560654
+BOD1L1	missense_pois	2	8074.0	0.031030309803304797
+BOD1L1	nonsense	0	nan	nan

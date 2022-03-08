@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KANSL1	missense	8	41.7,nan,nan	0.006635888815156792
+KANSL1	missense_comb	8	41.7,nan,nan	0.00021318181838006373
+KANSL1	missense_pois	8	41.7,nan,nan	0.0026922439999999995
+KANSL1	nonsense	0	nan,nan,nan	nan

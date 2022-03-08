@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ARID1A	missense	2	138.1	0.12022634310859628
+ARID1A	missense_comb	2	138.1	0.026205883001921303
+ARID1A	missense_pois	2	138.1	0.0334514973104718
+ARID1A	nonsense	0	nan	nan

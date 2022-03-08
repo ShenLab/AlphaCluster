@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UGGT1	missense	2	105.7	0.362601051526655
+UGGT1	missense_comb	2	105.7	0.014825617729996906
+UGGT1	missense_pois	2	105.7	0.005692063537791389
+UGGT1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GPR20	missense	3	647.8	0.9149407676117692
+GPR20	missense_comb	3	647.8	0.00023397937890499447
+GPR20	missense_pois	3	647.8	2.1615392158946818e-05
+GPR20	nonsense	0	nan	nan

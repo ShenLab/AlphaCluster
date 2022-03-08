@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MGA	missense	8	2402.8	0.7154881476056874
+MGA	missense_comb	8	2402.8	0.0050374124570649725
+MGA	missense_pois	8	2402.8	0.0008360009999999998
+MGA	nonsense	0	nan	nan

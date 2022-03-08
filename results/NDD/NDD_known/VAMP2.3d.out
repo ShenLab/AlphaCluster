@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+VAMP2	missense	4	13.2	0.023044833077279624
+VAMP2	missense_comb	4	13.2	1.1899627340037504e-06
+VAMP2	missense_pois	4	13.2	2.9500000000000022e-06
+VAMP2	nonsense	0	nan	nan

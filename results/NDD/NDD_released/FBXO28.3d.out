@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FBXO28	missense	2	65.3	0.7036359588484893
+FBXO28	missense_comb	2	65.3	0.2592826894710134
+FBXO28	missense_pois	2	65.3	0.101163734
+FBXO28	nonsense	0	nan	nan

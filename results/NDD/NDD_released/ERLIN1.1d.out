@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ERLIN1	missense	2	190.0,nan	0.3277676852470257
+ERLIN1	missense_comb	2	190.0,nan	0.0235015374735168
+ERLIN1	missense_pois	2	190.0,nan	0.010791193000000006
+ERLIN1	nonsense	0	nan,nan	nan
