@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLC35A2	missense	7	156.2	0.03498453294461629
+SLC35A2	missense_comb	7	156.2	1.8589116794045423e-06
+SLC35A2	missense_pois	7	156.2	3.119999999999999e-06
+SLC35A2	nonsense	0	nan	nan

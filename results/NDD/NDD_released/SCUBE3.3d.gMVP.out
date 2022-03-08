@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SCUBE3	missense	2	118.4	0.31342935207300726
+SCUBE3	missense_comb	2	118.4	0.34522856414133024
+SCUBE3	missense_pois	2	118.4	0.34008880899999994
+SCUBE3	nonsense	0	nan	nan

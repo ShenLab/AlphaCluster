@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+JUP	missense	2	110.5,nan,nan	0.9602396671084481
+JUP	missense_comb	2	110.5,nan,nan	0.03444091054213613
+JUP	missense_pois	2	110.5,nan,nan	0.00579273173099892
+JUP	nonsense	0	nan,nan,nan	nan

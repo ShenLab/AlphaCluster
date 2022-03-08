@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PRDM16	missense	5	362.2	0.3271731074758544
+PRDM16	missense_comb	5	362.2	0.21827538542873395
+PRDM16	missense_pois	5	362.2	0.172076828
+PRDM16	nonsense	0	nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+EIF5	missense	2	343.0,nan,nan	0.43738171736242537
+EIF5	nonsense	0	nan,nan,nan	nan

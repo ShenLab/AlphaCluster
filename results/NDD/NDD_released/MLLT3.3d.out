@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MLLT3	missense	3	8.9	0.0017307110918809892
+MLLT3	missense_comb	3	8.9	0.0017146061315233135
+MLLT3	missense_pois	3	8.9	0.10283469700000004
+MLLT3	nonsense	0	nan	nan

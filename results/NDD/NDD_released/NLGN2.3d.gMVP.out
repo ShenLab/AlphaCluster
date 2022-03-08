@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NLGN2	missense	8	54.2,nan	0.08600688793325681
+NLGN2	missense_comb	8	54.2,nan	0.004318990381199105
+NLGN2	missense_pois	8	54.2,nan	0.005841855999999999
+NLGN2	nonsense	0	nan,nan	nan

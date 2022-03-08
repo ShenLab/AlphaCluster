@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PLA2G4B	missense	2	1009.0,nan	0.6488844372346173
+PLA2G4B	missense_comb	2	1009.0,nan	0.01793727090198069
+PLA2G4B	missense_pois	2	1009.0,nan	0.003971028206677158
+PLA2G4B	nonsense	0	nan,nan	nan

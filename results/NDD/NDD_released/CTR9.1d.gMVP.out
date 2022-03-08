@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CTR9	missense	6	609.5	0.18968946455900595
+CTR9	missense_comb	6	609.5	0.03021109963044268
+CTR9	missense_pois	6	609.5	0.025090650999999995
+CTR9	nonsense	0	nan	nan

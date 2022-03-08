@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+TRPV4	missense	3	1245.7,nan,nan	0.9192058453421573
+TRPV4	nonsense	0	nan,nan,nan	nan

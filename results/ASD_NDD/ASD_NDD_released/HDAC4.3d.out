@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+HDAC4	missense	11	28.0	0.000568833327012963
+HDAC4	nonsense	2	98.4	0.8935000345166663

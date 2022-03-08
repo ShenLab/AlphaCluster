@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CREBBP	missense	57	602.4	1.010100999897969e-08
+CREBBP	missense_comb	57	602.4	5.216850626104161e-21
+CREBBP	missense_pois	57	602.4	9.999999999999995e-15
+CREBBP	nonsense	0	nan	nan

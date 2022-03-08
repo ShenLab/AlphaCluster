@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NCKAP1	missense	2	90.5	0.7819987357555696
+NCKAP1	missense_comb	2	90.5	0.9742939101781898
+NCKAP1	missense_pois	2	90.5	1.0
+NCKAP1	nonsense	0	nan	nan

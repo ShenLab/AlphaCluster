@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EZH2	missense	7	76.7	0.032418999639788906
+EZH2	missense_comb	7	76.7	0.00011430899633941388
+EZH2	missense_pois	7	76.7	0.00027959199999999995
+EZH2	nonsense	0	nan	nan

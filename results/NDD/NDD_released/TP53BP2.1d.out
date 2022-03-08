@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TP53BP2	missense	3	1521.5	0.8761403680428848
+TP53BP2	missense_comb	3	1521.5	0.5387843226322911
+TP53BP2	missense_pois	3	1521.5	0.24045507100000002
+TP53BP2	nonsense	0	nan	nan

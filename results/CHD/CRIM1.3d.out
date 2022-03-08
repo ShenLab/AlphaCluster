@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CRIM1	missense	2	57.0	0.49099421676673094
+CRIM1	missense_comb	2	57.0	0.013898988769243035
+CRIM1	missense_pois	2	57.0	0.0039001996995417015
+CRIM1	nonsense	0	nan	nan

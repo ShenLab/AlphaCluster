@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WDR26	missense	5	485.9	0.3814463179839298
+WDR26	missense_comb	5	485.9	0.00890421076048398
+WDR26	missense_pois	5	485.9	0.003003617999999999
+WDR26	nonsense	0	nan	nan

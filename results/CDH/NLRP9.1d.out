@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NLRP9	missense	2	1294.0	0.6852621257193096
+NLRP9	missense_comb	2	1294.0	8.577595866993651e-05
+NLRP9	missense_pois	2	1294.0	9.686201601688533e-06
+NLRP9	nonsense	0	nan	nan

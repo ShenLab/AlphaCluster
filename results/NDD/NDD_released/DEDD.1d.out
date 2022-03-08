@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DEDD	missense	2	370.0	0.5915289712052336
+DEDD	missense_comb	2	370.0	0.28621520380709875
+DEDD	missense_pois	2	370.0	0.138036415
+DEDD	nonsense	0	nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+TMEM106B	missense	3	1.0,nan	1.5777777602469143e-06
+TMEM106B	nonsense	0	nan,nan	nan

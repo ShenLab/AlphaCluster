@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ASH1L	missense	2	2317.0,nan	0.44820822835324203
+ASH1L	missense_comb	2	2317.0,nan	0.8078941479424585
+ASH1L	missense_pois	2	2317.0,nan	1.0
+ASH1L	nonsense	9	1839.5,nan	0.49119092787565655

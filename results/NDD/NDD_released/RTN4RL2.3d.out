@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RTN4RL2	missense	2	28.9	0.6406028595488571
+RTN4RL2	missense_comb	2	28.9	0.9258925102754357
+RTN4RL2	missense_pois	2	28.9	1.0
+RTN4RL2	nonsense	0	nan	nan

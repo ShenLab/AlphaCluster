@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SORCS1	missense	2	779.0	0.3791961735644869
+SORCS1	missense_comb	2	779.0	0.015489652809753144
+SORCS1	missense_pois	2	779.0	0.00572735400069946
+SORCS1	nonsense	0	nan	nan

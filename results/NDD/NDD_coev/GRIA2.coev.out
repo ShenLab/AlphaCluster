@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+GRIA2	missense	10	0.4,nan	0.09976433359518488
+GRIA2	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAB11FIP4	missense	2	364.6	0.46552133927198525
+RAB11FIP4	missense_comb	2	364.6	0.006792872266539579
+RAB11FIP4	missense_pois	2	364.6	0.0018056118536296008
+RAB11FIP4	nonsense	0	nan	nan

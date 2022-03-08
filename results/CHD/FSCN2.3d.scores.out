@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FSCN2	missense	2	76.1	0.23176493075816748
+FSCN2	missense_comb	2	76.1	0.003971458899249534
+FSCN2	missense_pois	2	76.1	0.0019716857391965893
+FSCN2	nonsense	0	nan	nan

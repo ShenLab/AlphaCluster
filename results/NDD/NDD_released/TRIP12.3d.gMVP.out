@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TRIP12	missense	8	43.4	3.0299999663333356e-05
+TRIP12	missense_comb	8	43.4	9.83861233217606e-07
+TRIP12	missense_pois	8	43.4	0.0018339140000000005
+TRIP12	nonsense	0	nan	nan

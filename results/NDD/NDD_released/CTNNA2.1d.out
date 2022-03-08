@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CTNNA2	missense	8	395.7	0.0709621325448652
+CTNNA2	missense_comb	8	395.7	0.0007362979976541
+CTNNA2	missense_pois	8	395.7	0.0009814450000000007
+CTNNA2	nonsense	0	nan	nan

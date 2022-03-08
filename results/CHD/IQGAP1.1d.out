@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IQGAP1	missense	2	893.0	0.32847292968363406
+IQGAP1	missense_comb	2	893.0	0.01676962348252264
+IQGAP1	missense_pois	2	893.0	0.007252134625341357
+IQGAP1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+COL2A1	missense	11	122.9	0.003930511067438766
+COL2A1	missense_comb	11	122.9	7.593933038618394e-05
+COL2A1	missense_pois	11	122.9	0.0014799599999999998
+COL2A1	nonsense	0	nan	nan

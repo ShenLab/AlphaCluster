@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TRPM3	missense	16	292.8	1.6666666481481482e-07
+TRPM3	missense_comb	16	292.8	6.456030050723764e-13
+TRPM3	missense_pois	16	292.8	1.1900000000000009e-07
+TRPM3	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GOLGA4	missense	3	57.5	0.09886701001258875
+GOLGA4	missense_comb	3	57.5	0.1688761163617186
+GOLGA4	missense_pois	3	57.5	0.40496442799999977
+GOLGA4	nonsense	0	nan	nan

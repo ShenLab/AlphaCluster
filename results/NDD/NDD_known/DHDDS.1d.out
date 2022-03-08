@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DHDDS	missense	10	81.6	0.0005583333271296299
+DHDDS	missense_comb	10	81.6	1.7616557075517604e-13
+DHDDS	missense_pois	10	81.6	9.310000000000016e-12
+DHDDS	nonsense	0	nan	nan

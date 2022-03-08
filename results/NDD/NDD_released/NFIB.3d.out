@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NFIB	missense	4	11.2	0.18898605345571048
+NFIB	missense_comb	4	11.2	0.02076021282368013
+NFIB	missense_pois	4	11.2	0.01617780799999999
+NFIB	nonsense	0	nan	nan

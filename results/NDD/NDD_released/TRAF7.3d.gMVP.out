@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TRAF7	missense	25	59.5	2.5666666381481463e-06
+TRAF7	missense_comb	25	59.5	1.1834667285075838e-18
+TRAF7	missense_pois	25	59.5	9.999999999999995e-15
+TRAF7	nonsense	0	nan	nan

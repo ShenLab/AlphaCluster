@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RUSC1	missense	4	905.9	0.7460263361552629
+RUSC1	missense_comb	4	905.9	0.6090269185553676
+RUSC1	missense_pois	4	905.9	0.3473084570000001
+RUSC1	nonsense	0	nan	nan

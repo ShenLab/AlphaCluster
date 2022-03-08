@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CLPTM1	missense	3	976.0,nan	0.7199739031114011
+CLPTM1	missense_comb	3	976.0,nan	0.4633398578488168
+CLPTM1	missense_pois	3	976.0,nan	0.22997840200000003
+CLPTM1	nonsense	0	nan,nan	nan

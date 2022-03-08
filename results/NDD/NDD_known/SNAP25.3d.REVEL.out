@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SNAP25	missense	6	27.5	0.03805769957713666
+SNAP25	missense_comb	6	27.5	2.229922891350575e-06
+SNAP25	missense_pois	6	27.5	3.480000000000004e-06
+SNAP25	nonsense	0	nan	nan

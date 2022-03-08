@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+XPO1	missense	7	42.7,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	0.0026939444145117272
+XPO1	missense_comb	7	42.7,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	1.7316836674962553e-05
+XPO1	missense_pois	7	42.7,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	0.000438831
+XPO1	nonsense	0	nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RANGAP1	missense	2	553.0,nan,nan	0.527653860803846
+RANGAP1	missense_comb	2	553.0,nan,nan	3.05822107411395e-06
+RANGAP1	missense_pois	2	553.0,nan,nan	3.512422435125729e-07
+RANGAP1	nonsense	0	nan,nan,nan	nan

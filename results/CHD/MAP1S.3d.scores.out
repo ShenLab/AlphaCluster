@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MAP1S	missense	1	nan	nan
+MAP1S	missense_comb	1	nan	0.0703762436200144
+MAP1S	missense_pois	1	nan	0.0703762436200144
+MAP1S	nonsense	1	nan	nan

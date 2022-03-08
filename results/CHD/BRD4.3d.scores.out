@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BRD4	missense	2	63.1,nan	0.04083784399069061
+BRD4	missense_comb	2	63.1,nan	0.0037145364849038246
+BRD4	missense_pois	2	63.1,nan	0.010375737976236706
+BRD4	nonsense	0	nan,nan	nan

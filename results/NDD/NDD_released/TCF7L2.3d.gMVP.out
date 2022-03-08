@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TCF7L2	missense	6	82.3	0.037558444027128386
+TCF7L2	missense_comb	6	82.3	0.00034645214089082464
+TCF7L2	missense_pois	6	82.3	0.0008090459999999999
+TCF7L2	nonsense	0	nan	nan

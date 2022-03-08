@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KLF2	missense	2	50.4	0.5425809717491004
+KLF2	missense_comb	2	50.4	0.006420069940097592
+KLF2	missense_pois	2	50.4	0.001452578834098441
+KLF2	nonsense	0	nan	nan

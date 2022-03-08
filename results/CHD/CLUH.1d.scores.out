@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CLUH	missense	3	924.3	0.43394388406729
+CLUH	missense_comb	3	924.3	0.006455172024345025
+CLUH	missense_pois	3	924.3	0.0018275543211559997
+CLUH	nonsense	0	nan	nan

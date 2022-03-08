@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CYP11A1	missense	2	11.6	0.010214455442061607
+CYP11A1	missense_comb	2	11.6	7.562359009876353e-05
+CYP11A1	missense_pois	2	11.6	0.0005669232049233526
+CYP11A1	nonsense	0	nan	nan

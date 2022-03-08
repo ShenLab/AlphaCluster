@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ARFGEF2	missense	3	106.7	0.8786672680148081
+ARFGEF2	missense_comb	3	106.7	0.008786668038176442
+ARFGEF2	missense_pois	3	106.7	0.0012841955816829103
+ARFGEF2	nonsense	0	nan	nan

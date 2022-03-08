@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAD9A	missense	2	312.0	0.6958727589347471
+RAD9A	missense_comb	2	312.0	0.0017396609635574242
+RAD9A	missense_pois	2	312.0	0.00025993517855227305
+RAD9A	nonsense	0	nan	nan

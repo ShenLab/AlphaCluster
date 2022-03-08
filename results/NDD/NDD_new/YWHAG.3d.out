@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+YWHAG	missense	6	9.6	0.000479122216898642
+YWHAG	missense_comb	6	9.6	1.0937888435451896e-07
+YWHAG	missense_pois	6	9.6	1.1400000000000004e-05
+YWHAG	nonsense	0	nan	nan

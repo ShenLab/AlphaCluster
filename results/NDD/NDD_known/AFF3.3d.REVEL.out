@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AFF3	missense	10	50.6	8.455555461604941e-06
+AFF3	missense_comb	10	50.6	1.4869593335411104e-07
+AFF3	missense_pois	10	50.6	0.0008925750000000004
+AFF3	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CSNK1E	missense	5	189.3,nan,nan,nan	0.16360738707102906
+CSNK1E	missense_comb	5	189.3,nan,nan,nan	0.008163288139389612
+CSNK1E	missense_pois	5	189.3,nan,nan,nan	0.006338897999999999
+CSNK1E	nonsense	0	nan,nan,nan,nan	nan

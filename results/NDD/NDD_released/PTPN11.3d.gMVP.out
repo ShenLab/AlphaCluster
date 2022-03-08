@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PTPN11	missense	61	27.6	1.1111110987654311e-08
+PTPN11	missense_comb	61	27.6	5.7279456631697405e-21
+PTPN11	missense_pois	61	27.6	9.999999999999995e-15
+PTPN11	nonsense	0	nan	nan

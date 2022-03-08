@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HNRNPUL2	missense	2	457.1	0.6237878597356903
+HNRNPUL2	missense_comb	2	457.1	0.9181813817673663
+HNRNPUL2	missense_pois	2	457.1	1.0
+HNRNPUL2	nonsense	3	33.0	0.2429776195224709

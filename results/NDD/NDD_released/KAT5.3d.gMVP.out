@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KAT5	missense	3	34.7	0.10655698770492235
+KAT5	missense_comb	3	34.7	0.0030128500802643035
+KAT5	missense_pois	3	34.7	0.0031407940000000014
+KAT5	nonsense	0	nan	nan

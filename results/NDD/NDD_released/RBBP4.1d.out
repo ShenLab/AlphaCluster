@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RBBP4	missense	4	253.1	0.3417530073138556
+RBBP4	missense_comb	4	253.1	0.004399170266551854
+RBBP4	missense_pois	4	253.1	0.001501113
+RBBP4	nonsense	0	nan	nan

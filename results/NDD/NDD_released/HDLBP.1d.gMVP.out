@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HDLBP	missense	4	868.3,nan,nan	0.4654793059391189
+HDLBP	missense_comb	4	868.3,nan,nan	0.2061433933839756
+HDLBP	missense_pois	4	868.3,nan,nan	0.11200707699999998
+HDLBP	nonsense	0	nan,nan,nan	nan

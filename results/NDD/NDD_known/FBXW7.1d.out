@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FBXW7	missense	12	128.4,nan,nan	8.733333236296307e-06
+FBXW7	missense_comb	12	128.4,nan,nan	6.37694326556662e-14
+FBXW7	missense_pois	12	128.4,nan,nan	2.0899999999999995e-10
+FBXW7	nonsense	0	nan,nan,nan	nan

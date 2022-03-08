@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PI4KA	missense	2	29.0	0.010027222110808639
+PI4KA	missense_comb	2	29.0	0.002256426969185801
+PI4KA	missense_pois	2	29.0	0.024127071394549494
+PI4KA	nonsense	0	nan	nan

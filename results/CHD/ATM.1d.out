@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATM	missense	2	2368.0,nan	0.4473808505846574
+ATM	missense_comb	2	2368.0,nan	0.06075176530003776
+ATM	missense_pois	2	2368.0,nan	0.024658601595245692
+ATM	nonsense	0	nan,nan	nan

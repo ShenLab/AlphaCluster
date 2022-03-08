@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATL1	missense	6	29.9	0.0015575555382493836
+ATL1	missense_comb	6	29.9	1.134694587941904e-06
+ATL1	missense_pois	6	29.9	4.1500000000000026e-05
+ATL1	nonsense	0	nan	nan

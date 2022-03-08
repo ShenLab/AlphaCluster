@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SUPT20H	missense	2	568.0	0.4184187286842366
+SUPT20H	missense_comb	2	568.0	3.131802984133306e-05
+SUPT20H	missense_pois	2	568.0	5.3420612939891745e-06
+SUPT20H	nonsense	0	nan	nan

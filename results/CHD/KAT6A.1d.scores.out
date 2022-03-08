@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KAT6A	missense	1	nan	nan
+KAT6A	missense_comb	1	nan	0.09467161614771898
+KAT6A	missense_pois	1	nan	0.09467161614771898
+KAT6A	nonsense	1	nan	nan

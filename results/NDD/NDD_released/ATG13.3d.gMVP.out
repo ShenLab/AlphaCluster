@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATG13	missense	2	1275.9,nan	0.9413236784297369
+ATG13	missense_comb	2	1275.9,nan	0.3836898848550747
+ATG13	missense_pois	2	1275.9,nan	0.13215881499999996
+ATG13	nonsense	0	nan,nan	nan

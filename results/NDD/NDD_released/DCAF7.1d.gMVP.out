@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DCAF7	missense	5	192.4	0.2839910635112104
+DCAF7	missense_comb	5	192.4	0.0024693957481536763
+DCAF7	missense_pois	5	192.4	0.0009425029999999999
+DCAF7	nonsense	0	nan	nan

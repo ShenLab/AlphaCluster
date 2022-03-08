@@ -25,9 +25,9 @@ import os
 import unittest
 import itertools
 
-from denovonear.site_specific_rates import get_gene_range, get_mutated_aa, SiteRates
-from denovonear.weights import WeightedChoice
-from denovonear.transcript import Transcript
+from alphacluster.site_specific_rates import get_gene_range, get_mutated_aa, SiteRates
+from alphacluster.weights import WeightedChoice
+from alphacluster.transcript import Transcript
 
 def generate_rates(kmer_length=3):
     ''' make a list of tuples for all sequence alterations of a given length

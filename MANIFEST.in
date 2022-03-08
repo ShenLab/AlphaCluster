@@ -1,15 +1,17 @@
-# denovonear code
+# alphacluster code
 include MANIFEST.in
 include pyproject.toml
 include scripts/*.py
-include denovonear/*.cpp
-include denovonear/*.py
-include denovonear/*.pyx
-include denovonear/*.pxd
-include denovonear/data/rates.txt
+include alphacluster/*.cpp
+include alphacluster/*.py
+include alphacluster/*.pyx
+include alphacluster/*.pxd
+include alphacluster/data/rates.txt
 include src/*.h
 include src/*.cpp
 include data/*.txt
+include src/gzstream/gzstream.C
+include src/gzstream/gzstream.h
 
-# denovonear tests
+# alphacluster tests
 include tests/*.py

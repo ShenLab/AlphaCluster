@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+OPTN	missense	2	1349.0,nan,nan,nan	0.9321476674205815
+OPTN	missense_comb	2	1349.0,nan,nan,nan	0.00257816251975821
+OPTN	missense_pois	2	1349.0,nan,nan,nan	0.00030137326929680113
+OPTN	nonsense	0	nan,nan,nan,nan	nan

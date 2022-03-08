@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EEPD1	missense	3	60.5,nan	0.10641525437316382
+EEPD1	missense_comb	3	60.5,nan	5.356978035519391e-05
+EEPD1	missense_pois	3	60.5,nan	3.747740553938777e-05
+EEPD1	nonsense	0	nan,nan	nan

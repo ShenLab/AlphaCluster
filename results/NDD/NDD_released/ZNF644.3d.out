@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZNF644	missense	3	49.2,nan	0.13134196520731153
+ZNF644	missense_comb	3	49.2,nan	0.16042425176763922
+ZNF644	missense_pois	3	49.2,nan	0.285041801
+ZNF644	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LASP1	missense	3	29.9,nan	0.10987259877919336
+LASP1	missense_comb	3	29.9,nan	0.009575729161045833
+LASP1	missense_pois	3	29.9,nan	0.011335928999999998
+LASP1	nonsense	0	nan,nan	nan

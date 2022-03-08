@@ -21,7 +21,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import unittest
 
-from denovonear.log_transform_rates import log_transform
+from alphacluster.log_transform_rates import log_transform
 
 class TestLogTransformPy(unittest.TestCase):
     """ unit test the log_transform function

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RNF123	missense	2	76.6	0.8688451792350536
+RNF123	missense_comb	2	76.6	0.045643666733520404
+RNF123	missense_pois	2	76.6	0.008973957648818916
+RNF123	nonsense	0	nan	nan

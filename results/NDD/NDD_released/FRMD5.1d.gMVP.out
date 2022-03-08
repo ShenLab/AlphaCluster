@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FRMD5	missense	5	345.5	0.3289064185677066
+FRMD5	missense_comb	5	345.5	0.003913787146615257
+FRMD5	missense_pois	5	345.5	0.001366580000000001
+FRMD5	nonsense	0	nan	nan

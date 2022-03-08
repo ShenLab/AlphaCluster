@@ -163,14 +163,14 @@ def batch_process(de_novo_path, temp_dir, output_path):
     count = split_denovos(de_novo_path, temp_dir)
     
     # set up run parameters
-    job_name = "denovonear"
+    job_name = "alphacluster"
     job_id = "{0}[1-{1}]%20".format(job_name, count)
     
     basename = os.path.basename(de_novo_path)
     infile = os.path.join(temp_dir, "tmp.\$LSB_JOBINDEX\.txt")
     outfile = os.path.join(temp_dir, "tmp.\$LSB_JOBINDEX\.output")
     
-    command = ["denovonear", "cluster",
+    command = ["alphacluster", "cluster",
         "--in", infile,
         "--out", outfile]
     submit_bsub_job(command, job_id, memory=3500, requeue_code=134, logfile="clustering.bjob")

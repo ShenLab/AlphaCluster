@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AP2S1	missense	5	6.1	7.805555468827156e-05
+AP2S1	missense_comb	5	6.1	1.2133002954126672e-08
+AP2S1	missense_pois	5	6.1	6.960000000000001e-06
+AP2S1	nonsense	0	nan	nan

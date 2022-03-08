@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PIP5K1C	missense	9	15.0	0.0028151221909430858
+PIP5K1C	missense_comb	9	15.0	4.033069934118919e-06
+PIP5K1C	missense_pois	9	15.0	8.839999999999994e-05
+PIP5K1C	nonsense	0	nan	nan

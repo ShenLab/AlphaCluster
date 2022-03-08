@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CTBP1	missense	9	0.0	1.1111110987654311e-08
+CTBP1	missense_comb	9	0.0	9.290016453163459e-14
+CTBP1	missense_pois	9	0.0	2.4199999999999997e-07
+CTBP1	nonsense	0	nan	nan

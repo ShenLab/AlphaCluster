@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KIF5C	missense	7	46.6,nan	2.755555524938276e-06
+KIF5C	missense_comb	7	46.6,nan	9.363058148551273e-11
+KIF5C	missense_pois	7	46.6,nan	1.2399999999999983e-06
+KIF5C	nonsense	0	nan,nan	nan

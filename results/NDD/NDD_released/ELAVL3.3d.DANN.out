@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ELAVL3	missense	3	44.8	0.117611143137654
+ELAVL3	missense_comb	3	44.8	0.020417604404747828
+ELAVL3	missense_pois	3	44.8	0.025493408
+ELAVL3	nonsense	0	nan	nan

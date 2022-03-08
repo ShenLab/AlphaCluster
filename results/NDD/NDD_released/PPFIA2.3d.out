@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PPFIA2	missense	6	42.8	0.05641412159539865
+PPFIA2	missense_comb	6	42.8	0.0025594617681021664
+PPFIA2	missense_pois	6	42.8	0.004939164999999999
+PPFIA2	nonsense	0	nan	nan

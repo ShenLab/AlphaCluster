@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MYRF	missense	5	396.0	0.0788266880130368
+MYRF	missense_comb	5	396.0	0.015259660109051991
+MYRF	missense_pois	5	396.0	0.027076336999999995
+MYRF	nonsense	0	nan	nan

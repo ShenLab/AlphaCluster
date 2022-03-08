@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ELMO2	missense	3	252.0,nan	0.9161998675977793
+ELMO2	missense_comb	3	252.0,nan	0.0004802456134647615
+ELMO2	missense_pois	3	252.0,nan	4.7466334268886357e-05
+ELMO2	nonsense	0	nan,nan	nan

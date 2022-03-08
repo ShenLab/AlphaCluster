@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EP400	missense	2	666.0	0.138456031794933
+EP400	missense_comb	2	666.0	0.05383915754103664
+EP400	missense_pois	2	666.0	0.0687732592290651
+EP400	nonsense	0	nan	nan

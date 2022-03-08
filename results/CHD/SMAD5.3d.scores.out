@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SMAD5	missense	2	52.4,nan,nan	0.3004851077723879
+SMAD5	missense_comb	2	52.4,nan,nan	0.0006061341853904094
+SMAD5	missense_pois	2	52.4,nan,nan	0.00018700628459811214
+SMAD5	nonsense	0	nan,nan,nan	nan

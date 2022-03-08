@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CDK8	missense	7	14.3	2.5922221934197518e-05
+CDK8	missense_comb	7	14.3	2.6600147391741336e-09
+CDK8	missense_pois	7	14.3	4.289999999999996e-06
+CDK8	nonsense	0	nan	nan

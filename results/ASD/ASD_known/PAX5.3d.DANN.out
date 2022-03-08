@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PAX5	missense	1	nan	nan
+PAX5	missense_comb	1	nan	0.27
+PAX5	missense_pois	1	nan	0.27
+PAX5	nonsense	2	52.5	0.5411630162092997

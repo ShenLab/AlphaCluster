@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BRPF1	missense	3	1519.2	0.8410399573217784
+BRPF1	missense_comb	3	1519.2	0.45259796192889346
+BRPF1	missense_pois	3	1519.2	0.18984182500000002
+BRPF1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SRSF7	missense	2	23.2	0.05156285498263495
+SRSF7	missense_comb	2	23.2	0.004794076818790498
+SRSF7	missense_pois	2	23.2	0.010966888
+SRSF7	nonsense	0	nan	nan

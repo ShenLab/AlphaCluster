@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GAK	missense	5	195.6	0.08298338796685124
+GAK	missense_comb	5	195.6	0.07158801943033873
+GAK	missense_pois	5	195.6	0.16259816800000002
+GAK	nonsense	0	nan	nan

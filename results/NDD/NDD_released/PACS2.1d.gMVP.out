@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PACS2	missense	18	18.7	1.010100999897969e-08
+PACS2	missense_comb	18	18.7	3.64588847649578e-22
+PACS2	missense_pois	18	18.7	6.639999999999994e-16
+PACS2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NOS3	missense	4	30.9	0.10076916554700925
+NOS3	missense_comb	4	30.9	2.1634653729094766e-05
+NOS3	missense_pois	4	30.9	1.4900000000000005e-05
+NOS3	nonsense	0	nan	nan

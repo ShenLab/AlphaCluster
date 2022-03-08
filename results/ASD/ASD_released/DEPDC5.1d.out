@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+DEPDC5	missense	2	2977.0,nan	0.8622156459753818
+DEPDC5	nonsense	0	nan,nan	nan

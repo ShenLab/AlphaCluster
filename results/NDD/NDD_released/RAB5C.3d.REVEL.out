@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAB5C	missense	5	59.3	0.2916977967589134
+RAB5C	missense_comb	5	59.3	8.871017102898516e-05
+RAB5C	missense_pois	5	59.3	2.360000000000003e-05
+RAB5C	nonsense	0	nan	nan

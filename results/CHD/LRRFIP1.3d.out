@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LRRFIP1	missense	1	nan	nan
+LRRFIP1	missense_comb	1	nan	0.041489674350024784
+LRRFIP1	missense_pois	1	nan	0.041489674350024784
+LRRFIP1	nonsense	1	nan	nan

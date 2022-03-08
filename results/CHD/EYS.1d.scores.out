@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EYS	missense	2	1957.0	0.3728136847465147
+EYS	missense_comb	2	1957.0	0.05369775431943046
+EYS	missense_pois	2	1957.0	0.025459636129801497
+EYS	nonsense	0	nan	nan

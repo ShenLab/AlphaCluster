@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EML5	missense	2	57.4	0.5067592721471191
+EML5	missense_comb	2	57.4	0.03723442714651563
+EML5	missense_pois	2	57.4	0.012047986316313904
+EML5	nonsense	1	nan	nan

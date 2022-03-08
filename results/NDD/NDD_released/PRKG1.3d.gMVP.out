@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PRKG1	missense	5	52.2	0.26739135258454055
+PRKG1	missense_comb	5	52.2	0.018877856242736347
+PRKG1	missense_pois	5	52.2	0.010229667
+PRKG1	nonsense	0	nan	nan

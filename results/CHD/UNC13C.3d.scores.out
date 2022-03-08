@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UNC13C	missense	2	660.6	0.7089788254557907
+UNC13C	missense_comb	2	660.6	0.04962222522468184
+UNC13C	missense_pois	2	660.6	0.012165924938195197
+UNC13C	nonsense	0	nan	nan

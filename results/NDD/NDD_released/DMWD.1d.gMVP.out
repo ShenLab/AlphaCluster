@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DMWD	missense	2	16.0	0.018581588682426792
+DMWD	missense_comb	2	16.0	0.026644867897417386
+DMWD	missense_pois	2	16.0	0.220727999
+DMWD	nonsense	0	nan	nan

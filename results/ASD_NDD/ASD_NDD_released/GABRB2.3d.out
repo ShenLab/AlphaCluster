@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+GABRB2	missense	21	25.0,nan	1.9555555338271606e-06
+GABRB2	nonsense	0	nan,nan	nan

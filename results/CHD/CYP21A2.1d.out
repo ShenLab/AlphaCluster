@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CYP21A2	missense	1	nan	nan
+CYP21A2	missense_comb	1	nan	0.005542158064282383
+CYP21A2	missense_pois	1	nan	0.005542158064282383
+CYP21A2	nonsense	1	nan	nan

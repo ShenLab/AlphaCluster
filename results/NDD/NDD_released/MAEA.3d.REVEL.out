@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MAEA	missense	7	40.0	0.07540019916222003
+MAEA	missense_comb	7	40.0	0.0002644133014227245
+MAEA	missense_pois	7	40.0	0.0002997940000000001
+MAEA	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PAFAH1B1	missense	4	23.3	0.36890571812326983
+PAFAH1B1	missense_comb	4	23.3	0.006078344568916004
+PAFAH1B1	missense_pois	4	23.3	0.0020073569999999995
+PAFAH1B1	nonsense	0	nan	nan

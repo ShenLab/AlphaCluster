@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IQSEC2	missense	15	249.3,nan	5.666666603703704e-07
+IQSEC2	missense_comb	15	249.3,nan	7.786425302108327e-18
+IQSEC2	missense_pois	15	249.3,nan	3.110000000000002e-13
+IQSEC2	nonsense	0	nan,nan	nan

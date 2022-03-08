@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RBFOX2	missense	1	nan	nan
+RBFOX2	missense_comb	1	nan	0.011032497976055293
+RBFOX2	missense_pois	1	nan	0.011032497976055293
+RBFOX2	nonsense	2	36.5	0.3990597288993363

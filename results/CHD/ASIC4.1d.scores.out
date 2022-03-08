@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ASIC4	missense	2	522.0	0.555350571607216
+ASIC4	missense_comb	2	522.0	0.006966252190916879
+ASIC4	missense_pois	2	522.0	0.0015577270160055405
+ASIC4	nonsense	0	nan	nan

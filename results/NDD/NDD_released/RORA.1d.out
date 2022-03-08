@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RORA	missense	6	181.9	0.04634376615173591
+RORA	missense_comb	6	181.9	0.002186596705097616
+RORA	missense_pois	6	181.9	0.005039706000000001
+RORA	nonsense	0	nan	nan

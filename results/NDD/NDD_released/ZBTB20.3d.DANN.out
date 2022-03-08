@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZBTB20	missense	11	36.9,nan,nan	1.8666666459259267e-06
+ZBTB20	missense_comb	11	36.9,nan,nan	1.2447399012611439e-10
+ZBTB20	missense_pois	11	36.9,nan,nan	2.46e-06
+ZBTB20	nonsense	0	nan,nan,nan	nan

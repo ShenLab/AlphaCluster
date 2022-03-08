@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BAZ2B	missense	8	1260.4	0.2851612301648751
+BAZ2B	missense_comb	8	1260.4	0.04774625192161252
+BAZ2B	missense_pois	8	1260.4	0.028870001999999995
+BAZ2B	nonsense	0	nan	nan

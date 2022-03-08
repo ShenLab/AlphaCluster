@@ -22,7 +22,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import math
 import unittest
 
-from denovonear.weights import get_distances, geomean
+from alphacluster.weights import get_distances, geomean
 
 class TestGeomeanPy(unittest.TestCase):
     """ unit test the geomean function

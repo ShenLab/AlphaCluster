@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KRT13	missense	2	1272.9	0.4346696507258927
+KRT13	missense_comb	2	1272.9	0.0020739903841100293
+KRT13	missense_pois	2	1272.9	0.0005064527867510992
+KRT13	nonsense	0	nan	nan

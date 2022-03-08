@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PRG3	missense	5	267.0	0.9872629556970782
+PRG3	missense_comb	5	267.0	0.003319936586958708
+PRG3	missense_pois	5	267.0	0.0003781329999999999
+PRG3	nonsense	0	nan	nan

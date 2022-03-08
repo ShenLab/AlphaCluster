@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TECTA	missense	2	2257.0,nan	0.5971255155874943
+TECTA	missense_comb	2	2257.0,nan	0.08491459941166155
+TECTA	missense_pois	2	2257.0,nan	0.027915119053368912
+TECTA	nonsense	1	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SUMO2	missense	2	1.5	0.5626826493035262
+SUMO2	missense_comb	2	1.5	0.03735909616116146
+SUMO2	missense_pois	2	1.5	0.010894045000000002
+SUMO2	nonsense	0	nan	nan

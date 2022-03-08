@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UMODL1	missense	3	1280.0	0.5894534156727397
+UMODL1	missense_comb	3	1280.0	0.005289748997567118
+UMODL1	missense_pois	3	1280.0	0.00107265055477979
+UMODL1	nonsense	0	nan	nan

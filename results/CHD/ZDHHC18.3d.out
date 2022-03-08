@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZDHHC18	missense	2	10.5	0.04220573286438074
+ZDHHC18	missense_comb	2	10.5	0.0002815337802903761
+ZDHHC18	missense_pois	2	10.5	0.0005736229227781834
+ZDHHC18	nonsense	0	nan	nan

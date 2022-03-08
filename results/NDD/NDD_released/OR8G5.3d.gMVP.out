@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+OR8G5	missense	5	822.2,nan	0.576014371377618
+OR8G5	missense_comb	5	822.2,nan	0.00012207066558109458
+OR8G5	missense_pois	5	822.2,nan	1.690000000000001e-05
+OR8G5	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CALM1	missense	2	22.0	0.10583667660181466
+CALM1	missense_comb	2	22.0	0.015901105861483824
+CALM1	missense_pois	2	22.0	0.02115576599999999
+CALM1	nonsense	0	nan	nan

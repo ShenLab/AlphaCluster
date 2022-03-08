@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DNMT3A	missense	27	28.9,nan	2.3111110854320975e-05
+DNMT3A	missense_comb	27	28.9,nan	1.0148409643544705e-17
+DNMT3A	missense_pois	27	28.9,nan	9.999999999999995e-15
+DNMT3A	nonsense	0	nan,nan	nan

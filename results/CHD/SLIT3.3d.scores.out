@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLIT3	missense	2	307.8	0.5894717156725366
+SLIT3	missense_comb	2	307.8	0.046754973452292764
+SLIT3	missense_pois	2	307.8	0.013616625266369902
+SLIT3	nonsense	0	nan	nan

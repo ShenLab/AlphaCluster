@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BCL11A	missense	8	117.4	0.00016367777595913574
+BCL11A	missense_comb	8	117.4	0.0015905569305153088
+BCL11A	missense_pois	8	117.4	1.0
+BCL11A	nonsense	3	956.2	0.6849462479450418

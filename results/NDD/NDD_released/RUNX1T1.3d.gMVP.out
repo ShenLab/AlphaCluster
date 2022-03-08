@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RUNX1T1	missense	4	90.4	0.029869921890334217
+RUNX1T1	missense_comb	4	90.4	0.01226924656685365
+RUNX1T1	missense_pois	4	90.4	0.055489004999999994
+RUNX1T1	nonsense	0	nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+TCF3	missense	2	267.0	0.2509301972118867
+TCF3	nonsense	2	634.0	0.5269331274785212

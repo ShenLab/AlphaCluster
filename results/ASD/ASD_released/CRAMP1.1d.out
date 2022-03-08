@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CRAMP1	missense	2	220.0,nan	0.11404580984393545
+CRAMP1	nonsense	0	nan,nan	nan

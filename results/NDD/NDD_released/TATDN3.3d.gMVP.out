@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TATDN3	missense	3	17.3	0.03690212181219864
+TATDN3	missense_comb	3	17.3	0.00017410180520711146
+TATDN3	missense_pois	3	17.3	0.0003881960000000002
+TATDN3	nonsense	0	nan	nan

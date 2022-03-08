@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UBTF	missense	8	13.4,nan,nan	1.1111110987654311e-08
+UBTF	missense_comb	8	13.4,nan,nan	4.7431647089489036e-12
+UBTF	missense_pois	8	13.4,nan,nan	1.3999999999999995e-05
+UBTF	nonsense	0	nan,nan,nan	nan

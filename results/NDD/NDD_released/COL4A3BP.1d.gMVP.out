@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+COL4A3BP	missense	9	34.2	3.1111110765432107e-07
+COL4A3BP	missense_comb	9	34.2	9.764414059006485e-13
+COL4A3BP	missense_pois	9	34.2	9.769999999999986e-08
+COL4A3BP	nonsense	0	nan	nan

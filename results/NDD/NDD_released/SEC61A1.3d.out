@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SEC61A1	missense	2	33.1	0.5019598166448909
+SEC61A1	missense_comb	2	33.1	0.2560542437263875
+SEC61A1	missense_pois	2	33.1	0.13938301099999997
+SEC61A1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PHF12	missense	5	88.9	0.057303799363291115
+PHF12	missense_comb	5	88.9	0.048511610067616555
+PHF12	missense_pois	5	88.9	0.146454293
+PHF12	nonsense	0	nan	nan

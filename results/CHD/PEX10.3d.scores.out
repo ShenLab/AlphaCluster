@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PEX10	missense	1	nan	nan
+PEX10	missense_comb	1	nan	0.008254773835108644
+PEX10	missense_pois	1	nan	0.008254773835108644
+PEX10	nonsense	1	nan	nan

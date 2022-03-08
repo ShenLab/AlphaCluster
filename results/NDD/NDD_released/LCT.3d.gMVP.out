@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LCT	missense	11	113.5	0.03341884407312394
+LCT	missense_comb	11	113.5	0.001347944107541437
+LCT	missense_pois	11	113.5	0.004073445000000001
+LCT	nonsense	0	nan	nan

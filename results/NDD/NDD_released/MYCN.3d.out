@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MYCN	missense	3	28.0	0.0551065438321495
+MYCN	missense_comb	3	28.0	0.007934596937031729
+MYCN	missense_pois	3	28.0	0.018217197999999997
+MYCN	nonsense	0	nan	nan

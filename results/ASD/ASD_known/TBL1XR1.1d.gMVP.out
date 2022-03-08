@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TBL1XR1	missense	6	162.6,nan,nan,nan,nan	0.026055588599382347
+TBL1XR1	missense_comb	6	162.6,nan,nan,nan,nan	5.034849580576808e-06
+TBL1XR1	missense_pois	6	162.6,nan,nan,nan,nan	1.2100000000000006e-05
+TBL1XR1	nonsense	2	747.0,nan,nan,nan,nan	0.7655980359377996

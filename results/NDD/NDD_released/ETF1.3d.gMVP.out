@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ETF1	missense	3	55.5	0.33430536295216257
+ETF1	missense_comb	3	55.5	0.03495634555418467
+ETF1	missense_pois	3	55.5	0.01693619600000001
+ETF1	nonsense	0	nan	nan

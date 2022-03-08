@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SRCAP	missense	21	2041.6	0.23794436402284042
+SRCAP	missense_comb	21	2041.6	0.03020818582082352
+SRCAP	missense_pois	21	2041.6	0.020000000000000004
+SRCAP	nonsense	6	927.1	0.033458944072678416

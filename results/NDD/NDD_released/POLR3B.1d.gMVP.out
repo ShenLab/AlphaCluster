@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+POLR3B	missense	11	713.0	0.2663149081520566
+POLR3B	missense_comb	11	713.0	9.451272276815155e-06
+POLR3B	missense_pois	11	713.0	2.319999999999999e-06
+POLR3B	nonsense	0	nan	nan

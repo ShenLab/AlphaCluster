@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TFE3	missense	9	43.4	6.222222153086427e-07
+TFE3	missense_comb	9	43.4	2.8241932593622123e-15
+TFE3	missense_pois	9	43.4	1.1899999999999977e-10
+TFE3	nonsense	0	nan	nan

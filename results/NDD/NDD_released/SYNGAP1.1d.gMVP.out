@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SYNGAP1	missense	8	456.3,nan	0.013308044296577292
+SYNGAP1	missense_comb	8	456.3,nan	0.0004924016112430371
+SYNGAP1	missense_pois	8	456.3,nan	0.0033589239999999992
+SYNGAP1	nonsense	0	nan,nan	nan

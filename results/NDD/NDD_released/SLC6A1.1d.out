@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLC6A1	missense	34	337.3	0.021772421980306426
+SLC6A1	missense_comb	34	337.3	8.069578611151096e-15
+SLC6A1	missense_pois	34	337.3	9.999999999999995e-15
+SLC6A1	nonsense	0	nan	nan

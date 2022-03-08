@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UNC5B	missense	2	1823.0	0.8783895235734498
+UNC5B	missense_comb	2	1823.0	0.02535543188394336
+UNC5B	missense_pois	2	1823.0	0.004403641120530602
+UNC5B	nonsense	0	nan	nan

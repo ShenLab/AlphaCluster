@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CCAR1	missense	2	425.0	0.23978841955790645
+CCAR1	missense_comb	2	425.0	0.004921273122395601
+CCAR1	missense_pois	2	425.0	0.0024293410694089506
+CCAR1	nonsense	0	nan	nan

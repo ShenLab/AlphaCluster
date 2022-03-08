@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ANKH	missense	2	66.4	0.44504647283281706
+ANKH	missense_comb	2	66.4	0.258237825979606
+ANKH	missense_pois	2	66.4	0.15905631199999995
+ANKH	nonsense	0	nan	nan

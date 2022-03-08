@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MASTL	missense	3	746.3	0.542894438412284
+MASTL	missense_comb	3	746.3	0.0002547147192894566
+MASTL	missense_pois	3	746.3	3.9970220451435175e-05
+MASTL	nonsense	0	nan	nan

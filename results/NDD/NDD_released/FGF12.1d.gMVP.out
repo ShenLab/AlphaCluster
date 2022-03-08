@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FGF12	missense	5	3.5	3.088888854567896e-06
+FGF12	missense_comb	5	3.5	3.6853856028843317e-09
+FGF12	missense_pois	5	3.5	5.0599999999999976e-05
+FGF12	nonsense	0	nan	nan

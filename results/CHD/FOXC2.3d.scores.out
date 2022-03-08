@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FOXC2	missense	1	nan	nan
+FOXC2	missense_comb	1	nan	0.02558528083914361
+FOXC2	missense_pois	1	nan	0.02558528083914361
+FOXC2	nonsense	1	nan	nan

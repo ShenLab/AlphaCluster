@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ILF3	missense	2	36.2,nan	0.217296908696701
+ILF3	missense_comb	2	36.2,nan	0.005879528280765994
+ILF3	missense_pois	2	36.2,nan	0.0032812943212552318
+ILF3	nonsense	0	nan,nan	nan

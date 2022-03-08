@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RNF19A	missense	2	63.9,nan	0.5993588044515687
+RNF19A	missense_comb	2	63.9,nan	0.005872964927429473
+RNF19A	missense_pois	2	63.9,nan	0.0011881186991763396
+RNF19A	nonsense	0	nan,nan	nan

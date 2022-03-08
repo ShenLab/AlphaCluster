@@ -4,7 +4,7 @@ from __future__ import division
 
 import unittest
 
-from denovonear.weights import WeightedChoice
+from alphacluster.weights import WeightedChoice
 
 class TestWeightedChoicePy(unittest.TestCase):
     """ unit test the WeightedChoice class

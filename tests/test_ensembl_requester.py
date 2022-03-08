@@ -10,8 +10,8 @@ import time
 import tempfile
 import shutil
 
-from denovonear.rate_limiter import RateLimiter
-from denovonear.ensembl_requester import (get_genes_for_hgnc_id,
+from alphacluster.rate_limiter import RateLimiter
+from alphacluster.ensembl_requester import (get_genes_for_hgnc_id,
     get_transcript_ids_for_ensembl_gene_id, get_previous_symbol,
     get_genomic_seq_for_transcript, get_cds_seq_for_transcript,
     get_protein_seq_for_transcript, get_exon_ranges_for_transcript,

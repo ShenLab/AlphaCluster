@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LRRC32	missense	2	133.0,nan,nan	0.13244826519501948
+LRRC32	missense_comb	2	133.0,nan,nan	0.0014710909818827474
+LRRC32	missense_pois	2	133.0,nan,nan	0.00113282610311349
+LRRC32	nonsense	0	nan,nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NR4A2	missense	5	21.1,nan	4.902222167753083e-05
+NR4A2	missense_comb	5	21.1,nan	7.67948439308784e-08
+NR4A2	missense_pois	5	21.1,nan	7.679999999999997e-05
+NR4A2	nonsense	0	nan,nan	nan

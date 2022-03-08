@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HIRA	missense	1	nan	nan
+HIRA	missense_comb	1	nan	0.0372690421681022
+HIRA	missense_pois	1	nan	0.0372690421681022
+HIRA	nonsense	1	nan	nan

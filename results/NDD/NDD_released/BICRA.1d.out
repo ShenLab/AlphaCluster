@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BICRA	missense	5	560.5	0.07045719921714223
+BICRA	missense_comb	5	560.5	0.09076146265253578
+BICRA	missense_pois	5	560.5	0.257060186
+BICRA	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ASXL2	missense	2	1035.3	0.2867996523688927
+ASXL2	missense_comb	2	1035.3	0.6450042106485196
+ASXL2	missense_pois	2	1035.3	1.0
+ASXL2	nonsense	0	nan	nan

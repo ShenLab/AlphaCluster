@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SIRT2	missense	2	825.0,nan	0.9211238897652901
+SIRT2	nonsense	0	nan,nan	nan

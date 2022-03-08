@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PRR12	missense	4	187.8	0.2938179078464678
+PRR12	missense_comb	4	187.8	0.6536846312659185
+PRR12	missense_pois	4	187.8	1.0
+PRR12	nonsense	0	nan	nan

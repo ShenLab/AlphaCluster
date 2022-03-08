@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CCDC88C	missense	2	6214.0	0.963730955958545
+CCDC88C	missense_comb	2	6214.0	0.118190789719357
+CCDC88C	missense_pois	2	6214.0	0.026213749433577502
+CCDC88C	nonsense	0	nan	nan

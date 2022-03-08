@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FCGBP	missense	2	6955.0	0.8070016688110926
+FCGBP	missense_comb	2	6955.0	0.024827253812902933
+FCGBP	missense_pois	2	6955.0	0.004675630530213361
+FCGBP	nonsense	0	nan	nan

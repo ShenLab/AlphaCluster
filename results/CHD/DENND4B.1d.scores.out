@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DENND4B	missense	2	821.0	0.3337787740691246
+DENND4B	missense_comb	2	821.0	0.0259163468810767
+DENND4B	missense_pois	2	821.0	0.011892078980062499
+DENND4B	nonsense	0	nan	nan

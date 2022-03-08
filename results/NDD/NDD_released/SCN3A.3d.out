@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SCN3A	missense	10	32.6	0.0003713222180964197
+SCN3A	missense_comb	10	32.6	1.1459049498887702e-06
+SCN3A	missense_pois	10	32.6	0.00017590099999999993
+SCN3A	nonsense	0	nan	nan

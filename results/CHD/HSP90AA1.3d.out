@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HSP90AA1	missense	2	29.2	0.26841031923988534
+HSP90AA1	missense_comb	2	29.2	0.002832314175244838
+HSP90AA1	missense_pois	2	29.2	0.0011631802924579899
+HSP90AA1	nonsense	0	nan	nan

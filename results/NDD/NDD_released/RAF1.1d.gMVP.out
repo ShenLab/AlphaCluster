@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAF1	missense	8	423.1	0.3336907851812135
+RAF1	missense_comb	8	423.1	0.00041113223880627503
+RAF1	missense_pois	8	423.1	0.000109872
+RAF1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MIB1	missense	2	300.0	0.18713934236511848
+MIB1	missense_comb	2	300.0	0.21609430599134183
+MIB1	missense_pois	2	300.0	0.29679807399999997
+MIB1	nonsense	0	nan	nan

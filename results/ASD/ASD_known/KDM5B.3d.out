@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KDM5B	missense	16	40.9	0.008431799906313335
+KDM5B	missense_comb	16	40.9	1.4850397469245683e-13
+KDM5B	missense_pois	16	40.9	5.17e-13
+KDM5B	nonsense	5	40.2	0.05464596605948928

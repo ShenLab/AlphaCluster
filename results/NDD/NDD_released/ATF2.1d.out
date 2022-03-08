@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATF2	missense	5	413.3,nan	0.6515331038718544
+ATF2	missense_comb	5	413.3,nan	0.0009672609402988406
+ATF2	missense_pois	5	413.3,nan	0.000144552
+ATF2	nonsense	0	nan,nan	nan

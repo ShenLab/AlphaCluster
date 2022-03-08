@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+FUT8	missense	2	30.4,nan,nan	0.3286747074591699
+FUT8	nonsense	0	nan,nan,nan	nan

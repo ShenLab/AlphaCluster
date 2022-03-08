@@ -1,0 +1,2 @@
+gene_id	poisson_p_value
+DNMT3A	1.9019262082396583e-10

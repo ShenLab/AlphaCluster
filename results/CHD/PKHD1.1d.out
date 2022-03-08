@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PKHD1	missense	2	6787.0	0.8059431577117429
+PKHD1	missense_comb	2	6787.0	0.2163987753800881
+PKHD1	missense_pois	2	6787.0	0.0690470054630182
+PKHD1	nonsense	0	nan	nan

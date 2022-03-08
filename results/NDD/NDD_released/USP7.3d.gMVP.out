@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+USP7	missense	8	54.0	0.00933931100734099
+USP7	missense_comb	8	54.0	3.897028475294425e-05
+USP7	missense_pois	8	54.0	0.0003029060000000001
+USP7	nonsense	0	nan	nan

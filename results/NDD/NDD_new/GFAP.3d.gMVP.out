@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GFAP	missense	8	87.7	0.003098766632235928
+GFAP	missense_comb	8	87.7	1.4117572318555316e-06
+GFAP	missense_pois	8	87.7	2.6300000000000012e-05
+GFAP	nonsense	0	nan	nan
