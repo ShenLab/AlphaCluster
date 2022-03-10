@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RIT1	missense	3	1.0	0.00026896666367814823
+RIT1	missense_comb	3	1.0	5.6168871137265795e-09
+RIT1	missense_pois	3	1.0	9.025109962701456e-07
+RIT1	nonsense	0	nan	nan

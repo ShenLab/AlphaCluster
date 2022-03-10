@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HHAT	missense	1	nan,nan,nan	nan
+HHAT	missense_comb	1	nan,nan,nan	0.0099903470585222
+HHAT	missense_pois	1	nan,nan,nan	0.0099903470585222
+HHAT	nonsense	1	nan,nan,nan	nan

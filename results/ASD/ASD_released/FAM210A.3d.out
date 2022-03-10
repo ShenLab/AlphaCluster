@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FAM210A	missense	3	12.7,nan,nan	0.022198299753352226
+FAM210A	missense_comb	3	12.7,nan,nan	0.0002146833190888918
+FAM210A	missense_pois	3	12.7,nan,nan	0.0008110000000000002
+FAM210A	nonsense	0	nan,nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MAPK8IP3	missense	10	34.2	0.006164988820389015
+MAPK8IP3	missense_comb	10	34.2	0.00024258489752420825
+MAPK8IP3	missense_pois	10	34.2	0.0033370360000000003
+MAPK8IP3	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CUX2	missense	7	240.6	0.34434740728502894
+CUX2	missense_comb	7	240.6	0.06279007099930196
+CUX2	missense_pois	7	240.6	0.03335610899999999
+CUX2	nonsense	0	nan	nan

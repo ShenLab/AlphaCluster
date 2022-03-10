@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KIDINS220	missense	9	1301.9	0.6403213262186519
+KIDINS220	missense_comb	9	1301.9	0.011223863541692957
+KIDINS220	missense_pois	9	1301.9	0.002335473
+KIDINS220	nonsense	0	nan	nan

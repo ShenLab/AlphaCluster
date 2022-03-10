@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SSH2	missense	5	75.1	0.7249712586114304
+SSH2	missense_comb	5	75.1	0.18691318635941948
+SSH2	missense_pois	5	75.1	0.063125809
+SSH2	nonsense	0	nan	nan

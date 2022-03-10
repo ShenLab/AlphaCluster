@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SF3B3	missense	5	38.1	0.05136662165148198
+SF3B3	missense_comb	5	38.1	0.0071918512216224036
+SF3B3	missense_pois	5	38.1	0.017465730000000002
+SF3B3	nonsense	0	nan	nan

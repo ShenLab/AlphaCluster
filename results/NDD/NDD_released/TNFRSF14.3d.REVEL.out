@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TNFRSF14	missense	4	140.4	0.6768815702568713
+TNFRSF14	missense_comb	4	140.4	0.005475157948787896
+TNFRSF14	missense_pois	4	140.4	0.000971389
+TNFRSF14	nonsense	0	nan	nan

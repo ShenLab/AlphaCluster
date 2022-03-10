@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IGBP1	missense	3	23.0,nan	0.16457412039362088
+IGBP1	missense_comb	3	23.0,nan	0.0008507552439454206
+IGBP1	missense_pois	3	23.0,nan	0.0004964700000000003
+IGBP1	nonsense	0	nan,nan	nan

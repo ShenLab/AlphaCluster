@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GABBR1	missense	6	59.7	0.521410649762104
+GABBR1	missense_comb	6	59.7	0.02728190149460656
+GABBR1	missense_pois	6	59.7	0.008088967
+GABBR1	nonsense	0	nan	nan

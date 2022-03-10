@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ALDH18A1	missense	4	133.2	0.016247533152805187
+ALDH18A1	missense_comb	4	133.2	0.002551024532180552
+ALDH18A1	missense_pois	4	133.2	0.017086172000000004
+ALDH18A1	nonsense	0	nan	nan

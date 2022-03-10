@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+STX1B	missense	5	13.7	0.008679922125778646
+STX1B	missense_comb	5	13.7	0.00020974395899588555
+STX1B	missense_pois	5	13.7	0.002022049000000002
+STX1B	nonsense	0	nan	nan

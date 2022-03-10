@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SAMD9	missense	12	27.8,nan	3.894444401172841e-05
+SAMD9	nonsense	0	nan,nan	nan

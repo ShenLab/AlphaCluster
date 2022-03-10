@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RPL10A	missense	2	100.4	0.6113712709847634
+RPL10A	missense_comb	2	100.4	0.07706725817523452
+RPL10A	missense_pois	2	100.4	0.024174090999999998
+RPL10A	nonsense	0	nan	nan

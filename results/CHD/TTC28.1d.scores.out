@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TTC28	missense	2	2044.0	0.4729307280785474
+TTC28	missense_comb	2	2044.0	0.0797151098381978
+TTC28	missense_pois	2	2044.0	0.03258567858401108
+TTC28	nonsense	0	nan	nan

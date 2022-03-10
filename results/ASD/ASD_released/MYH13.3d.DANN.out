@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+MYH13	missense	2	36.2,nan,nan	0.03251845519423939
+MYH13	nonsense	0	nan,nan,nan	nan

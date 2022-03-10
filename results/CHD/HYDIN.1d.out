@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HYDIN	missense	2	13714.0	0.9893588223404576
+HYDIN	missense_comb	2	13714.0	0.0824904713132618
+HYDIN	missense_pois	2	13714.0	0.016252263534630097
+HYDIN	nonsense	0	nan	nan

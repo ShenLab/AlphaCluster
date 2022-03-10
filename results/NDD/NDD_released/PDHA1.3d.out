@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PDHA1	missense	13	2372700124486.3	0.9277535008027389
+PDHA1	missense_comb	13	2372700124486.3	1.4249722870689893e-12
+PDHA1	missense_pois	13	2372700124486.3	4.8400000000000064e-14
+PDHA1	nonsense	0	nan	nan

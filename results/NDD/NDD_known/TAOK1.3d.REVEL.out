@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TAOK1	missense	9	54.5	0.024429510839672108
+TAOK1	missense_comb	9	54.5	1.8792574211971217e-06
+TAOK1	missense_pois	9	54.5	4.5200000000000025e-06
+TAOK1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FXYD5	missense	2	292.0,nan	0.7339278918452458
+FXYD5	missense_comb	2	292.0,nan	0.08927579747149438
+FXYD5	missense_pois	2	292.0,nan	0.024174455000000004
+FXYD5	nonsense	0	nan,nan	nan

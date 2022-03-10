@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DNAH12	missense	2	970.0	0.15732964269633734
+DNAH12	missense_comb	2	970.0	0.034242011398017094
+DNAH12	missense_pois	2	970.0	0.03511179025150961
+DNAH12	nonsense	0	nan	nan

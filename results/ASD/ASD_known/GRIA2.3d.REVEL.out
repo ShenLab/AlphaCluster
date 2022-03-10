@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GRIA2	missense	3	56.0	0.25421350828651657
+GRIA2	missense_comb	3	56.0	0.015109680291182983
+GRIA2	missense_pois	3	56.0	0.008300000000000002
+GRIA2	nonsense	1	nan	nan

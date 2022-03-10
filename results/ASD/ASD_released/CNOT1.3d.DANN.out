@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CNOT1	missense	3	79.0	0.10177484331361285
+CNOT1	nonsense	0	nan	nan

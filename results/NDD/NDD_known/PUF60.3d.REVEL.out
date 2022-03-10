@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PUF60	missense	6	50.7	0.012704799858835563
+PUF60	missense_comb	6	50.7	9.456367429709723e-05
+PUF60	missense_pois	6	50.7	0.000580724
+PUF60	nonsense	0	nan	nan

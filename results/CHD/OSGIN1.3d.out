@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+OSGIN1	missense	2	41.1,nan	0.7695962358933752
+OSGIN1	missense_comb	2	41.1,nan	0.005468623961559953
+OSGIN1	missense_pois	2	41.1,nan	0.0008532053566969731
+OSGIN1	nonsense	0	nan,nan	nan

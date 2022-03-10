@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RIPOR1	missense	3	301.9	0.3266592630371197
+RIPOR1	missense_comb	3	301.9	0.3792779462468306
+RIPOR1	missense_pois	3	301.9	0.3743840289999999
+RIPOR1	nonsense	0	nan	nan

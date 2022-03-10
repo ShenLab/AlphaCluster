@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AUTS2	missense	2	114.8	0.5602836715524036
+AUTS2	missense_comb	2	114.8	0.6575045872835854
+AUTS2	missense_pois	2	114.8	0.5300000000000002
+AUTS2	nonsense	3	84.1	0.8253706352736596

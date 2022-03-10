@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PSMC3	missense	7	25.7,nan	0.0017936444245150627
+PSMC3	missense_comb	7	25.7,nan	7.518600786221898e-07
+PSMC3	missense_pois	7	25.7,nan	2.3299999999999977e-05
+PSMC3	nonsense	0	nan,nan	nan

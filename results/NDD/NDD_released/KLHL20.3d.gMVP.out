@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KLHL20	missense	4	76.5	0.2422718417525351
+KLHL20	missense_comb	4	76.5	0.022722997093507887
+KLHL20	missense_pois	4	76.5	0.014031982000000009
+KLHL20	nonsense	0	nan	nan

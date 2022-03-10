@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+OBSCN	missense	2	8457.0	0.5200221386664206
+OBSCN	missense_comb	2	8457.0	0.05700291385965261
+OBSCN	missense_pois	2	8457.0	0.019628039692456006
+OBSCN	nonsense	0	nan	nan

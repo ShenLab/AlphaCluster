@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TERF2IP	missense	2	48.6	0.6768941924789533
+TERF2IP	missense_comb	2	48.6	0.20262034217420843
+TERF2IP	missense_pois	2	48.6	0.07526864500000001
+TERF2IP	nonsense	0	nan	nan

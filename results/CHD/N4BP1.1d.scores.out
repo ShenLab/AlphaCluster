@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+N4BP1	missense	2	883.0	0.5165621720381982
+N4BP1	missense_comb	2	883.0	0.005247465721253435
+N4BP1	missense_pois	2	883.0	0.001212905090806739
+N4BP1	nonsense	0	nan	nan

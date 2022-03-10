@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CACNA1C	missense	3	1166.9	0.29053741899402874
+CACNA1C	missense_comb	3	1166.9	0.013359763753774451
+CACNA1C	missense_pois	3	1166.9	0.006295652763507634
+CACNA1C	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CELF4	missense	6	64.4	0.05547608827248791
+CELF4	missense_comb	6	64.4	0.02543991534159116
+CELF4	missense_pois	6	64.4	0.07
+CELF4	nonsense	0	nan	nan

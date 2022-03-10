@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAP1B	missense	2	4.0,nan,nan,nan	0.02329791085224544
+RAP1B	missense_comb	2	4.0,nan,nan,nan	0.0014085844364135395
+RAP1B	missense_pois	2	4.0,nan,nan,nan	0.006136208000000001
+RAP1B	nonsense	0	nan,nan,nan,nan	nan

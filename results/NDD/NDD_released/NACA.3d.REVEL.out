@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NACA	missense	5	115.5	0.0007374222140286428
+NACA	missense_comb	5	115.5	6.74722519789098e-06
+NACA	missense_pois	5	115.5	0.0005843749999999998
+NACA	nonsense	0	nan	nan

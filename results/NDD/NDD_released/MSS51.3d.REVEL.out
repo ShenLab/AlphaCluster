@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MSS51	missense	5	51.9,nan	0.018664399792617775
+MSS51	missense_comb	5	51.9,nan	0.0001088104332954189
+MSS51	missense_pois	5	51.9,nan	0.0004603210000000001
+MSS51	nonsense	0	nan,nan	nan

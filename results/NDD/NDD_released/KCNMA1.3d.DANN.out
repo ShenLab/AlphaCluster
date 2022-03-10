@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KCNMA1	missense	8	31.0	0.001097288876696791
+KCNMA1	missense_comb	8	31.0	4.963069471077622e-06
+KCNMA1	missense_pois	8	31.0	0.000282952
+KCNMA1	nonsense	0	nan	nan

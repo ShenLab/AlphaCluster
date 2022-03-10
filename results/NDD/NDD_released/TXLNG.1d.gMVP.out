@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TXLNG	missense	4	248.2	0.18230262019663757
+TXLNG	missense_comb	4	248.2	0.00037378350498276175
+TXLNG	missense_pois	4	248.2	0.00018115399999999997
+TXLNG	nonsense	0	nan	nan

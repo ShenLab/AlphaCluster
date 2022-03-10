@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GATAD2B	missense	3	3.7,nan	3.055555521604937e-06
+GATAD2B	missense_comb	3	3.7,nan	1.7854116031464553e-06
+GATAD2B	missense_pois	3	3.7,nan	0.03422383
+GATAD2B	nonsense	0	nan,nan	nan

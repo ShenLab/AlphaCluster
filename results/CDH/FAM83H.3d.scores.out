@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FAM83H	missense	2	392.1	0.39485248450163907
+FAM83H	missense_comb	2	392.1	0.0006192488385011989
+FAM83H	missense_pois	2	392.1	0.00014571080248893014
+FAM83H	nonsense	0	nan	nan

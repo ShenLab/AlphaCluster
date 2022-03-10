@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WHAMM	missense	2	229.6	0.17418849806457223
+WHAMM	missense_comb	2	229.6	0.004136250346532247
+WHAMM	missense_pois	2	229.6	0.002746789448207169
+WHAMM	nonsense	0	nan	nan

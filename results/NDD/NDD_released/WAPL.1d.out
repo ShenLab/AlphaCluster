@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WAPL	missense	3	1136.7	0.6581019260210896
+WAPL	missense_comb	3	1136.7	0.1589611399345271
+WAPL	missense_pois	3	1136.7	0.05621222700000001
+WAPL	nonsense	0	nan	nan

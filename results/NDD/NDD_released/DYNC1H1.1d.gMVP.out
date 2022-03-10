@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DYNC1H1	missense	69	2522.6	0.00023873333068074058
+DYNC1H1	missense_comb	69	2522.6	9.9256616355952e-17
+DYNC1H1	missense_pois	69	2522.6	9.999999999999995e-15
+DYNC1H1	nonsense	0	nan	nan

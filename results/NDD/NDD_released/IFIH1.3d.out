@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IFIH1	missense	8	31.0	0.0381247217986142
+IFIH1	missense_comb	8	31.0	1.2733859207368734e-05
+IFIH1	missense_pois	8	31.0	2.229999999999999e-05
+IFIH1	nonsense	0	nan	nan

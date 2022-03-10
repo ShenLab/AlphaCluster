@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+JMJD1C	missense	2	1032.0	0.2465585417049051
+JMJD1C	missense_comb	2	1032.0	0.027431922709058688
+JMJD1C	missense_pois	2	1032.0	0.017217508089518906
+JMJD1C	nonsense	1	nan	nan

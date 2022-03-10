@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CELF2	missense	2	2.0	0.005167244387030621
+CELF2	missense_comb	2	2.0	0.005308322778000549
+CELF2	missense_pois	2	2.0	0.12285072300000004
+CELF2	nonsense	0	nan	nan

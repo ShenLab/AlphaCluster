@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ERI1	missense	6	73.9,nan	0.39108031787688535
+ERI1	missense_comb	6	73.9,nan	0.00018137170397665512
+ERI1	missense_pois	6	73.9,nan	3.8299999999999955e-05
+ERI1	nonsense	0	nan,nan	nan

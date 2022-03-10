@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NBAS	missense	2	1732.0	0.41796418424484216
+NBAS	missense_comb	2	1732.0	0.04364934180232571
+NBAS	missense_pois	2	1732.0	0.017677028207904795
+NBAS	nonsense	0	nan	nan

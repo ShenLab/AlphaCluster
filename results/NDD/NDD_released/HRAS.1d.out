@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HRAS	missense	7	18.3,nan,nan	5.545555493938279e-05
+HRAS	missense_comb	7	18.3,nan,nan	2.2449719791748246e-09
+HRAS	missense_pois	7	18.3,nan,nan	1.6800000000000004e-06
+HRAS	nonsense	0	nan,nan,nan	nan

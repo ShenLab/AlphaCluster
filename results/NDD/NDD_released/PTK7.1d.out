@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PTK7	missense	2	382.0	0.22111680865425765
+PTK7	missense_comb	2	382.0	0.5547962622331466
+PTK7	missense_pois	2	382.0	1.0
+PTK7	nonsense	0	nan	nan

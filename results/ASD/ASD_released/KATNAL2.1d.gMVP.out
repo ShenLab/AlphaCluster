@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+KATNAL2	missense	0	nan,nan	nan
+KATNAL2	nonsense	2	486.0,nan	0.5364147940398356

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FUBP3	missense	2	63.1	0.16744220925064218
+FUBP3	missense_comb	2	63.1	0.08522309639918722
+FUBP3	missense_pois	2	63.1	0.10000000000000003
+FUBP3	nonsense	1	nan	nan

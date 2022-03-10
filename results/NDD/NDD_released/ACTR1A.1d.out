@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ACTR1A	missense	3	482.9	0.876661279148208
+ACTR1A	missense_comb	3	482.9	0.1328598795242844
+ACTR1A	missense_pois	3	482.9	0.03346296800000002
+ACTR1A	nonsense	0	nan	nan

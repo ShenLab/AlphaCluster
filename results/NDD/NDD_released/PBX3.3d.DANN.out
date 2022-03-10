@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PBX3	missense	3	13.1	0.0044268443952572845
+PBX3	missense_comb	3	13.1	0.00012239911464760186
+PBX3	missense_pois	3	13.1	0.002205432999999999
+PBX3	nonsense	0	nan	nan

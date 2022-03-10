@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+G3BP2	missense	5	259.3,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	0.23669804181446624
+G3BP2	missense_comb	5	259.3,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	0.004785368113833739
+G3BP2	missense_pois	5	259.3,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	0.0023841329999999984
+G3BP2	nonsense	0	nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	nan

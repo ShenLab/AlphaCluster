@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CYFIP2	missense	5	39.1	0.1088034210132953
+CYFIP2	missense_comb	5	39.1	0.06136747339596722
+CYFIP2	missense_pois	5	39.1	0.10264921599999997
+CYFIP2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATXN7L3	missense	2	101.5	0.2116265087597055
+ATXN7L3	missense_comb	2	101.5	0.2148529381022346
+ATXN7L3	missense_pois	2	101.5	0.260429196
+ATXN7L3	nonsense	0	nan	nan

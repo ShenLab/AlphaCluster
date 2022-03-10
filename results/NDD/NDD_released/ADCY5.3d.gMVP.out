@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ADCY5	missense	12	18.1	1.1111110987654311e-08
+ADCY5	missense_comb	12	18.1	5.993984260513929e-10
+ADCY5	missense_pois	12	18.1	0.0021177909999999995
+ADCY5	nonsense	0	nan	nan

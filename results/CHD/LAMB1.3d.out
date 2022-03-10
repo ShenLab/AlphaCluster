@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LAMB1	missense	2	84.3	0.5244471275061429
+LAMB1	missense_comb	2	84.3	0.0416201110923858
+LAMB1	missense_pois	2	84.3	0.0133040541710606
+LAMB1	nonsense	0	nan	nan

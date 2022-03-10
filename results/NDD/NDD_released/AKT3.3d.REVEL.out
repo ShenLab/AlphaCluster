@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AKT3	missense	6	27.7,nan	0.00481211105764321
+AKT3	missense_comb	6	27.7,nan	2.106045778971569e-06
+AKT3	missense_pois	6	27.7,nan	2.59e-05
+AKT3	nonsense	0	nan,nan	nan

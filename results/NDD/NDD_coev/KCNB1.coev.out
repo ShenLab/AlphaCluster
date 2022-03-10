@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+KCNB1	missense	26	0.1,nan	0.9999988888901234
+KCNB1	nonsense	0	nan,nan	nan

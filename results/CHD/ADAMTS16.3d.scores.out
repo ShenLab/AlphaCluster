@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ADAMTS16	missense	2	126.8	0.2819512524227638
+ADAMTS16	missense_comb	2	126.8	0.0133371801689109
+ADAMTS16	missense_pois	2	126.8	0.006474668150002079
+ADAMTS16	nonsense	0	nan	nan

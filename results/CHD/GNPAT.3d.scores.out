@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GNPAT	missense	2	84.4	0.3211870075423667
+GNPAT	missense_comb	2	84.4	0.0015542697789675322
+GNPAT	missense_pois	2	84.4	0.00049666196553666
+GNPAT	nonsense	0	nan	nan

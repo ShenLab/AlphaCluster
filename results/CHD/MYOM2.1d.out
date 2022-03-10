@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MYOM2	missense	1	nan	nan
+MYOM2	missense_comb	1	nan	0.0802904035997649
+MYOM2	missense_pois	1	nan	0.0802904035997649
+MYOM2	nonsense	1	nan	nan

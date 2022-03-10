@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+JAG1	missense	2	70.1	0.48780882791323543
+JAG1	missense_comb	2	70.1	0.022185573242490812
+JAG1	missense_pois	2	70.1	0.006775683059624734
+JAG1	nonsense	1	nan	nan

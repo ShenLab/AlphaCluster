@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+AHDC1	missense	5	81.4,nan,nan,nan,nan,nan	0.5013850610957216
+AHDC1	nonsense	2	116.0,nan,nan,nan,nan,nan	0.8277060130254886

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SMCHD1	missense	2	18.6	0.03704207736619913
+SMCHD1	missense_comb	2	18.6	0.003257471541788255
+SMCHD1	missense_pois	2	18.6	0.009864821496594506
+SMCHD1	nonsense	0	nan	nan

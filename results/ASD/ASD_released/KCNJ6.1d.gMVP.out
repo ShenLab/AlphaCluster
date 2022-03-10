@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+KCNJ6	missense	2	476.0,nan	0.6188748042347243
+KCNJ6	nonsense	0	nan,nan	nan

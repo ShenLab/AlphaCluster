@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FRMD7	missense	2	107.4	0.18054166466064814
+FRMD7	missense_comb	2	107.4	0.04833173400285539
+FRMD7	missense_pois	2	107.4	0.046276173999999996
+FRMD7	nonsense	0	nan	nan

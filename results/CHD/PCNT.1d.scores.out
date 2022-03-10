@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PCNT	missense	2	6839.0	0.9065878677045792
+PCNT	missense_comb	2	6839.0	0.2739501187599104
+PCNT	missense_pois	2	6839.0	0.08473001943468618
+PCNT	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CDKL5	missense	2	260.0,nan	0.1628267537463694
+CDKL5	missense_comb	2	260.0,nan	3.159190034006032e-06
+CDKL5	missense_pois	2	260.0,nan	1.1782787485703511e-06
+CDKL5	nonsense	0	nan,nan	nan

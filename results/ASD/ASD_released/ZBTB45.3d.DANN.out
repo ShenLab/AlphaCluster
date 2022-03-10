@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZBTB45	missense	2	114.3,nan,nan	0.4524845949723936
+ZBTB45	missense_comb	2	114.3,nan,nan	0.3395516038352101
+ZBTB45	missense_pois	2	114.3,nan,nan	0.22999999999999998
+ZBTB45	nonsense	1	nan,nan,nan	nan

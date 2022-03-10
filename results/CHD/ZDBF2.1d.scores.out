@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZDBF2	missense	2	900.0,nan	0.23435270850719206
+ZDBF2	missense_comb	2	900.0,nan	0.023304734426000402
+ZDBF2	missense_pois	2	900.0,nan	0.0149440062961899
+ZDBF2	nonsense	0	nan,nan	nan

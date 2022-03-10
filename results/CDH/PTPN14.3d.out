@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PTPN14	missense	2	66.1	0.593667937848134
+PTPN14	missense_comb	2	66.1	0.00020246158392517479
+PTPN14	missense_pois	2	66.1	2.8445793492482034e-05
+PTPN14	nonsense	0	nan	nan

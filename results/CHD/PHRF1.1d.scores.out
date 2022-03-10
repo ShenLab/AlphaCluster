@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PHRF1	missense	1	nan	nan
+PHRF1	missense_comb	1	nan	0.117291250765815
+PHRF1	missense_pois	1	nan	0.117291250765815
+PHRF1	nonsense	1	nan	nan

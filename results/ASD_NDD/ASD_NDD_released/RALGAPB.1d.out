@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RALGAPB	missense	4	1260.8,nan	0.6351614151648732
+RALGAPB	missense_comb	4	1260.8,nan	0.9234460108569362
+RALGAPB	missense_pois	4	1260.8,nan	1.0
+RALGAPB	nonsense	3	1415.9,nan	0.6306622818815304

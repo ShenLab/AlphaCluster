@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+TESK1	missense	2	1189.0,nan	0.8263732685958526
+TESK1	nonsense	0	nan,nan	nan

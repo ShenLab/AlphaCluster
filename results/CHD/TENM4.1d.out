@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TENM4	missense	2	3893.0	0.6910484589883503
+TENM4	missense_comb	2	3893.0	0.1643460898818409
+TENM4	missense_pois	2	3893.0	0.05591152953804372
+TENM4	nonsense	0	nan	nan

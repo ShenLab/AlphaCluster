@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ACIN1	missense	4	1300.6	0.6990667588992583
+ACIN1	missense_comb	4	1300.6	0.48436143894262484
+ACIN1	missense_pois	4	1300.6	0.253911729
+ACIN1	nonsense	0	nan	nan

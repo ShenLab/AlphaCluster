@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PIK3R2	missense	16	145.6	1.4333333174074088e-06
+PIK3R2	missense_comb	16	145.6	3.261930389522156e-12
+PIK3R2	missense_pois	16	145.6	7.370000000000003e-08
+PIK3R2	nonsense	0	nan	nan

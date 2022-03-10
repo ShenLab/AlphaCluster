@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EBF3	missense	17	136.8	8.33333324074073e-07
+EBF3	missense_comb	17	136.8	8.100705162097748e-20
+EBF3	missense_pois	17	136.8	1.990000000000003e-15
+EBF3	nonsense	0	nan	nan

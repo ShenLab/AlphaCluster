@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DSCAM	missense	4	824.0	0.1441535650649604
+DSCAM	missense_comb	4	824.0	0.07552870133873175
+DSCAM	missense_pois	4	824.0	0.10000000000000003
+DSCAM	nonsense	5	1137.9	0.33677430736917446

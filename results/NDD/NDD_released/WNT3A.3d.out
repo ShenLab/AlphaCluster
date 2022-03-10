@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WNT3A	missense	4	27.0	0.43920898400878916
+WNT3A	missense_comb	4	27.0	0.042822129696376256
+WNT3A	missense_pois	4	27.0	0.016439119
+WNT3A	nonsense	0	nan	nan

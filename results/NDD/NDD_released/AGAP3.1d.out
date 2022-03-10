@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AGAP3	missense	7	700.4	0.6379115484676494
+AGAP3	missense_comb	7	700.4	0.08234325402179943
+AGAP3	missense_pois	7	700.4	0.025150330000000012
+AGAP3	nonsense	0	nan	nan

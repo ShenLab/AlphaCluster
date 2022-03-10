@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GPBAR1	missense	2	295.0,nan,nan,nan	0.5095809387824339
+GPBAR1	missense_comb	2	295.0,nan,nan,nan	0.0009326719680458993
+GPBAR1	missense_pois	2	295.0,nan,nan,nan	0.00017751311077429693
+GPBAR1	nonsense	1	nan,nan,nan,nan	nan

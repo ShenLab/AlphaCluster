@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BAG6	missense	1	nan	nan
+BAG6	missense_comb	1	nan	0.04228755309240232
+BAG6	missense_pois	1	nan	0.04228755309240232
+BAG6	nonsense	1	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ARIH1	missense	5	387.1	0.46614930593167436
+ARIH1	missense_comb	5	387.1	0.013665645645792222
+ARIH1	missense_pois	5	387.1	0.004028209000000001
+ARIH1	nonsense	0	nan	nan

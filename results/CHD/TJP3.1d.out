@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TJP3	missense	2	1309.0	0.7170260698108214
+TJP3	missense_comb	2	1309.0	0.03167839177744514
+TJP3	missense_pois	2	1309.0	0.007022451566907059
+TJP3	nonsense	0	nan	nan

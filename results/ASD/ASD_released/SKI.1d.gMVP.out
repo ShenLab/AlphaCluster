@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SKI	missense	3	441.0	0.338607885126579
+SKI	missense_comb	3	441.0	0.19194446883275476
+SKI	missense_pois	3	441.0	0.13999999999999999
+SKI	nonsense	3	526.3	0.5632784715191281

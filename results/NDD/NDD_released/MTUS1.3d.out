@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MTUS1	missense	8	71.7,107.8	0.5307401367877498
+MTUS1	missense_comb	8	71.7,107.8	0.0012238584712717792
+MTUS1	missense_pois	8	71.7,107.8	8.229999999999998e-05
+MTUS1	nonsense	0	nan,nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SMARCA2	missense	40	530.5,nan	1.010100999897969e-08
+SMARCA2	nonsense	0	nan,nan	nan

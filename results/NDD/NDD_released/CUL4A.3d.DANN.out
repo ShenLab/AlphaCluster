@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CUL4A	missense	3	92.4	0.4665316837052036
+CUL4A	missense_comb	3	92.4	0.05077340829228419
+CUL4A	missense_pois	3	92.4	0.019008987999999997
+CUL4A	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RHEB	missense	2	93.0	0.29864615223726493
+RHEB	missense_comb	2	93.0	0.015639854465729124
+RHEB	missense_pois	2	93.0	0.007354211999999997
+RHEB	nonsense	0	nan	nan

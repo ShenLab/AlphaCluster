@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TSC2	missense	9	57.4	0.02583248860186124
+TSC2	missense_comb	9	57.4	0.0016251622048065308
+TSC2	missense_pois	9	57.4	0.006490000000000002
+TSC2	nonsense	2	33.7	0.1309431096561877

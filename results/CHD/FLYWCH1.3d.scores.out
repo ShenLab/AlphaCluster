@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FLYWCH1	missense	2	41.4	0.007036288810707905
+FLYWCH1	missense_comb	2	41.4	0.00021714833791181928
+FLYWCH1	missense_pois	2	41.4	0.002590652829298159
+FLYWCH1	nonsense	0	nan	nan

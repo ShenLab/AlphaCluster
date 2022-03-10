@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BCOR	missense	5	74.2,nan,nan,nan,nan,nan	0.46340221707330864
+BCOR	missense_comb	5	74.2,nan,nan,nan,nan,nan	0.30856458768572664
+BCOR	missense_pois	5	74.2,nan,nan,nan,nan,nan	0.19587613899999998
+BCOR	nonsense	0	nan,nan,nan,nan,nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BCL2L2-PABPN1	missense	2	243.0	0.3748067291688142
+BCL2L2-PABPN1	missense_comb	2	243.0	0.7426213543810389
+BCL2L2-PABPN1	missense_pois	2	243.0	1.0
+BCL2L2-PABPN1	nonsense	0	nan	nan

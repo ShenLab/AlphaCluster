@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PPP2R5D	missense	6	96.6	0.0018933999789622223
+PPP2R5D	missense_comb	6	96.6	7.680050189410358e-05
+PPP2R5D	missense_pois	6	96.6	0.0031099999999999995
+PPP2R5D	nonsense	3	848.2	0.9337926674023037

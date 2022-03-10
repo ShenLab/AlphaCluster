@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ACTB	missense	2	27.0,nan,nan,nan,nan	0.5187736386802929
+ACTB	missense_comb	2	27.0,nan,nan,nan,nan	0.002141688585853983
+ACTB	missense_pois	2	27.0,nan,nan,nan,nan	0.00043987571611270315
+ACTB	nonsense	1	nan,nan,nan,nan,nan	nan

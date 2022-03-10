@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HMGCL	missense	2	26.3	0.12636960970700437
+HMGCL	missense_comb	2	26.3	0.049683847514007944
+HMGCL	missense_pois	2	26.3	0.06835781199999999
+HMGCL	nonsense	0	nan	nan

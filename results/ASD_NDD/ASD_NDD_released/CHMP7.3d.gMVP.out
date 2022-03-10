@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CHMP7	missense	2	680.4,nan	0.8645132459498528
+CHMP7	nonsense	0	nan,nan	nan

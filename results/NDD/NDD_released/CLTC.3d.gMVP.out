@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CLTC	missense	12	84.4	0.02741473302872521
+CLTC	missense_comb	12	84.4	3.0792976923346847e-06
+CLTC	missense_pois	12	84.4	6.810000000000009e-06
+CLTC	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATP2B2	missense	11	62.2,nan	0.004918555500904941
+ATP2B2	missense_comb	11	62.2,nan	1.62586205802577e-05
+ATP2B2	missense_pois	11	62.2,nan	0.0002246269999999999
+ATP2B2	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZC4H2	missense	7	13.0	0.0001391333317874074
+ZC4H2	missense_comb	7	13.0	3.5839801128572696e-14
+ZC4H2	missense_pois	7	13.0	7.250000000000021e-12
+ZC4H2	nonsense	0	nan	nan

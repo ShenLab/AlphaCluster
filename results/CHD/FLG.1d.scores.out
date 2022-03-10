@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FLG	missense	3	4732.0	0.810862268768197
+FLG	missense_comb	3	4732.0	0.08502817218769125
+FLG	missense_pois	3	4732.0	0.020591136073496597
+FLG	nonsense	0	nan	nan

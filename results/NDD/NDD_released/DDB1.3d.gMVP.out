@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DDB1	missense	6	44.4,nan,nan	0.003428133295242962
+DDB1	missense_comb	6	44.4,nan,nan	0.0002791300196128771
+DDB1	missense_pois	6	44.4,nan,nan	0.006996262000000002
+DDB1	nonsense	0	nan,nan,nan	nan

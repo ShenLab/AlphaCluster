@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GAN	missense	2	77.0	0.08984132122398532
+GAN	missense_comb	2	77.0	0.0007326674077211732
+GAN	missense_pois	2	77.0	0.0007709843115172305
+GAN	nonsense	0	nan	nan

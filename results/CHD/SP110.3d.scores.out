@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SP110	missense	2	208.5	0.1443668317292574
+SP110	missense_comb	2	208.5	0.001069212479734184
+SP110	missense_pois	2	208.5	0.0007290150362647675
+SP110	nonsense	0	nan	nan

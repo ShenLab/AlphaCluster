@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TRPC4AP	missense	4	37.0	0.3480721072436433
+TRPC4AP	missense_comb	4	37.0	0.04001084746644582
+TRPC4AP	missense_pois	4	37.0	0.019118692
+TRPC4AP	nonsense	0	nan	nan

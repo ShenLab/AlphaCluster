@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WAC	missense	2	822.0	0.6446320595040882
+WAC	missense_comb	2	822.0	0.6647614272315827
+WAC	missense_pois	2	822.0	0.46999999999999986
+WAC	nonsense	4	417.5	0.3769692402558973

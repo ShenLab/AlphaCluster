@@ -21,13 +21,18 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 from libcpp.string cimport string
+from libcpp.vector cimport vector
 
 cdef extern from "weighted_choice.h":
     cdef cppclass Chooser:
         Chooser() except +
-        void add_choice(int, double, string, string, int)
+        void add_choice(int, double, string, string, int, double)
+        void set_inherited_choices(vector[int])
         AlleleChoice choice()
         double get_summed_rate()
+        double get_prob(int)
+        vector[int] get_inherited_variants()
+        int get_inherited_count()
         int len()
         AlleleChoice iter(int)
         void append(Chooser)
@@ -36,12 +41,15 @@ cdef extern from "weighted_choice.h":
         int pos
         string ref
         string alt
+        double score
         double prob
         int offset
+
 
 cdef class WeightedChoice:
     cdef int pos
     cdef Chooser *thisptr # hold a C++ instance which we're wrapping	 
 	 
-
-	 	   
+cdef class WeightedChoices:
+    cdef int pos
+    cdef vector[Chooser *] *thisptr

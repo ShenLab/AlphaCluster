@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PCLO	missense	1	nan	nan
+PCLO	missense_comb	1	nan	0.30365571645055695
+PCLO	missense_pois	1	nan	0.30365571645055695
+PCLO	nonsense	1	nan	nan

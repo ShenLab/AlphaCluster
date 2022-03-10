@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GLYR1	missense	3	41.7	0.5552411271639875
+GLYR1	missense_comb	3	41.7	0.050141798432639995
+GLYR1	missense_pois	3	41.7	0.015731619999999998
+GLYR1	nonsense	0	nan	nan

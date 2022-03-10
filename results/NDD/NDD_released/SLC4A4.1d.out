@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLC4A4	missense	4	442.3	0.1454638539392905
+SLC4A4	missense_comb	4	442.3	0.01503149841695296
+SLC4A4	missense_pois	4	442.3	0.014417937000000006
+SLC4A4	nonsense	0	nan	nan

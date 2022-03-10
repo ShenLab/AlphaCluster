@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GABRA3	missense	4	289.1,nan	0.3269783185891299
+GABRA3	missense_comb	4	289.1,nan	0.0023815038361535232
+GABRA3	missense_pois	4	289.1,nan	0.0007859959999999993
+GABRA3	nonsense	0	nan,nan	nan

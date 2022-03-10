@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SEMA3A	missense	2	52.2,nan	0.7126964476367059
+SEMA3A	missense_comb	2	52.2,nan	4.9180619148028955e-05
+SEMA3A	missense_pois	2	52.2,nan	5.102320104310997e-06
+SEMA3A	nonsense	0	nan,nan	nan

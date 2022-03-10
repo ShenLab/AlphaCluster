@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+INHBA	missense	5	78.2,nan,nan	0.22918938634234026
+INHBA	missense_comb	5	78.2,nan,nan	0.006612814076574638
+INHBA	missense_pois	5	78.2,nan,nan	0.003556791000000002
+INHBA	nonsense	0	nan,nan,nan	nan

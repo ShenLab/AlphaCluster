@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FSHR	missense	6	42.2	0.40002303999974403
+FSHR	missense_comb	6	42.2	0.0009175612666805667
+FSHR	missense_pois	6	42.2	0.0002220769999999999
+FSHR	nonsense	0	nan	nan

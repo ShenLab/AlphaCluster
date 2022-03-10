@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MAST2	missense	2	88.0	0.03464866628168148
+MAST2	missense_comb	2	88.0	0.0046490146424701
+MAST2	missense_pois	2	88.0	0.015761931099003992
+MAST2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HSD17B10	missense	3	8.2	0.00383495551294494
+HSD17B10	missense_comb	3	8.2	1.907211061232514e-05
+HSD17B10	missense_pois	3	8.2	0.0003419319999999997
+HSD17B10	nonsense	0	nan	nan

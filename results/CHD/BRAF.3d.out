@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BRAF	missense	5	34.4	0.11154208764953237
+BRAF	missense_comb	5	34.4	7.8661479334512e-08
+BRAF	missense_pois	5	34.4	3.461653053093987e-08
+BRAF	nonsense	0	nan	nan

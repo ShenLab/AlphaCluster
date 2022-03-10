@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RARB	missense	4	34.9	0.05586593271260075
+RARB	missense_comb	4	34.9	0.0028265888431932384
+RARB	missense_pois	4	34.9	0.005575855999999997
+RARB	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CAPRIN1	missense	3	332.0,nan	0.3688276625685815
+CAPRIN1	missense_comb	3	332.0,nan	0.7367058827526509
+CAPRIN1	missense_pois	3	332.0,nan	1.0
+CAPRIN1	nonsense	1	nan,nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+PCSK5	missense	3	66.7	0.6021244044208398
+PCSK5	nonsense	2	80.1	0.6405241262163986

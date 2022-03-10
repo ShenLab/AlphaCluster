@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NEK10	missense	2	1084.0	0.5223114275298733
+NEK10	missense_comb	2	1084.0	0.008337139280110385
+NEK10	missense_pois	2	1084.0	0.0020341047804588504
+NEK10	nonsense	0	nan	nan

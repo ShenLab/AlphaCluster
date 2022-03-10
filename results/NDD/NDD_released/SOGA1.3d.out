@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SOGA1	missense	9	60.7	0.31035722988491954
+SOGA1	missense_comb	9	60.7	0.017531244289894148
+SOGA1	missense_pois	9	60.7	0.008083519999999999
+SOGA1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TRIM41	missense	7	178.2	0.15480245383552826
+TRIM41	missense_comb	7	178.2	0.0004883055305893647
+TRIM41	missense_pois	7	178.2	0.00028611900000000004
+TRIM41	nonsense	0	nan	nan

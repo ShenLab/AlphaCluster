@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SALL3	missense	2	396.4	0.3002929855523002
+SALL3	missense_comb	2	396.4	0.0005336170682237276
+SALL3	missense_pois	2	396.4	0.00016262247585585596
+SALL3	nonsense	0	nan	nan

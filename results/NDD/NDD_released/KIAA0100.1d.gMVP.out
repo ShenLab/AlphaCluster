@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KIAA0100	missense	7	342.3	0.0004508888838790123
+KIAA0100	missense_comb	7	342.3	0.00012097471266137219
+KIAA0100	missense_pois	7	342.3	0.021379351000000005
+KIAA0100	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SVEP1	missense	8	2920.0	0.7161753475980517
+SVEP1	missense_comb	8	2920.0	0.9552563380063871
+SVEP1	missense_pois	8	2920.0	1.0
+SVEP1	nonsense	0	nan	nan

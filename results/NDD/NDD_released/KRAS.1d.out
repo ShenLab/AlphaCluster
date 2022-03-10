@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KRAS	missense	7	6.9	4.777777724691357e-07
+KRAS	missense_comb	7	6.9	4.3076997396579453e-16
+KRAS	missense_pois	7	6.9	2.2500000000000026e-11
+KRAS	nonsense	0	nan	nan

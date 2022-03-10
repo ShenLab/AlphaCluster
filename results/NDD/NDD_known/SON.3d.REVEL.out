@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SON	missense	4	432.6	0.8450231572775204
+SON	missense_comb	4	432.6	0.9873176604232388
+SON	missense_pois	4	432.6	1.0
+SON	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ARF1	missense	7	17.2,nan,nan	0.03248548852793901
+ARF1	missense_comb	7	17.2,nan,nan	2.4718265612772925e-07
+ARF1	missense_pois	7	17.2,nan,nan	3.9699999999999954e-07
+ARF1	nonsense	0	nan,nan,nan	nan

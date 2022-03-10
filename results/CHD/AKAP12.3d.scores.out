@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+AKAP12	missense	0	nan,nan	nan
+AKAP12	nonsense	2	111.8,nan	0.6945089700610114

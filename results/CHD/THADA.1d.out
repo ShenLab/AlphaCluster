@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+THADA	missense	1	nan,nan	nan
+THADA	missense_comb	1	nan,nan	0.07071082808724391
+THADA	missense_pois	1	nan,nan	0.07071082808724391
+THADA	nonsense	1	nan,nan	nan

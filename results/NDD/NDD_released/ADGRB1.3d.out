@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ADGRB1	missense	5	57.1,nan	0.2984032300177419
+ADGRB1	missense_comb	5	57.1,nan	0.6592651166476159
+ADGRB1	missense_pois	5	57.1,nan	1.0
+ADGRB1	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FAM135A	missense	2	164.0,nan	0.29305148563276123
+FAM135A	missense_comb	2	164.0,nan	0.009352805243817257
+FAM135A	missense_pois	2	164.0,nan	0.004136625069521733
+FAM135A	nonsense	0	nan,nan	nan

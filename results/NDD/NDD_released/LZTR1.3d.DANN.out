@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LZTR1	missense	19	34.8	0.00024057777510469135
+LZTR1	missense_comb	19	34.8	9.152047048947877e-15
+LZTR1	missense_pois	19	34.8	1.0300000000000005e-12
+LZTR1	nonsense	0	nan	nan

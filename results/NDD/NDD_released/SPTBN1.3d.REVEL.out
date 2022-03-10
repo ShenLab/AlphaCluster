@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SPTBN1	missense	14	115.5	0.030109332998785193
+SPTBN1	missense_comb	14	115.5	5.479515913504857e-05
+SPTBN1	missense_pois	14	115.5	0.00013573299999999997
+SPTBN1	nonsense	0	nan	nan

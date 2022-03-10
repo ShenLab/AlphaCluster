@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+STARD3	missense	2	857.0	0.8259109686009892
+STARD3	missense_comb	2	857.0	0.004910123144766199
+STARD3	missense_pois	2	857.0	0.000703503306946573
+STARD3	nonsense	0	nan	nan

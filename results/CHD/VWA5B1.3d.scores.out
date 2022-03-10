@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+VWA5B1	missense	2	384.1	0.6348637040570699
+VWA5B1	missense_comb	2	384.1	0.027858125852562778
+VWA5B1	missense_pois	2	384.1	0.0068097851912762904
+VWA5B1	nonsense	0	nan	nan

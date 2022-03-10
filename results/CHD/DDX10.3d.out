@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DDX10	missense	2	76.8	0.7963149467076117
+DDX10	missense_comb	2	76.8	0.007306074223112165
+DDX10	missense_pois	2	76.8	0.0011471042137127805
+DDX10	nonsense	0	nan	nan

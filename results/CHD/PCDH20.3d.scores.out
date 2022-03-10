@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PCDH20	missense	1	nan	nan
+PCDH20	missense_comb	1	nan	0.023840245483732606
+PCDH20	missense_pois	1	nan	0.023840245483732606
+PCDH20	nonsense	1	nan	nan

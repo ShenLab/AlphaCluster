@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PDE9A	missense	5	21.2	0.004160766620435929
+PDE9A	missense_comb	5	21.2	2.944157700800209e-05
+PDE9A	missense_pois	5	21.2	0.0005026390000000001
+PDE9A	nonsense	0	nan	nan

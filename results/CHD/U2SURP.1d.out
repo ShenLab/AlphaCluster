@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+U2SURP	missense	1	nan	nan
+U2SURP	missense_comb	1	nan	0.0239766936937572
+U2SURP	missense_pois	1	nan	0.0239766936937572
+U2SURP	nonsense	1	nan	nan

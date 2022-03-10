@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KIRREL3	missense	6	236.4	0.03074837743612915
+KIRREL3	missense_comb	6	236.4	0.0012358859398929924
+KIRREL3	missense_pois	6	236.4	0.004019999999999999
+KIRREL3	nonsense	0	nan	nan

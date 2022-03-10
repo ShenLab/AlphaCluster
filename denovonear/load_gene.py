@@ -11,6 +11,12 @@ from denovonear.ensembl_requester import (get_protein_seq_for_transcript,
     get_genes_for_hgnc_id, get_transcript_ids_for_ensembl_gene_id,
     get_previous_symbol)
 
+def cds_length(transcript):
+    '''get length of CDS
+    '''
+    return transcript.get_coding_distance(transcript.get_cds_end())['pos'] + 1
+
+
 async def get_transcript_lengths(ensembl, transcript_ids):
     """ finds the protein length for ensembl transcript IDs for a gene
     
@@ -184,6 +190,60 @@ async def count_de_novos_per_transcript(ensembl, gene_id, de_novos=[]):
     
     return counts
 
+def count_de_novos_per_transcript_2(transcripts, de_novos=[]):
+    """ count de novos in transcripts for a gene.
+    
+    Args:
+        transcripts: list of Transcript objects
+        de_novos: list of de novo positions, so we can check they all fit in
+            the gene transcript
+        
+    Returns:
+        dictionary of lengths and de novo counts, indexed by transcript IDs.
+    """
+    
+    # count the de novos observed in all transcripts
+    counts = {}
+    for tx in transcripts:
+        tx_id = tx.get_name()
+        total = len(get_de_novos_in_transcript(tx, de_novos))
+        counts[tx_id] = {'n': total, 'len': cds_length(tx)}
+    
+    return counts
+
+async def best_transcript(ensembl, gene_id, de_novos=[]):
+    """ count de novos in transcripts for a gene.
+    
+    Args:
+        ensembl: EnsemblRequest object to request data from ensembl
+        gene_id: HGNC symbol for gene
+        de_novos: list of de novo positions, so we can check they all fit in
+            the gene transcript
+        
+    Returns:
+        dictionary of lengths and de novo counts, indexed by transcript IDs.
+    """
+    
+    transcripts = await get_transcript_ids(ensembl, gene_id)
+    
+    # TODO: allow for genes without any coding sequence.
+    if len(transcripts) == 0:
+        raise IndexError("{0} lacks coding transcripts".format(gene_id))
+    
+    # count the de novos observed in all transcripts
+    counts = {}
+    for key in transcripts:
+        try:
+            gene = await construct_gene_object(ensembl, key)
+            total = len(get_de_novos_in_transcript(gene, de_novos))
+            if total > 0:
+                counts[key] = total
+        except ValueError:
+            pass
+    
+    return await construct_gene_object(ensembl, max(counts, key=counts.get))
+
+
 async def minimise_transcripts(ensembl, gene_id, de_novos):
     """ get a set of minimal transcripts to contain all the de novos.
     
@@ -232,3 +292,52 @@ async def minimise_transcripts(ensembl, gene_id, de_novos):
     max_transcripts.update(update)
     
     return max_transcripts
+
+def minimise_transcripts_2(transcripts, de_novos):
+    """ get a set of minimal transcripts to contain all the de novos.
+    
+    We identify the minimal number of transcripts to contain all de novos. This
+    allows for de novos on mutually exclusive transcripts. The transcripts are
+    selected on the basis of containing the most number of de novos, while also
+    being the longest possible transcript for the gene.
+    
+    Args:
+        transcripts: list of Transcript objects
+        de_novos: list of de novo positions
+    
+    Returns:
+        dictionary of lengths and de novo counts, indexed by transcript ID for
+        the set of minimal transcripts necessary to contain all de novos.
+    """
+    
+    if len(de_novos) == 0:
+        return {}
+    
+    counts = count_de_novos_per_transcript_2(transcripts, de_novos)
+    
+    # find the transcripts with the most de novos
+    max_count = max( val["n"] for key, val in counts.items() )
+    max_ids = [ key for key, val in counts.items() if val["n"] == max_count ]
+    
+    if max_count == 0:
+        return {}
+    
+    # find the transcripts with the greatest length, and the most de novos
+    max_length = max( counts[k]["len"] for k in max_ids )
+    max_transcripts = {x: counts[x] for x in counts if x in max_ids and counts[x]['len'] == max_length}
+    
+    # find which de novos occur in the transcript with the most de novos
+    best = [x for x in transcripts if x.get_name() == next(iter(max_transcripts))][0]
+    denovos_in_gene = get_de_novos_in_transcript(best, de_novos)
+    
+    # trim the de novos to the ones not in the current transcript
+    leftovers = [ x for x in de_novos if x not in denovos_in_gene ]
+    
+    # recursively return the transcripts in the current transcript, along
+    # with transcripts for the reminaing de novos
+    update = minimise_transcripts_2(transcripts, leftovers)
+    max_transcripts.update(update)
+    
+    return max_transcripts
+
+

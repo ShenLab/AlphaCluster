@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SDK1	missense	3	104.7,nan	0.9721248780875014
+SDK1	missense_comb	3	104.7,nan	0.05279898694547848
+SDK1	missense_pois	3	104.7,nan	0.009565791817912386
+SDK1	nonsense	0	nan,nan	nan

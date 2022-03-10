@@ -10,6 +10,8 @@ include denovonear/data/rates.txt
 include src/*.h
 include src/*.cpp
 include data/*.txt
+include src/gzstream/gzstream.C
+include src/gzstream/gzstream.h
 
 # denovonear tests
 include tests/*.py

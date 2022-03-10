@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PSMD12	missense	2	132.3	0.5653735492736272
+PSMD12	missense_comb	2	132.3	0.018214614884142114
+PSMD12	missense_pois	2	132.3	0.00464
+PSMD12	nonsense	0	nan	nan

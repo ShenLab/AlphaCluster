@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BPTF	missense	7	1782.2	0.21665006425944372
+BPTF	missense_comb	7	1782.2	0.1371969994781333
+BPTF	missense_pois	7	1782.2	0.14111225900000002
+BPTF	nonsense	0	nan	nan

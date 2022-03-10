@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HOXA10	missense	2	532.0	0.7104622143281977
+HOXA10	missense_comb	2	532.0	0.006091970508002987
+HOXA10	missense_pois	2	532.0	0.0010449762799954498
+HOXA10	nonsense	0	nan	nan

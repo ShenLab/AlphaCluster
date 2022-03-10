@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ACLY	missense	3	52.4,nan	0.6045276599496927
+ACLY	missense_comb	3	52.4,nan	0.9087911786992423
+ACLY	missense_pois	3	52.4,nan	1.0
+ACLY	nonsense	0	nan,nan	nan

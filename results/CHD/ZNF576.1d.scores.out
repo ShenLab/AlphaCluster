@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZNF576	missense	1	nan,nan,nan,nan,nan,nan	nan
+ZNF576	missense_comb	1	nan,nan,nan,nan,nan,nan	0.001576296819609139
+ZNF576	missense_pois	1	nan,nan,nan,nan,nan,nan	0.001576296819609139
+ZNF576	nonsense	1	nan,nan,nan,nan,nan,nan	nan

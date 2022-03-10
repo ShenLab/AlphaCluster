@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TAF6	missense	7	173.5	0.11061320988207543
+TAF6	missense_comb	7	173.5	6.562175185046383e-05
+TAF6	missense_pois	7	173.5	4.490000000000005e-05
+TAF6	nonsense	0	nan	nan

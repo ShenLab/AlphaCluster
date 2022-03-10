@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GNAO1	missense	2	17.0,nan	0.03543338849518456
+GNAO1	missense_comb	2	17.0,nan	2.36431239988654e-07
+GNAO1	missense_pois	2	17.0,nan	3.47290040170201e-07
+GNAO1	nonsense	0	nan,nan	nan

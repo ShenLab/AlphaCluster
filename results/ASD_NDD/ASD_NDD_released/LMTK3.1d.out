@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LMTK3	missense	10	1153.6	0.7444589917282334
+LMTK3	missense_comb	10	1153.6	0.07752975377450165
+LMTK3	missense_pois	10	1153.6	0.020000000000000004
+LMTK3	nonsense	2	171.0	0.1022442544195083

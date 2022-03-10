@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SIGLEC5	missense	2	205.0,nan,nan	0.23858584179349066
+SIGLEC5	nonsense	0	nan,nan,nan	nan

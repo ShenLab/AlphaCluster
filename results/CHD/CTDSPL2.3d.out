@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CTDSPL2	missense	2	36.8,nan	0.3584883849056845
+CTDSPL2	missense_comb	2	36.8,nan	0.000597837877353859
+CTDSPL2	missense_pois	2	36.8,nan	0.0001543858915612481
+CTDSPL2	nonsense	0	nan,nan	nan

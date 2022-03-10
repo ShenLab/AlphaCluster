@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZFYVE26	missense	2	456.0	0.1166461875928201
+ZFYVE26	missense_comb	2	456.0	0.00027206535643407924
+ZFYVE26	missense_pois	2	456.0	0.00019992851626515808
+ZFYVE26	nonsense	0	nan	nan

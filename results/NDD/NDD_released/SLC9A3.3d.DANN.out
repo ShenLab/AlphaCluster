@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLC9A3	missense	2	64.8	0.21232558652971573
+SLC9A3	missense_comb	2	64.8	0.5413526187592157
+SLC9A3	missense_pois	2	64.8	1.0
+SLC9A3	nonsense	0	nan	nan

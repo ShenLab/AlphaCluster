@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZEB2	missense	5	105.6	0.006436144372931728
+ZEB2	missense_comb	5	105.6	0.002434199177870214
+ZEB2	missense_pois	5	105.6	0.040923226000000014
+ZEB2	nonsense	0	nan	nan

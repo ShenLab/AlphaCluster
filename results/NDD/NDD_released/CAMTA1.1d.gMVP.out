@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CAMTA1	missense	4	1385.4	0.6317897040912254
+CAMTA1	missense_comb	4	1385.4	0.4182555280287801
+CAMTA1	missense_pois	4	1385.4	0.224014337
+CAMTA1	nonsense	0	nan	nan

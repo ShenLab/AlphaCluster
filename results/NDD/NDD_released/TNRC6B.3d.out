@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TNRC6B	missense	5	106.1	0.9243056119521599
+TNRC6B	missense_comb	5	106.1	0.9970600295966466
+TNRC6B	missense_pois	5	106.1	1.0
+TNRC6B	nonsense	0	nan	nan

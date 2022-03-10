@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MYO18A	missense	4	701.7	0.45879508379116574
+MYO18A	missense_comb	4	701.7	0.8162660115962271
+MYO18A	missense_pois	4	701.7	1.0
+MYO18A	nonsense	0	nan	nan

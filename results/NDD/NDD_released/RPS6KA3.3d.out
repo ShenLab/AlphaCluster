@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RPS6KA3	missense	7	27.8	0.08650405459439942
+RPS6KA3	missense_comb	7	27.8	3.348953827012404e-06
+RPS6KA3	missense_pois	7	27.8	2.3600000000000003e-06
+RPS6KA3	nonsense	0	nan	nan

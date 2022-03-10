@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TBR1	missense	2	22.7	0.014566233171486295
+TBR1	missense_comb	2	22.7	0.03907361750882646
+TBR1	missense_pois	2	22.7	0.4440563599999998
+TBR1	nonsense	0	nan	nan

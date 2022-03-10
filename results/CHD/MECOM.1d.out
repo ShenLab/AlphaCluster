@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MECOM	missense	2	1659.0	0.6869581034782433
+MECOM	missense_comb	2	1659.0	0.015102393578601702
+MECOM	missense_pois	2	1659.0	0.003069749758363831
+MECOM	nonsense	0	nan	nan

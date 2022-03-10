@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATG9B	missense	3	290.8,nan	0.46022228377530805
+ATG9B	missense_comb	3	290.8,nan	0.3434445572064949
+ATG9B	missense_pois	3	290.8,nan	0.229885133
+ATG9B	nonsense	0	nan,nan	nan

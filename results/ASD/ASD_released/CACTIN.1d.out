@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CACTIN	missense	2	640.0,nan,nan	0.45629706159669947
+CACTIN	nonsense	0	nan,nan,nan	nan

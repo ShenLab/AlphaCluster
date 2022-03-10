@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZFHX3	missense	11	3285.3,nan	0.9677060225810442
+ZFHX3	missense_comb	11	3285.3,nan	0.4274751430428091
+ZFHX3	missense_pois	11	3285.3,nan	0.151167494
+ZFHX3	nonsense	0	nan,nan	nan
