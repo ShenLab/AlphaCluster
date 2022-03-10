@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NFIX	missense	10	20.4	4.522222171975309e-05
+NFIX	missense_comb	10	20.4	3.505247314420954e-09
+NFIX	missense_pois	10	20.4	3.2799999999999982e-06
+NFIX	nonsense	0	nan	nan

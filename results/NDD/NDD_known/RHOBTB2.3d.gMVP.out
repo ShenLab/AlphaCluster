@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RHOBTB2	missense	18	24.4	1.1111110987654311e-08
+RHOBTB2	missense_comb	18	24.4	4.2155254179657215e-13
+RHOBTB2	missense_pois	18	24.4	1.1499999999999994e-06
+RHOBTB2	nonsense	0	nan	nan

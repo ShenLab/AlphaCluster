@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TMEM138	missense	2	287.0	0.8337623907359735
+TMEM138	missense_comb	2	287.0	8.74035661501623e-05
+TMEM138	missense_pois	2	287.0	8.124876987647415e-06
+TMEM138	nonsense	0	nan	nan

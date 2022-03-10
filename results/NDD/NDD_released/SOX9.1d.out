@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SOX9	missense	4	180.1	0.1165277542608028
+SOX9	missense_comb	4	180.1	0.017153207351881954
+SOX9	missense_pois	4	180.1	0.020988813000000002
+SOX9	nonsense	0	nan	nan

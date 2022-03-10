@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TEX10	missense	6	513.4	0.2511108749876569
+TEX10	missense_comb	6	513.4	0.0021491856741874624
+TEX10	missense_pois	6	513.4	0.0009123069999999997
+TEX10	nonsense	0	nan	nan

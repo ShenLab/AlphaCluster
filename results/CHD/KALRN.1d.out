@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KALRN	missense	3	1295.3,nan	0.20904671989948093
+KALRN	missense_comb	3	1295.3,nan	0.01598233592508211
+KALRN	missense_pois	3	1295.3,nan	0.0107745059899098
+KALRN	nonsense	0	nan,nan	nan

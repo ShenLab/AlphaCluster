@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HIVEP2	missense	3	2638.5,nan,nan	0.7532997582966694
+HIVEP2	missense_comb	3	2638.5,nan,nan	0.016815976395075365
+HIVEP2	missense_pois	3	2638.5,nan,nan	0.003172451011977378
+HIVEP2	nonsense	0	nan,nan,nan	nan

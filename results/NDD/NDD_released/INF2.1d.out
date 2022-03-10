@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+INF2	missense	9	969.5	0.6602470482194771
+INF2	missense_comb	9	969.5	0.01195861189412965
+INF2	missense_pois	9	969.5	0.002437035999999999
+INF2	nonsense	0	nan	nan

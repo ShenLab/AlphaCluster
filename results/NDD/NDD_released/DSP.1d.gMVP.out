@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DSP	missense	9	1826.5	0.2768079635910226
+DSP	missense_comb	9	1826.5	9.555583240304251e-14
+DSP	missense_pois	9	1826.5	9.999999999999995e-15
+DSP	nonsense	0	nan	nan

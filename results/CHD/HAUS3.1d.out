@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HAUS3	missense	2	1293.0,nan	0.9197256120030488
+HAUS3	missense_comb	2	1293.0,nan	0.0019120143474304296
+HAUS3	missense_pois	2	1293.0,nan	0.00021855123414871213
+HAUS3	nonsense	0	nan,nan	nan

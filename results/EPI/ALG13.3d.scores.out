@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ALG13	missense	2	14.2	0.002056422199373086
+ALG13	missense_comb	2	14.2	4.521112300699115e-08
+ALG13	missense_pois	2	14.2	1.0492055552147103e-06
+ALG13	nonsense	0	nan	nan

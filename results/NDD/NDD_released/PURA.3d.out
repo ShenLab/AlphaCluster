@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PURA	missense	21	24.6,nan	0.006220811041990989
+PURA	missense_comb	21	24.6,nan	2.383568838465492e-15
+PURA	missense_pois	21	24.6,nan	9.999999999999995e-15
+PURA	nonsense	0	nan,nan	nan

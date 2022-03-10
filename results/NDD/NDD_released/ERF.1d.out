@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ERF	missense	6	262.5	0.15760895380434495
+ERF	missense_comb	6	262.5	0.00026459606826778837
+ERF	missense_pois	6	262.5	0.0001435299999999999
+ERF	nonsense	0	nan	nan

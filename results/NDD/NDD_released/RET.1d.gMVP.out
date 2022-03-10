@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RET	missense	10	587.6	0.1783510535738772
+RET	missense_comb	10	587.6	0.0009733265372498001
+RET	missense_pois	10	587.6	0.0005317320000000001
+RET	nonsense	0	nan	nan

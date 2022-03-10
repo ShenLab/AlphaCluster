@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SPAST	missense	9	147.7	0.002699755525558273
+SPAST	missense_comb	9	147.7	7.582577472865687e-12
+SPAST	missense_pois	9	147.7	9.360000000000011e-11
+SPAST	nonsense	0	nan	nan

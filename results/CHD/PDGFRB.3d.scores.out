@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PDGFRB	missense	2	135.7	0.3884140401287329
+PDGFRB	missense_comb	2	135.7	0.01622877373472159
+PDGFRB	missense_pois	2	135.7	0.005903139211601903
+PDGFRB	nonsense	0	nan	nan

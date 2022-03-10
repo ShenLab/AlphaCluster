@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CMIP	missense	7	101.0	0.14205197619942248
+CMIP	missense_comb	7	101.0	0.004329280164976432
+CMIP	missense_pois	7	101.0	0.0035465519999999984
+CMIP	nonsense	0	nan	nan

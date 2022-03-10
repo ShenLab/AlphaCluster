@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SHOC2	missense	9	129.2	0.3292237296752919
+SHOC2	missense_comb	9	129.2	9.520185434763125e-07
+SHOC2	missense_pois	9	129.2	1.6299999999999996e-07
+SHOC2	nonsense	0	nan	nan

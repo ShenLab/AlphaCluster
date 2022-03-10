@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HECTD1	missense	2	90.9	0.8310464907661501
+HECTD1	missense_comb	2	90.9	0.09617942737650613
+HECTD1	missense_pois	2	90.9	0.0234342265272298
+HECTD1	nonsense	0	nan	nan

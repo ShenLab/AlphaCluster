@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ATRX	missense	12	104.9	0.000127955554133827
+ATRX	missense_comb	12	104.9	1.1433882116264643e-08
+ATRX	missense_pois	12	104.9	3.990000000000002e-06
+ATRX	nonsense	0	nan	nan

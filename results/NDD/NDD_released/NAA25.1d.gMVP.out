@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NAA25	missense	3	614.5	0.3861422512650861
+NAA25	missense_comb	3	614.5	0.1897053806568961
+NAA25	missense_pois	3	614.5	0.12086894800000005
+NAA25	nonsense	0	nan	nan

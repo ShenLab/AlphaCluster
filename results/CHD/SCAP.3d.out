@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SCAP	missense	2	163.8,nan	0.994296633396704
+SCAP	missense_comb	2	163.8,nan	0.050223149467094726
+SCAP	missense_pois	2	163.8,nan	0.008802209292001253
+SCAP	nonsense	0	nan,nan	nan

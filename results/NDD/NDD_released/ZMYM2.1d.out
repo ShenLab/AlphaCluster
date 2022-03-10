@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZMYM2	missense	2	1576.0,nan,nan	0.6169506931449924
+ZMYM2	missense_comb	2	1576.0,nan,nan	0.5331454751739808
+ZMYM2	missense_pois	2	1576.0,nan,nan	0.33563736200000005
+ZMYM2	nonsense	0	nan,nan,nan	nan

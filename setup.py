@@ -6,7 +6,7 @@ from setuptools import setup
 from distutils.core import Extension
 from Cython.Build import cythonize
 
-EXTRA_COMPILE_ARGS = ["-std=c++11"]
+EXTRA_COMPILE_ARGS = ["-std=c++2a"]
 EXTRA_LINK_ARGS = []
 
 if sys.platform == "darwin":
@@ -42,7 +42,7 @@ weights = cythonize([
         ],
         include_dirs=["src/", "src/gzstream"],
         libraries=["z"],
-        language="c++"),
+        language="c++"),    
     Extension("denovonear.site_specific_rates",
         extra_compile_args=EXTRA_COMPILE_ARGS,
         extra_link_args=EXTRA_LINK_ARGS,
@@ -59,11 +59,11 @@ setup(name="denovonear",
     description='Package to examine de novo clustering',
     long_description=io.open('README.md', encoding='utf-8').read(),
     long_description_content_type='text/markdown',
-    version="0.9.12",
-    author="Jeremy McRae",
-    author_email="jeremy.mcrae@gmail.com",
+    version="1.0.0",
+    author="Joseph Obiajulu, Jeremy McRae",
+    author_email="joseph.obiajulu@gmail.com, jeremy.mcrae@gmail.com",
     license="MIT",
-    url='https://github.com/jeremymcrae/denovonear',
+    url='https://github.com/ShenLab/MVP3D',
     packages=["denovonear"],
     install_requires=[
         'aiohttp >= 3.0',

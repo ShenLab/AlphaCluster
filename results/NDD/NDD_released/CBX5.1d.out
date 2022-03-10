@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CBX5	missense	4	93.5,nan,nan	0.22659220859341989
+CBX5	missense_comb	4	93.5,nan,nan	0.00013776950965346777
+CBX5	missense_pois	4	93.5,nan,nan	4.9000000000000066e-05
+CBX5	nonsense	0	nan,nan,nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+IFRD1	missense	2	899.0,nan,nan	0.8359070129343665
+IFRD1	nonsense	0	nan,nan,nan	nan

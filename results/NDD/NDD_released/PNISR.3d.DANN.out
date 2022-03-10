@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PNISR	missense	3	142.8	0.35302685163303504
+PNISR	missense_comb	3	142.8	0.1284231632095606
+PNISR	missense_pois	3	142.8	0.079557986
+PNISR	nonsense	0	nan	nan

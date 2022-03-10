@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FRMD7	missense	1	nan	nan
+FRMD7	missense_comb	1	nan	1.0
+FRMD7	missense_pois	1	nan	1.0
+FRMD7	nonsense	1	nan	nan

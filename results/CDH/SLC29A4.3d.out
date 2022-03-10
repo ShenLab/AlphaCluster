@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLC29A4	missense	2	15.2,nan	0.08493024350077505
+SLC29A4	missense_comb	2	15.2,nan	1.1491547276089803e-05
+SLC29A4	missense_pois	2	15.2,nan	8.967898289524718e-06
+SLC29A4	nonsense	0	nan,nan	nan

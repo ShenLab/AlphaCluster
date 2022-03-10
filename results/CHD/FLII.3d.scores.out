@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FLII	missense	2	199.4	0.4716816280924264
+FLII	missense_comb	2	199.4	0.03043594648621096
+FLII	missense_pois	2	199.4	0.010179563190307904
+FLII	nonsense	0	nan	nan

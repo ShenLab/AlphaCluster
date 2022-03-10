@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+RFX3	missense	5	52.7,nan	0.009577066560254817
+RFX3	nonsense	2	46.0,nan	0.5543345382851718

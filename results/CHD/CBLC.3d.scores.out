@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CBLC	missense	2	2003.4	0.9970765111435943
+CBLC	missense_comb	2	2003.4	0.004609635045904673
+CBLC	missense_pois	2	2003.4	0.000542477402937669
+CBLC	nonsense	0	nan	nan

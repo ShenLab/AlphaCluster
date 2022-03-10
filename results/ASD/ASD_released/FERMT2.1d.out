@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+FERMT2	missense	2	170.0,nan	0.15664695381503385
+FERMT2	nonsense	0	nan,nan	nan

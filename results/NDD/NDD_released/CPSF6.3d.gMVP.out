@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CPSF6	missense	4	272.0	0.6250001374999985
+CPSF6	missense_comb	4	272.0	0.03674381848907188
+CPSF6	missense_pois	4	272.0	0.009614963
+CPSF6	nonsense	0	nan	nan

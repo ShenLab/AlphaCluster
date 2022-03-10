@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AAK1	missense	2	752.0	0.375679806936891
+AAK1	missense_comb	2	752.0	0.005096416130230664
+AAK1	missense_pois	2	752.0	0.001613358192368521
+AAK1	nonsense	0	nan	nan

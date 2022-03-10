@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MINPP1	missense	2	98.0	0.15023585388626826
+MINPP1	missense_comb	2	98.0	0.0008811264006102094
+MINPP1	missense_pois	2	98.0	0.0005653746738270016
+MINPP1	nonsense	0	nan	nan

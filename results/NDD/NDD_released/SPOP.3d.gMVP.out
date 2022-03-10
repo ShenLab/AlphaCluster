@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SPOP	missense	6	19.4,nan,nan,nan,nan,nan,nan	0.0007352666584970369
+SPOP	missense_comb	6	19.4,nan,nan,nan,nan,nan,nan	2.090666214260564e-07
+SPOP	missense_pois	6	19.4,nan,nan,nan,nan,nan,nan	1.4700000000000015e-05
+SPOP	nonsense	0	nan,nan,nan,nan,nan,nan,nan	nan

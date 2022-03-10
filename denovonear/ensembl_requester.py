@@ -10,7 +10,7 @@ def get_base_url(build):
     ver = build + '.' if build == "grch37" else ''
     return f'https://{ver}rest.ensembl.org'
 
-async def get_genes_for_hgnc_id(ensembl, hgnc_symbol, build='grch37'):
+async def get_genes_for_hgnc_id(ensembl, hgnc_symbol, build='grch38'):
     """ obtain the ensembl gene IDs that correspond to a HGNC symbol
     
     e.g. http://rest.ensembl.org/xrefs/symbol/homo_sapiens/KMT2A
@@ -21,7 +21,7 @@ async def get_genes_for_hgnc_id(ensembl, hgnc_symbol, build='grch37'):
     resp = await ensembl.get(url, headers)
     return [x['id'] for x in json.loads(resp) if x['type'] == 'gene']
 
-async def get_transcript_ids_for_ensembl_gene_id(ensembl, gene_id, symbols, build='grch37'):
+async def get_transcript_ids_for_ensembl_gene_id(ensembl, gene_id, symbols, build='grch38'):
     """ fetch the ensembl transcript IDs for a given ensembl gene ID.
     
     Args:
@@ -81,7 +81,7 @@ async def get_previous_symbol(ensembl, hgnc_symbol):
         return docs[0]["prev_symbol"]
     return []
 
-async def get_genomic_seq_for_transcript(ensembl, transcript_id, expand, build='grch37'):
+async def get_genomic_seq_for_transcript(ensembl, transcript_id, expand, build='grch38'):
     """ obtain the sequence for a transcript from ensembl
     """
     headers = {"content-type": "application/json"}
@@ -100,7 +100,7 @@ async def get_genomic_seq_for_transcript(ensembl, transcript_id, expand, build='
     
     return (chrom, start, end, strand, gene["seq"])
 
-async def get_cds_seq_for_transcript(ensembl, transcript_id, build='grch37'):
+async def get_cds_seq_for_transcript(ensembl, transcript_id, build='grch38'):
     """ obtain the sequence for a transcript from ensembl
     """
     headers = {"content-type": "text/plain"}
@@ -109,7 +109,11 @@ async def get_cds_seq_for_transcript(ensembl, transcript_id, build='grch37'):
     resp = await ensembl.get(url, headers)
     return resp.decode('utf8')
 
+<<<<<<< HEAD
 async def get_protein_seq_for_transcript(ensembl, transcript_id, build='grch37'):
+=======
+async def get_protein_seq_for_transcript(ensembl, transcript_id, build='grch38'):
+>>>>>>> dev_merge
     """ obtain the sequence for a transcript from ensembl
     """
     headers = {"content-type": "text/plain"}
@@ -118,7 +122,7 @@ async def get_protein_seq_for_transcript(ensembl, transcript_id, build='grch37')
     resp = await ensembl.get(url, headers)
     return resp.decode('utf8')
 
-async def get_ranges_for_tx(ensembl, transcript_id, feature, build='grch37'):
+async def get_ranges_for_tx(ensembl, transcript_id, feature, build='grch38'):
     """ get coordinates for exons (just cds or full exonic)
     """
     headers = {"content-type": "application/json"}
@@ -134,12 +138,12 @@ async def get_ranges_for_tx(ensembl, transcript_id, feature, build='grch37'):
     
     return ranges
 
-async def get_exon_ranges_for_transcript(ensembl, transcript_id, build='grch37'):
+async def get_exon_ranges_for_transcript(ensembl, transcript_id, build='grch38'):
     """ obtain the sequence for a transcript from ensembl
     """
     return await get_ranges_for_tx(ensembl, transcript_id, 'exon', build)
 
-async def get_cds_ranges_for_transcript(ensembl, transcript_id, build='grch37'):
+async def get_cds_ranges_for_transcript(ensembl, transcript_id, build='grch38'):
     """ obtain the sequence for a transcript from ensembl
     """
     return await get_ranges_for_tx(ensembl, transcript_id, 'cds', build)

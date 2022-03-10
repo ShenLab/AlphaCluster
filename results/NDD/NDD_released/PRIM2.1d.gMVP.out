@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PRIM2	missense	5	150.4	0.050355632773826306
+PRIM2	missense_comb	5	150.4	0.00038599796374870656
+PRIM2	missense_pois	5	150.4	0.0006793810000000002
+PRIM2	nonsense	0	nan	nan

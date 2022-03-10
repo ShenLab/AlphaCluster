@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KCNA2	missense	8	16.3,nan,nan,nan,nan,nan	2.777777746913579e-07
+KCNA2	missense_comb	8	16.3,nan,nan,nan,nan,nan	8.057240611916111e-14
+KCNA2	missense_pois	8	16.3,nan,nan,nan,nan,nan	8.359999999999992e-09
+KCNA2	nonsense	0	nan,nan,nan,nan,nan,nan	nan

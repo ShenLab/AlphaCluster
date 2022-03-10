@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FASN	missense	2	6928.0	0.9920513667549848
+FASN	missense_comb	2	6928.0	0.0007370841805996351
+FASN	missense_pois	2	6928.0	7.028624764948703e-05
+FASN	nonsense	0	nan	nan

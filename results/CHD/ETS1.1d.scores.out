@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ETS1	missense	1	nan	nan
+ETS1	missense_comb	1	nan	0.008774084598096145
+ETS1	missense_pois	1	nan	0.008774084598096145
+ETS1	nonsense	1	nan	nan

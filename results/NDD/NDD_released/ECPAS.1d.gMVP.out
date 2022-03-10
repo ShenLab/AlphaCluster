@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ECPAS	missense	7	1601.4	0.669639714781781
+ECPAS	missense_comb	7	1601.4	0.2622436245636323
+ECPAS	missense_pois	7	1601.4	0.10797788800000001
+ECPAS	nonsense	0	nan	nan

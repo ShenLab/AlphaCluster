@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TLK2	missense	16	30.5	0.001644066648399259
+TLK2	missense_comb	16	30.5	5.677732136317456e-06
+TLK2	missense_pois	16	30.5	0.00021800000000000023
+TLK2	nonsense	4	52.6	0.621026248655264

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PHF3	missense	7	2018.0,nan	0.9693295336741163
+PHF3	missense_comb	7	2018.0,nan	0.9995247776198641
+PHF3	missense_pois	7	2018.0,nan	1.0
+PHF3	nonsense	2	85.0,nan	0.03624804404168841

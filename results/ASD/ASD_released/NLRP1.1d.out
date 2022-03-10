@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+NLRP1	missense	4	1074.1,nan	0.4909658056559355
+NLRP1	nonsense	0	nan,nan	nan

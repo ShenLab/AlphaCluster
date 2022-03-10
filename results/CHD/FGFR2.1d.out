@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FGFR2	missense	2	606.0	0.4375771729158092
+FGFR2	missense_comb	2	606.0	0.00742870934073186
+FGFR2	missense_pois	2	606.0	0.0021276333411327504
+FGFR2	nonsense	0	nan	nan

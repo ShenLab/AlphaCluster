@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+APBB1	missense	2	43.6,nan	0.3429918517445349
+APBB1	missense_comb	2	43.6,nan	0.004410799069633863
+APBB1	missense_pois	2	43.6,nan	0.0015001676988211105
+APBB1	nonsense	0	nan,nan	nan

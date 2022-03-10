@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CIC	missense	6	805.7	0.03128371076351434
+CIC	missense_comb	6	805.7	0.04257107392750429
+CIC	missense_pois	6	805.7	0.22917134599999997
+CIC	nonsense	0	nan	nan

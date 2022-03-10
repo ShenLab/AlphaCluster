@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PHIP	missense	2	1051.9	0.912208545419905
+PHIP	missense_comb	2	1051.9	0.04511364074068009
+PHIP	missense_pois	2	1051.9	0.008427836432951091
+PHIP	nonsense	0	nan	nan

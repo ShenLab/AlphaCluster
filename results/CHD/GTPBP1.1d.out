@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GTPBP1	missense	2	558.0	0.46045247266163913
+GTPBP1	missense_comb	2	558.0	0.006143650448454125
+GTPBP1	missense_pois	2	558.0	0.0016279490191655195
+GTPBP1	nonsense	0	nan	nan

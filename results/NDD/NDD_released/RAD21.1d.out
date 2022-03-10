@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAD21	missense	3	617.1	0.6513557705404913
+RAD21	missense_comb	3	617.1	0.2498519124336569
+RAD21	missense_pois	3	617.1	0.10385622499999998
+RAD21	nonsense	0	nan	nan

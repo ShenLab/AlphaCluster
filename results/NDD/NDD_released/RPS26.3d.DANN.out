@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RPS26	missense	2	30.2,nan,nan	0.3660809070435455
+RPS26	missense_comb	2	30.2,nan,nan	0.012466596297759642
+RPS26	missense_pois	2	30.2,nan,nan	0.004611879
+RPS26	nonsense	0	nan,nan,nan	nan

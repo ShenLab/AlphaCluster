@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ESRRG	missense	5	302.5	0.43833962846289287
+ESRRG	missense_comb	5	302.5	0.020476134114236995
+ESRRG	missense_pois	5	302.5	0.006863139999999999
+ESRRG	nonsense	0	nan	nan

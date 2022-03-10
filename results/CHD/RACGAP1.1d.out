@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RACGAP1	missense	2	1147.0,nan,nan,nan,nan	0.8443742906180635
+RACGAP1	missense_comb	2	1147.0,nan,nan,nan,nan	0.0037447990130032097
+RACGAP1	missense_pois	2	1147.0,nan,nan,nan,nan	0.0005064361351544418
+RACGAP1	nonsense	0	nan,nan,nan,nan,nan	nan

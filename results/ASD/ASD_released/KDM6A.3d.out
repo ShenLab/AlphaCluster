@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KDM6A	missense	2	39.8	0.2920608411993239
+KDM6A	missense_comb	2	39.8	0.06366539606383316
+KDM6A	missense_pois	2	39.8	0.040000000000000015
+KDM6A	nonsense	2	47.3	0.4443001172855541

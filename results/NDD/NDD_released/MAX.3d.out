@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MAX	missense	3	7.6	0.01066969988144778
+MAX	missense_comb	3	7.6	0.00021820952015959153
+MAX	missense_pois	3	7.6	0.0017175600000000001
+MAX	nonsense	0	nan	nan

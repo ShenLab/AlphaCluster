@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AHNAK	missense	3	3354.9	0.3165513631494293
+AHNAK	missense_comb	3	3354.9	0.07279529822192791
+AHNAK	missense_pois	3	3354.9	0.043512749709325095
+AHNAK	nonsense	0	nan	nan

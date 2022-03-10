@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DNAJC13	missense	2	561.0	0.1596419982262
+DNAJC13	missense_comb	2	561.0	0.015128153491088368
+DNAJC13	missense_pois	2	561.0	0.013235682703122701
+DNAJC13	nonsense	1	nan	nan

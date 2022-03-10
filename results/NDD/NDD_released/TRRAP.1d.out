@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TRRAP	missense	22	1393.8	9.343333229518524e-05
+TRRAP	missense_comb	22	1393.8	1.4506494820950196e-07
+TRRAP	missense_pois	22	1393.8	7.87e-05
+TRRAP	nonsense	0	nan	nan

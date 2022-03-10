@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CYP27C1	missense	6	256.5	0.135016165166487
+CYP27C1	missense_comb	6	256.5	7.791662436366001e-05
+CYP27C1	missense_pois	6	256.5	4.43e-05
+CYP27C1	nonsense	0	nan	nan

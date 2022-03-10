@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+VPS13B	missense	5	1741.2	0.11943238756186235
+VPS13B	missense_comb	5	1741.2	0.3732267918342653
+VPS13B	missense_pois	5	1741.2	1.0
+VPS13B	nonsense	0	nan	nan

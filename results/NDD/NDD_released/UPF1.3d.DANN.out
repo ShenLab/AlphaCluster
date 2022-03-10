@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+UPF1	missense	11	31.1	0.0003246999963922221
+UPF1	missense_comb	11	31.1	1.4417608258450076e-07
+UPF1	missense_pois	11	31.1	2.25e-05
+UPF1	nonsense	0	nan	nan

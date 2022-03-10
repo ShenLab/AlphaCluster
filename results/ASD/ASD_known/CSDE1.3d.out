@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CSDE1	missense	4	26.0,nan	0.040863655101514934
+CSDE1	missense_comb	4	26.0,nan	0.04348776702483673
+CSDE1	missense_pois	4	26.0,nan	0.18000000000000005
+CSDE1	nonsense	1	nan,nan	nan

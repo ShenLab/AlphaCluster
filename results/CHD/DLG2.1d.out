@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DLG2	missense	2	nan,nan	nan
+DLG2	missense_comb	2	nan,nan	0.003191132014027542
+DLG2	missense_pois	2	nan,nan	0.003191132014027542
+DLG2	nonsense	0	nan,nan	nan

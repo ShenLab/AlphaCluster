@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LRP10	missense	7	267.4	0.059364243784841744
+LRP10	missense_comb	7	267.4	0.00044277642496034494
+LRP10	missense_pois	7	267.4	0.0006700000000000003
+LRP10	nonsense	0	nan	nan

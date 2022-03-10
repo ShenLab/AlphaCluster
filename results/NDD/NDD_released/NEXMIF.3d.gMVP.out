@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NEXMIF	missense	2	2022.7,nan	0.5676990048033443
+NEXMIF	missense_comb	2	2022.7,nan	0.2159982737766301
+NEXMIF	missense_pois	2	2022.7,nan	0.097779593
+NEXMIF	nonsense	0	nan,nan	nan

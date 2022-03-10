@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+TFR2	missense	2	1041.0,nan	0.654676292725819
+TFR2	nonsense	0	nan,nan	nan

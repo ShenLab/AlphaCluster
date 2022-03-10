@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CLTCL1	missense	2	49.0	0.24623719726403118
+CLTCL1	missense_comb	2	49.0	0.016375634284575252
+CLTCL1	missense_pois	2	49.0	0.009409812619238568
+CLTCL1	nonsense	1	nan	nan

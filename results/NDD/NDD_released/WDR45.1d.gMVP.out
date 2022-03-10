@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WDR45	missense	14	190.6,1.0	0.007685145110495238
+WDR45	missense_comb	14	190.6,1.0	1.122479668704487e-13
+WDR45	missense_pois	14	190.6,1.0	1.6600000000000013e-13
+WDR45	nonsense	0	nan,nan	nan

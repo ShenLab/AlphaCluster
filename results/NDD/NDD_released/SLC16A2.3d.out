@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SLC16A2	missense	5	19.5	0.024732899725189997
+SLC16A2	missense_comb	5	19.5	8.35693326964317e-06
+SLC16A2	missense_pois	5	19.5	2.1899999999999987e-05
+SLC16A2	nonsense	0	nan	nan

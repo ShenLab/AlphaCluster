@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FLT4	missense	3	103.8	0.9258782119346866
+FLT4	missense_comb	3	103.8	0.012436695828435759
+FLT4	missense_pois	3	103.8	0.00181842298665313
+FLT4	nonsense	2	90.0	0.7156548476038351

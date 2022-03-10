@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CTNNB1	missense	1	nan	nan
+CTNNB1	missense_comb	1	nan	1.0
+CTNNB1	missense_pois	1	nan	1.0
+CTNNB1	nonsense	4	729.9	0.7691557358982695

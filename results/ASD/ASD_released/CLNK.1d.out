@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CLNK	missense	2	416.0,nan	0.5527687383025697
+CLNK	nonsense	0	nan,nan	nan

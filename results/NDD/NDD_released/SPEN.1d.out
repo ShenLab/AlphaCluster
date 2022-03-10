@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SPEN	missense	7	2946.0	0.6908233034352966
+SPEN	missense_comb	7	2946.0	0.47880721278657734
+SPEN	missense_pois	7	2946.0	0.252315155
+SPEN	nonsense	0	nan	nan

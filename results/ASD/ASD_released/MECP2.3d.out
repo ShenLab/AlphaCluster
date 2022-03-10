@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+MECP2	missense	11	51.2	0.2636435637372937
+MECP2	nonsense	3	92.0	0.9714506892061034

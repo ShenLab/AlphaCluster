@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DAZAP1	missense	4	207.8	0.22677446414695043
+DAZAP1	missense_comb	4	207.8	0.05958074333308813
+DAZAP1	missense_pois	4	207.8	0.047503772
+DAZAP1	nonsense	0	nan	nan

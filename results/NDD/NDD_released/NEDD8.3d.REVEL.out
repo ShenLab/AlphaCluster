@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+NEDD8	missense	3	1.2	0.13474356516951594
+NEDD8	missense_comb	3	1.2	0.00045444480036044586
+NEDD8	missense_pois	3	1.2	0.00030374199999999975
+NEDD8	nonsense	0	nan	nan

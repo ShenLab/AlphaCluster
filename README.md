@@ -1,138 +1,161 @@
-![travis](https://travis-ci.org/jeremymcrae/denovonear.svg?branch=master)
+![travis](https://travis-ci.org/jeremymcrae/alphacluster.svg?branch=master)
 
-### Denovonear
+<p align="center">
+  <img src="img/img1.gif">
+</p>
 
-This code assesses whether de novo single-nucleotide variants are closer
-together within the coding sequence of a gene than expected by chance. We use
-local-sequence based mutation rates to account for differential mutability of
-regions. The default rates are per-trinucleotide based see [Nature Genetics
-46:944–950](http://www.nature.com/ng/journal/v46/n9/full/ng.3050.html), but
-you can use your own rates, or even longer sequence contexts, such as 5-mers or
-7-mers.
+# AlphaCluster
 
-### Install
+This codebase determines the statistical significance of clustering of
+variants on coding sequence of a gene. It is designed to be used as part
+of a disease cohort study, in which variants are taken from the affected
+individuals.
+
+This codebase was built on top of Jeremy McRae's `alphacluster`, which tests
+clustering for de novo single-nucleotide variants, where clustering is
+measured by 1 dimmensional level (the distance metric is base-pair
+seperation). Our code greatly extends the initial test by:
+- incorporating 3-dimmensional clustering analysis
+- extending clustering analysis to protein complexes
+- incorporating co-evolutionary clustering analysis
+- extending to include inherited variants
+
+## Motivation
+The functional impact of missense variants is complex. A single deleterious score does not capture the complexity. For example, some variants are hypomorph, some are neomorph; some are loss of function, some are gain of function; some change the stability of the protein, some change the interaction with other proteins, and some change the enzymatic activity.
+
+In a particular condition, the contributing missense variants are likely to have consistent functional impact. This may be reflected in smaller 3D physical distance among these variants, or functional similarity as quantified by co-evolution.
+
+In this project, we aim to quantify clustering of 3D physical distance or functional correlation among missense variants, and to use it to improve statistical power of identifying new risk genes and to help interpretation of missense variants in genetic studies.
+
+
+## Installation
+For out-of-the-box version:
 ```sh
-pip install denovonear
+pip install alphacluster
+```
+or, if you plan to make local development on the package: 
+```sh
+git clone https://github.com/ShenLab/MVP3D.git --recurse-submodules
+cd MVP3D
+pip install . --use-feature=in-tree-build 
 ```
 
-### Usage
-Analyse *de novo* mutations with the CLI tool:
+## Quick demo
 
+It is very simple to run clustering analysis. Here is a quick demo, in which we get a p-value for 3D clustering of variants form all current major ASD trio cohorts over the protein CHD8:
 ```sh
-denovonear cluster \
-   --in data/example.grch38.dnms.txt \
-   --gencode data/example.grch38.gtf \
-   --fasta data/example.grch38.fa \
+alphacluster cluster --in data/asd.released.iid.hg38.txt \
+--protein CHD8 \
+--protein_dir proteins \
+--out CHD8.demo_results.txt
+```
+After the script is complete, examine the results:
+```sh
+cat CHD8.demo_results.txt
+```
+
+## Core functionality
+The core usage options are `cluster`, `cluster-1d`, `cluster-coev`, and `cluster-multi`.
+The user can run these commands to perform the cluster analysis in 3-dimmensional
+space, 1-dimmensional space, "co-evolution" space for a single protein, or 3-dimmensional space for a protein complex. For the returned results of these analyses, see the section on [output][#output].
+
+### 3D space for single protein
+The 3-dimmensional analysis of the package is acheived in the following command:
+```sh
+alphacluster cluster \
+   --in data/example_de_novos.txt \
+   --protein_dir protein
+   --protein CDH8
    --out output.txt
 ```
 
-explanation of options:
- - `--in`: path to tab-separated table of de novo mutations. See example table below for columns, or `example.grch38.dnms.txt` in data folder.
- - `--gencode`: path to GENCODE annotations in 
-   [GTF format](https://www.ensembl.org/info/website/upload/gff.html) for 
-   transcripts and exons e.g. 
-   [example release](https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz). Can be gzipped, or uncompressed.
- - `--fasta`: path to genome fasta, matching genome build of gencode file
+This will run the 3d clustering analysis for the given protein (CHD8) with
+xyz coordinates for each amino acid in the `protein_dir` folder. The system
+assumes that there will be an `.xyz` file named `CHD8.xyz` in the `protein_dir`
+folder.
 
-If the --gencode or --fasta options are skipped (e.g. `denovonear cluster --in 
-INFILE --out OUTFILE`), gene annotations will be retrieved via an ensembl web 
-service. For that, you might need to specify `--genome-build grch38` to ensure
-the gene coordinates match your de novo mutation coordinates.
+### 3D space for a protein complex
 
-* `--rates PATH_TO_RATES`
-* `--cache-folder PATH_TO_CACHE_DIR`
-* `--genome-build "grch37" or "grch38" (default=grch37)`
-
-The optional rates file is a table separated file with three columns: 'from',
-'to', and 'mu_snp'. The 'from' column contains DNA sequence (where the length
-is an odd number) with the base to change at the central nucleotide. The 'to'
-column contains the sequence with the central base modified. The 'mu_snp' column
-contains the probability of the change (as per site per generation).
-
-The cache folder defaults to making a folder named "cache" within the working
-directory. The genome build indicates which genome build the coordinates of the
-de novo variants are based on, and defaults to GRCh37.
-
-#### Example de novo table
-
-gene_name | chr | pos | consequence | snp_or_indel
- ---      | --- | --- | ---         |  ---
-OR4F5 | chr1 | 69500 | missense_variant | DENOVO-SNP
-OR4F5 | chr1 | 69450 | missense_variant | DENOVO-SNP
-
-### Python usage
-
-```py
-from denovonear.gencode import Gencode
-from denovonear.cluster_test import cluster_de_novos
-
-gencode = Gencode('./data/example.grch38.gtf', './data/example.grch38.fa')
-symbol = 'OR4F5'
-de_novos = {'missense': [69500, 69450, 69400], 'nonsense': []}
-p_values = cluster_de_novos(symbol, de_novos, gencode[symbol], iterations=1000000)
-```
-
-Pull out site-specific rates by creating Transcript objects, then get the
-rates by consequence at each site
-
-```py
-from denovonear.rate_limiter import RateLimiter
-from denovonear.load_mutation_rates import load_mutation_rates
-from denovonear.load_gene import construct_gene_object
-from denovonear.site_specific_rates import SiteRates
-
-# extract transcript coordinates and sequence from Ensembl
-async with RateLimiter(per_second=15) as ensembl:
-    transcript = await construct_gene_object(ensembl, 'ENST00000346085')
-
-mut_rates = load_mutation_rates()
-rates = SiteRates(transcript, mut_rates)
-
-# rates are stored by consequence, but you can iterate through to find all
-# possible sites in and around the CDS:
-for cq in ['missense', 'nonsense', 'splice_lof', 'synonymous']:
-    for site in rates[cq]:
-        site['pos'] = transcript.get_position_on_chrom(site['pos'], site['offset'])
-
-# or if you just want the summed rate
-rates['missense'].get_summed_rate()
-```
-
-### Identify transcripts containing de novo events
-
-You can identify transcripts containing de novos events with the
-`identify_transcripts.py` script. This either identifies all transcripts for a
-gene with one or more de novo events, or identifies the minimal set of
-transcripts to contain all de novos (where transcripts are prioritised on the
-basis of number of de novo events, and length of coding sequence). Transcripts
-can be identified with:
-
+### 1D space for a single protein
+The 1 dimmensional analysis is acheived via the following command:
 ```sh
-    denovonear transcripts \
-        --de-novos data/example_de_novos.txt \
-        --out output.txt \
-        --all-transcripts
+alphacluster cluster-1d \
+   --in data/example_de_novos.txt \
+   --protein CDH8
+   --out output.txt
 ```
 
-Other options are:
-
-* `--minimise-transcripts` in place of `--all-transcripts`, to find the minimal
-  set of transcripts
-* `--genome-build "grch37" or "grch38" (default=grch37)`
-
-### Gene or transcript based mutation rates
-You can generate mutation rates for either the union of alternative transcripts
-for a gene, or for a specific Ensembl transcript ID with the
-`construct_mutation_rates.py` script. Lof and missense mutation rates can be
-generated with:
-
+### Coevolutionary space for a single protein
+The coevolutionary analysis is acheived via the following command:
 ```sh
-denovonear rates \
-    --genes data/example_gene_ids.txt \
-    --out output.txt
+alphacluster cluster-coevol \
+   --in data/example_de_novos.txt \
+   --coevol_dir coevol
+   --protein CDH8
+   --out output.txt
 ```
+
+## Including damaging scores
+
+For the 3D (both singleton and multimer versions) and 1D clustering analysis, missense damaging scores can be incorporated into the analysis. There are two approaches for doing this: scale scoreing and score thresholding.
+
+### Scale scoring
+### Scale thresholding
+
+## Output
 
 The tab-separated output file will contain one row per gene/transcript, with
 each line containing a transcript ID or gene symbol, a log10 transformed
 missense mutation rate, a log10 transformed nonsense mutation rate, and a log10
 transformed synonymous mutation rate.
+
+## Directory structure
+
+    .
+    ├── alphacluster	# Python code for clustering. 
+    │
+    ├── src		# C++ code for simulations.
+    │
+    ├── scripts    	# Helper scripts for data formating
+    │			# especially .xyz, .coev.txt and
+    │			# .multi file creation creation.      
+    │
+    ├── proteins	   # .xyz files with xyz coordinates
+    │   ├── CHD8.xyz       # of the central carbon atom of
+    │   ⋮ (all .xyz files) # each amino acid.
+    │   └── PTEN.xyz
+    │
+    ├── coevolution             # .coev.txt files with 
+    │   ├── CHD8.coev.txt       # pairwise coevolution  
+    │   ⋮ (all .coev.txt files) # strenghts b/w amino acids
+    │   └── PTEN.xyz    
+    │
+    ├── multimer             # .multi files with xyz coord.
+    │   ├── GABA-A.multi     # of the central carbon atom of
+    │   ⋮ (all .multi files) # amino acid in protein complex
+    │   └── Kv1-2.multi        
+    │
+    ├── slurm_bulk_jobs # collection of slurm scripts used to
+    │			# queue bulk runs.
+    ├── tests
+    ├── LICENSE
+    └── README.md
+
+## Important questions and answers
+
+1. How do I create an .xyz file necessary for the 3D clustering analysis on a single protein?
+
+See [helper scripts](docs/helper_scripts.md) documentation.
+
+2. How do I create an .multi file necessary for the 3D clustering analysis on a protein complex?
+
+See [helper scripts](docs/helper_scripts.md) documentation.
+
+3. Where can I get missense enrichment p-values via the Poisson test? And how do I fisher combine them with the clustering analysis?
+
+See [enrichment tests](docs/enrichment.md) documentation.
+
+4. Can I get missense enrichment p-values via DenovoWEST?
+
+See [enrichment tests](docs/enrichment.md) documentation.
+

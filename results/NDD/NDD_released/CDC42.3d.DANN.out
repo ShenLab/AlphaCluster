@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CDC42	missense	4	24.1,nan,nan,nan,nan,nan	0.30148359665018226
+CDC42	missense_comb	4	24.1,nan,nan,nan,nan,nan	0.00026254970798579645
+CDC42	missense_pois	4	24.1,nan,nan,nan,nan,nan	7.439999999999998e-05
+CDC42	nonsense	0	nan,nan,nan,nan,nan,nan	nan

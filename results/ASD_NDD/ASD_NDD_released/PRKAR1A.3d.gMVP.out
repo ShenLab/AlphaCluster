@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+PRKAR1A	missense	5	30.1,nan,nan,nan,nan	0.05258701052681101
+PRKAR1A	nonsense	0	nan,nan,nan,nan,nan	nan

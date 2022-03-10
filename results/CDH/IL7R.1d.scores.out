@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IL7R	missense	2	730.0	0.792670580081438
+IL7R	missense_comb	2	730.0	1.015713567748859e-05
+IL7R	missense_pois	2	730.0	8.419097883294323e-07
+IL7R	nonsense	0	nan	nan

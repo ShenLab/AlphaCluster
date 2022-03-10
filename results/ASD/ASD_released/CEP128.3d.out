@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CEP128	missense	2	166.0,nan	0.8452396683862259
+CEP128	nonsense	0	nan,nan	nan

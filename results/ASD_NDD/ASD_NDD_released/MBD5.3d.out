@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MBD5	missense	5	69.9	0.4841470946205879
+MBD5	missense_comb	5	69.9	0.36630370015282854
+MBD5	missense_pois	5	69.9	0.23999999999999996
+MBD5	nonsense	2	107.0	0.8163716242625375

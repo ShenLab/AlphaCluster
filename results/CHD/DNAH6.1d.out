@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DNAH6	missense	3	5474.9	0.8803375791073602
+DNAH6	missense_comb	3	5474.9	0.06791124438546353
+DNAH6	missense_pois	3	5474.9	0.014364160313357511
+DNAH6	nonsense	0	nan	nan

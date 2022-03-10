@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PIAS2	missense	4	33.5	0.15417510939805434
+PIAS2	missense_comb	4	33.5	0.045250827813190134
+PIAS2	missense_pois	4	33.5	0.050047870000000015
+PIAS2	nonsense	0	nan	nan

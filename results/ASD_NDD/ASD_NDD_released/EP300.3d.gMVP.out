@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EP300	missense	33	113.0	2.3333333074074074e-07
+EP300	missense_comb	33	113.0	4.871059143000197e-08
+EP300	missense_pois	33	113.0	0.010000000000000004
+EP300	nonsense	4	78.5	0.8253822130513087

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ROCK2	missense	2	46.2	0.04144364398395951
+ROCK2	missense_comb	2	46.2	0.0013066470369267702
+ROCK2	missense_pois	2	46.2	0.003172974893758118
+ROCK2	nonsense	0	nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+DYRK1A	missense	0	nan,nan	nan
+DYRK1A	nonsense	6	49.3,nan	0.7627624026359734

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ALPK2	missense	2	4198.0	0.8684164347953729
+ALPK2	missense_comb	2	4198.0	0.06295590913282566
+ALPK2	missense_pois	2	4198.0	0.013269246135493304
+ALPK2	nonsense	0	nan	nan

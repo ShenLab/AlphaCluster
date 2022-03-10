@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EEF2	missense	11	690.6	0.8539071682899203
+EEF2	missense_comb	11	690.6	3.5982982827749444e-05
+EEF2	missense_pois	11	690.6	3.039999999999999e-06
+EEF2	nonsense	0	nan	nan

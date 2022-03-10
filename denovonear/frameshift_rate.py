@@ -20,7 +20,7 @@ def include_frameshift_rates(path):
     
     if path == sys.stdout:
         raise ValueError("can't get frameshift rates when writing to standard out")
-    
+
     with open(path) as handle:
         lines = [ x.strip().split('\t') for x in handle ]
     

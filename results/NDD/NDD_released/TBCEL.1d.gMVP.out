@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TBCEL	missense	2	343.0,nan,nan	0.45636899492923333
+TBCEL	missense_comb	2	343.0,nan,nan	0.06537593793399489
+TBCEL	missense_pois	2	343.0,nan,nan	0.026444105999999995
+TBCEL	nonsense	0	nan,nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PIEZO1	missense	2	4610.0	0.8437045684032826
+PIEZO1	missense_comb	2	4610.0	0.00455809477642765
+PIEZO1	missense_pois	2	4610.0	0.0006329770028641322
+PIEZO1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FLNC	missense	2	97.0	0.024317299729807788
+FLNC	missense_comb	2	97.0	0.012415480873974566
+FLNC	missense_pois	2	97.0	0.06909965607924962
+FLNC	nonsense	0	nan	nan

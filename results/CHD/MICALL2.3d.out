@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MICALL2	missense	2	62.8	0.6233792486291195
+MICALL2	missense_comb	2	62.8	0.01884756285585525
+MICALL2	missense_pois	2	62.8	0.004379664795128298
+MICALL2	nonsense	0	nan	nan

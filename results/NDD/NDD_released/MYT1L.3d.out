@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MYT1L	missense	14	56.9	0.15600977604433586
+MYT1L	missense_comb	14	56.9	1.0815983153787927e-07
+MYT1L	missense_pois	14	56.9	3.4599999999999946e-08
+MYT1L	nonsense	0	nan	nan

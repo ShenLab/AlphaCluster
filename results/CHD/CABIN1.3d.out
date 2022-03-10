@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CABIN1	missense	2	95.7,nan	0.6872956812522704
+CABIN1	missense_comb	2	95.7,nan	0.09034455934054317
+CABIN1	missense_pois	2	95.7,nan	0.026201066973544594
+CABIN1	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KMT2A	missense	28	1032.0	1.010100999897969e-08
+KMT2A	missense_comb	28	1032.0	2.266887261492199e-16
+KMT2A	missense_pois	28	1032.0	5.509999999999994e-10
+KMT2A	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TIAM2	missense	2	2983.0	0.8067706021469934
+TIAM2	missense_comb	2	2983.0	0.05531843401543038
+TIAM2	missense_pois	2	2983.0	0.0121980754708761
+TIAM2	nonsense	0	nan	nan

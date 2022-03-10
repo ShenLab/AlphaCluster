@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GRIK3	missense	2	125.3	0.8468390572573438
+GRIK3	missense_comb	2	125.3	0.024071390364295574
+GRIK3	missense_pois	2	125.3	0.004296230904435869
+GRIK3	nonsense	0	nan	nan

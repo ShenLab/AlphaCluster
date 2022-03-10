@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+OGT	missense	7	37.7	0.007577966582467037
+OGT	missense_comb	7	37.7	2.4096629383340862e-05
+OGT	missense_pois	7	37.7	0.00022247099999999996
+OGT	nonsense	0	nan	nan

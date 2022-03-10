@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ZNFX1	missense	2	275.6,nan	0.550118771665347
+ZNFX1	missense_comb	2	275.6,nan	0.049530844187836105
+ZNFX1	missense_pois	2	275.6,nan	0.01564418874821329
+ZNFX1	nonsense	0	nan,nan	nan

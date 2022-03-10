@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+OTX2	missense	2	11.4,nan	0.03669122181454197
+OTX2	missense_comb	2	11.4,nan	0.0025348518085936142
+OTX2	missense_pois	2	11.4,nan	0.007512264
+OTX2	nonsense	0	nan,nan	nan

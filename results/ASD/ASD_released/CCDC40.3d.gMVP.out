@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CCDC40	missense	4	2331.6	0.34252321841640876
+CCDC40	missense_comb	4	2331.6	0.3044371249399267
+CCDC40	missense_pois	4	2331.6	0.2600000000000002
+CCDC40	nonsense	3	30.5	0.046835299479607795

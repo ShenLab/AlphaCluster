@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+JAKMIP2	missense	2	51.1	0.3246088408376795
+JAKMIP2	missense_comb	2	51.1	0.003037079615452681
+JAKMIP2	missense_pois	2	51.1	0.0010403384445215593
+JAKMIP2	nonsense	0	nan	nan

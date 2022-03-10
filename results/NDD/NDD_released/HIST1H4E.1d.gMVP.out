@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HIST1H4E	missense	7	42.8	0.07672412136973199
+HIST1H4E	missense_comb	7	42.8	7.579630956913393e-08
+HIST1H4E	missense_pois	7	42.8	4.840000000000005e-08
+HIST1H4E	nonsense	0	nan	nan

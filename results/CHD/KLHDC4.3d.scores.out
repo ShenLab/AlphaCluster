@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KLHDC4	missense	2	1258.3	0.9448280006130222
+KLHDC4	missense_comb	2	1258.3	0.006075029951063625
+KLHDC4	missense_pois	2	1258.3	0.0007832808213810163
+KLHDC4	nonsense	0	nan	nan

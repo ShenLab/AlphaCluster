@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MBOAT7	missense	4	119.3	0.27245970808378095
+MBOAT7	missense_comb	4	119.3	0.06336938447200954
+MBOAT7	missense_pois	4	119.3	0.04263365
+MBOAT7	nonsense	0	nan	nan

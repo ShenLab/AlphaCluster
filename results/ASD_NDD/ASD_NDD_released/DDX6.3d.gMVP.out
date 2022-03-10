@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+DDX6	missense	6	32.0,nan,nan	0.010159322109340865
+DDX6	nonsense	0	nan,nan,nan	nan

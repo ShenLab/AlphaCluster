@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PFN2	missense	2	269.0	0.7524002694177748
+PFN2	missense_comb	2	269.0	0.053054017006075836
+PFN2	missense_pois	2	269.0	0.012431810000000005
+PFN2	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DLG4	missense	2	27.1	0.21045690877270096
+DLG4	missense_comb	2	27.1	0.26578682310779433
+DLG4	missense_pois	2	27.1	0.35
+DLG4	nonsense	1	nan	nan

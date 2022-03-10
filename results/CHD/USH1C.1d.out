@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+USH1C	missense	3	951.8	0.7089784365669063
+USH1C	missense_comb	3	951.8	0.001445525500159284
+USH1C	missense_pois	3	951.8	0.00020753862137068419
+USH1C	nonsense	0	nan	nan

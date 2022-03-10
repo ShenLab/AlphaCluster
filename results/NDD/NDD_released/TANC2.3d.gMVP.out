@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TANC2	missense	4	332.1	0.6550679149436898
+TANC2	missense_comb	4	332.1	0.9321723610453032
+TANC2	missense_pois	4	332.1	1.0
+TANC2	nonsense	0	nan	nan

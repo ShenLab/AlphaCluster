@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WDR37	missense	3	175.7	0.12889002079011086
+WDR37	missense_comb	3	175.7	4.931697120621778e-05
+WDR37	missense_pois	3	175.7	2.829771850776371e-05
+WDR37	nonsense	0	nan	nan

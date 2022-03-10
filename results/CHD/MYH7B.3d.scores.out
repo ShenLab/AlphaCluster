@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+MYH7B	missense	2	894.4	0.8753629680515226
+MYH7B	missense_comb	2	894.4	0.14320333940576643
+MYH7B	missense_pois	2	894.4	0.036908136600063896
+MYH7B	nonsense	0	nan	nan

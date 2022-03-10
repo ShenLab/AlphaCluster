@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SMARCA4	missense	43	47.2	0.01931949978533889
+SMARCA4	missense_comb	43	47.2	7.18353707954457e-15
+SMARCA4	missense_pois	43	47.2	9.999999999999995e-15
+SMARCA4	nonsense	0	nan	nan

@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SCAPER	missense	3	1409.9,nan	0.6948942256122863
+SCAPER	nonsense	0	nan,nan	nan

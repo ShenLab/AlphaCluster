@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PAPOLG	missense	2	224.8	0.6856837034924033
+PAPOLG	missense_comb	2	224.8	0.3912583071128914
+PAPOLG	missense_pois	2	224.8	0.18676404
+PAPOLG	nonsense	0	nan	nan

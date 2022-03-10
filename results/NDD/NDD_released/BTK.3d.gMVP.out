@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BTK	missense	4	31.0	0.031105999654377794
+BTK	missense_comb	4	31.0	0.0003185594729834332
+BTK	missense_pois	4	31.0	0.0008910349999999997
+BTK	nonsense	0	nan	nan

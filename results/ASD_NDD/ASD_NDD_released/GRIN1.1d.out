@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GRIN1	missense	46	268.8	1.010100999897969e-08
+GRIN1	missense_comb	46	268.8	4.0824760976156864e-11
+GRIN1	missense_pois	46	268.8	0.00014300000000000003
+GRIN1	nonsense	0	nan	nan

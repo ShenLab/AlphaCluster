@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CORO1A	missense	2	0.2,nan	0.49487389458456155
+CORO1A	nonsense	0	nan,nan	nan

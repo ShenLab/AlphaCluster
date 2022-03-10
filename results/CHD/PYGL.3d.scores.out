@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PYGL	missense	3	105.7	0.846497735038914
+PYGL	missense_comb	3	105.7	0.0006668832954607713
+PYGL	missense_pois	3	105.7	7.375575045576178e-05
+PYGL	nonsense	0	nan	nan

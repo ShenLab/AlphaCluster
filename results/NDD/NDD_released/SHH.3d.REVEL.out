@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SHH	missense	6	18.3	0.0006188888820123457
+SHH	missense_comb	6	18.3	5.806186760759792e-06
+SHH	missense_pois	6	18.3	0.0005931090000000002
+SHH	nonsense	0	nan	nan

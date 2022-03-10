@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAB8A	missense	2	18.1,nan	0.3284958296833796
+RAB8A	missense_comb	2	18.1,nan	0.00019962372969285785
+RAB8A	missense_pois	2	18.1,nan	5.0622528942279e-05
+RAB8A	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BAP1	missense	5	15.1	0.0008059555466004946
+BAP1	missense_comb	5	15.1	3.733413506594675e-06
+BAP1	missense_pois	5	15.1	0.00028438700000000004
+BAP1	nonsense	0	nan	nan

@@ -1,0 +1,2 @@
+gene_id	poisson_p_value
+PTEN	7.490563946126172e-28

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LEMD3	missense	4	29.0	0.012536577638482461
+LEMD3	missense_comb	4	29.0	0.0002586286094656009
+LEMD3	missense_pois	4	29.0	0.0017599999999999998
+LEMD3	nonsense	1	nan	nan

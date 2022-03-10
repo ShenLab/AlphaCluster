@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PTCH1	missense	9	85.1	0.10842193212864522
+PTCH1	missense_comb	9	85.1	0.01824979935830828
+PTCH1	missense_pois	9	85.1	0.024250208
+PTCH1	nonsense	0	nan	nan

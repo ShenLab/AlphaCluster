@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CTCF	missense	19	0.1,nan,nan,nan,nan	0.9999188889790123
+CTCF	nonsense	0	nan,nan,nan,nan,nan	nan

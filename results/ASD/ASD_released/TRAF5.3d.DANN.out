@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+TRAF5	missense	2	85.5,nan,nan	0.4278736285791819
+TRAF5	nonsense	0	nan,nan,nan	nan

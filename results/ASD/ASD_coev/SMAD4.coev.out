@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+SMAD4	missense	2	0.1,nan	0.4816516870536809
+SMAD4	nonsense	0	nan,nan	nan

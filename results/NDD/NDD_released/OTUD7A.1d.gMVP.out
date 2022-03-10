@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+OTUD7A	missense	4	840.7	0.7205193253275631
+OTUD7A	missense_comb	4	840.7	0.9566933414562354
+OTUD7A	missense_pois	4	840.7	1.0
+OTUD7A	nonsense	0	nan	nan

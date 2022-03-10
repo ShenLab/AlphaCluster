@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+BRINP3	missense	2	431.2	0.8602481348861318
+BRINP3	missense_comb	2	431.2	0.008457807038585455
+BRINP3	missense_pois	2	431.2	0.0012555451924601787
+BRINP3	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ADAM7	missense	2	104.9	0.2836627968481911
+ADAM7	missense_comb	2	104.9	0.0017488549955197706
+ADAM7	missense_pois	2	104.9	0.0006414272802912622
+ADAM7	nonsense	0	nan	nan

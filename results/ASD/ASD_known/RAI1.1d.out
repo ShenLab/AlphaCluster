@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RAI1	missense	3	1209.7	0.38566211793708766
+RAI1	missense_comb	3	1209.7	0.48419428270942755
+RAI1	missense_pois	3	1209.7	0.4600000000000001
+RAI1	nonsense	4	1699.9	0.6197926486689705

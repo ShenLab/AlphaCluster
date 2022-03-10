@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SCAPER	missense	2	142.8,nan	0.4064674732614726
+SCAPER	missense_comb	2	142.8,nan	0.7723903728331665
+SCAPER	missense_pois	2	142.8,nan	1.0
+SCAPER	nonsense	0	nan,nan	nan

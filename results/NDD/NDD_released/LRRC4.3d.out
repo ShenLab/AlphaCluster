@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LRRC4	missense	2	19.7	0.09444923228389743
+LRRC4	missense_comb	2	19.7	0.31732040693046987
+LRRC4	missense_pois	2	19.7	1.0
+LRRC4	nonsense	0	nan	nan

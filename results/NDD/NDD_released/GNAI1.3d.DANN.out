@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GNAI1	missense	13	10.7,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	1.1111110987654311e-08
+GNAI1	missense_comb	13	10.7,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	1.6203918712696532e-21
+GNAI1	missense_pois	13	10.7,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	2.7599999999999983e-15
+GNAI1	nonsense	0	nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan	nan

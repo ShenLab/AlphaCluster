@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+CARD10	missense	2	169.8,nan	0.4369430507006328
+CARD10	nonsense	0	nan,nan	nan

@@ -1,0 +1,2 @@
+gene_id	poisson_p_value
+SLC6A1	8.33533954977582e-06

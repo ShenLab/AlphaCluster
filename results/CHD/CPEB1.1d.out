@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CPEB1	missense	2	1243.0	0.9264380897062434
+CPEB1	missense_comb	2	1243.0	0.004751407176672804
+CPEB1	missense_pois	2	1243.0	0.0006042300779542928
+CPEB1	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SATB2	missense	7	31.0,nan,nan	0.02017496644250038
+SATB2	missense_comb	7	31.0,nan,nan	0.0001661968271606853
+SATB2	missense_pois	7	31.0,nan,nan	0.0006749999999999996
+SATB2	nonsense	1	nan,nan,nan	nan

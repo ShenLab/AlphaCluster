@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DPF2	missense	9	25.8	1.6188888709012338e-05
+DPF2	missense_comb	9	25.8	8.140997382660289e-12
+DPF2	missense_pois	9	25.8	1.680000000000001e-08
+DPF2	nonsense	0	nan	nan

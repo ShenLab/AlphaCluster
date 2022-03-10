@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TM9SF4	missense	6	52.7	0.5850680934992432
+TM9SF4	missense_comb	6	52.7	0.005569090599630314
+TM9SF4	missense_pois	6	52.7	0.0011457680000000004
+TM9SF4	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+AGO2	missense	5	20.2	0.00934196656286704
+AGO2	missense_comb	5	20.2	0.002472651838963258
+AGO2	missense_pois	5	20.2	0.028693991000000005
+AGO2	nonsense	0	nan	nan

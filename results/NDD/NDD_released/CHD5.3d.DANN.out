@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CHD5	missense	7	59.7	0.003416488850927901
+CHD5	missense_comb	7	59.7	0.0032436837573560596
+CHD5	missense_pois	7	59.7	0.106446099
+CHD5	nonsense	0	nan	nan

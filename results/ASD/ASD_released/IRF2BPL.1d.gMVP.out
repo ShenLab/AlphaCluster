@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+IRF2BPL	missense	2	1044.0	0.6887690479025661
+IRF2BPL	missense_comb	2	1044.0	0.23436850357434166
+IRF2BPL	missense_pois	2	1044.0	0.08999999999999998
+IRF2BPL	nonsense	3	156.7	0.10770174324775841

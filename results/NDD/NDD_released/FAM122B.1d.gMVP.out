@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+FAM122B	missense	3	227.4,nan	0.5719106714232147
+FAM122B	missense_comb	3	227.4,nan	0.0017735399112888588
+FAM122B	missense_pois	3	227.4,nan	0.00032315899999999995
+FAM122B	nonsense	0	nan,nan	nan

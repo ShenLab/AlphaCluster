@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HERC2	missense	4	3771.5	0.5523284938630166
+HERC2	missense_comb	4	3771.5	0.032451759284682365
+HERC2	missense_pois	4	3771.5	0.009381806021290242
+HERC2	nonsense	0	nan	nan

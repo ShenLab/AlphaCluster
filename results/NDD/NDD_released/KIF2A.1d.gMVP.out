@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+KIF2A	missense	5	242.0	0.04608827726568582
+KIF2A	missense_comb	5	242.0	0.0002615030526273637
+KIF2A	missense_pois	5	242.0	0.0004845619999999997
+KIF2A	nonsense	0	nan	nan

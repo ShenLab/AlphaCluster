@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GANAB	missense	1	nan	nan
+GANAB	missense_comb	1	nan	0.031709406500442204
+GANAB	missense_pois	1	nan	0.031709406500442204
+GANAB	nonsense	1	nan	nan

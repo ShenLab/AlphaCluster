@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HNRNPK	missense	5	19.7,nan	0.009908199889908887
+HNRNPK	missense_comb	5	19.7,nan	0.0001789837253051893
+HNRNPK	missense_pois	5	19.7,nan	0.0014900339999999999
+HNRNPK	nonsense	0	nan,nan	nan

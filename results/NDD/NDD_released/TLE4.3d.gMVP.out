@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TLE4	missense	2	576.7	0.7847629357248562
+TLE4	missense_comb	2	576.7	0.9749687532231532
+TLE4	missense_pois	2	576.7	1.0
+TLE4	nonsense	0	nan	nan

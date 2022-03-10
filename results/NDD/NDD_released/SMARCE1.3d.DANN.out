@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SMARCE1	missense	3	43.6,nan	0.018511633127648527
+SMARCE1	missense_comb	3	43.6,nan	0.0005563634440801418
+SMARCE1	missense_pois	3	43.6,nan	0.0027621060000000016
+SMARCE1	nonsense	0	nan,nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SHANK2	missense	5	1231.9	0.4499734616669616
+SHANK2	missense_comb	5	1231.9	0.8093072714522691
+SHANK2	missense_pois	5	1231.9	1.0
+SHANK2	nonsense	0	nan	nan

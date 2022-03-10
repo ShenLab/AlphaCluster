@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SMARCC2	missense	5	910.4	0.49995646111159486
+SMARCC2	missense_comb	5	910.4	0.09417147893457746
+SMARCC2	missense_pois	5	910.4	0.037936944000000014
+SMARCC2	nonsense	0	nan	nan

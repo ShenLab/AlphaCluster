@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+COG4	missense	6	7.7	9.655555448271613e-06
+COG4	missense_comb	6	7.7	4.3284496306706193e-07
+COG4	missense_pois	6	7.7	0.002413424
+COG4	nonsense	0	nan	nan

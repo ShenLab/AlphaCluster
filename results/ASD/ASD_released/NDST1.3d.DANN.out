@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+NDST1	missense	3	99.8	0.9277198785808902
+NDST1	nonsense	2	43.9	0.4955186278275707

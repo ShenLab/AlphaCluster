@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+VEZF1	missense	3	68.6	0.14226807619702134
+VEZF1	missense_comb	3	68.6	0.018484948551234875
+VEZF1	missense_pois	3	68.6	0.018759548000000008
+VEZF1	nonsense	0	nan	nan

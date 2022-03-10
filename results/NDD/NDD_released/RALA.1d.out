@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+RALA	missense	4	111.6	0.2859188968231234
+RALA	missense_comb	4	111.6	0.0018680746695773044
+RALA	missense_pois	4	111.6	0.0006849949999999999
+RALA	nonsense	0	nan	nan

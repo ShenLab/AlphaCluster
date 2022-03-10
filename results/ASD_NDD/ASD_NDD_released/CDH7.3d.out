@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CDH7	missense	4	41.6,nan	0.10300988774433457
+CDH7	missense_comb	4	41.6,nan	0.020950629538430795
+CDH7	missense_pois	4	41.6,nan	0.03
+CDH7	nonsense	0	nan,nan	nan

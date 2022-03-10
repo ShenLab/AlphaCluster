@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ALPK3	missense	2	nan	nan
+ALPK3	missense_comb	2	nan	0.02205760723593731
+ALPK3	missense_pois	2	nan	0.02205760723593731
+ALPK3	nonsense	0	nan	nan

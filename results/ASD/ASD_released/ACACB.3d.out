@@ -1,0 +1,3 @@
+gene_id	mutation_category	events_n	dist	probability
+ACACB	missense	7	53.3,nan	0.10729366547451485
+ACACB	nonsense	2	66.4,nan	0.44883458390183806

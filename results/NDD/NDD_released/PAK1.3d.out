@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+PAK1	missense	4	11.8	0.004774922169167531
+PAK1	missense_comb	4	11.8	0.00023019075717202272
+PAK1	missense_pois	4	11.8	0.004068610000000002
+PAK1	nonsense	0	nan	nan

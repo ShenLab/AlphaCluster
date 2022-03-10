@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+DHX58	missense	2	1811.0	0.9877846445801706
+DHX58	missense_comb	2	1811.0	0.010799483290913604
+DHX58	missense_pois	2	1811.0	0.0014481272097670598
+DHX58	nonsense	0	nan	nan

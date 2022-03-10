@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+JPH2	missense	2	649.0	0.5628586826349036
+JPH2	missense_comb	2	649.0	0.018027161648845564
+JPH2	missense_pois	2	649.0	0.004604752673052938
+JPH2	nonsense	0	nan	nan

@@ -3,9 +3,11 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
+#include <ostream>
+#include <fstream>
 
 #include "site_rates.h"
-
+  
 // get the lowest and highest positions of a transcripts coding sequence
 Region _get_gene_range(Tx & tx) {
     int boundary_1 = tx.get_cds_start();
@@ -47,18 +49,189 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut) {
     initialise_choices();
     // check the consequence alternates for each base in the coding sequence
     Region region = _get_gene_range(_tx);
+    
     for (int i=region.start; i < region.end + 1; i++ ) {
         check_position(i);
     }
 }
 
-// initialise a WeightedChoice object for each consequence category
+void SitesChecks::init(std::vector<std::vector<std::string>> mut,
+		       int start,
+		       int end) {
+    
+    // convert the rates data to a nested map
+    for (auto line : mut) {
+        mut_dict[line[0]][line[1]] = std::stod(line[2]);
+    }
+    
+    // calculate the length of sequences used in the mutation rate dictionary
+    // This means we can flexibly use 3-mers, 5-mers, 7-mers etc if desired.
+    std::string str = mut_dict.begin()->first;
+    kmer_length = str.length();
+    mid_pos = kmer_length/2;
+    
+    initialise_choices();
+    // check the consequence alternates for each base in the coding sequence
+    Region region = _get_gene_range(_tx);
+
+    int region_start = std::max(region.start, start);
+    int region_end = std::min(region.end, end);
+
+    region_start = region.start;
+    region_end = region.end;
+    
+    for (int i=region_start; i < region_end + 1; i++ ) {
+        check_position(i);
+    }
+}
+
+void SitesChecks::init(std::vector<std::vector<std::string>> mut,
+		       std::vector<int> variants)
+{
+  init(mut);
+  set_inherited_controls(variants, "missense");
+}
+
+void SitesChecks::init(std::vector<std::vector<std::string>> mut,
+		       std::map<int, std::map<std::string,double>> scores_map)
+{
+  //  for(auto pos_alt_val: scores_map){
+  //  for(auto alt_val : pos_alt_val.second)
+  //    scores[pos_alt_val.first][alt_val.first] = alt_val.second; 
+  //}
+  if(scores_map.size() != 0 ) {
+    std::cout << "we have scores ladies and gentlemen" << std::endl;
+    scores = scores_map;
+    scores_set = true;
+  } else {
+    std::cout << "no scores here " << std::endl;
+    scores_set = false;
+  }
+    //for (auto x : scores_map)
+  //  for (auto y : x.second)
+  //      std::cout << x.first << " " << y.first << " " << y.second << std::endl;
+
+  init(mut);
+}
+
+
+
+void SitesChecks::init(std::vector<std::vector<std::string>> mut,
+		       std::map<int, std::map<std::string,double>> scores_map,
+		       std::vector<int> residues)
+{
+  if(scores_map.size() != 0 ) {
+    std::cout << "we have scores ladies and gentlemen" << std::endl;
+    scores = scores_map;
+    scores_set = true;
+  } else {
+    std::cout << "no scores here " << std::endl;
+    scores_set = false;
+  }
+
+    // convert the rates data to a nested map
+    for (auto line : mut) {
+        mut_dict[line[0]][line[1]] = std::stod(line[2]);
+    }
+    
+    // calculate the length of sequences used in the mutation rate dictionary
+    // This means we can flexibly use 3-mers, 5-mers, 7-mers etc if desired.
+    std::string str = mut_dict.begin()->first;
+    kmer_length = str.length();
+    mid_pos = kmer_length/2;
+    
+    initialise_choices();
+    // check the consequence alternates for each base in the coding sequence
+    Region region = _get_gene_range(_tx);
+
+    int codon;
+    for (int i=region.start; i < region.end + 1; i++ ) {
+      codon = _tx.get_codon_number(i);
+      if(std::count(residues.begin(), residues.end(), codon))
+        check_position(i);
+    }
+}
+
+void SitesChecks::init(std::vector<std::vector<std::string>> mut,
+		       std::map<int, std::map<std::string,double>> scores_map,
+		       double threshold)
+{
+  if(scores_map.size() != 0 ) {
+    std::cout << "we have scores ladies and gentlemen" << std::endl;
+    scores = scores_map;
+    std::cout << "scores loaded = " << scores.size() << std::endl;
+    std::ofstream stream("scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
+    for(auto& kv : scores) {
+      for (auto& kv2 : kv.second) {
+	stream << kv.first << "\t" << kv2.first << "\t"<< kv2.second << '\n';
+      }
+    }
+    stream.close();
+    scores_set = true;
+  } else {
+    std::cout << "no scores here " << std::endl;
+    scores_set = false;
+  }
+
+    // convert the rates data to a nested map
+    for (auto line : mut) {
+        mut_dict[line[0]][line[1]] = std::stod(line[2]);
+    }
+    
+    // calculate the length of sequences used in the mutation rate dictionary
+    // This means we can flexibly use 3-mers, 5-mers, 7-mers etc if desired.
+    std::string str = mut_dict.begin()->first;
+    kmer_length = str.length();
+    mid_pos = kmer_length/2;
+    
+    initialise_choices();
+    // check the consequence alternates for each base in the coding sequence
+    Region region = _get_gene_range(_tx);
+
+    int codon;
+    for (int i=region.start; i < region.end + 1; i++ ) {
+      codon = _tx.get_codon_number(i);
+      check_position(i, threshold);
+    }
+    
+    std::ofstream stream("above_scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
+    for(auto& site : rates["missense"].get_sites()) {
+      int bp = _tx.get_position_on_chrom(site.pos);
+      //int codon = _tx.get_codon_number(bp);
+      int codon = _tx.get_codon_number_for_cds_position(site.pos);
+      stream << site.pos << "\t" << bp <<"\t" << "codon " << codon << "\t" << _tx.get_codon_sequence(codon)<< "\t" << site.ref << "\t"<< site.alt << "\t" << site.score << '\n';
+    }
+    stream.close();
+    
+    std::ofstream stream2("transcript_site_rates_level.out"); //To Write into a File, Use "ofstream"
+    stream2 << _tx.get_cds_sequence();
+    stream2.close();
+}
+
 void SitesChecks::initialise_choices() {
+    // initialise a WeightedChoice object for each consequence category
     for (auto category : categories) {
         rates[category] = Chooser();
     }
 }
 
+void SitesChecks::print_all(std::string category){
+  for (auto rate : rates){
+    std::cout << rate.first << std::endl;
+    std::cout << rate.second.get_inherited_count() << std::endl;
+  }
+}
+
+double SitesChecks::check_score(std::string initial_aa,
+        std::string mutated_aa, int position)
+{
+  if(scores_set)
+    return scores[position][mutated_aa];
+  else
+    return -1;
+}
+
+<<<<<<< HEAD
 // get the consequence of an amino acid change (or not)
 void SitesChecks::check_consequence(std::string & cq, char & initial_aa,
         char & mutated_aa, int & offset) {
@@ -90,12 +263,23 @@ void SitesChecks::check_consequence(std::string & cq, char & initial_aa,
             cq = "intronic";
         }
     }
+    return cq;
+}
+
+void SitesChecks::set_inherited_controls(std::vector<int> inherited_variants,
+					std::string category)
+{
+  rates[category].set_inherited_choices(inherited_variants);
+  //  std::cout << "Check after set_inherited_choices "<< rates[category].get_inherited_variants().size() << std::endl;
+  //std::cout << "Cat is " << category << std::endl;
+}
+
 }
 
 // add the consequence specific rates for the alternates for a variant
 //
 // @param bp genomic position of the variant
-void SitesChecks::check_position(int bp) {
+void SitesChecks::check_position(int bp, double threshold /*= -2*/) {
     // ignore sites within masked regions (typically masked because the
     // site has been picked up on alternative transcript)
     if ( has_mask && masked.in_coding_region(bp) ) {
@@ -159,7 +343,17 @@ void SitesChecks::check_position(int bp) {
         if (_tx.get_strand() != fwd) {
             alt = transdict[alt];
         }
-        
+
+	//double score = check_score(initial_aa, mutated_aa, bp);
+	double score = scores_set ? scores[bp][alt] : -1;
+
+	//by default, scores = -1 and threshold = -2, so position will be added.
+	//if threshold is set and score is set, position will not be added if below threshold.
+	if(score < threshold){
+	  //std::cout <<"category = " << category << ", cds_pos = " << cds_pos << ", ref = " << ref << ", alt = " << alt << ", score = " << score << ", threshold = " << threshold << ", rate = " << rate << std::endl;
+	  return;
+	}
+	
         if (use_cds_coords) {
             rates[category].add_choice(cds_pos, rate, ref, alt, offset);
         } else {

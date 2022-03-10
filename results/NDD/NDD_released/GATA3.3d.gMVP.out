@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+GATA3	missense	2	15.7	0.013421310961985438
+GATA3	missense_comb	2	15.7	0.014891827354030525
+GATA3	missense_pois	2	15.7	0.15457959500000001
+GATA3	nonsense	0	nan	nan

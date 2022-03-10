@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+TNPO3	missense	6	643.3,nan	0.42783980635733565
+TNPO3	missense_comb	6	643.3,nan	0.0007166760298408729
+TNPO3	missense_pois	6	643.3,nan	0.00015799999999999994
+TNPO3	nonsense	0	nan,nan	nan

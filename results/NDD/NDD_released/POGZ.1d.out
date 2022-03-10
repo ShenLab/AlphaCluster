@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+POGZ	missense	9	552.2	0.03219674408670286
+POGZ	missense_comb	9	552.2	0.0002894408996093088
+POGZ	missense_pois	9	552.2	0.0007750839999999995
+POGZ	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+HSPG2	missense	2	9198.0	0.9076174788042503
+HSPG2	missense_comb	2	9198.0	0.5030161748492131
+HSPG2	missense_pois	2	9198.0	0.20766963024091
+HSPG2	nonsense	0	nan	nan

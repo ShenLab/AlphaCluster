@@ -66,6 +66,8 @@ cdef extern from "tx.h":
         string translate(string) except +
         
         Codon get_codon_info(int) except +
+
+        int get_codon_number(int) except +	
         int get_boundary_distance(int) except +
         string consequence(int, int, string) except +
     

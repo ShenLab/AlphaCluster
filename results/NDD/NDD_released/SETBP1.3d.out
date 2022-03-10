@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SETBP1	missense	12	22.8,nan,nan,nan,nan	1.1111110987654311e-08
+SETBP1	missense_comb	12	22.8,nan,nan,nan,nan	1.538428350241128e-10
+SETBP1	missense_pois	12	22.8,nan,nan,nan,nan	0.0005149700000000001
+SETBP1	nonsense	0	nan,nan,nan,nan,nan	nan

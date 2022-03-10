@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+CHD2	missense	13	36.5	9.999999888888879e-08
+CHD2	missense_comb	13	36.5	1.670117000918612e-13
+CHD2	missense_pois	13	36.5	4.91999999999999e-08
+CHD2	nonsense	0	nan	nan

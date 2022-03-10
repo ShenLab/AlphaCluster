@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ABHD16A	missense	8	34.9	0.8266961908144868
+ABHD16A	missense_comb	8	34.9	0.004435411644041608
+ABHD16A	missense_pois	8	34.9	0.000626345
+ABHD16A	nonsense	0	nan	nan

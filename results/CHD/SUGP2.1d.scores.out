@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+SUGP2	missense	3	1194.1	0.7269959252556009
+SUGP2	missense_comb	3	1194.1	0.001948621627371076
+SUGP2	missense_pois	3	1194.1	0.0002824130394837306
+SUGP2	nonsense	0	nan	nan

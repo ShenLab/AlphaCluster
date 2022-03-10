@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+WDFY3	missense	14	2265.4	0.30133757442958237
+WDFY3	missense_comb	14	2265.4	0.012249338605114997
+WDFY3	missense_pois	14	2265.4	0.005489999999999997
+WDFY3	nonsense	3	1764.1	0.27589727471225256

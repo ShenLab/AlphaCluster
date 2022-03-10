@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+VPS4A	missense	4	33.0	0.05219301053118877
+VPS4A	missense_comb	4	33.0	0.00314218012665325
+VPS4A	missense_pois	4	33.0	0.006722802999999999
+VPS4A	nonsense	0	nan	nan

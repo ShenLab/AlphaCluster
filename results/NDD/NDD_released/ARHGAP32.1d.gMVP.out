@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+ARHGAP32	missense	3	1016.7	0.253635341626274
+ARHGAP32	missense_comb	3	1016.7	0.601586939652607
+ARHGAP32	missense_pois	3	1016.7	1.0
+ARHGAP32	nonsense	0	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+LAMA5	missense	3	224.6	0.00635456659606037
+LAMA5	missense_comb	3	224.6	0.003359673930200361
+LAMA5	missense_pois	3	224.6	0.05954071573285781
+LAMA5	nonsense	1	nan	nan

@@ -1,0 +1,5 @@
+gene_id	mutation_category	events_n	dist	probability
+EVPL	missense	2	76.6	0.6465626261493043
+EVPL	missense_comb	2	76.6	0.12019548607962892
+EVPL	missense_pois	2	76.6	0.0399181549059051
+EVPL	nonsense	1	nan	nan
