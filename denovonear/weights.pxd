@@ -26,7 +26,7 @@ from libcpp.vector cimport vector
 cdef extern from "weighted_choice.h":
     cdef cppclass Chooser:
         Chooser() except +
-        void add_choice(int, double, char, char, int)
+        void add_choice(int, double, char, char, int, double)
         int choice_pos_only()
         void set_inherited_choices(vector[int])
         AlleleChoice choice()
@@ -42,7 +42,7 @@ cdef extern from "weighted_choice.h":
         int pos
         char ref
         char alt
-	double score
+        double score
         double prob
         int offset
 

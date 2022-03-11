@@ -58,8 +58,8 @@ public:
     void generate_choices(std::vector<int> & positions_array,
 			  std::vector<double> & score_array,
 			  int positions_length);    
-    void add_choice(int site, double prob, char ref="N", char alt="N", int offset=0);
-    void add_choice(int site, double prob, char ref="N", char alt="N", int offset=0, double score = 1);  
+    void add_choice(int site, double prob, char ref='N', char alt='N', int offset=0);
+    void add_choice(int site, double prob, char ref='N', char alt='N', int offset=0, double score = 1);  
     int sampled_index();
     int choice_pos_only();
     AlleleChoice choice();

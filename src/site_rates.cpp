@@ -93,7 +93,7 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
 }
 
 void SitesChecks::init(std::vector<std::vector<std::string>> mut,
-		       std::map<int, std::map<std::string,double>> scores_map)
+		       std::map<int, std::map<char,double>> scores_map)
 {
   //  for(auto pos_alt_val: scores_map){
   //  for(auto alt_val : pos_alt_val.second)
@@ -117,7 +117,7 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
 
 
 void SitesChecks::init(std::vector<std::vector<std::string>> mut,
-		       std::map<int, std::map<std::string,double>> scores_map,
+		       std::map<int, std::map<char,double>> scores_map,
 		       std::vector<int> residues)
 {
   if(scores_map.size() != 0 ) {
@@ -146,14 +146,14 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
 
     int codon;
     for (int i=region.start; i < region.end + 1; i++ ) {
-      codon = _tx.get_codon_number(i);
+      codon = _tx.get_codon_info(i).codon_number;
       if(std::count(residues.begin(), residues.end(), codon))
         check_position(i);
     }
 }
 
 void SitesChecks::init(std::vector<std::vector<std::string>> mut,
-		       std::map<int, std::map<std::string,double>> scores_map,
+		       std::map<int, std::map<char,double>> scores_map,
 		       double threshold)
 {
   if(scores_map.size() != 0 ) {
@@ -190,7 +190,7 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
 
     int codon;
     for (int i=region.start; i < region.end + 1; i++ ) {
-      codon = _tx.get_codon_number(i);
+      codon = _tx.get_codon_info(i).codon_number;
       check_position(i, threshold);
     }
     
@@ -222,8 +222,8 @@ void SitesChecks::print_all(std::string category){
   }
 }
 
-double SitesChecks::check_score(std::string initial_aa,
-        std::string mutated_aa, int position)
+double SitesChecks::check_score(char initial_aa,
+        char mutated_aa, int position)
 {
   if(scores_set)
     return scores[position][mutated_aa];
@@ -231,7 +231,6 @@ double SitesChecks::check_score(std::string initial_aa,
     return -1;
 }
 
-<<<<<<< HEAD
 // get the consequence of an amino acid change (or not)
 void SitesChecks::check_consequence(std::string & cq, char & initial_aa,
         char & mutated_aa, int & offset) {
@@ -263,7 +262,7 @@ void SitesChecks::check_consequence(std::string & cq, char & initial_aa,
             cq = "intronic";
         }
     }
-    return cq;
+    //return cq;
 }
 
 void SitesChecks::set_inherited_controls(std::vector<int> inherited_variants,
@@ -272,8 +271,6 @@ void SitesChecks::set_inherited_controls(std::vector<int> inherited_variants,
   rates[category].set_inherited_choices(inherited_variants);
   //  std::cout << "Check after set_inherited_choices "<< rates[category].get_inherited_variants().size() << std::endl;
   //std::cout << "Cat is " << category << std::endl;
-}
-
 }
 
 // add the consequence specific rates for the alternates for a variant
@@ -355,13 +352,13 @@ void SitesChecks::check_position(int bp, double threshold /*= -2*/) {
 	}
 	
         if (use_cds_coords) {
-            rates[category].add_choice(cds_pos, rate, ref, alt, offset);
+	  rates[category].add_choice(cds_pos, rate, ref, alt, offset,score);
         } else {
-            rates[category].add_choice(bp, rate, ref, alt, 0);
+	  rates[category].add_choice(bp, rate, ref, alt, 0, score);
         }
         
         if (category == "nonsense" || category == "splice_lof") {
-            rates["loss_of_function"].add_choice(cds_pos, rate, ref, alt, offset);
+	  rates["loss_of_function"].add_choice(cds_pos, rate, ref, alt, offset, score);
         }
     }
 }

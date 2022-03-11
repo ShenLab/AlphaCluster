@@ -14,13 +14,15 @@ from denovonear.transcript cimport Tx, Transcript, Region, Codon
 cdef extern from "site_rates.h":
     cdef cppclass SitesChecks:
         SitesChecks(Tx, vector[vector[string]], bool) except +
-        SitesChecks(Tx, vector[vector[string]], bool, Tx) except +
+        #SitesChecks(Tx, vector[vector[string]], bool, Tx) except +
+        SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]]) except +
+        SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]], double) except +
+
         #SitesChecks(Tx, vector[vector[string]], bool, vector[double]) except +
         #SitesChecks(Tx, vector[vector[string]], bool, int, int) except +		
         #SitesChecks(Tx, vector[vector[string]], bool, Tx) except +
-        SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[string,double]]) except +
-        #SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[string,double]], vector[int]) except +
-        SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[string,double]], double) except + 		
+        #SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]], vector[int]) except +
+
         
         Tx _tx
         void initialise_choices()
@@ -29,7 +31,6 @@ cdef extern from "site_rates.h":
         
         void check_position(int)
         void check_consequence(string, char, char, int)
-	string check_consequence(string, string, int)
         string print_all(string)
 	
     cdef Region _get_gene_range(Tx)
@@ -38,7 +39,7 @@ cdef extern from "site_rates.h":
 cdef class SiteRates:
     cdef SitesChecks *_checks  # hold a C++ instance which we're wrapping
     def __cinit__(self, Transcript transcript, vector[vector[string]] rates,
-                mapcpp[int,mapcpp[string,double]] scores,
+                mapcpp[int,mapcpp[char,double]] scores,
 		double threshold = -2, vector[int] residues = [],
     		start = None, end = None, 
                 Transcript masked_sites=None, cds_coords=True):
@@ -48,9 +49,6 @@ cdef class SiteRates:
 
         if threshold is not -2:
             self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores, threshold)
-            # self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, start, end)
-            #self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores)
-            #self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores, residues)
         else:
             self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores)
         #    if masked_sites is None:

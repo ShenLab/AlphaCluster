@@ -96,26 +96,26 @@ void Chooser::generate_choices(int * positions_array, int positions_length){
   }
 }
 
-AlleleChoice Chooser::choice() {
-    /**
-        chooses a random element using a set of probability weights
+// AlleleChoice Chooser::choice() {
+//     /**
+//         chooses a random element using a set of probability weights
         
-        @returns AlleleChoice struct containing the pos, ref and alt
-    */
+//         @returns AlleleChoice struct containing the pos, ref and alt
+//     */
     
-    if (cumulative.empty()) {
-      return AlleleChoice {-1, "N", "N", 0.0, 0,1};
-    }
+//     if (cumulative.empty()) {
+//       return AlleleChoice {-1, 'N', 'N', 0.0, 0,1};
+//     }
     
-    // get a random float between 0 and the cumulative sum
-    double number = dist(generator);
+//     // get a random float between 0 and the cumulative sum
+//     double number = dist(generator);
     
-    // figure out where in the list a random probability would fall
-    auto pos = std::lower_bound(cumulative.begin(), cumulative.end(), number);
-    int offset = pos - cumulative.begin();
+//     // figure out where in the list a random probability would fall
+//     auto pos = std::lower_bound(cumulative.begin(), cumulative.end(), number);
+//     int offset = pos - cumulative.begin();
     
-    return sites[offset];
-}
+//     return sites[offset];
+// }
 
 // randomly sample a site, but only return the site position
 // 
