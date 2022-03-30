@@ -355,9 +355,9 @@ std::vector<double> _simulate_distribution(Chooser & choices,
     // make sure the mean distances are sorted, so we can quickly merge with
     // previous distances
     std::sort(mean_distances.begin(), mean_distances.end());
-
+    
     if(dist_file_output != ""){
-      std::cout << "HERE IT IS" << dist_file_output << "\n" << std::endl;
+      std::cout << "HERE IT IS " << dist_file_output << "\n" << std::endl;
       std::ofstream ofs(dist_file_output);
       std::ostream_iterator<double> output_iterator(ofs, "\n");
       std::copy(mean_distances.begin(), mean_distances.end(), output_iterator);

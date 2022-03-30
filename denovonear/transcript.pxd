@@ -42,7 +42,9 @@ cdef extern from "tx.h":
         char get_strand()
         int get_cds_start()
         int get_cds_end()
-        
+        void set_cds_start(int,int)
+        void set_cds_end(int,int)
+
         bool is_exonic(int)
         int closest_exon_num(int)
         Region get_closest_exon(int)

@@ -182,6 +182,25 @@ int Tx::get_cds_end() {
     }
 }
 
+void Tx::set_cds_start(int cds, int offset) {
+    char fwd = '+';
+    if (get_strand() == fwd) {
+        cds_min = cds + offset;
+    } else {
+        cds_max = cds - offset;
+    }
+}
+
+void Tx::set_cds_end(int cds, int offset) {
+    char fwd = '+';
+    if (get_strand() == fwd) {
+        cds_max = cds + offset;
+    } else {
+        cds_min = cds - offset;
+    }
+}
+
+
 // checks if a position lies within the exon ranges
 //
 // @param position integer chromosome position e.g. 10000000

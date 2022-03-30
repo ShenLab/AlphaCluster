@@ -3,7 +3,7 @@
 
 import asyncio
 
-async def load_three_d_locations(path_dir, gene):
+def load_three_d_locations(path_dir, gene):
     """ sort out all the necessary sequences and positions for a gene
     
     Args:
@@ -30,7 +30,7 @@ async def load_three_d_locations(path_dir, gene):
             aa_num += 1
     return three_d_locations
 
-async def load_three_d_multimer(path_dir, multimer):
+def load_three_d_multimer(path_dir, multimer):
     """ sort out all the necessary sequences and positions for a gene
     
     Args:
@@ -60,4 +60,57 @@ async def load_three_d_multimer(path_dir, multimer):
             #            three_d_locations[aa_num]= {x,y,z}
             three_d_locations.append([chain, residue_number,x,y,z])
             aa_num += 1
+    return three_d_locations
+
+d = {'CYS': 'C',
+     'ASP': 'D',
+     'SER': 'S',
+     'GLN': 'Q',
+     'LYS': 'K',
+     'ILE': 'I',
+     'PRO': 'P',
+     'THR': 'T',
+     'PHE': 'F',
+     'ASN': 'N', 
+     'GLY': 'G',
+     'HIS': 'H',
+     'LEU': 'L',
+     'ARG': 'R',
+     'TRP': 'W', 
+     'ALA': 'A',
+     'VAL':'V',
+     'GLU': 'E',
+     'TYR': 'Y',
+     'MET': 'M'}
+
+def load_three_d_locations_from_pdb(path_dir, gene):
+    """ sort out all the necessary sequences and positions for a gene
+    
+    Args:
+        ensembl: EnsemblRequest object to request data from ensembl
+        gene_id: HGNC symbol for gene
+        de_novos: list of de novo positions, so we can check they all fit in
+            the gene transcript
+        
+    Returns:
+        list of Transcript objects for gene, including genomic ranges and sequences
+    """
+    path = path_dir + "/" + gene + ".pdb"
+    #    three_d_locations = {}
+    three_d_locations = []
+    with open(path, "r") as handle:
+        for line in handle:
+            list = line.rstrip().split()
+            id = list[0]
+            if id == 'ATOM':
+                type = list[2]
+                if type == 'CA':
+                    residue = d[list[3]]
+                    chain = list[4]
+                    atom_count = int(list[5])
+                    x = float(list[6])
+                    y = float(list[7])
+                    z = float(list[8])
+                    three_d_locations.append([x,y,z,residue,atom_count,chain])
+
     return three_d_locations

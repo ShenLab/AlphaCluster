@@ -9,7 +9,7 @@ from west_weights import get_pred_count
 
 from math import floor, log
 
-def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions, de_novos_scores, threshold = None, p = 0,dist_file_output=""):
+def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions, de_novos_scores, scale = False, threshold = None, p = 0,dist_file_output=""):
     """ find the probability of getting de novos with a mean conservation
     
     The probability is the number of simulations where the mean conservation
@@ -34,7 +34,7 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
     """
     
     if len(cds_positions) < 2:
-        return (float('nan'), float('nan'))
+        return (float('nan'), float('nan'), float('nan'))
     
     rename = {"lof": "loss_of_function"}
     if consequence in rename:
@@ -43,7 +43,8 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
     #cds_positions = [ transcript.get_coding_distance(x)['pos'] for x in de_novos ]
     #    codon_numbers = [ transcript.get_codon_info(x)['codon_number'] for x in de_novos]
     #    distances = get_distances(cds_positions)
-    print(cds_positions)
+    #print(cds_positions)
+    print("Residues impacted are:")
     for cds_pos in cds_positions:
         print(floor(float(cds_pos)/3)+1)
 
@@ -63,16 +64,22 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
         print(de_novos_scores)
         if len(cds_positions) < 2:
             return (float('nan'), float('nan'))
-        
-    distances = get_distances(cds_positions,
-                              three_d_locations)
 
-    if len(de_novos_scores) > 0 and de_novos_scores[0] != -1 and threshold == None:
+    print(cds_positions)
+    #print(floor(float(cds_positions[0]/3)))
+    #print(floor(float(cds_positions[1]/3)))
+    #print(len(three_d_locations))
+    three_d_locations_xyz = [[row[0],row[1], row[2]] for row in three_d_locations]
+    #print(three_d_locations_xyz)
+    distances = get_distances(cds_positions,
+                              three_d_locations_xyz)
+    print(distances)
+    if len(de_novos_scores) > 0 and de_novos_scores[0] != -1 and scale:
         print("SCORE SCALING")
         distances = scale_distances(distances,
                                     de_novos_scores)
+        print(distances)
 
-    print(distances)
     observed = geomean(distances, p, 3.5)
     print("observed mean = " + str(observed))
     # call a cython wrapped C++ library to handle the simulations
@@ -81,11 +88,11 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
     #sys.stderr.write(transcript)
     print(len(cds_positions))
     print(observed)
-    sim_prob = analyse_de_novos(weights, three_d_locations, iterations, len(cds_positions), observed, p, dist_file_output)
+    sim_prob = analyse_de_novos(weights, three_d_locations_xyz, iterations, len(cds_positions), observed, p, dist_file_output)
     
     observed = "{0:0.1f}".format(observed)
     
-    return (observed, sim_prob)
+    return (observed, sim_prob, len(cds_positions))
 
 def get_p_value_entropy(rates, iterations, consequence, cds_positions, de_novos_scores, p = 0,dist_file_output=""):
     """ find the probability of getting de novos with a mean conservation
@@ -363,7 +370,7 @@ def get_p_value_coevol(transcript, rates, coevol, iterations, consequence, de_no
 
 
 
-def get_p_value_1d(transcript, rates, iterations, consequence, de_novos, de_novos_scores = [], threshold = None, p = 0,dist_file_output=""):
+def get_p_value_1d(transcript, rates, iterations, consequence, de_novos, de_novos_scores = [], scale = False, threshold = None, p = 0,dist_file_output=""):
     """ find the probability of getting de novos with a mean conservation
     
     The probability is the number of simulations where the mean conservation
@@ -410,9 +417,11 @@ def get_p_value_1d(transcript, rates, iterations, consequence, de_novos, de_novo
         de_novos_scores = temp_sco
         print(cds_positions)
         print(de_novos_scores)
+        if len(cds_positions) < 2:
+            return (float('nan'), float('nan'))
 
     distances = get_distances_1d(cds_positions)
-    if de_novos_scores[0] != -1 and threshold == None:
+    if de_novos_scores[0] != -1 and scale:
         print("SCORE SCALING")
         distances = scale_distances(distances, de_novos_scores)
     observed = geomean(distances, p, 1)

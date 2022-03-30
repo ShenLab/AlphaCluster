@@ -13,11 +13,14 @@ from denovonear.transcript cimport Tx, Transcript, Region, Codon
 
 cdef extern from "site_rates.h":
     cdef cppclass SitesChecks:
+        #Original SitesChecks
         SitesChecks(Tx, vector[vector[string]], bool) except +
-        #SitesChecks(Tx, vector[vector[string]], bool, Tx) except +
+	#For score inclusion
         SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]]) except +
+	#For score and threshold inclusion
         SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]], double) except +
-
+        
+        #SitesChecks(Tx, vector[vector[string]], bool, Tx) except +
         #SitesChecks(Tx, vector[vector[string]], bool, vector[double]) except +
         #SitesChecks(Tx, vector[vector[string]], bool, int, int) except +		
         #SitesChecks(Tx, vector[vector[string]], bool, Tx) except +
@@ -38,12 +41,17 @@ cdef extern from "site_rates.h":
 
 cdef class SiteRates:
     cdef SitesChecks *_checks  # hold a C++ instance which we're wrapping
-    def __cinit__(self, Transcript transcript, vector[vector[string]] rates,
-                mapcpp[int,mapcpp[char,double]] scores,
-		double threshold = -2, vector[int] residues = [],
-    		start = None, end = None, 
-                Transcript masked_sites=None, cds_coords=True):
-        
+    def __cinit__(self,
+                  Transcript transcript,
+                  vector[vector[string]] rates,
+                  mapcpp[int, mapcpp[char,double]] scores,
+	          double threshold = -2,
+		  vector[int] residues = [],
+    	          start = None,
+		  end = None, 
+                  Transcript masked_sites=None,
+		  cds_coords=True):
+
         if transcript is None:
             raise ValueError('no transcript supplied')
 

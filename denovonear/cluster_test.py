@@ -2,7 +2,7 @@ from math import log, isnan, floor
 import os
 from scipy.stats import chi2
 from load_inherited import load_inherited
-from load_gene import load_gene, get_de_novos_in_transcript, best_transcript, minimise_transcripts_2
+from load_gene import load_gene, get_de_novos_in_transcript, minimise_transcripts
 from denovonear.load_mutation_rates import load_mutation_rates
 from denovonear.load_de_novos import load_de_novos
 from denovonear.site_specific_rates import SiteRates
@@ -43,8 +43,23 @@ def fishers_method(values):
     else:
         return values
 
-async def cluster_de_novos(symbol, variants, three_d_locations, gene, threshold = None, p = 0, dist_file_output = "", iterations=1000000, mut_dict=None, scores_file = None, dbNSFP_score_obj = None, annotator =None, pvalues_in = None,variant_type = "de_novo", inherited_controls = {}):
-#async def cluster_de_novos(symbol, variants, three_d_locations, ensembl, p = 0, iterations=1000000, mut_dict=None, scores_file = None, pvalues_in = None,variant_type = "de_novo", inherited_controls = {}):    
+def cluster_de_novos(symbol,
+                     variants,
+                     three_d_locations,
+                     gene,
+                     scale,
+                     threshold = None,
+                     p = 0,
+                     dist_file_output = "",
+                     iterations=1000000,
+                     mut_dict=None,
+                     scores_file = None,
+                     dbNSFP_score_obj = None,
+                     annotator =None,
+                     pvalues_in = None,
+                     variant_type = "de_novo",
+                     inherited_controls = {}):
+
     """ analysis proximity cluster of de novos in a single gene
     
     Args:
@@ -70,81 +85,63 @@ async def cluster_de_novos(symbol, variants, three_d_locations, gene, threshold 
     # transcripts that contain the de novos.
     try:
         transcripts = gene.transcripts
-        minimized = minimise_transcripts_2(transcripts, missense + nonsense)
-        transcripts = [x for x in transcripts if x.get_name() in minimized]
-        #transcripts = await load_gene(ensembl, symbol, missense + nonsense)
+        #minimized = minimise_transcripts(transcripts, missense + nonsense)
+        #transcripts = [x for x in transcripts if x.get_name() in minimized]
     except IndexError as e:
         print(e)
         return None
     
     probs = {"miss_prob": [], "nons_prob": []}
     dists = {"miss_dist": [], "nons_dist": []}
+    counts = {"miss_count":[], "nons_count": []}
     results = {"missense":[], "nonsense": []}
     iteration = 0
+    transcripts = [gene.canonical]
+    print(len(transcripts))
     for transcript in transcripts:
+        print(transcript.get_name())
+        #print(transcript.get_end())
+        #print(transcript.get_cds_end())
+        #print(transcript.get_cds_sequence())
+        #print(transcript.translate(transcript.get_cds_sequence()))
+        try:
+            t_aa = "".join(list(transcript.translate(transcript.get_cds_sequence())))
+            p_aa = "".join([row[3] for row in three_d_locations])
+            print(len(t_aa))
+            print(len(p_aa))
+            print(t_aa)
+            print(p_aa)
+            assert p_aa in t_aa
+            #find offsets
+            start_offset = t_aa.find(p_aa)
+            end_offset = t_aa[::-1].find(p_aa[::-1])-1
+            print(start_offset)
+            print(end_offset)
+            if(start_offset != 0):
+                print("And then")
+                transcript.set_cds_start(transcript.get_cds_start(),start_offset*3)
+            if(end_offset != 0):
+                transcript.set_cds_end(transcript.get_cds_end(),end_offset*-3)                
+            #assert p_aa[offset-1:] == t_aa
+            #print("game time")
+            #transcript.add_cds_sequence(p_aa)
+            #print(transcript.get_cds_sequence())
+            #print("then we hit the field like")
+            #transcript.add_genomic_sequence(transcript.get_genomic_sequence(), offset)
+            #transcript.set_genomic_offset(offset)
+            #print(transcript.get_genomic_sequence())
+            #print("all day like")
+            #t_aa = "".join(list(transcript.translate(transcript.get_cds_sequence())))
+            #print(t_aa)
+        except:
+            print("AlphaFold and transcript disagree for transcript " + transcript.get_name())
+            continue
+                
+        
         iteration += 1
         missense_events = get_de_novos_in_transcript(transcript, missense)
         nonsense_events = get_de_novos_in_transcript(transcript, nonsense)
-
-        if variant_type == "inherited":
-            inherited_controls["missense"] = get_de_novos_in_transcript(transcript,
-                                                                    inherited_controls["missense"])
-            inherited_controls["missense"] = [ transcript.get_coding_distance(x)['pos'] for x in inherited_controls["missense"]]
-            rates.set_inherited_controls(inherited_controls["missense"],
-                                         "missense")
-            # NOTE: other possible approaches
-            # rates = SiteRates(transcript, mut_dict, inherited_controls["missense"])
-            # rates["missense"].set_inherited_choices(inherited_controls["missense"])
-
-            # print(inherited_controls["missense"])
-        mode = "k-clusters"
-        mode = ""
-        if mode == "k-clusters":
-            windows = create_windows(missense_events)
-#            windows = list(set(windows))
-            for w in windows:
-                dists["miss_dist_" + str(w[0]) + "-" + str(w[1])] = []
-                probs["miss_prob_" + str(w[0]) + "-" + str(w[1])] = []                
-            for w in windows:
-                print("NEW WINDOW " + str(w[0]) + " to " + str(w[1]))
-                window_variants = [ x for x in missense_events if (x >= w[0] and x <= w[1])]
-                print(window_variants)
-                rates = SiteRates(transcript, mut_dict, w[0], w[1])
-                (miss_dist, miss_prob) = get_p_value_1d(transcript,
-                                                        rates,
-                                                        #three_d_locations,
-                                                        iterations,
-                                                        "missense",
-                                                        window_variants,
-                                                        p)
-                dists["miss_dist_" + str(w[0]) + "-" + str(w[1])].append(miss_dist)
-                probs["miss_prob_" + str(w[0]) + "-" + str(w[1])].append(miss_prob)
-                results["missense"] += [[w[0], w[1], len(window_variants), miss_dist, miss_prob]]
-            windows = create_windows(nonsense_events)
-#            windows = list(set(windows))            
-            for w in windows:
-                dists["nons_dist_" + str(w[0]) + "-" + str(w[1])] = []
-                probs["nons_prob_" + str(w[0]) + "-" + str(w[1])] = []                
-            for w in windows:
-                print("NEW NONSENSE WINDOW " + str(w[0]) + " to " + str(w[1]))
-                window_variants = [ x for x in nonsense_events if (x >= w[0] and x <= w[1])]
-                print(window_variants)                
-                rates = SiteRates(transcript, mut_dict, w[0], w[1])
-                (nons_dist, nons_prob) = get_p_value_1d(transcript,
-                                                        rates,
-                                                        #three_d_locations,
-                                                        iterations,
-                                                        "lof",
-                                                        window_variants,
-                                                        p)
-
-
-                dists["nons_dist_" + str(w[0]) + "-" + str(w[1])].append(nons_dist)
-                probs["nons_prob_" + str(w[0]) + "-" + str(w[1])].append(nons_prob)
-                results["nonsense"] += [[w[0], w[1], len(window_variants), nons_dist, nons_prob]]
-
-
-
+        
         scores = {}
         if dbNSFP_score_obj is not None:
             dbNSFP_header = dbNSFP_score_obj.header[0].split('\t')
@@ -152,7 +149,7 @@ async def cluster_de_novos(symbol, variants, three_d_locations, gene, threshold 
                 anno_idx = dbNSFP_header.index(annotator)
                 alt_idx = dbNSFP_header.index('alt')
                 pos_idx = dbNSFP_header.index('pos(1-based)')
-                for line in dbNSFP_score_obj.fetch(transcript.get_chrom(),
+                for line in dbNSFP_score_obj.fetch(transcript.get_chrom()[3:],
                                                    transcript.get_start()-1,
                                                    transcript.get_end()):
                     values = line.split('\t')
@@ -165,32 +162,32 @@ async def cluster_de_novos(symbol, variants, three_d_locations, gene, threshold 
                     score = float(values[anno_idx])
                     if int(pos) not in scores:
                         scores[int(pos)] = {}
-                    scores[int(pos)][alt.encode('utf-8')] = float(score)
+                    scores[int(pos)][ord(alt)] = float(score)
                     
-            missense_scores = [scores[int(pos)][alt.encode('utf-8')] for pos,alt in variants["missense"]]
+            missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"]]
             nonsense_scores = [-1 for x in nonsense_events]                        
         elif scores_file is not None:
-            for line in scores_file.fetch(transcript.get_chrom(),
+            for line in scores_file.fetch(transcript.get_chrom()[3:],
                                           transcript.get_start()-1,
                                           transcript.get_end()):
                 #_, pos, _, alt, _, score = line.split('\t')
                 pos = line.split('\t')[1]
                 alt = line.split('\t')[3]
-                score = line.split('\t')[13]                
+                score = line.split('\t')[5]                
                 if int(pos) not in scores:
                     scores[int(pos)] = {}
-                scores[int(pos)][alt.encode('utf-8')] = float(score)
-            missense_scores = [scores[int(pos)][alt.encode('utf-8')] for pos,alt in variants["missense"]]
+                scores[int(pos)][ord(alt)] = float(score)
+            missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"]]
             nonsense_scores = [-1 for x in nonsense_events]            
         else:
             missense_scores = [-1 for x in missense_events]
             nonsense_scores = [-1 for x in nonsense_events]
-        print(transcript.get_name())
-
-        scores = {}
 
         # Handling thresholding of distribution
-        rates = SiteRates(transcript, mut_dict, scores)
+        if scale:
+            rates = SiteRates(transcript, mut_dict, scores)
+        else:
+            rates = SiteRates(transcript, mut_dict, {})
         #if threshold == None:
         #    rates = SiteRates(transcript, mut_dict, scores)
         #else:
@@ -199,26 +196,35 @@ async def cluster_de_novos(symbol, variants, three_d_locations, gene, threshold 
         # Move to no longer need transcript in next layer
         miss_cds_positions = [ transcript.get_coding_distance(x)['pos'] for x in missense_events ]
         nons_cds_positions = [ transcript.get_coding_distance(x)['pos'] for x in nonsense_events ]        
+        #miss_cds_positions = [ transcript.get_coding_distance(x)['pos'] - offset*3 for x in missense_events ]
+        #nons_cds_positions = [ transcript.get_coding_distance(x)['pos'] - offset*3 for x in nonsense_events ]        
 
+        miss_cds_positions = [ x for x in miss_cds_positions if x>=0]
+        nons_cds_positions = [ x for x in nons_cds_positions if x>=0]        
+
+        print("Offense like")
+        print(miss_cds_positions)
+        
         missense_dist_file_output=""
         nonsense_dist_file_output=""
         if(dist_file_output != None):
             missense_dist_file_output = dist_file_output + symbol + ".missense.3d.dist"
             nonsense_dist_file_output = dist_file_output + symbol + ".nonsense.3d.dist" + dist_file_output
             
-        (miss_dist, miss_prob) = get_p_value(rates,
+        (miss_dist, miss_prob, miss_count) = get_p_value(rates,
                                              three_d_locations,
                                              iterations,
                                              "missense",
                                              miss_cds_positions,
                                              missense_scores,
+                                             scale,
                                              threshold,
                                              p,
                                              missense_dist_file_output.encode('utf-8'))
         #if iteration == 1:
         #    os.rename('current_distribution.txt', symbol + ".missense.3d.dist.txt")
 
-        (nons_dist, nons_prob) = get_p_value(SiteRates(transcript,mut_dict, {}),
+        (nons_dist, nons_prob, nons_count) = get_p_value(SiteRates(transcript,mut_dict, {}),
                                              three_d_locations,
                                              iterations,
                                              "lof",
@@ -231,10 +237,13 @@ async def cluster_de_novos(symbol, variants, three_d_locations, gene, threshold 
 
         dists["miss_dist"].append(miss_dist)
         dists["nons_dist"].append(nons_dist)
+        counts["miss_count"].append(miss_count)
+        counts["nons_count"].append(nons_count)        
         probs["miss_prob"].append(miss_prob)
         probs["nons_prob"].append(nons_prob)
         results["missense"] += [[transcript.get_start(), transcript.get_end(), len(missense_events), miss_dist, miss_prob]]
-        results["nonsense"] += [[transcript.get_start(), transcript.get_end(), len(nonsense_events), nons_dist, nons_prob]]        
+        results["nonsense"] += [[transcript.get_start(), transcript.get_end(), len(nonsense_events), nons_dist, nons_prob]]
+
         # remove the de novos analysed in the current transcript, so that
         # analysis of subsequent transcripts uses independent events. NOTE THAT
         # THIS MIGHT MISS SOME CLUSTERING ACROSS MUTUALLY EXCLUSIVE TRANSCRIPTS
@@ -254,9 +263,10 @@ async def cluster_de_novos(symbol, variants, three_d_locations, gene, threshold 
 
     probs = {k: fishers_method(probs[k]) for k in probs}
     probs.update(dists)
+    probs.update(counts)
     return probs, results
 
-async def de_novos_entropy(symbol, variants, gene, p = 0, dist_file_output = "", iterations=1000000, mut_dict=None, scores_file = None, dbNSFP_score_obj = None, annotator =None):
+def de_novos_entropy(symbol, variants, gene, p = 0, dist_file_output = "", iterations=1000000, mut_dict=None, scores_file = None, dbNSFP_score_obj = None, annotator =None):
 #async def cluster_de_novos(symbol, variants, three_d_locations, ensembl, p = 0, iterations=1000000, mut_dict=None, scores_file = None, pvalues_in = None,variant_type = "de_novo", inherited_controls = {}):    
     """ analysis proximity cluster of de novos in a single gene
     
@@ -281,7 +291,7 @@ async def de_novos_entropy(symbol, variants, gene, p = 0, dist_file_output = "",
     # transcripts that contain the de novos.
     try:
         transcripts = gene.transcripts
-        minimized = minimise_transcripts_2(transcripts, missense + nonsense)
+        minimized = minimise_transcripts(transcripts, missense + nonsense)
         transcripts = [x for x in transcripts if x.get_name() in minimized]
         #transcripts = await load_gene(ensembl, symbol, missense + nonsense)
     except IndexError as e:
@@ -318,9 +328,9 @@ async def de_novos_entropy(symbol, variants, gene, p = 0, dist_file_output = "",
         #             score = float(values[anno_idx])
         #             if int(pos) not in scores:
         #                 scores[int(pos)] = {}
-        #             scores[int(pos)][alt.encode('utf-8')] = float(score)
+        #             scores[int(pos)][ord(alt)] = float(score)
                     
-        #     missense_scores = [scores[int(pos)][alt.encode('utf-8')] for pos,alt in variants["missense"]]
+        #     missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"]]
         #     nonsense_scores = [-1 for x in nonsense_events]                        
         # elif scores_file is not None:
         #     for line in scores_file.fetch(transcript.get_chrom(),
@@ -329,11 +339,11 @@ async def de_novos_entropy(symbol, variants, gene, p = 0, dist_file_output = "",
         #         #_, pos, _, alt, _, score = line.split('\t')
         #         pos = line.split('\t')[1]
         #         alt = line.split('\t')[3]
-        #         score = line.split('\t')[13]                
+        #         score = line.split('\t')[5]                
         #         if int(pos) not in scores:
         #             scores[int(pos)] = {}
-        #         scores[int(pos)][alt.encode('utf-8')] = float(score)
-        #     missense_scores = [scores[int(pos)][alt.encode('utf-8')] for pos,alt in variants["missense"]]
+        #         scores[int(pos)][ord(alt)] = float(score)
+        #     missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"]]
         #     nonsense_scores = [-1 for x in nonsense_events]            
         # else:
         missense_scores = [-1 for x in missense_events]
@@ -390,13 +400,13 @@ async def de_novos_entropy(symbol, variants, gene, p = 0, dist_file_output = "",
 
 
 
-async def cluster_de_novos_multi(multimer_name,
+def cluster_de_novos_multi(multimer_name,
                                  all_chains,
                                  proteins,
                                  proteins_to_chains,
                                  variants,
                                  three_d_locations,
-                                 ensembl,
+                                 genes,#ensembl,
                                  p = 0,
                                  dist_file_output = "",
                                  iterations=1000000,
@@ -455,7 +465,9 @@ async def cluster_de_novos_multi(multimer_name,
 #        nonsense = [pos for pos,alt in variants[protein]["nonsense"]]
     
         try:
-            transcript = await best_transcript(ensembl,protein,missense)
+            transcript = genes[protein].canonical            
+            #transcript = await best_transcript(ensembl,protein,missense)
+
         except IndexError as e:
             print(e)
             return None
@@ -499,15 +511,15 @@ async def cluster_de_novos_multi(multimer_name,
         scores[protein] = {}
         if scores_file is not None:
             if scores[protein] == {}:
-                for line in scores_file.fetch(transcript.get_chrom(),
+                for line in scores_file.fetch(transcript.get_chrom()[3:],
                                               transcript.get_start()-1,
                                               transcript.get_end()):
                     pos = line.split('\t')[1]
                     alt = line.split('\t')[3]
-                    score = line.split('\t')[13]                
+                    score = line.split('\t')[5]                
                     if int(pos) not in scores[protein]:
                         scores[protein][int(pos)] = {}
-                    scores[protein][int(pos)][alt.encode('utf-8')] = float(score)
+                    scores[protein][int(pos)][ord(alt)] = float(score)
 
 
         # Collect the missense for this protein
@@ -518,13 +530,13 @@ async def cluster_de_novos_multi(multimer_name,
                     print(transcript.get_position_on_chrom(cds_pos,0))
                     print(scores[protein][transcript.get_position_on_chrom(cds_pos,0)])
                     alt = missense_records_map[protein][transcript.get_position_on_chrom(cds_pos,0)]
-                    all_missense_scores.append(scores[protein][transcript.get_position_on_chrom(cds_pos,0)][alt.encode('utf-8')])
+                    all_missense_scores.append(scores[protein][transcript.get_position_on_chrom(cds_pos,0)][ord(alt)])
                 else:
                     all_missense_scores.append(-1)
 
         
         #create and append the rate object for protein
-        rates.append({"protein" : protein, "rate" : SiteRates(transcript, mut_dict, scores[protein], these_residues)})
+        rates.append({"protein" : protein, "rate" : SiteRates(transcript, mut_dict, scores[protein])})
 
         for rate in rates:
             print(rate["rate"]["missense"].get_summed_rate())
@@ -587,7 +599,7 @@ async def cluster_de_novos_multi(multimer_name,
 
 
 
-async def cluster_de_novos_coevol(symbol, variants, coevol, gene, p = 0, dist_file_output = "", iterations=1000000, mut_dict=None,scores = {}, pvalues_in=None,
+def cluster_de_novos_coevol(symbol, variants, coevol, gene, p = 0, dist_file_output = "", iterations=1000000, mut_dict=None,scores = {}, pvalues_in=None,
                            variant_type = "de_novo"):
     """ analysis proximity cluster of de novos in a single gene
     
@@ -614,7 +626,7 @@ async def cluster_de_novos_coevol(symbol, variants, coevol, gene, p = 0, dist_fi
     # transcripts that contain the de novos.
     try:
         transcripts = gene.transcripts
-        minimized = minimise_transcripts_2(transcripts, missense + nonsense)
+        minimized = minimise_transcripts(transcripts, missense + nonsense)
         transcripts = [x for x in transcripts if x.get_name() in minimized]
         #transcripts = await load_gene(ensembl, symbol, missense + nonsense)
     except IndexError as e:
@@ -687,16 +699,17 @@ async def cluster_de_novos_coevol(symbol, variants, coevol, gene, p = 0, dist_fi
 
 
 
-async def cluster_de_novos_1d(symbol,
-                              variants,
-                              ensembl,
-                              threshold,
-                              p = 0,
-                              dist_file_output = "",
-                              iterations=1000000,
-                              mut_dict=None,
-                              scores_file = None,
-                              pvalues_in = None):
+def cluster_de_novos_1d(symbol,
+                        variants,
+                        gene,
+                        scale,
+                        threshold,
+                        p = 0,
+                        dist_file_output = "",
+                        iterations=1000000,
+                        mut_dict=None,
+                        scores_file = None,
+                        pvalues_in = None):
     """ analysis proximity cluster of de novos in a single gene
     
     Args:
@@ -722,7 +735,9 @@ async def cluster_de_novos_1d(symbol,
     # required to contain all the de novos, unless we can't find any coding
     # transcripts that contain the de novos.
     try:
-        transcripts = await load_gene(ensembl, symbol, missense + nonsense)
+        transcripts = gene.transcripts
+        minimized = minimise_transcripts(transcripts, missense + nonsense)
+        transcripts = [x for x in transcripts if x.get_name() in minimized]
     except IndexError as e:
         print(e)
         return None
@@ -738,24 +753,27 @@ async def cluster_de_novos_1d(symbol,
 
         scores = {}
         if scores_file is not None:
-            for line in scores_file.fetch(transcript.get_chrom(),
+            for line in scores_file.fetch(transcript.get_chrom()[3:],
                                           transcript.get_start()-1,
                                           transcript.get_end()):
                 #_, pos, _, alt, _, score = line.split('\t')
                 pos = line.split('\t')[1]
                 alt = line.split('\t')[3]
-                score = line.split('\t')[13]                
+                score = line.split('\t')[5]                
                 if int(pos) not in scores:
                     scores[int(pos)] = {}
-                scores[int(pos)][alt.encode('utf-8')] = float(score)                
-            missense_scores = [scores[int(pos)][alt.encode('utf-8')] for pos,alt in variants["missense"]]
+                scores[int(pos)][ord(alt)] = float(score)                
+            missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"]]
             nonsense_scores = [1 for x in nonsense_events]
         else:
             missense_scores = [1 for x in missense_events]
             nonsense_scores = [1 for x in nonsense_events]
 
         # Handling thresholding of distribution
-        rates = SiteRates(transcript, mut_dict, scores)
+        if scale:
+            rates = SiteRates(transcript, mut_dict, scores)
+        else:
+            rates = SiteRates(transcript, mut_dict, {})
         #if threshold == None:
         #    rates = SiteRates(transcript, mut_dict, scores)
         #else:
@@ -775,6 +793,7 @@ async def cluster_de_novos_1d(symbol,
                                                 "missense",
                                                 missense_events,
                                                 missense_scores,
+                                                scale,
                                                 threshold,
                                                 p,
                                                 missense_dist_file_output.encode('utf-8'))

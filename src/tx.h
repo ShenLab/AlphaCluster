@@ -69,7 +69,9 @@ class Tx {
     char get_strand() { return tx_strand; }
     int get_cds_start();
     int get_cds_end();
-    
+    void set_cds_start(int cds, int offset);
+    void set_cds_end(int cds, int offset);
+
     bool is_exonic(int pos, Region exon);
     bool is_exonic(int pos);
     int closest_exon_num(int pos);
@@ -87,7 +89,6 @@ class Tx {
     std::string get_cds_sequence() { return cds_sequence; }
     std::string get_genomic_sequence() { return genomic_sequence; }
     int get_genomic_offset() { return gdna_offset; }
-    
     void _fix_transcript_off_by_one_bp();
     
     std::string reverse_complement(std::string seq);

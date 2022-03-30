@@ -370,7 +370,12 @@ cdef class Gencode:
     def nearest(self, str chrom, int pos):
         ''' find the nearest gene to a genomic chrom, pos coordinate
         '''
-        chrom = f'chr{chrom}' if not chrom.startswith('chr') else chrom
+	# sanatize the chromosome first
+        if self.chrom.startswith('chr') and not chrom.startswith('chr'):
+            chrom = f'chr{chrom}'
+        elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
+            chrom = chrom[3:]
+        #chrom = f'chr{chrom}' if not chrom.startswith('chr') else chrom
         _chrom = chrom.encode('utf8')
         
         # first, account for any overlapping genespython

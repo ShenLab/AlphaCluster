@@ -5,7 +5,6 @@ import os
 from itertools import product, chain
 
 from denovonear.site_specific_rates import SiteRates
-from load_gene import best_transcript
 from denovonear.gencode import Gencode
 
 def get_annotation_score(gene_scores, annotations_files, annotator, gene, chrom, pos, alt):

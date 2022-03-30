@@ -289,6 +289,10 @@ cdef class Transcript:
         return self.thisptr.get_cds_start()
     def get_cds_end(self):
         return self.thisptr.get_cds_end()
+    def set_cds_start(self, cds, offset):
+        return self.thisptr.set_cds_start(cds, offset)
+    def set_cds_end(self, cds, offset):
+        return self.thisptr.set_cds_end(cds, offset)
     def fix_cds_boundary(self, pos):
         return self.thisptr.fix_cds_boundary(pos)
     

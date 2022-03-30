@@ -109,11 +109,7 @@ async def get_cds_seq_for_transcript(ensembl, transcript_id, build='grch38'):
     resp = await ensembl.get(url, headers)
     return resp.decode('utf8')
 
-<<<<<<< HEAD
-async def get_protein_seq_for_transcript(ensembl, transcript_id, build='grch37'):
-=======
 async def get_protein_seq_for_transcript(ensembl, transcript_id, build='grch38'):
->>>>>>> dev_merge
     """ obtain the sequence for a transcript from ensembl
     """
     headers = {"content-type": "text/plain"}
