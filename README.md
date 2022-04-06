@@ -24,16 +24,17 @@ seperation). Our code greatly extends the initial test by:
 <p align="center">
   <img src="img/schematic.png">
 </p>
-<ol type="a">
+<ol type="A">
   <li>A gene of interested is selected</li>
-<li>The n variants of this gene of interest are fetched from the user specified variant table (with possible scale thresholding, which only selects some category of Dmis variants)</li>
-<li>If specified, the missense damaging scores for these variants and all potential variants are fetched for later use</li>
-<li>User specified protein or protein multimeric complex three-dimensional model is loaded</li>
-<li>The 3D coordinates of the central carbon atom of each amino acid is retrieved</li>
-<li>The observed geometric mean of the pairwise distances between each variant of the gene of interest is calculated; if desired, the pairwise distances can be inversely scaled by the sum of the damaging scores of the pair or variants which are below a given threshold can be excluded</li>
-<li>For 1E9 iterations (or an otherwise user specified iteration count), n random variants are selected from all the possible variants in the gene of interest, with respect to the underlying background mutation rate; the geometric mean is of the pairwise distances (if desired, with score scaling) is calculated and these geometric means are used to form a null distribution of geometric means</li>
-<li>The null distribution is used to designate a p-value for the observed geometric mean of the n actual variants observed in the gene of interest</li>
+  <li>The n variants of this gene of interest are fetched from the user specified variant table (with possible scale thresholding, which only selects some category of Dmis variants)</li>
+  <li>If specified, the missense damaging scores for these variants and all potential variants are fetched for later use</li>
+  <li>User specified protein or protein multimeric complex three-dimensional model is loaded</li>
+  <li>The 3D coordinates of the central carbon atom of each amino acid is retrieved</li>
+  <li>The observed geometric mean of the pairwise distances between each variant of the gene of interest is calculated; if desired, the pairwise distances can be inversely scaled by the sum of the damaging scores of the pair or variants which are below a given threshold can be excluded</li>
+  <li>For 1E9 iterations (or an otherwise user specified iteration count), n random variants are selected from all the possible variants in the gene of interest, with respect to the underlying background mutation rate; the geometric mean is of the pairwise distances (if desired, with score scaling) is calculated and these geometric means are used to form a null distribution of geometric means</li>
+  <li>The null distribution is used to designate a p-value for the observed geometric mean of the n actual variants observed in the gene of interest</li>
 </ol>
+
 ## Motivation
 The functional impact of missense variants is complex. A single deleterious score does not capture the complexity. For example, some variants are hypomorph, some are neomorph; some are loss of function, some are gain of function; some change the stability of the protein, some change the interaction with other proteins, and some change the enzymatic activity.
 
