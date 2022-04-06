@@ -55,6 +55,11 @@ cat CHD8.demo_results.txt
 ```
 
 ## Core functionality
+
+<p align="center">
+  <img src="img/schematic.png">
+</p>
+
 The core usage options are `cluster`, `cluster-1d`, `cluster-coev`, and `cluster-multi`.
 The user can run these commands to perform the cluster analysis in 3-dimmensional
 space, 1-dimmensional space, "co-evolution" space for a single protein, or 3-dimmensional space for a protein complex. For the returned results of these analyses, see the section on [output][#output].
