@@ -20,6 +20,10 @@ seperation). Our code greatly extends the initial test by:
 - incorporating co-evolutionary clustering analysis
 - extending to include inherited variants
 
+<p align="center">
+  <img src="img/schematic.png">
+</p>
+
 ## Motivation
 The functional impact of missense variants is complex. A single deleterious score does not capture the complexity. For example, some variants are hypomorph, some are neomorph; some are loss of function, some are gain of function; some change the stability of the protein, some change the interaction with other proteins, and some change the enzymatic activity.
 
@@ -55,11 +59,6 @@ cat CHD8.demo_results.txt
 ```
 
 ## Core functionality
-
-<p align="center">
-  <img src="img/schematic.png">
-</p>
-
 The core usage options are `cluster`, `cluster-1d`, `cluster-coev`, and `cluster-multi`.
 The user can run these commands to perform the cluster analysis in 3-dimmensional
 space, 1-dimmensional space, "co-evolution" space for a single protein, or 3-dimmensional space for a protein complex. For the returned results of these analyses, see the section on [output][#output].
