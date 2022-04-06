@@ -24,6 +24,9 @@ seperation). Our code greatly extends the initial test by:
 <p align="center">
   <img src="img/schematic.png">
 </p>
+<ol type="a">
+  <li>Test</li>
+</ol>
 (A) A gene of interested is selected
 (B) The n variants of this gene of interest are fetched from the user specified variant table (with possible scale thresholding, which only selects some category of Dmis variants)
 (C) If specified, the missense damaging scores for these variants and all potential variants are fetched for later use
