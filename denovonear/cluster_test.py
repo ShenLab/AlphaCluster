@@ -35,7 +35,7 @@ def fishers_method(values):
     values = [ x for x in values if not isnan(x) ]
     # use Fisher's combined method to estimate the P value from multiple
     # P-values. The chi square statistic is -2*sum(ln(P-values))
-    if len(values)>0:
+    if len(values)>1:
         if min(values)>1E-20:
             return chi2.sf(-2 * sum(map(log, values)), 2 * len(values))
         else :
@@ -54,6 +54,7 @@ def cluster_de_novos(symbol,
                      iterations=1000000,
                      mut_dict=None,
                      scores_file = None,
+                     score_col = 5,
                      dbNSFP_score_obj = None,
                      annotator =None,
                      pvalues_in = None,
@@ -109,7 +110,9 @@ def cluster_de_novos(symbol,
             p_aa = "".join([row[3] for row in three_d_locations])
             print(len(t_aa))
             print(len(p_aa))
+            print("Transcript")
             print(t_aa)
+            print("Uniprot")
             print(p_aa)
             assert p_aa in t_aa
             #find offsets
@@ -173,7 +176,8 @@ def cluster_de_novos(symbol,
                 #_, pos, _, alt, _, score = line.split('\t')
                 pos = line.split('\t')[1]
                 alt = line.split('\t')[3]
-                score = line.split('\t')[5]                
+                #score = line.split('\t')[5]
+                score = line.split('\t')[int(score_col)]                
                 if int(pos) not in scores:
                     scores[int(pos)] = {}
                 scores[int(pos)][ord(alt)] = float(score)
@@ -255,12 +259,14 @@ def cluster_de_novos(symbol,
         dists[key] = ",".join([ str(x) for x in dists[key] ])
 
     if pvalues_in != None:
+        dists["miss_dist_pois"] = dists["miss_dist"]
         dists["miss_dist_comb"] = dists["miss_dist"]
+
+        probs["miss_prob_pois"] = [pvalues_in[symbol]]
+        
         probs["miss_prob_comb"] = probs["miss_prob"].copy()
         probs["miss_prob_comb"].append(pvalues_in[symbol])
-        probs["miss_prob_pois"] = [pvalues_in[symbol]]
-        dists["miss_dist_pois"] = dists["miss_dist"]
-
+        
     probs = {k: fishers_method(probs[k]) for k in probs}
     probs.update(dists)
     probs.update(counts)
@@ -401,18 +407,19 @@ def de_novos_entropy(symbol, variants, gene, p = 0, dist_file_output = "", itera
 
 
 def cluster_de_novos_multi(multimer_name,
-                                 all_chains,
-                                 proteins,
-                                 proteins_to_chains,
-                                 variants,
-                                 three_d_locations,
-                                 genes,#ensembl,
-                                 p = 0,
-                                 dist_file_output = "",
-                                 iterations=1000000,
-                                 mut_dict=None,
-                                 scores_file = None,
-                                 pvalues_in = None):
+                           all_chains,
+                           proteins,
+                           proteins_to_chains,
+                           variants,
+                           three_d_locations,
+                           genes,#ensembl,
+                           p = 0,
+                           dist_file_output = "",
+                           iterations=1000000,
+                           mut_dict=None,
+                           scores_file = None,
+                           score_col = 5,
+                           pvalues_in = None):
     """ analysis proximity cluster of de novos in a single gene
     
     Args:
@@ -516,7 +523,7 @@ def cluster_de_novos_multi(multimer_name,
                                               transcript.get_end()):
                     pos = line.split('\t')[1]
                     alt = line.split('\t')[3]
-                    score = line.split('\t')[5]                
+                    score = line.split('\t')[int(score_col)]                
                     if int(pos) not in scores[protein]:
                         scores[protein][int(pos)] = {}
                     scores[protein][int(pos)][ord(alt)] = float(score)
@@ -709,6 +716,7 @@ def cluster_de_novos_1d(symbol,
                         iterations=1000000,
                         mut_dict=None,
                         scores_file = None,
+                        score_col = 5,
                         pvalues_in = None):
     """ analysis proximity cluster of de novos in a single gene
     
@@ -759,7 +767,7 @@ def cluster_de_novos_1d(symbol,
                 #_, pos, _, alt, _, score = line.split('\t')
                 pos = line.split('\t')[1]
                 alt = line.split('\t')[3]
-                score = line.split('\t')[5]                
+                score = line.split('\t')[int(score_col)]                
                 if int(pos) not in scores:
                     scores[int(pos)] = {}
                 scores[int(pos)][ord(alt)] = float(score)                

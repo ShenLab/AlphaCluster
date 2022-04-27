@@ -10,6 +10,7 @@ import logging
 import pysam
 import random
 from scipy.stats import poisson
+from math import floor, log
 
 from rate_limiter import RateLimiter
 from load_mutation_rates import load_mutation_rates
@@ -170,7 +171,7 @@ def poisson_test(output, args):
                     pos = line.split('\t')[1]
                     ref = line.split('\t')[2]
                     alt = line.split('\t')[3]
-                    score = line.split('\t')[5]                
+                    score = line.split('\t')[int(args.score_col)]                
 
                     if score == '.' :
                         has_no_score = has_no_score + 1
@@ -223,6 +224,7 @@ def poisson_test(output, args):
             
             print("Number of missense variants = " + str(len(rates["missense"])))
             print("Summed rates = " + str(rates["missense"].get_summed_rate()))
+            print("Count = " + str(count))
             print("Poisson test = " + str(pois_rate))
                 
         #with open(output, "w") as output_file:
@@ -231,6 +233,68 @@ def poisson_test(output, args):
         output.write("gene_id\tpoisson_p_value\n")
         output.write("{}\t{}\n".format(symbol, pois_rate)) 
 
+def genomic_to_residue_position(output, args):
+    three_d_locations_list =  load_three_d_locations(args.protein_dir, args.protein)
+    three_d_aa = load_three_d_locations_from_pdb(args.protein_dir, args.protein)
+    genes = load_gencode(None, args.gencode, args.fasta)
+    print("Length is " + str(len(three_d_aa)))
+
+    
+    try:
+        transcripts = [genes[args.protein].canonical]
+    except IndexError as e:
+        print(e)
+        return None
+
+    for transcript in transcripts:
+#        print(transcript.get_name())
+        t_aa = "".join(list(transcript.translate(transcript.get_cds_sequence())))
+        p_aa = "".join([row[3] for row in three_d_aa])
+#        print(len(t_aa))
+#        print(len(p_aa))
+#        print("Transcript")
+#        print(t_aa)
+#        print("Uniprot")
+#        print(p_aa)
+        try:
+            assert p_aa in t_aa
+            #find offsets
+            start_offset = t_aa.find(p_aa)
+            end_offset = t_aa[::-1].find(p_aa[::-1])-1
+            print(start_offset)
+            print(end_offset)
+            if(start_offset != 0):
+                print("And then")
+                transcript.set_cds_start(transcript.get_cds_start(),start_offset*3)
+            if(end_offset != 0):
+                transcript.set_cds_end(transcript.get_cds_end(),end_offset*-3)                
+        except:
+            print("AlphaFold and transcript disagree for transcript " + transcript.get_name())
+            continue
+
+        de_novos = load_de_novos(args.input)
+        # if protein specific run, limit the input variants to this protein/gene
+        if "protein" in args and args.protein in de_novos:
+            de_novos = {args.protein : de_novos[args.protein]}
+        else:
+            return
+        print(de_novos)
+
+        missense = [pos for pos,alt in de_novos[args.protein]["missense"]]
+        nonsense = [pos for pos,alt in de_novos[args.protein]["nonsense"]]
+
+        missense_events = get_de_novos_in_transcript(transcript, missense)
+        nonsense_events = get_de_novos_in_transcript(transcript, nonsense)
+
+        miss_cds_positions = [ transcript.get_coding_distance(x)['pos'] for x in missense_events ]
+        nons_cds_positions = [ transcript.get_coding_distance(x)['pos'] for x in nonsense_events ]        
+
+        miss_aa_positions = [floor(float(x)/3)+1 for x in miss_cds_positions]
+        nons_aa_positions = [floor(float(x)/3)+1 for x in nons_cds_positions]        
+
+        print(sorted(miss_aa_positions))
+        print(sorted(nons_aa_positions))
+        
 def clustering(output, args):
     de_novos = load_de_novos(args.input)
     mut_dict = load_mutation_rates(args.rates)
@@ -254,8 +318,6 @@ def clustering(output, args):
 
         three_d_aa = load_three_d_locations_from_pdb(args.protein_dir, symbol)
 
-        print(three_d_aa)
-
         if args.scores is not None:
             scores = pysam.TabixFile(args.scores)
         else:
@@ -275,6 +337,7 @@ def clustering(output, args):
             pvalues_in = None
 
         genes = load_gencode(None, args.gencode, args.fasta)
+        print("Length is " + str(len(three_d_aa)))
         (probs,results) =  cluster_de_novos(symbol,
                                             de_novos[symbol],
                                             three_d_aa,
@@ -286,6 +349,7 @@ def clustering(output, args):
                                             args.runs,#iterations,
                                             mut_dict,
                                             scores,
+                                            args.score_col,
                                             dbNSFP_score_obj,
                                             args.dbNSFP_annotator,
                                             pvalues_in)
@@ -436,6 +500,7 @@ def clustering_multi(output, args):
                                                    args.runs,#iterations,
                                                    mut_dict,
                                                    scores,
+                                                   args.score_col,
                                                    pvalues_in)
     #os.rename('current_distribution.txt',  args.multimer + ".missense.multi.dist.txt")
     if probs is None:
@@ -581,6 +646,7 @@ def clustering_1d(output, args):
                                      args.runs,#iterations,
                                      mut_dict,
                                      scores,
+                                     args.score_col,
                                      pvalues_in)
         
         if probs is None:
@@ -737,6 +803,8 @@ def get_options():
     parent.add_argument("--log", default=sys.stdout, help="where to write log files")
     
     subparsers = parser.add_subparsers()
+
+    
     
     ############################################################################
     # CLI options for clustering
@@ -757,8 +825,20 @@ def get_options():
     cluster.add_argument("--pvalues_in", dest="pvalues_in", required=False)
     cluster.add_argument("--degree", dest="degree", default = 0, type = float, required=False)
     cluster.add_argument("--histogram_data", dest="dist_file_output", required=False)
+    cluster.add_argument("--score_col", dest="score_col", required=False,default = 5)    
     cluster.set_defaults(func=clustering)
+    ############################################################################
+    # CLI options for clustering
+    gen_to_aa = subparsers.add_parser('gen_to_aa', parents=[parent],
+        description="Get animo acids impacted by variants.")
+    gen_to_aa.add_argument("--in", dest="input", required=True, help="Path to "
+        "file listing known mutations in genes. See example file in data folder "
+        "for format.")
+    gen_to_aa.add_argument("--protein_dir", dest="protein_dir", required=True)
+    gen_to_aa.add_argument("--protein", dest="protein", required=False)
 
+    gen_to_aa.set_defaults(func=genomic_to_residue_position)
+    
     ############################################################################
     # CLI options for entropy_test
     entropy_test = subparsers.add_parser('entropy_test', parents=[parent],
@@ -791,7 +871,8 @@ def get_options():
     poisson.add_argument("--dbNSFP_annotator", dest="dbNSFP_annotator")
     poisson.add_argument("--threshold", dest="threshold", required=False)
     # poisson.add_argument("--females", dest="N_females", type=float, required=False)
-    # poisson.add_argument("--males", dest="N_males", type=float, required=False)        
+    # poisson.add_argument("--males", dest="N_males", type=float, required=False)
+    poisson.add_argument("--score_col", dest="score_col", required=False,default = 5)
     poisson.set_defaults(func=poisson_test)    
     ############################################################################
     # CLI options for clustering
@@ -843,7 +924,8 @@ def get_options():
     cluster_1d.add_argument("--degree", dest="degree", default = 0, type = float, required=False)
     cluster_1d.add_argument("--scores", dest="scores")
     cluster_1d.add_argument("--scale", dest="scale", action="store_true")
-    cluster_1d.add_argument("--histogram_data", dest="dist_file_output", required=False)    
+    cluster_1d.add_argument("--histogram_data", dest="dist_file_output", required=False)
+    cluster_1d.add_argument("--score_col", dest="score_col", required=False,default = 5)
     cluster_1d.set_defaults(func=clustering_1d)
     
 

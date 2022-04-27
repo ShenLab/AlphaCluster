@@ -2,6 +2,8 @@
 """
 
 import asyncio
+import gzip
+
 
 def load_three_d_locations(path_dir, gene):
     """ sort out all the necessary sequences and positions for a gene
@@ -95,22 +97,34 @@ def load_three_d_locations_from_pdb(path_dir, gene):
     Returns:
         list of Transcript objects for gene, including genomic ranges and sequences
     """
-    path = path_dir + "/" + gene + ".pdb"
+    path = path_dir + "/" + gene + ".pdb.gz"
     #    three_d_locations = {}
     three_d_locations = []
-    with open(path, "r") as handle:
+    with gzip.open(path, "r") as handle:
         for line in handle:
-            list = line.rstrip().split()
-            id = list[0]
+            list = line.rstrip().decode("utf-8").split()
+            line = line.decode("utf-8")
+            #id = list[0]
+            id = line[0:4].strip()
+            #print(id)
             if id == 'ATOM':
-                type = list[2]
+                #type = list[2]
+                type = line[12:16].strip()
                 if type == 'CA':
-                    residue = d[list[3]]
-                    chain = list[4]
-                    atom_count = int(list[5])
-                    x = float(list[6])
-                    y = float(list[7])
-                    z = float(list[8])
+                    #print(type)
+                    #residue = d[list[3]]
+                    #chain = list[4]
+                    #atom_count = int(list[5])
+                    #x = float(list[6])
+                    #y = float(list[7])
+                    #z = float(list[8])
+                    residue = d[line[17:20].strip()]
+                    chain = line[20:22].strip()
+                    atom_count = line[22:27].strip()
+                    x = float(line[30:38].strip())
+                    y = float(line[38:46].strip())
+                    z = float(line[46:54].strip())
+
                     three_d_locations.append([x,y,z,residue,atom_count,chain])
 
     return three_d_locations
