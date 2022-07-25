@@ -1011,7 +1011,7 @@ struct __pyx_obj_12alphacluster_10transcript_Transcript {
 };
 
 
-/* "alphacluster/gencode.pyx":85
+/* "alphacluster/gencode.pyx":83
  * __genome_ = None
  * 
  * cdef class Gene:             # <<<<<<<<<<<<<<
@@ -1030,7 +1030,7 @@ struct __pyx_obj_12alphacluster_7gencode_Gene {
 };
 
 
-/* "alphacluster/gencode.pyx":306
+/* "alphacluster/gencode.pyx":302
  *         return min(abs(self.start - pos), abs(self.end - pos))
  * 
  * cdef class Gencode:             # <<<<<<<<<<<<<<
@@ -1045,7 +1045,7 @@ struct __pyx_obj_12alphacluster_7gencode_Gencode {
 };
 
 
-/* "alphacluster/gencode.pyx":286
+/* "alphacluster/gencode.pyx":282
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
@@ -1059,7 +1059,7 @@ struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds {
 };
 
 
-/* "alphacluster/gencode.pyx":289
+/* "alphacluster/gencode.pyx":285
  *         ''' find if a pos is in coding region of any transcript of a gene
  *         '''
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)             # <<<<<<<<<<<<<<
@@ -1073,7 +1073,7 @@ struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr {
 };
 
 
-/* "alphacluster/gencode.pyx":365
+/* "alphacluster/gencode.pyx":361
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -1092,7 +1092,7 @@ struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ {
 
 
 
-/* "alphacluster/gencode.pyx":85
+/* "alphacluster/gencode.pyx":83
  * __genome_ = None
  * 
  * cdef class Gene:             # <<<<<<<<<<<<<<
@@ -2499,8 +2499,6 @@ static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *__pyx_v
   PyObject *__pyx_v_chrom = NULL;
   int __pyx_v_start;
   int __pyx_v_end;
-  int __pyx_v_cds_start;
-  int __pyx_v_cds_end;
   PyObject *__pyx_v_exons = NULL;
   PyObject *__pyx_v_cds = NULL;
   PyObject *__pyx_v_strand = NULL;
@@ -2517,9 +2515,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *__pyx_v
   struct gencode::NamedTx __pyx_t_7;
   Tx __pyx_t_8;
   PyObject *__pyx_t_9 = NULL;
-  PyObject *__pyx_t_10 = NULL;
-  PyObject *__pyx_t_11 = NULL;
-  int __pyx_t_12;
+  int __pyx_t_10;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2612,7 +2608,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *__pyx_v
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()             # <<<<<<<<<<<<<<
  *         end = tx.get_end()
- *         cds_start = tx.get_cds_start()
+ *         exons = _convert_exons(tx.get_exons())
  */
     __pyx_v_start = __pyx_v_tx.get_start();
 
@@ -2620,161 +2616,133 @@ static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *__pyx_v
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()
  *         end = tx.get_end()             # <<<<<<<<<<<<<<
- *         cds_start = tx.get_cds_start()
- *         cds_end = tx.get_cds_end()
+ *         exons = _convert_exons(tx.get_exons())
+ *         cds = _convert_exons(tx.get_cds())
  */
     __pyx_v_end = __pyx_v_tx.get_end();
 
     /* "alphacluster/gencode.pyx":73
  *         start = tx.get_start()
  *         end = tx.get_end()
- *         cds_start = tx.get_cds_start()             # <<<<<<<<<<<<<<
- *         cds_end = tx.get_cds_end()
- *         exons = _convert_exons(tx.get_exons())
- */
-    __pyx_v_cds_start = __pyx_v_tx.get_cds_start();
-
-    /* "alphacluster/gencode.pyx":74
- *         end = tx.get_end()
- *         cds_start = tx.get_cds_start()
- *         cds_end = tx.get_cds_end()             # <<<<<<<<<<<<<<
- *         exons = _convert_exons(tx.get_exons())
- *         cds = _convert_exons(tx.get_cds())
- */
-    __pyx_v_cds_end = __pyx_v_tx.get_cds_end();
-
-    /* "alphacluster/gencode.pyx":75
- *         cds_start = tx.get_cds_start()
- *         cds_end = tx.get_cds_end()
  *         exons = _convert_exons(tx.get_exons())             # <<<<<<<<<<<<<<
  *         cds = _convert_exons(tx.get_cds())
  *         strand = chr(tx.get_strand())
  */
-    __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_exons, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":76
- *         cds_end = tx.get_cds_end()
+    /* "alphacluster/gencode.pyx":74
+ *         end = tx.get_end()
  *         exons = _convert_exons(tx.get_exons())
  *         cds = _convert_exons(tx.get_cds())             # <<<<<<<<<<<<<<
  *         strand = chr(tx.get_strand())
  *         tx_id = tx.get_name().decode('utf8')
  */
-    __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_cds, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":77
+    /* "alphacluster/gencode.pyx":75
  *         exons = _convert_exons(tx.get_exons())
  *         cds = _convert_exons(tx.get_cds())
  *         strand = chr(tx.get_strand())             # <<<<<<<<<<<<<<
  *         tx_id = tx.get_name().decode('utf8')
- *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)
+ *         transcript = Transcript(tx_id, chrom, start, end, strand, exons, cds, offset=0)
  */
-    __pyx_t_1 = __Pyx_PyInt_From_char(__pyx_v_tx.get_strand()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_char(__pyx_v_tx.get_strand()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_strand, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "alphacluster/gencode.pyx":78
+    /* "alphacluster/gencode.pyx":76
  *         cds = _convert_exons(tx.get_cds())
  *         strand = chr(tx.get_strand())
  *         tx_id = tx.get_name().decode('utf8')             # <<<<<<<<<<<<<<
- *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)
+ *         transcript = Transcript(tx_id, chrom, start, end, strand, exons, cds, offset=0)
  *         transcripts.append((x.symbol.decode('utf8'), transcript, x.is_canonical))
  */
-    __pyx_t_2 = __Pyx_decode_cpp_string(__pyx_v_tx.get_name(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_decode_cpp_string(__pyx_v_tx.get_name(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_tx_id, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "alphacluster/gencode.pyx":79
+    /* "alphacluster/gencode.pyx":77
  *         strand = chr(tx.get_strand())
  *         tx_id = tx.get_name().decode('utf8')
- *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)             # <<<<<<<<<<<<<<
+ *         transcript = Transcript(tx_id, chrom, start, end, strand, exons, cds, offset=0)             # <<<<<<<<<<<<<<
  *         transcripts.append((x.symbol.decode('utf8'), transcript, x.is_canonical))
  *     return transcripts
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Transcript); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Transcript); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_end); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_cds_start); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(7); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_cds_end); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 79, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = PyTuple_New(9); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 79, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(__pyx_v_tx_id);
     __Pyx_GIVEREF(__pyx_v_tx_id);
-    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_v_tx_id);
+    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_tx_id);
     __Pyx_INCREF(__pyx_v_chrom);
     __Pyx_GIVEREF(__pyx_v_chrom);
-    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_chrom);
+    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_chrom);
     __Pyx_GIVEREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
-    PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_3);
-    __Pyx_GIVEREF(__pyx_t_9);
-    PyTuple_SET_ITEM(__pyx_t_11, 4, __pyx_t_9);
-    __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_11, 5, __pyx_t_10);
+    PyTuple_SET_ITEM(__pyx_t_9, 3, __pyx_t_3);
     __Pyx_INCREF(__pyx_v_strand);
     __Pyx_GIVEREF(__pyx_v_strand);
-    PyTuple_SET_ITEM(__pyx_t_11, 6, __pyx_v_strand);
+    PyTuple_SET_ITEM(__pyx_t_9, 4, __pyx_v_strand);
     __Pyx_INCREF(__pyx_v_exons);
     __Pyx_GIVEREF(__pyx_v_exons);
-    PyTuple_SET_ITEM(__pyx_t_11, 7, __pyx_v_exons);
+    PyTuple_SET_ITEM(__pyx_t_9, 5, __pyx_v_exons);
     __Pyx_INCREF(__pyx_v_cds);
     __Pyx_GIVEREF(__pyx_v_cds);
-    PyTuple_SET_ITEM(__pyx_t_11, 8, __pyx_v_cds);
+    PyTuple_SET_ITEM(__pyx_t_9, 6, __pyx_v_cds);
     __pyx_t_1 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_9 = 0;
-    __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 79, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_offset, __pyx_int_0) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
-    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 79, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_offset, __pyx_int_0) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_XDECREF_SET(__pyx_v_transcript, __pyx_t_9);
-    __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_transcript, __pyx_t_1);
+    __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":80
+    /* "alphacluster/gencode.pyx":78
  *         tx_id = tx.get_name().decode('utf8')
- *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)
+ *         transcript = Transcript(tx_id, chrom, start, end, strand, exons, cds, offset=0)
  *         transcripts.append((x.symbol.decode('utf8'), transcript, x.is_canonical))             # <<<<<<<<<<<<<<
  *     return transcripts
  * 
  */
-    __pyx_t_9 = __Pyx_decode_cpp_string(__pyx_v_x.symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_x.symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_x.is_canonical); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_x.is_canonical); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 80, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 80, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_11);
-    __Pyx_GIVEREF(__pyx_t_9);
-    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9);
+    __Pyx_GIVEREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1);
     __Pyx_INCREF(__pyx_v_transcript);
     __Pyx_GIVEREF(__pyx_v_transcript);
-    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_transcript);
-    __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_t_10);
-    __pyx_t_9 = 0;
-    __pyx_t_10 = 0;
-    __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_transcripts, __pyx_t_11); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 80, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_transcript);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_t_3);
+    __pyx_t_1 = 0;
+    __pyx_t_3 = 0;
+    __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_transcripts, __pyx_t_9); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 78, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
     /* "alphacluster/gencode.pyx":68
  * 
@@ -2785,8 +2753,8 @@ static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *__pyx_v
  */
   }
 
-  /* "alphacluster/gencode.pyx":81
- *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)
+  /* "alphacluster/gencode.pyx":79
+ *         transcript = Transcript(tx_id, chrom, start, end, strand, exons, cds, offset=0)
  *         transcripts.append((x.symbol.decode('utf8'), transcript, x.is_canonical))
  *     return transcripts             # <<<<<<<<<<<<<<
  * 
@@ -2811,8 +2779,6 @@ static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *__pyx_v
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("alphacluster.gencode._open_gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -2926,7 +2892,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_2_open_gencode(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":91
+/* "alphacluster/gencode.pyx":89
  *     cdef str _chrom
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):             # <<<<<<<<<<<<<<
@@ -2963,7 +2929,7 @@ static int __pyx_pw_12alphacluster_7gencode_4Gene_1__cinit__(PyObject *__pyx_v_s
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 91, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 89, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -2974,7 +2940,7 @@ static int __pyx_pw_12alphacluster_7gencode_4Gene_1__cinit__(PyObject *__pyx_v_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 91, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 89, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("alphacluster.gencode.Gene.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3002,7 +2968,7 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(struct __pyx_obj_12a
   __Pyx_RefNannySetupContext("__cinit__", 0);
   __Pyx_INCREF(__pyx_v_symbol);
 
-  /* "alphacluster/gencode.pyx":92
+  /* "alphacluster/gencode.pyx":90
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):
  *         if isinstance(symbol, str):             # <<<<<<<<<<<<<<
@@ -3013,14 +2979,14 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(struct __pyx_obj_12a
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "alphacluster/gencode.pyx":93
+    /* "alphacluster/gencode.pyx":91
  *     def __cinit__(self, symbol):
  *         if isinstance(symbol, str):
  *             symbol = symbol.encode('utf8')             # <<<<<<<<<<<<<<
  *         self._symbol = symbol
  *         self.start = 999999999
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3034,13 +3000,13 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(struct __pyx_obj_12a
     }
     __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_n_u_utf8);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_symbol, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "alphacluster/gencode.pyx":92
+    /* "alphacluster/gencode.pyx":90
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):
  *         if isinstance(symbol, str):             # <<<<<<<<<<<<<<
@@ -3049,35 +3015,35 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(struct __pyx_obj_12a
  */
   }
 
-  /* "alphacluster/gencode.pyx":94
+  /* "alphacluster/gencode.pyx":92
  *         if isinstance(symbol, str):
  *             symbol = symbol.encode('utf8')
  *         self._symbol = symbol             # <<<<<<<<<<<<<<
  *         self.start = 999999999
  *         self.end = -999999999
  */
-  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
   __pyx_v_self->_symbol = __pyx_t_6;
 
-  /* "alphacluster/gencode.pyx":95
+  /* "alphacluster/gencode.pyx":93
  *             symbol = symbol.encode('utf8')
  *         self._symbol = symbol
  *         self.start = 999999999             # <<<<<<<<<<<<<<
  *         self.end = -999999999
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start, __pyx_int_999999999) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start, __pyx_int_999999999) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
 
-  /* "alphacluster/gencode.pyx":96
+  /* "alphacluster/gencode.pyx":94
  *         self._symbol = symbol
  *         self.start = 999999999
  *         self.end = -999999999             # <<<<<<<<<<<<<<
  * 
  *     cdef add_tx(self, Tx tx, int is_canonical):
  */
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end, __pyx_int_neg_999999999) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end, __pyx_int_neg_999999999) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
 
-  /* "alphacluster/gencode.pyx":91
+  /* "alphacluster/gencode.pyx":89
  *     cdef str _chrom
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):             # <<<<<<<<<<<<<<
@@ -3100,7 +3066,7 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(struct __pyx_obj_12a
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":98
+/* "alphacluster/gencode.pyx":96
  *         self.end = -999999999
  * 
  *     cdef add_tx(self, Tx tx, int is_canonical):             # <<<<<<<<<<<<<<
@@ -3122,7 +3088,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_tx", 0);
 
-  /* "alphacluster/gencode.pyx":99
+  /* "alphacluster/gencode.pyx":97
  * 
  *     cdef add_tx(self, Tx tx, int is_canonical):
  *         self._transcripts.push_back(tx)             # <<<<<<<<<<<<<<
@@ -3133,10 +3099,10 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
     __pyx_v_self->_transcripts.push_back(__pyx_v_tx);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 99, __pyx_L1_error)
+    __PYX_ERR(0, 97, __pyx_L1_error)
   }
 
-  /* "alphacluster/gencode.pyx":100
+  /* "alphacluster/gencode.pyx":98
  *     cdef add_tx(self, Tx tx, int is_canonical):
  *         self._transcripts.push_back(tx)
  *         self._canonical.push_back(is_canonical)             # <<<<<<<<<<<<<<
@@ -3147,22 +3113,22 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
     __pyx_v_self->_canonical.push_back(__pyx_v_is_canonical);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 100, __pyx_L1_error)
+    __PYX_ERR(0, 98, __pyx_L1_error)
   }
 
-  /* "alphacluster/gencode.pyx":101
+  /* "alphacluster/gencode.pyx":99
  *         self._transcripts.push_back(tx)
  *         self._canonical.push_back(is_canonical)
  *         self.chrom = tx.get_chrom().decode('utf8')             # <<<<<<<<<<<<<<
  *         self.start = min(self.start, tx.get_start())
  *         self.end = max(self.end, tx.get_end())
  */
-  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_tx.get_chrom(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_tx.get_chrom(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom, __pyx_t_1) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom, __pyx_t_1) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":102
+  /* "alphacluster/gencode.pyx":100
  *         self._canonical.push_back(is_canonical)
  *         self.chrom = tx.get_chrom().decode('utf8')
  *         self.start = min(self.start, tx.get_start())             # <<<<<<<<<<<<<<
@@ -3170,16 +3136,16 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
  * 
  */
   __pyx_t_2 = __pyx_v_tx.get_start();
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_6) {
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_3 = __pyx_t_5;
     __pyx_t_5 = 0;
@@ -3191,10 +3157,10 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
   __pyx_t_1 = __pyx_t_3;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start, __pyx_t_1) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start, __pyx_t_1) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":103
+  /* "alphacluster/gencode.pyx":101
  *         self.chrom = tx.get_chrom().decode('utf8')
  *         self.start = min(self.start, tx.get_start())
  *         self.end = max(self.end, tx.get_end())             # <<<<<<<<<<<<<<
@@ -3202,16 +3168,16 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
  *     def add_transcript(self, _tx):
  */
   __pyx_t_2 = __pyx_v_tx.get_end();
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_6) {
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __pyx_t_4;
     __pyx_t_4 = 0;
@@ -3223,10 +3189,10 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
   __pyx_t_1 = __pyx_t_3;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end, __pyx_t_1) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end, __pyx_t_1) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":98
+  /* "alphacluster/gencode.pyx":96
  *         self.end = -999999999
  * 
  *     cdef add_tx(self, Tx tx, int is_canonical):             # <<<<<<<<<<<<<<
@@ -3250,7 +3216,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_1
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":105
+/* "alphacluster/gencode.pyx":103
  *         self.end = max(self.end, tx.get_end())
  * 
  *     def add_transcript(self, _tx):             # <<<<<<<<<<<<<<
@@ -3305,7 +3271,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_transcript", 0);
 
-  /* "alphacluster/gencode.pyx":112
+  /* "alphacluster/gencode.pyx":110
  *         time wasted, so long as we don't do this millions of times.
  *         '''
  *         assert isinstance(_tx, Transcript)             # <<<<<<<<<<<<<<
@@ -3314,25 +3280,25 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Transcript); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Transcript); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyObject_IsInstance(__pyx_v__tx, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_2 = PyObject_IsInstance(__pyx_v__tx, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!(__pyx_t_2 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 112, __pyx_L1_error)
+      __PYX_ERR(0, 110, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "alphacluster/gencode.pyx":114
+  /* "alphacluster/gencode.pyx":112
  *         assert isinstance(_tx, Transcript)
  *         # construct a new Tx obect by copying out the relevant data
  *         cdef string tx_id = _tx.get_name().encode('utf8')             # <<<<<<<<<<<<<<
  *         cdef string chrom = _tx.get_chrom().encode('utf8')
  *         cdef int start = _tx.get_start()
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3346,10 +3312,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -3364,21 +3330,21 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_n_u_utf8);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_tx_id = __pyx_t_6;
 
-  /* "alphacluster/gencode.pyx":115
+  /* "alphacluster/gencode.pyx":113
  *         # construct a new Tx obect by copying out the relevant data
  *         cdef string tx_id = _tx.get_name().encode('utf8')
  *         cdef string chrom = _tx.get_chrom().encode('utf8')             # <<<<<<<<<<<<<<
  *         cdef int start = _tx.get_start()
  *         cdef int end = _tx.get_end()
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_chrom); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_chrom); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3392,10 +3358,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -3410,21 +3376,77 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_u_utf8);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_chrom = __pyx_t_6;
 
-  /* "alphacluster/gencode.pyx":116
+  /* "alphacluster/gencode.pyx":114
  *         cdef string tx_id = _tx.get_name().encode('utf8')
  *         cdef string chrom = _tx.get_chrom().encode('utf8')
  *         cdef int start = _tx.get_start()             # <<<<<<<<<<<<<<
  *         cdef int end = _tx.get_end()
  *         cdef char strand = ord(_tx.get_strand())
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_start = __pyx_t_7;
+
+  /* "alphacluster/gencode.pyx":115
+ *         cdef string chrom = _tx.get_chrom().encode('utf8')
+ *         cdef int start = _tx.get_start()
+ *         cdef int end = _tx.get_end()             # <<<<<<<<<<<<<<
+ *         cdef char strand = ord(_tx.get_strand())
+ *         cdef vector[vector[int]] exons
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_end); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_end = __pyx_t_7;
+
+  /* "alphacluster/gencode.pyx":116
+ *         cdef int start = _tx.get_start()
+ *         cdef int end = _tx.get_end()
+ *         cdef char strand = ord(_tx.get_strand())             # <<<<<<<<<<<<<<
+ *         cdef vector[vector[int]] exons
+ *         cdef vector[vector[int]] cds
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_strand); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3441,74 +3463,18 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_start = __pyx_t_7;
-
-  /* "alphacluster/gencode.pyx":117
- *         cdef string chrom = _tx.get_chrom().encode('utf8')
- *         cdef int start = _tx.get_start()
- *         cdef int end = _tx.get_end()             # <<<<<<<<<<<<<<
- *         cdef char strand = ord(_tx.get_strand())
- *         cdef vector[vector[int]] exons
- */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_end); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_end = __pyx_t_7;
-
-  /* "alphacluster/gencode.pyx":118
- *         cdef int start = _tx.get_start()
- *         cdef int end = _tx.get_end()
- *         cdef char strand = ord(_tx.get_strand())             # <<<<<<<<<<<<<<
- *         cdef vector[vector[int]] exons
- *         cdef vector[vector[int]] cds
- */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_strand); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyObject_Ord(__pyx_t_1); if (unlikely(__pyx_t_8 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_Ord(__pyx_t_1); if (unlikely(__pyx_t_8 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_strand = __pyx_t_8;
 
-  /* "alphacluster/gencode.pyx":122
+  /* "alphacluster/gencode.pyx":120
  *         cdef vector[vector[int]] cds
  *         cdef vector[int] exon
  *         for x in _tx.get_exons():             # <<<<<<<<<<<<<<
  *             exon = [x['start'], x['end']]
  *             exons.push_back(exon)
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_exons); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_exons); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3522,16 +3488,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3); __pyx_t_9 = 0;
     __pyx_t_10 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_9 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 120, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -3539,17 +3505,17 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 122, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 122, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_1); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -3559,7 +3525,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 122, __pyx_L1_error)
+          else __PYX_ERR(0, 120, __pyx_L1_error)
         }
         break;
       }
@@ -3568,18 +3534,18 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":123
+    /* "alphacluster/gencode.pyx":121
  *         cdef vector[int] exon
  *         for x in _tx.get_exons():
  *             exon = [x['start'], x['end']]             # <<<<<<<<<<<<<<
  *             exons.push_back(exon)
  *         for x in _tx.get_cds():
  */
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyList_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_5 = PyList_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_1);
     PyList_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -3587,11 +3553,11 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
     PyList_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
     __pyx_t_1 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_11 = __pyx_convert_vector_from_py_int(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_11 = __pyx_convert_vector_from_py_int(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_exon = __pyx_t_11;
 
-    /* "alphacluster/gencode.pyx":124
+    /* "alphacluster/gencode.pyx":122
  *         for x in _tx.get_exons():
  *             exon = [x['start'], x['end']]
  *             exons.push_back(exon)             # <<<<<<<<<<<<<<
@@ -3602,10 +3568,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       __pyx_v_exons.push_back(__pyx_v_exon);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 124, __pyx_L1_error)
+      __PYX_ERR(0, 122, __pyx_L1_error)
     }
 
-    /* "alphacluster/gencode.pyx":122
+    /* "alphacluster/gencode.pyx":120
  *         cdef vector[vector[int]] cds
  *         cdef vector[int] exon
  *         for x in _tx.get_exons():             # <<<<<<<<<<<<<<
@@ -3615,14 +3581,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "alphacluster/gencode.pyx":125
+  /* "alphacluster/gencode.pyx":123
  *             exon = [x['start'], x['end']]
  *             exons.push_back(exon)
  *         for x in _tx.get_cds():             # <<<<<<<<<<<<<<
  *             exon = [x['start'], x['end']]
  *             cds.push_back(exon)
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_cds); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_cds); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3636,16 +3602,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_5 = __pyx_t_3; __Pyx_INCREF(__pyx_t_5); __pyx_t_9 = 0;
     __pyx_t_10 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_10 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __pyx_t_10 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 123, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -3653,17 +3619,17 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       if (likely(PyList_CheckExact(__pyx_t_5))) {
         if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 125, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 123, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 125, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_3); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 123, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -3673,7 +3639,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 125, __pyx_L1_error)
+          else __PYX_ERR(0, 123, __pyx_L1_error)
         }
         break;
       }
@@ -3682,18 +3648,18 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "alphacluster/gencode.pyx":126
+    /* "alphacluster/gencode.pyx":124
  *             exons.push_back(exon)
  *         for x in _tx.get_cds():
  *             exon = [x['start'], x['end']]             # <<<<<<<<<<<<<<
  *             cds.push_back(exon)
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_3);
     PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -3701,11 +3667,11 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
     PyList_SET_ITEM(__pyx_t_1, 1, __pyx_t_4);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_11 = __pyx_convert_vector_from_py_int(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_11 = __pyx_convert_vector_from_py_int(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_exon = __pyx_t_11;
 
-    /* "alphacluster/gencode.pyx":127
+    /* "alphacluster/gencode.pyx":125
  *         for x in _tx.get_cds():
  *             exon = [x['start'], x['end']]
  *             cds.push_back(exon)             # <<<<<<<<<<<<<<
@@ -3716,10 +3682,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       __pyx_v_cds.push_back(__pyx_v_exon);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 127, __pyx_L1_error)
+      __PYX_ERR(0, 125, __pyx_L1_error)
     }
 
-    /* "alphacluster/gencode.pyx":125
+    /* "alphacluster/gencode.pyx":123
  *             exon = [x['start'], x['end']]
  *             exons.push_back(exon)
  *         for x in _tx.get_cds():             # <<<<<<<<<<<<<<
@@ -3729,7 +3695,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "alphacluster/gencode.pyx":129
+  /* "alphacluster/gencode.pyx":127
  *             cds.push_back(exon)
  * 
  *         cdef Tx tx = Tx(tx_id, chrom, start, end, strand)             # <<<<<<<<<<<<<<
@@ -3740,11 +3706,11 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
     __pyx_t_12 = Tx(__pyx_v_tx_id, __pyx_v_chrom, __pyx_v_start, __pyx_v_end, __pyx_v_strand);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 129, __pyx_L1_error)
+    __PYX_ERR(0, 127, __pyx_L1_error)
   }
   __pyx_v_tx = __pyx_t_12;
 
-  /* "alphacluster/gencode.pyx":130
+  /* "alphacluster/gencode.pyx":128
  * 
  *         cdef Tx tx = Tx(tx_id, chrom, start, end, strand)
  *         tx.set_exons(exons, cds)             # <<<<<<<<<<<<<<
@@ -3755,10 +3721,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
     __pyx_v_tx.set_exons(__pyx_v_exons, __pyx_v_cds);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 130, __pyx_L1_error)
+    __PYX_ERR(0, 128, __pyx_L1_error)
   }
 
-  /* "alphacluster/gencode.pyx":131
+  /* "alphacluster/gencode.pyx":129
  *         cdef Tx tx = Tx(tx_id, chrom, start, end, strand)
  *         tx.set_exons(exons, cds)
  *         tx.set_cds(cds)             # <<<<<<<<<<<<<<
@@ -3769,17 +3735,17 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
     __pyx_v_tx.set_cds(__pyx_v_cds);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 131, __pyx_L1_error)
+    __PYX_ERR(0, 129, __pyx_L1_error)
   }
 
-  /* "alphacluster/gencode.pyx":133
+  /* "alphacluster/gencode.pyx":131
  *         tx.set_cds(cds)
  * 
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')             # <<<<<<<<<<<<<<
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_genomic_sequence); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_genomic_sequence); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3793,10 +3759,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -3811,21 +3777,21 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_1, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_n_u_utf8);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_seq = __pyx_t_6;
 
-  /* "alphacluster/gencode.pyx":134
+  /* "alphacluster/gencode.pyx":132
  * 
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')
  *         cdef int offset = _tx.get_genomic_offset()             # <<<<<<<<<<<<<<
  *         if len(seq) > 0:
  *             if chr(strand) == '-':
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_genomic_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_get_genomic_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3839,53 +3805,53 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   }
   __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_offset = __pyx_t_7;
 
-  /* "alphacluster/gencode.pyx":135
+  /* "alphacluster/gencode.pyx":133
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:             # <<<<<<<<<<<<<<
  *             if chr(strand) == '-':
  *                 _tx.reverse_complement(seq)
  */
-  __pyx_t_5 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_seq); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_5 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_seq); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_9 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_9 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_2 = ((__pyx_t_9 > 0) != 0);
   if (__pyx_t_2) {
 
-    /* "alphacluster/gencode.pyx":136
+    /* "alphacluster/gencode.pyx":134
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:
  *             if chr(strand) == '-':             # <<<<<<<<<<<<<<
  *                 _tx.reverse_complement(seq)
  *                 seq = _tx.reverse_complement(seq).encode('utf8')
  */
-    __pyx_t_5 = __Pyx_PyInt_From_char(__pyx_v_strand); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_char(__pyx_v_strand); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_2) {
 
-      /* "alphacluster/gencode.pyx":137
+      /* "alphacluster/gencode.pyx":135
  *         if len(seq) > 0:
  *             if chr(strand) == '-':
  *                 _tx.reverse_complement(seq)             # <<<<<<<<<<<<<<
  *                 seq = _tx.reverse_complement(seq).encode('utf8')
  *             tx.add_genomic_sequence(seq, offset)
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_reverse_complement); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_reverse_complement); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_1 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_seq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+      __pyx_t_1 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_seq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3900,21 +3866,21 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       __pyx_t_4 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_3, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "alphacluster/gencode.pyx":138
+      /* "alphacluster/gencode.pyx":136
  *             if chr(strand) == '-':
  *                 _tx.reverse_complement(seq)
  *                 seq = _tx.reverse_complement(seq).encode('utf8')             # <<<<<<<<<<<<<<
  *             tx.add_genomic_sequence(seq, offset)
  *         self.add_tx(tx, False)
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_reverse_complement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v__tx, __pyx_n_s_reverse_complement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_seq); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_3 = __pyx_convert_PyBytes_string_to_py_std__in_string(__pyx_v_seq); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_13 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -3929,10 +3895,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       __pyx_t_5 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_13, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3);
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_5 = NULL;
@@ -3947,14 +3913,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       }
       __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_5, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_utf8);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_4); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_t_4); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_seq = __pyx_t_6;
 
-      /* "alphacluster/gencode.pyx":136
+      /* "alphacluster/gencode.pyx":134
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:
  *             if chr(strand) == '-':             # <<<<<<<<<<<<<<
@@ -3963,7 +3929,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
  */
     }
 
-    /* "alphacluster/gencode.pyx":139
+    /* "alphacluster/gencode.pyx":137
  *                 _tx.reverse_complement(seq)
  *                 seq = _tx.reverse_complement(seq).encode('utf8')
  *             tx.add_genomic_sequence(seq, offset)             # <<<<<<<<<<<<<<
@@ -3974,10 +3940,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
       __pyx_v_tx.add_genomic_sequence(__pyx_v_seq, __pyx_v_offset);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 139, __pyx_L1_error)
+      __PYX_ERR(0, 137, __pyx_L1_error)
     }
 
-    /* "alphacluster/gencode.pyx":135
+    /* "alphacluster/gencode.pyx":133
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:             # <<<<<<<<<<<<<<
@@ -3986,18 +3952,18 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
  */
   }
 
-  /* "alphacluster/gencode.pyx":140
+  /* "alphacluster/gencode.pyx":138
  *                 seq = _tx.reverse_complement(seq).encode('utf8')
  *             tx.add_genomic_sequence(seq, offset)
  *         self.add_tx(tx, False)             # <<<<<<<<<<<<<<
  * 
  *     def __repr__(self):
  */
-  __pyx_t_4 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->add_tx(__pyx_v_self, __pyx_v_tx, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_4 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->add_tx(__pyx_v_self, __pyx_v_tx, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "alphacluster/gencode.pyx":105
+  /* "alphacluster/gencode.pyx":103
  *         self.end = max(self.end, tx.get_end())
  * 
  *     def add_transcript(self, _tx):             # <<<<<<<<<<<<<<
@@ -4023,7 +3989,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct _
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":142
+/* "alphacluster/gencode.pyx":140
  *         self.add_tx(tx, False)
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4058,19 +4024,19 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "alphacluster/gencode.pyx":143
+  /* "alphacluster/gencode.pyx":141
  * 
  *     def __repr__(self):
  *         chrom = self.chrom             # <<<<<<<<<<<<<<
  *         return f'Gene("{self.symbol}", {chrom}:{self.start}-{self.end})'
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_chrom = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":144
+  /* "alphacluster/gencode.pyx":142
  *     def __repr__(self):
  *         chrom = self.chrom
  *         return f'Gene("{self.symbol}", {chrom}:{self.start}-{self.end})'             # <<<<<<<<<<<<<<
@@ -4078,7 +4044,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
@@ -4086,9 +4052,9 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
   __pyx_t_2 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_Gene);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Gene);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_symbol); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_symbol); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -4100,7 +4066,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
   __pyx_t_2 += 3;
   __Pyx_GIVEREF(__pyx_kp_u__2);
   PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u__2);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_chrom, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_v_chrom, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5);
@@ -4111,9 +4077,9 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__3);
   PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u__3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -4125,9 +4091,9 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u_);
   PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u_);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -4139,14 +4105,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__4);
   PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u__4);
-  __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_1, 9, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_1, 9, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":142
+  /* "alphacluster/gencode.pyx":140
  *         self.add_tx(tx, False)
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4168,7 +4134,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":147
+/* "alphacluster/gencode.pyx":145
  * 
  *     @property
  *     def symbol(self):             # <<<<<<<<<<<<<<
@@ -4198,7 +4164,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6symbol___get__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "alphacluster/gencode.pyx":148
+  /* "alphacluster/gencode.pyx":146
  *     @property
  *     def symbol(self):
  *         return self._symbol.decode('utf8')             # <<<<<<<<<<<<<<
@@ -4206,13 +4172,13 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6symbol___get__(struct _
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_self->_symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_self->_symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":147
+  /* "alphacluster/gencode.pyx":145
  * 
  *     @property
  *     def symbol(self):             # <<<<<<<<<<<<<<
@@ -4231,7 +4197,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6symbol___get__(struct _
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":151
+/* "alphacluster/gencode.pyx":149
  * 
  *     @property
  *     def chrom(self):             # <<<<<<<<<<<<<<
@@ -4257,7 +4223,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5chrom___get__(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "alphacluster/gencode.pyx":152
+  /* "alphacluster/gencode.pyx":150
  *     @property
  *     def chrom(self):
  *         return self._chrom             # <<<<<<<<<<<<<<
@@ -4269,7 +4235,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5chrom___get__(struct __
   __pyx_r = __pyx_v_self->_chrom;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":151
+  /* "alphacluster/gencode.pyx":149
  * 
  *     @property
  *     def chrom(self):             # <<<<<<<<<<<<<<
@@ -4284,7 +4250,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5chrom___get__(struct __
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":154
+/* "alphacluster/gencode.pyx":152
  *         return self._chrom
  *     @chrom.setter
  *     def chrom(self, value):             # <<<<<<<<<<<<<<
@@ -4314,14 +4280,14 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene_5chrom_2__set__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "alphacluster/gencode.pyx":155
+  /* "alphacluster/gencode.pyx":153
  *     @chrom.setter
  *     def chrom(self, value):
  *         self._chrom = value             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  if (!(likely(PyUnicode_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 155, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 153, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4330,7 +4296,7 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene_5chrom_2__set__(struct __pyx_o
   __pyx_v_self->_chrom = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":154
+  /* "alphacluster/gencode.pyx":152
  *         return self._chrom
  *     @chrom.setter
  *     def chrom(self, value):             # <<<<<<<<<<<<<<
@@ -4350,7 +4316,7 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene_5chrom_2__set__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":158
+/* "alphacluster/gencode.pyx":156
  * 
  *     @property
  *     def start(self):             # <<<<<<<<<<<<<<
@@ -4380,7 +4346,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5start___get__(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "alphacluster/gencode.pyx":159
+  /* "alphacluster/gencode.pyx":157
  *     @property
  *     def start(self):
  *         return self._start             # <<<<<<<<<<<<<<
@@ -4388,13 +4354,13 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5start___get__(struct __
  *     def start(self, value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":158
+  /* "alphacluster/gencode.pyx":156
  * 
  *     @property
  *     def start(self):             # <<<<<<<<<<<<<<
@@ -4413,7 +4379,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5start___get__(struct __
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":161
+/* "alphacluster/gencode.pyx":159
  *         return self._start
  *     @start.setter
  *     def start(self, value):             # <<<<<<<<<<<<<<
@@ -4443,17 +4409,17 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene_5start_2__set__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "alphacluster/gencode.pyx":162
+  /* "alphacluster/gencode.pyx":160
  *     @start.setter
  *     def start(self, value):
  *         self._start = value             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
   __pyx_v_self->_start = __pyx_t_1;
 
-  /* "alphacluster/gencode.pyx":161
+  /* "alphacluster/gencode.pyx":159
  *         return self._start
  *     @start.setter
  *     def start(self, value):             # <<<<<<<<<<<<<<
@@ -4472,7 +4438,7 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene_5start_2__set__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":165
+/* "alphacluster/gencode.pyx":163
  * 
  *     @property
  *     def end(self):             # <<<<<<<<<<<<<<
@@ -4502,7 +4468,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_3end___get__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "alphacluster/gencode.pyx":166
+  /* "alphacluster/gencode.pyx":164
  *     @property
  *     def end(self):
  *         return self._end             # <<<<<<<<<<<<<<
@@ -4510,13 +4476,13 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_3end___get__(struct __py
  *     def end(self, value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":165
+  /* "alphacluster/gencode.pyx":163
  * 
  *     @property
  *     def end(self):             # <<<<<<<<<<<<<<
@@ -4535,7 +4501,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_3end___get__(struct __py
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":168
+/* "alphacluster/gencode.pyx":166
  *         return self._end
  *     @end.setter
  *     def end(self, value):             # <<<<<<<<<<<<<<
@@ -4565,17 +4531,17 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene_3end_2__set__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "alphacluster/gencode.pyx":169
+  /* "alphacluster/gencode.pyx":167
  *     @end.setter
  *     def end(self, value):
  *         self._end = value             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
   __pyx_v_self->_end = __pyx_t_1;
 
-  /* "alphacluster/gencode.pyx":168
+  /* "alphacluster/gencode.pyx":166
  *         return self._end
  *     @end.setter
  *     def end(self, value):             # <<<<<<<<<<<<<<
@@ -4594,7 +4560,7 @@ static int __pyx_pf_12alphacluster_7gencode_4Gene_3end_2__set__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":172
+/* "alphacluster/gencode.pyx":170
  * 
  *     @property
  *     def strand(self):             # <<<<<<<<<<<<<<
@@ -4626,7 +4592,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "alphacluster/gencode.pyx":173
+  /* "alphacluster/gencode.pyx":171
  *     @property
  *     def strand(self):
  *         if self._transcripts.size() > 0:             # <<<<<<<<<<<<<<
@@ -4636,7 +4602,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(struct _
   __pyx_t_1 = ((__pyx_v_self->_transcripts.size() > 0) != 0);
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":174
+    /* "alphacluster/gencode.pyx":172
  *     def strand(self):
  *         if self._transcripts.size() > 0:
  *             return chr(self._transcripts[0].get_strand())             # <<<<<<<<<<<<<<
@@ -4644,16 +4610,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(struct _
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_char((__pyx_v_self->_transcripts[0]).get_strand()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_char((__pyx_v_self->_transcripts[0]).get_strand()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "alphacluster/gencode.pyx":173
+    /* "alphacluster/gencode.pyx":171
  *     @property
  *     def strand(self):
  *         if self._transcripts.size() > 0:             # <<<<<<<<<<<<<<
@@ -4662,20 +4628,20 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(struct _
  */
   }
 
-  /* "alphacluster/gencode.pyx":175
+  /* "alphacluster/gencode.pyx":173
  *         if self._transcripts.size() > 0:
  *             return chr(self._transcripts[0].get_strand())
  *         raise IndexError('no transcripts in gene yet')             # <<<<<<<<<<<<<<
  * 
  *     cdef _convert_exons(self, vector[Region] exons):
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_Raise(__pyx_t_3, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __PYX_ERR(0, 175, __pyx_L1_error)
+  __PYX_ERR(0, 173, __pyx_L1_error)
 
-  /* "alphacluster/gencode.pyx":172
+  /* "alphacluster/gencode.pyx":170
  * 
  *     @property
  *     def strand(self):             # <<<<<<<<<<<<<<
@@ -4695,7 +4661,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(struct _
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":177
+/* "alphacluster/gencode.pyx":175
  *         raise IndexError('no transcripts in gene yet')
  * 
  *     cdef _convert_exons(self, vector[Region] exons):             # <<<<<<<<<<<<<<
@@ -4718,7 +4684,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNU
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_convert_exons", 0);
 
-  /* "alphacluster/gencode.pyx":183
+  /* "alphacluster/gencode.pyx":181
  *         Transcript object.
  *         '''
  *         return [[y.start, y.end] for y in exons]             # <<<<<<<<<<<<<<
@@ -4727,7 +4693,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNU
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_v_exons.begin();
     for (;;) {
@@ -4735,11 +4701,11 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNU
       __pyx_t_3 = *__pyx_t_2;
       ++__pyx_t_2;
       __pyx_8genexpr1__pyx_v_y = __pyx_t_3;
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_8genexpr1__pyx_v_y.start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_8genexpr1__pyx_v_y.start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_8genexpr1__pyx_v_y.end); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_8genexpr1__pyx_v_y.end); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyList_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_6 = PyList_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_4);
       PyList_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -4747,7 +4713,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNU
       PyList_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
       __pyx_t_4 = 0;
       __pyx_t_5 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 183, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   } /* exit inner scope */
@@ -4755,7 +4721,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNU
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":177
+  /* "alphacluster/gencode.pyx":175
  *         raise IndexError('no transcripts in gene yet')
  * 
  *     cdef _convert_exons(self, vector[Region] exons):             # <<<<<<<<<<<<<<
@@ -4777,7 +4743,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":185
+/* "alphacluster/gencode.pyx":183
  *         return [[y.start, y.end] for y in exons]
  * 
  *     cdef _to_Transcript(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -4790,8 +4756,6 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
   PyObject *__pyx_v_chrom = NULL;
   PyObject *__pyx_v_start = NULL;
   PyObject *__pyx_v_end = NULL;
-  int __pyx_v_cds_start;
-  int __pyx_v_cds_end;
   PyObject *__pyx_v_exons = NULL;
   PyObject *__pyx_v_cds = NULL;
   PyObject *__pyx_v_seq = NULL;
@@ -4813,7 +4777,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_to_Transcript", 0);
 
-  /* "alphacluster/gencode.pyx":188
+  /* "alphacluster/gencode.pyx":186
  *         ''' construct Transcript (python object) from Tx (c++ object)
  *         '''
  *         offset = 5 if tx.get_genomic_offset() == 0 else tx.get_genomic_offset()             # <<<<<<<<<<<<<<
@@ -4824,7 +4788,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
     __Pyx_INCREF(__pyx_int_5);
     __pyx_t_1 = __pyx_int_5;
   } else {
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_tx.get_genomic_offset()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_tx.get_genomic_offset()); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_1 = __pyx_t_2;
     __pyx_t_2 = 0;
@@ -4832,107 +4796,89 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
   __pyx_v_offset = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":189
+  /* "alphacluster/gencode.pyx":187
  *         '''
  *         offset = 5 if tx.get_genomic_offset() == 0 else tx.get_genomic_offset()
  *         chrom = tx.get_chrom().decode('utf8')             # <<<<<<<<<<<<<<
  *         start = tx.get_start()
  *         end = tx.get_end()
  */
-  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_tx.get_chrom(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_tx.get_chrom(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_chrom = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":190
+  /* "alphacluster/gencode.pyx":188
  *         offset = 5 if tx.get_genomic_offset() == 0 else tx.get_genomic_offset()
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()             # <<<<<<<<<<<<<<
  *         end = tx.get_end()
- *         cds_start = tx.get_cds_start()
+ *         exons = self._convert_exons(tx.get_exons())
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_tx.get_start()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_tx.get_start()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_start = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":191
+  /* "alphacluster/gencode.pyx":189
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()
  *         end = tx.get_end()             # <<<<<<<<<<<<<<
- *         cds_start = tx.get_cds_start()
- *         cds_end = tx.get_cds_end()
+ *         exons = self._convert_exons(tx.get_exons())
+ *         cds = self._convert_exons(tx.get_cds())
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_tx.get_end()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_tx.get_end()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_end = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":192
+  /* "alphacluster/gencode.pyx":190
  *         start = tx.get_start()
  *         end = tx.get_end()
- *         cds_start = tx.get_cds_start()             # <<<<<<<<<<<<<<
- *         cds_end = tx.get_cds_end()
- *         exons = self._convert_exons(tx.get_exons())
- */
-  __pyx_v_cds_start = __pyx_v_tx.get_cds_start();
-
-  /* "alphacluster/gencode.pyx":193
- *         end = tx.get_end()
- *         cds_start = tx.get_cds_start()
- *         cds_end = tx.get_cds_end()             # <<<<<<<<<<<<<<
- *         exons = self._convert_exons(tx.get_exons())
- *         cds = self._convert_exons(tx.get_cds())
- */
-  __pyx_v_cds_end = __pyx_v_tx.get_cds_end();
-
-  /* "alphacluster/gencode.pyx":194
- *         cds_start = tx.get_cds_start()
- *         cds_end = tx.get_cds_end()
  *         exons = self._convert_exons(tx.get_exons())             # <<<<<<<<<<<<<<
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_exons = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":195
- *         cds_end = tx.get_cds_end()
+  /* "alphacluster/gencode.pyx":191
+ *         end = tx.get_end()
  *         exons = self._convert_exons(tx.get_exons())
  *         cds = self._convert_exons(tx.get_cds())             # <<<<<<<<<<<<<<
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_cds = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":196
+  /* "alphacluster/gencode.pyx":192
  *         exons = self._convert_exons(tx.get_exons())
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')             # <<<<<<<<<<<<<<
  *         if seq == '':
  *             seq = None
  */
-  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_tx.get_genomic_sequence(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_decode_cpp_string(__pyx_v_tx.get_genomic_sequence(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_seq = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":197
+  /* "alphacluster/gencode.pyx":193
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':             # <<<<<<<<<<<<<<
  *             seq = None
  *         if seq is None and __genome_ is not None:
  */
-  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_seq, __pyx_kp_u__6, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_seq, __pyx_kp_u__6, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 193, __pyx_L1_error)
   if (__pyx_t_3) {
 
-    /* "alphacluster/gencode.pyx":198
+    /* "alphacluster/gencode.pyx":194
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':
  *             seq = None             # <<<<<<<<<<<<<<
@@ -4942,7 +4888,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
     __Pyx_INCREF(Py_None);
     __Pyx_DECREF_SET(__pyx_v_seq, Py_None);
 
-    /* "alphacluster/gencode.pyx":197
+    /* "alphacluster/gencode.pyx":193
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':             # <<<<<<<<<<<<<<
@@ -4951,7 +4897,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
  */
   }
 
-  /* "alphacluster/gencode.pyx":199
+  /* "alphacluster/gencode.pyx":195
  *         if seq == '':
  *             seq = None
  *         if seq is None and __genome_ is not None:             # <<<<<<<<<<<<<<
@@ -4965,7 +4911,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
     __pyx_t_3 = __pyx_t_5;
     goto __pyx_L5_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_genome); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_genome); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4974,37 +4920,37 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "alphacluster/gencode.pyx":200
+    /* "alphacluster/gencode.pyx":196
  *             seq = None
  *         if seq is None and __genome_ is not None:
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()             # <<<<<<<<<<<<<<
  *         strand = chr(tx.get_strand())
  *         if strand == '-' and seq is not None:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_genome); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_genome); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_chrom); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_chrom); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_start, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_start, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = PyNumber_Subtract(__pyx_t_2, __pyx_v_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_7 = PyNumber_Subtract(__pyx_t_2, __pyx_v_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_end, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_end, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = PyNumber_Add(__pyx_t_2, __pyx_v_offset); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Add(__pyx_t_2, __pyx_v_offset); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_6, 0, 0, &__pyx_t_7, &__pyx_t_8, NULL, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_6, 0, 0, &__pyx_t_7, &__pyx_t_8, NULL, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_seq); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_seq); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_upper); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_upper); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_8 = NULL;
@@ -5019,13 +4965,13 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
     }
     __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_seq, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":199
+    /* "alphacluster/gencode.pyx":195
  *         if seq == '':
  *             seq = None
  *         if seq is None and __genome_ is not None:             # <<<<<<<<<<<<<<
@@ -5034,29 +4980,29 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
  */
   }
 
-  /* "alphacluster/gencode.pyx":201
+  /* "alphacluster/gencode.pyx":197
  *         if seq is None and __genome_ is not None:
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()
  *         strand = chr(tx.get_strand())             # <<<<<<<<<<<<<<
  *         if strand == '-' and seq is not None:
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')
  */
-  __pyx_t_1 = __Pyx_PyInt_From_char(__pyx_v_tx.get_strand()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_char(__pyx_v_tx.get_strand()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_chr, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_strand = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "alphacluster/gencode.pyx":202
+  /* "alphacluster/gencode.pyx":198
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()
  *         strand = chr(tx.get_strand())
  *         if strand == '-' and seq is not None:             # <<<<<<<<<<<<<<
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')
  *         tx_id = tx.get_name().decode('utf8')
  */
-  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_strand, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_strand, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 198, __pyx_L1_error)
   if (__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
@@ -5068,14 +5014,14 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "alphacluster/gencode.pyx":203
+    /* "alphacluster/gencode.pyx":199
  *         strand = chr(tx.get_strand())
  *         if strand == '-' and seq is not None:
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')             # <<<<<<<<<<<<<<
  *         tx_id = tx.get_name().decode('utf8')
- *         return Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, seq, offset=offset)
+ *         return Transcript(tx_id, chrom, start, end, strand, exons, cds, seq, offset=offset)
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_seq, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_seq, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -5089,17 +5035,17 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
     }
     __pyx_t_2 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_8, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_utf8);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_decode_cpp_string(__pyx_v_tx.reverse_complement(__pyx_t_9), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_decode_cpp_string(__pyx_v_tx.reverse_complement(__pyx_t_9), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF_SET(__pyx_v_seq, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "alphacluster/gencode.pyx":202
+    /* "alphacluster/gencode.pyx":198
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()
  *         strand = chr(tx.get_strand())
  *         if strand == '-' and seq is not None:             # <<<<<<<<<<<<<<
@@ -5108,77 +5054,67 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
  */
   }
 
-  /* "alphacluster/gencode.pyx":204
+  /* "alphacluster/gencode.pyx":200
  *         if strand == '-' and seq is not None:
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')
  *         tx_id = tx.get_name().decode('utf8')             # <<<<<<<<<<<<<<
- *         return Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, seq, offset=offset)
+ *         return Transcript(tx_id, chrom, start, end, strand, exons, cds, seq, offset=offset)
  * 
  */
-  __pyx_t_2 = __Pyx_decode_cpp_string(__pyx_v_tx.get_name(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_decode_cpp_string(__pyx_v_tx.get_name(), 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_tx_id = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "alphacluster/gencode.pyx":205
+  /* "alphacluster/gencode.pyx":201
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')
  *         tx_id = tx.get_name().decode('utf8')
- *         return Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, seq, offset=offset)             # <<<<<<<<<<<<<<
+ *         return Transcript(tx_id, chrom, start, end, strand, exons, cds, seq, offset=offset)             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Transcript); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Transcript); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_cds_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_cds_end); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_7 = PyTuple_New(10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_v_tx_id);
   __Pyx_GIVEREF(__pyx_v_tx_id);
-  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_tx_id);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_tx_id);
   __Pyx_INCREF(__pyx_v_chrom);
   __Pyx_GIVEREF(__pyx_v_chrom);
-  PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_chrom);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_chrom);
   __Pyx_INCREF(__pyx_v_start);
   __Pyx_GIVEREF(__pyx_v_start);
-  PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_v_start);
+  PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_start);
   __Pyx_INCREF(__pyx_v_end);
   __Pyx_GIVEREF(__pyx_v_end);
-  PyTuple_SET_ITEM(__pyx_t_7, 3, __pyx_v_end);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_7, 4, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_8);
-  PyTuple_SET_ITEM(__pyx_t_7, 5, __pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_v_end);
   __Pyx_INCREF(__pyx_v_strand);
   __Pyx_GIVEREF(__pyx_v_strand);
-  PyTuple_SET_ITEM(__pyx_t_7, 6, __pyx_v_strand);
+  PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_v_strand);
   __Pyx_INCREF(__pyx_v_exons);
   __Pyx_GIVEREF(__pyx_v_exons);
-  PyTuple_SET_ITEM(__pyx_t_7, 7, __pyx_v_exons);
+  PyTuple_SET_ITEM(__pyx_t_1, 5, __pyx_v_exons);
   __Pyx_INCREF(__pyx_v_cds);
   __Pyx_GIVEREF(__pyx_v_cds);
-  PyTuple_SET_ITEM(__pyx_t_7, 8, __pyx_v_cds);
+  PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_v_cds);
   __Pyx_INCREF(__pyx_v_seq);
   __Pyx_GIVEREF(__pyx_v_seq);
-  PyTuple_SET_ITEM(__pyx_t_7, 9, __pyx_v_seq);
-  __pyx_t_1 = 0;
-  __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 205, __pyx_L1_error)
+  PyTuple_SET_ITEM(__pyx_t_1, 7, __pyx_v_seq);
+  __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_offset, __pyx_v_offset) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_offset, __pyx_v_offset) < 0) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_7;
+  __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":185
+  /* "alphacluster/gencode.pyx":183
  *         return [[y.start, y.end] for y in exons]
  * 
  *     cdef _to_Transcript(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5210,7 +5146,7 @@ static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __p
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":208
+/* "alphacluster/gencode.pyx":204
  * 
  *     @property
  *     def transcripts(self):             # <<<<<<<<<<<<<<
@@ -5245,7 +5181,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "alphacluster/gencode.pyx":211
+  /* "alphacluster/gencode.pyx":207
  *         ''' get list of Transcripts for gene, with genomic DNA included
  *         '''
  *         return [self._to_Transcript(x) for x in self._transcripts]             # <<<<<<<<<<<<<<
@@ -5254,7 +5190,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(st
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_3 = &__pyx_v_self->_transcripts;
     __pyx_t_2 = __pyx_t_3->begin();
@@ -5263,9 +5199,9 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(st
       __pyx_t_4 = *__pyx_t_2;
       ++__pyx_t_2;
       __pyx_8genexpr2__pyx_v_x = __pyx_t_4;
-      __pyx_t_5 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_8genexpr2__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_5 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_8genexpr2__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 211, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 207, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   } /* exit inner scope */
@@ -5273,7 +5209,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(st
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":208
+  /* "alphacluster/gencode.pyx":204
  * 
  *     @property
  *     def transcripts(self):             # <<<<<<<<<<<<<<
@@ -5293,7 +5229,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(st
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":213
+/* "alphacluster/gencode.pyx":209
  *         return [self._to_Transcript(x) for x in self._transcripts]
  * 
  *     cdef int _cds_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5311,7 +5247,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__cds_len(CYTHON_UNUSED struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_cds_len", 0);
 
-  /* "alphacluster/gencode.pyx":216
+  /* "alphacluster/gencode.pyx":212
  *         ''' get length of coding sequence for a Tx object based transcript
  *         '''
  *         cdef CDS_coords coords = tx.get_coding_distance(tx.get_cds_end())             # <<<<<<<<<<<<<<
@@ -5322,11 +5258,11 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__cds_len(CYTHON_UNUSED struct _
     __pyx_t_1 = __pyx_v_tx.get_coding_distance(__pyx_v_tx.get_cds_end());
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 216, __pyx_L1_error)
+    __PYX_ERR(0, 212, __pyx_L1_error)
   }
   __pyx_v_coords = __pyx_t_1;
 
-  /* "alphacluster/gencode.pyx":217
+  /* "alphacluster/gencode.pyx":213
  *         '''
  *         cdef CDS_coords coords = tx.get_coding_distance(tx.get_cds_end())
  *         return coords.position + 1             # <<<<<<<<<<<<<<
@@ -5336,7 +5272,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__cds_len(CYTHON_UNUSED struct _
   __pyx_r = (__pyx_v_coords.position + 1);
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":213
+  /* "alphacluster/gencode.pyx":209
  *         return [self._to_Transcript(x) for x in self._transcripts]
  * 
  *     cdef int _cds_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5353,7 +5289,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__cds_len(CYTHON_UNUSED struct _
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":219
+/* "alphacluster/gencode.pyx":215
  *         return coords.position + 1
  * 
  *     cdef Tx _max_by_cds(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5377,7 +5313,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_max_by_cds", 0);
 
-  /* "alphacluster/gencode.pyx":223
+  /* "alphacluster/gencode.pyx":219
  *         '''
  *         cdef Tx max_tx
  *         length = 0             # <<<<<<<<<<<<<<
@@ -5386,7 +5322,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
  */
   __pyx_v_length = 0;
 
-  /* "alphacluster/gencode.pyx":224
+  /* "alphacluster/gencode.pyx":220
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5400,7 +5336,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
     ++__pyx_t_1;
     __pyx_v_tx = __pyx_t_2;
 
-    /* "alphacluster/gencode.pyx":225
+    /* "alphacluster/gencode.pyx":221
  *         length = 0
  *         for tx in transcripts:
  *             curr_len = self._cds_len(tx)             # <<<<<<<<<<<<<<
@@ -5409,7 +5345,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
  */
     __pyx_v_curr_len = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_cds_len(__pyx_v_self, __pyx_v_tx);
 
-    /* "alphacluster/gencode.pyx":226
+    /* "alphacluster/gencode.pyx":222
  *         for tx in transcripts:
  *             curr_len = self._cds_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5419,7 +5355,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
     __pyx_t_3 = ((__pyx_v_curr_len > __pyx_v_length) != 0);
     if (__pyx_t_3) {
 
-      /* "alphacluster/gencode.pyx":227
+      /* "alphacluster/gencode.pyx":223
  *             curr_len = self._cds_len(tx)
  *             if curr_len > length:
  *                 length = curr_len             # <<<<<<<<<<<<<<
@@ -5428,7 +5364,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
  */
       __pyx_v_length = __pyx_v_curr_len;
 
-      /* "alphacluster/gencode.pyx":228
+      /* "alphacluster/gencode.pyx":224
  *             if curr_len > length:
  *                 length = curr_len
  *                 max_tx = tx             # <<<<<<<<<<<<<<
@@ -5437,7 +5373,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
  */
       __pyx_v_max_tx = __pyx_v_tx;
 
-      /* "alphacluster/gencode.pyx":226
+      /* "alphacluster/gencode.pyx":222
  *         for tx in transcripts:
  *             curr_len = self._cds_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5446,7 +5382,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
  */
     }
 
-    /* "alphacluster/gencode.pyx":224
+    /* "alphacluster/gencode.pyx":220
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5455,7 +5391,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
  */
   }
 
-  /* "alphacluster/gencode.pyx":229
+  /* "alphacluster/gencode.pyx":225
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5465,20 +5401,20 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
   __pyx_t_3 = ((__pyx_v_length == 0) != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "alphacluster/gencode.pyx":230
+    /* "alphacluster/gencode.pyx":226
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no coding transcripts')             # <<<<<<<<<<<<<<
  *         return max_tx
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 230, __pyx_L1_error)
+    __PYX_ERR(0, 226, __pyx_L1_error)
 
-    /* "alphacluster/gencode.pyx":229
+    /* "alphacluster/gencode.pyx":225
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5487,7 +5423,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
  */
   }
 
-  /* "alphacluster/gencode.pyx":231
+  /* "alphacluster/gencode.pyx":227
  *         if length == 0:
  *             raise ValueError('no coding transcripts')
  *         return max_tx             # <<<<<<<<<<<<<<
@@ -5497,7 +5433,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
   __pyx_r = __pyx_v_max_tx;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":219
+  /* "alphacluster/gencode.pyx":215
  *         return coords.position + 1
  * 
  *     cdef Tx _max_by_cds(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5515,7 +5451,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12a
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":233
+/* "alphacluster/gencode.pyx":229
  *         return max_tx
  * 
  *     cdef int _exonic_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5543,7 +5479,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_exonic_len", 0);
 
-  /* "alphacluster/gencode.pyx":236
+  /* "alphacluster/gencode.pyx":232
  *         ''' get length of exonic sequence for a Tx object based transcript
  *         '''
  *         length = 0             # <<<<<<<<<<<<<<
@@ -5553,22 +5489,22 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_length = __pyx_int_0;
 
-  /* "alphacluster/gencode.pyx":237
+  /* "alphacluster/gencode.pyx":233
  *         '''
  *         length = 0
  *         for start, end in _convert_exons(tx.get_exons()):             # <<<<<<<<<<<<<<
  *             length += abs(end - start) + 1
  *         return length
  */
-  __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 237, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -5576,17 +5512,17 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 237, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 237, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -5596,7 +5532,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 237, __pyx_L1_error)
+          else __PYX_ERR(0, 233, __pyx_L1_error)
         }
         break;
       }
@@ -5608,7 +5544,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 237, __pyx_L1_error)
+        __PYX_ERR(0, 233, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5621,15 +5557,15 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -5637,7 +5573,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
       __Pyx_GOTREF(__pyx_t_5);
       index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 233, __pyx_L1_error)
       __pyx_t_8 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L6_unpacking_done;
@@ -5645,7 +5581,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 237, __pyx_L1_error)
+      __PYX_ERR(0, 233, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_start, __pyx_t_5);
@@ -5653,28 +5589,28 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
     __Pyx_XDECREF_SET(__pyx_v_end, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "alphacluster/gencode.pyx":238
+    /* "alphacluster/gencode.pyx":234
  *         length = 0
  *         for start, end in _convert_exons(tx.get_exons()):
  *             length += abs(end - start) + 1             # <<<<<<<<<<<<<<
  *         return length
  *         # return sum(abs(x.end - x.start) + 1 for x in tx.get_exons())
  */
-    __pyx_t_1 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyNumber_Absolute(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 238, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyNumber_Absolute(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_6, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_6, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_InPlaceAdd(__pyx_v_length, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 238, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_InPlaceAdd(__pyx_v_length, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_length, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "alphacluster/gencode.pyx":237
+    /* "alphacluster/gencode.pyx":233
  *         '''
  *         length = 0
  *         for start, end in _convert_exons(tx.get_exons()):             # <<<<<<<<<<<<<<
@@ -5684,18 +5620,18 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "alphacluster/gencode.pyx":239
+  /* "alphacluster/gencode.pyx":235
  *         for start, end in _convert_exons(tx.get_exons()):
  *             length += abs(end - start) + 1
  *         return length             # <<<<<<<<<<<<<<
  *         # return sum(abs(x.end - x.start) + 1 for x in tx.get_exons())
  * 
  */
-  __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_v_length); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_v_length); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L1_error)
   __pyx_r = __pyx_t_9;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":233
+  /* "alphacluster/gencode.pyx":229
  *         return max_tx
  * 
  *     cdef int _exonic_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5720,7 +5656,7 @@ static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struc
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":242
+/* "alphacluster/gencode.pyx":238
  *         # return sum(abs(x.end - x.start) + 1 for x in tx.get_exons())
  * 
  *     cdef Tx _max_by_exonic(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5744,7 +5680,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_max_by_exonic", 0);
 
-  /* "alphacluster/gencode.pyx":246
+  /* "alphacluster/gencode.pyx":242
  *         '''
  *         cdef Tx max_tx
  *         length = 0             # <<<<<<<<<<<<<<
@@ -5753,7 +5689,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
  */
   __pyx_v_length = 0;
 
-  /* "alphacluster/gencode.pyx":247
+  /* "alphacluster/gencode.pyx":243
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5767,7 +5703,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
     ++__pyx_t_1;
     __pyx_v_tx = __pyx_t_2;
 
-    /* "alphacluster/gencode.pyx":248
+    /* "alphacluster/gencode.pyx":244
  *         length = 0
  *         for tx in transcripts:
  *             curr_len = self._exonic_len(tx)             # <<<<<<<<<<<<<<
@@ -5776,7 +5712,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
  */
     __pyx_v_curr_len = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_exonic_len(__pyx_v_self, __pyx_v_tx);
 
-    /* "alphacluster/gencode.pyx":249
+    /* "alphacluster/gencode.pyx":245
  *         for tx in transcripts:
  *             curr_len = self._exonic_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5786,7 +5722,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
     __pyx_t_3 = ((__pyx_v_curr_len > __pyx_v_length) != 0);
     if (__pyx_t_3) {
 
-      /* "alphacluster/gencode.pyx":250
+      /* "alphacluster/gencode.pyx":246
  *             curr_len = self._exonic_len(tx)
  *             if curr_len > length:
  *                 length = curr_len             # <<<<<<<<<<<<<<
@@ -5795,7 +5731,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
  */
       __pyx_v_length = __pyx_v_curr_len;
 
-      /* "alphacluster/gencode.pyx":251
+      /* "alphacluster/gencode.pyx":247
  *             if curr_len > length:
  *                 length = curr_len
  *                 max_tx = tx             # <<<<<<<<<<<<<<
@@ -5804,7 +5740,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
  */
       __pyx_v_max_tx = __pyx_v_tx;
 
-      /* "alphacluster/gencode.pyx":249
+      /* "alphacluster/gencode.pyx":245
  *         for tx in transcripts:
  *             curr_len = self._exonic_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5813,7 +5749,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
  */
     }
 
-    /* "alphacluster/gencode.pyx":247
+    /* "alphacluster/gencode.pyx":243
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5822,7 +5758,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
  */
   }
 
-  /* "alphacluster/gencode.pyx":252
+  /* "alphacluster/gencode.pyx":248
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5832,20 +5768,20 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
   __pyx_t_3 = ((__pyx_v_length == 0) != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "alphacluster/gencode.pyx":253
+    /* "alphacluster/gencode.pyx":249
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no exonic transcripts')             # <<<<<<<<<<<<<<
  *         return max_tx
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 253, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 253, __pyx_L1_error)
+    __PYX_ERR(0, 249, __pyx_L1_error)
 
-    /* "alphacluster/gencode.pyx":252
+    /* "alphacluster/gencode.pyx":248
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5854,7 +5790,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
  */
   }
 
-  /* "alphacluster/gencode.pyx":254
+  /* "alphacluster/gencode.pyx":250
  *         if length == 0:
  *             raise ValueError('no exonic transcripts')
  *         return max_tx             # <<<<<<<<<<<<<<
@@ -5864,7 +5800,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
   __pyx_r = __pyx_v_max_tx;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":242
+  /* "alphacluster/gencode.pyx":238
  *         # return sum(abs(x.end - x.start) + 1 for x in tx.get_exons())
  * 
  *     cdef Tx _max_by_exonic(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5882,7 +5818,7 @@ static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":257
+/* "alphacluster/gencode.pyx":253
  * 
  *     @property
  *     def canonical(self):             # <<<<<<<<<<<<<<
@@ -5928,7 +5864,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "alphacluster/gencode.pyx":270
+  /* "alphacluster/gencode.pyx":266
  *         '''
  *         cdef vector[Tx] canonical
  *         for i in range(self._transcripts.size()):             # <<<<<<<<<<<<<<
@@ -5940,37 +5876,37 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "alphacluster/gencode.pyx":271
+    /* "alphacluster/gencode.pyx":267
  *         cdef vector[Tx] canonical
  *         for i in range(self._transcripts.size()):
  *             max_score = max(self._canonical)             # <<<<<<<<<<<<<<
  *             if self._canonical[i] == max_score:
  *                 canonical.push_back(self._transcripts[i])
  */
-    __pyx_t_4 = __pyx_convert_vector_to_py_int(__pyx_v_self->_canonical); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_4 = __pyx_convert_vector_to_py_int(__pyx_v_self->_canonical); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_max_score, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "alphacluster/gencode.pyx":272
+    /* "alphacluster/gencode.pyx":268
  *         for i in range(self._transcripts.size()):
  *             max_score = max(self._canonical)
  *             if self._canonical[i] == max_score:             # <<<<<<<<<<<<<<
  *                 canonical.push_back(self._transcripts[i])
  * 
  */
-    __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_self->_canonical[__pyx_v_i])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_self->_canonical[__pyx_v_i])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 268, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v_max_score, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v_max_score, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 268, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 268, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_6) {
 
-      /* "alphacluster/gencode.pyx":273
+      /* "alphacluster/gencode.pyx":269
  *             max_score = max(self._canonical)
  *             if self._canonical[i] == max_score:
  *                 canonical.push_back(self._transcripts[i])             # <<<<<<<<<<<<<<
@@ -5981,10 +5917,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
         __pyx_v_canonical.push_back((__pyx_v_self->_transcripts[__pyx_v_i]));
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 273, __pyx_L1_error)
+        __PYX_ERR(0, 269, __pyx_L1_error)
       }
 
-      /* "alphacluster/gencode.pyx":272
+      /* "alphacluster/gencode.pyx":268
  *         for i in range(self._transcripts.size()):
  *             max_score = max(self._canonical)
  *             if self._canonical[i] == max_score:             # <<<<<<<<<<<<<<
@@ -5994,7 +5930,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
     }
   }
 
-  /* "alphacluster/gencode.pyx":275
+  /* "alphacluster/gencode.pyx":271
  *                 canonical.push_back(self._transcripts[i])
  * 
  *         if canonical.size() == 0:             # <<<<<<<<<<<<<<
@@ -6004,7 +5940,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
   __pyx_t_6 = ((__pyx_v_canonical.size() == 0) != 0);
   if (__pyx_t_6) {
 
-    /* "alphacluster/gencode.pyx":276
+    /* "alphacluster/gencode.pyx":272
  * 
  *         if canonical.size() == 0:
  *             canonical = self._transcripts             # <<<<<<<<<<<<<<
@@ -6014,7 +5950,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
     __pyx_t_7 = __pyx_v_self->_transcripts;
     __pyx_v_canonical = __pyx_t_7;
 
-    /* "alphacluster/gencode.pyx":275
+    /* "alphacluster/gencode.pyx":271
  *                 canonical.push_back(self._transcripts[i])
  * 
  *         if canonical.size() == 0:             # <<<<<<<<<<<<<<
@@ -6023,7 +5959,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
  */
   }
 
-  /* "alphacluster/gencode.pyx":279
+  /* "alphacluster/gencode.pyx":275
  * 
  *         cdef Tx max_tx
  *         try:             # <<<<<<<<<<<<<<
@@ -6039,17 +5975,17 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "alphacluster/gencode.pyx":280
+      /* "alphacluster/gencode.pyx":276
  *         cdef Tx max_tx
  *         try:
  *             max_tx = self._max_by_cds(canonical)             # <<<<<<<<<<<<<<
  *         except ValueError:
  *             max_tx = self._max_by_exonic(canonical)
  */
-      __pyx_t_11 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_cds(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L7_error)
+      __pyx_t_11 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_cds(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 276, __pyx_L7_error)
       __pyx_v_max_tx = __pyx_t_11;
 
-      /* "alphacluster/gencode.pyx":279
+      /* "alphacluster/gencode.pyx":275
  * 
  *         cdef Tx max_tx
  *         try:             # <<<<<<<<<<<<<<
@@ -6065,7 +6001,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "alphacluster/gencode.pyx":281
+    /* "alphacluster/gencode.pyx":277
  *         try:
  *             max_tx = self._max_by_cds(canonical)
  *         except ValueError:             # <<<<<<<<<<<<<<
@@ -6075,19 +6011,19 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
     __pyx_t_12 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
     if (__pyx_t_12) {
       __Pyx_AddTraceback("alphacluster.gencode.Gene.canonical.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_13) < 0) __PYX_ERR(0, 281, __pyx_L9_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_13) < 0) __PYX_ERR(0, 277, __pyx_L9_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_13);
 
-      /* "alphacluster/gencode.pyx":282
+      /* "alphacluster/gencode.pyx":278
  *             max_tx = self._max_by_cds(canonical)
  *         except ValueError:
  *             max_tx = self._max_by_exonic(canonical)             # <<<<<<<<<<<<<<
  * 
  *         return self._to_Transcript(max_tx)
  */
-      __pyx_t_11 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_exonic(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 282, __pyx_L9_except_error)
+      __pyx_t_11 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_exonic(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L9_except_error)
       __pyx_v_max_tx = __pyx_t_11;
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6097,7 +6033,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
     goto __pyx_L9_except_error;
     __pyx_L9_except_error:;
 
-    /* "alphacluster/gencode.pyx":279
+    /* "alphacluster/gencode.pyx":275
  * 
  *         cdef Tx max_tx
  *         try:             # <<<<<<<<<<<<<<
@@ -6117,7 +6053,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
     __pyx_L12_try_end:;
   }
 
-  /* "alphacluster/gencode.pyx":284
+  /* "alphacluster/gencode.pyx":280
  *             max_tx = self._max_by_exonic(canonical)
  * 
  *         return self._to_Transcript(max_tx)             # <<<<<<<<<<<<<<
@@ -6125,13 +6061,13 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
  *     def in_any_tx_cds(self, pos):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_13 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_v_max_tx); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_13 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_v_max_tx); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __pyx_r = __pyx_t_13;
   __pyx_t_13 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":257
+  /* "alphacluster/gencode.pyx":253
  * 
  *     @property
  *     def canonical(self):             # <<<<<<<<<<<<<<
@@ -6153,7 +6089,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struc
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":286
+/* "alphacluster/gencode.pyx":282
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
@@ -6176,7 +6112,7 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_7in_any_tx_cds(PyObject 
 }
 static PyObject *__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "alphacluster/gencode.pyx":289
+/* "alphacluster/gencode.pyx":285
  *         ''' find if a pos is in coding region of any transcript of a gene
  *         '''
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)             # <<<<<<<<<<<<<<
@@ -6196,7 +6132,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_13in_any_tx_cds_genexpr(
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 289, __pyx_L1_error)
+    __PYX_ERR(0, 285, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -6204,7 +6140,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_13in_any_tx_cds_genexpr(
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_in_any_tx_cds_locals_genexpr, __pyx_n_s_alphacluster_gencode); if (unlikely(!gen)) __PYX_ERR(0, 289, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_in_any_tx_cds_locals_genexpr, __pyx_n_s_alphacluster_gencode); if (unlikely(!gen)) __PYX_ERR(0, 285, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6241,8 +6177,8 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generat
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 289, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 289, __pyx_L1_error) }
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 285, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 285, __pyx_L1_error) }
   __pyx_t_2 = &__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self->_transcripts;
   __pyx_t_1 = __pyx_t_2->begin();
   for (;;) {
@@ -6250,8 +6186,8 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generat
     __pyx_t_3 = *__pyx_t_1;
     ++__pyx_t_1;
     __pyx_cur_scope->__pyx_v_tx = __pyx_t_3;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_pos)) { __Pyx_RaiseClosureNameError("pos"); __PYX_ERR(0, 289, __pyx_L1_error) }
-    __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_pos); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 289, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_pos)) { __Pyx_RaiseClosureNameError("pos"); __PYX_ERR(0, 285, __pyx_L1_error) }
+    __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_pos); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 285, __pyx_L1_error)
     __pyx_t_5 = (__pyx_cur_scope->__pyx_v_tx.in_coding_region(__pyx_t_4) != 0);
     if (__pyx_t_5) {
       __Pyx_XDECREF(__pyx_r);
@@ -6283,7 +6219,7 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generat
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":286
+/* "alphacluster/gencode.pyx":282
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
@@ -6306,7 +6242,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6in_any_tx_cds(struct __
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 286, __pyx_L1_error)
+    __PYX_ERR(0, 282, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -6317,7 +6253,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6in_any_tx_cds(struct __
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_pos);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_pos);
 
-  /* "alphacluster/gencode.pyx":289
+  /* "alphacluster/gencode.pyx":285
  *         ''' find if a pos is in coding region of any transcript of a gene
  *         '''
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)             # <<<<<<<<<<<<<<
@@ -6325,16 +6261,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6in_any_tx_cds(struct __
  *     def distance(self, chrom, pos):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_pf_12alphacluster_7gencode_4Gene_13in_any_tx_cds_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_1 = __pyx_pf_12alphacluster_7gencode_4Gene_13in_any_tx_cds_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_Generator_Next(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Generator_Next(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":286
+  /* "alphacluster/gencode.pyx":282
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
@@ -6356,7 +6292,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6in_any_tx_cds(struct __
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":291
+/* "alphacluster/gencode.pyx":287
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)
  * 
  *     def distance(self, chrom, pos):             # <<<<<<<<<<<<<<
@@ -6399,11 +6335,11 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_9distance(PyObject *__py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pos)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, 1); __PYX_ERR(0, 291, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, 1); __PYX_ERR(0, 287, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "distance") < 0)) __PYX_ERR(0, 291, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "distance") < 0)) __PYX_ERR(0, 287, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6416,7 +6352,7 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_9distance(PyObject *__py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 291, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 287, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("alphacluster.gencode.Gene.distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6445,16 +6381,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
   __Pyx_RefNannySetupContext("distance", 0);
   __Pyx_INCREF(__pyx_v_chrom);
 
-  /* "alphacluster/gencode.pyx":295
+  /* "alphacluster/gencode.pyx":291
  *         '''
  *         # sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -6469,17 +6405,17 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_n_u_chr) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_n_u_chr);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 295, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_5) {
   } else {
     __pyx_t_1 = __pyx_t_5;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_chrom, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_chrom, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -6493,32 +6429,32 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_n_u_chr) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_n_u_chr);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 295, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_6 = ((!__pyx_t_5) != 0);
   __pyx_t_1 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":296
+    /* "alphacluster/gencode.pyx":292
  *         # sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'             # <<<<<<<<<<<<<<
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]
  */
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_chrom, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_chrom, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_n_u_chr, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 296, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_n_u_chr, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 292, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_chrom, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "alphacluster/gencode.pyx":295
+    /* "alphacluster/gencode.pyx":291
  *         '''
  *         # sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -6528,16 +6464,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
     goto __pyx_L3;
   }
 
-  /* "alphacluster/gencode.pyx":297
+  /* "alphacluster/gencode.pyx":293
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
  *             chrom = chrom[3:]
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -6552,10 +6488,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
   }
   __pyx_t_4 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_u_chr) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_u_chr);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = ((!__pyx_t_6) != 0);
   if (__pyx_t_5) {
@@ -6563,7 +6499,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
     __pyx_t_1 = __pyx_t_5;
     goto __pyx_L6_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_chrom, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_chrom, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6577,28 +6513,28 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
   }
   __pyx_t_4 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_u_chr) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_u_chr);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_1 = __pyx_t_5;
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":298
+    /* "alphacluster/gencode.pyx":294
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]             # <<<<<<<<<<<<<<
  * 
  *         if self.chrom != chrom:
  */
-    __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_chrom, 3, 0, NULL, NULL, &__pyx_slice__9, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_chrom, 3, 0, NULL, NULL, &__pyx_slice__9, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_chrom, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "alphacluster/gencode.pyx":297
+    /* "alphacluster/gencode.pyx":293
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -6608,22 +6544,22 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
   }
   __pyx_L3:;
 
-  /* "alphacluster/gencode.pyx":300
+  /* "alphacluster/gencode.pyx":296
  *             chrom = chrom[3:]
  * 
  *         if self.chrom != chrom:             # <<<<<<<<<<<<<<
  *             return None
  *         if self.start <= pos <= self.end:
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_4, __pyx_v_chrom, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_4, __pyx_v_chrom, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":301
+    /* "alphacluster/gencode.pyx":297
  * 
  *         if self.chrom != chrom:
  *             return None             # <<<<<<<<<<<<<<
@@ -6634,7 +6570,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "alphacluster/gencode.pyx":300
+    /* "alphacluster/gencode.pyx":296
  *             chrom = chrom[3:]
  * 
  *         if self.chrom != chrom:             # <<<<<<<<<<<<<<
@@ -6643,29 +6579,29 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
  */
   }
 
-  /* "alphacluster/gencode.pyx":302
+  /* "alphacluster/gencode.pyx":298
  *         if self.chrom != chrom:
  *             return None
  *         if self.start <= pos <= self.end:             # <<<<<<<<<<<<<<
  *             return 0
  *         return min(abs(self.start - pos), abs(self.end - pos))
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_v_pos, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_v_pos, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
   if (__Pyx_PyObject_IsTrue(__pyx_t_4)) {
     __Pyx_DECREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_v_pos, __pyx_t_2, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_v_pos, __pyx_t_2, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":303
+    /* "alphacluster/gencode.pyx":299
  *             return None
  *         if self.start <= pos <= self.end:
  *             return 0             # <<<<<<<<<<<<<<
@@ -6677,7 +6613,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
     __pyx_r = __pyx_int_0;
     goto __pyx_L0;
 
-    /* "alphacluster/gencode.pyx":302
+    /* "alphacluster/gencode.pyx":298
  *         if self.chrom != chrom:
  *             return None
  *         if self.start <= pos <= self.end:             # <<<<<<<<<<<<<<
@@ -6686,7 +6622,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
  */
   }
 
-  /* "alphacluster/gencode.pyx":304
+  /* "alphacluster/gencode.pyx":300
  *         if self.start <= pos <= self.end:
  *             return 0
  *         return min(abs(self.start - pos), abs(self.end - pos))             # <<<<<<<<<<<<<<
@@ -6694,24 +6630,24 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
  * cdef class Gencode:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_4, __pyx_v_pos); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_4, __pyx_v_pos); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyNumber_Absolute(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Absolute(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_3, __pyx_v_pos); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_3, __pyx_v_pos); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Absolute(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Absolute(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 304, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   if (__pyx_t_1) {
     __Pyx_INCREF(__pyx_t_4);
@@ -6727,7 +6663,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_o
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":291
+  /* "alphacluster/gencode.pyx":287
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)
  * 
  *     def distance(self, chrom, pos):             # <<<<<<<<<<<<<<
@@ -6863,7 +6799,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_12__setstate_cython__(CY
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":309
+/* "alphacluster/gencode.pyx":305
  *     cdef dict genes
  *     cdef map[string, vector[GenePoint]] starts, ends
  *     def __cinit__(self, gencode=None, fasta=None, coding_only=True):             # <<<<<<<<<<<<<<
@@ -6923,7 +6859,7 @@ static int __pyx_pw_12alphacluster_7gencode_7Gencode_1__cinit__(PyObject *__pyx_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 309, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 305, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6943,7 +6879,7 @@ static int __pyx_pw_12alphacluster_7gencode_7Gencode_1__cinit__(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 309, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 305, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("alphacluster.gencode.Gencode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6978,14 +6914,14 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "alphacluster/gencode.pyx":317
+  /* "alphacluster/gencode.pyx":313
  *             coding: restrict to protein_coding only by default
  *         '''
  *         self.genes = {}             # <<<<<<<<<<<<<<
  *         if fasta:
  *             logging.info(f'opening genome fasta: {fasta}')
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->genes);
@@ -6993,31 +6929,31 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
   __pyx_v_self->genes = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":318
+  /* "alphacluster/gencode.pyx":314
  *         '''
  *         self.genes = {}
  *         if fasta:             # <<<<<<<<<<<<<<
  *             logging.info(f'opening genome fasta: {fasta}')
  *             global __genome_
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_fasta); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_fasta); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 314, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "alphacluster/gencode.pyx":319
+    /* "alphacluster/gencode.pyx":315
  *         self.genes = {}
  *         if fasta:
  *             logging.info(f'opening genome fasta: {fasta}')             # <<<<<<<<<<<<<<
  *             global __genome_
  *             __genome_ = Fasta(str(fasta))
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_logging); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_logging); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_info); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_info); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_fasta, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_fasta, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u_opening_genome_fasta, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u_opening_genome_fasta, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -7033,21 +6969,21 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
     __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 319, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":321
+    /* "alphacluster/gencode.pyx":317
  *             logging.info(f'opening genome fasta: {fasta}')
  *             global __genome_
  *             __genome_ = Fasta(str(fasta))             # <<<<<<<<<<<<<<
  *         logging.info(f'opening gencode annotations: {gencode}')
  *         cdef vector[NamedTx] transcripts
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Fasta); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Fasta); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_v_fasta); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_v_fasta); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -7062,13 +6998,13 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
     __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, __pyx_t_1) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, __pyx_t_1) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":318
+    /* "alphacluster/gencode.pyx":314
  *         '''
  *         self.genes = {}
  *         if fasta:             # <<<<<<<<<<<<<<
@@ -7077,21 +7013,21 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
  */
   }
 
-  /* "alphacluster/gencode.pyx":322
+  /* "alphacluster/gencode.pyx":318
  *             global __genome_
  *             __genome_ = Fasta(str(fasta))
  *         logging.info(f'opening gencode annotations: {gencode}')             # <<<<<<<<<<<<<<
  *         cdef vector[NamedTx] transcripts
  *         cdef Gene curr
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_logging); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_info); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_info); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_gencode, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_gencode, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_kp_u_opening_gencode_annotations, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_kp_u_opening_gencode_annotations, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -7107,12 +7043,12 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":325
+  /* "alphacluster/gencode.pyx":321
  *         cdef vector[NamedTx] transcripts
  *         cdef Gene curr
  *         if gencode is not None:             # <<<<<<<<<<<<<<
@@ -7123,24 +7059,24 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
   __pyx_t_6 = (__pyx_t_2 != 0);
   if (__pyx_t_6) {
 
-    /* "alphacluster/gencode.pyx":326
+    /* "alphacluster/gencode.pyx":322
  *         cdef Gene curr
  *         if gencode is not None:
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)             # <<<<<<<<<<<<<<
  *             for x in transcripts:
  *                 symbol = x.symbol.decode('utf8')
  */
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_v_gencode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_v_gencode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_5 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_7 = __pyx_convert_string_from_py_std__in_string(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_7 = __pyx_convert_string_from_py_std__in_string(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_coding_only); if (unlikely((__pyx_t_8 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_coding_only); if (unlikely((__pyx_t_8 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L1_error)
     __pyx_v_transcripts = gencode::open_gencode(__pyx_t_7, __pyx_t_8);
 
-    /* "alphacluster/gencode.pyx":327
+    /* "alphacluster/gencode.pyx":323
  *         if gencode is not None:
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)
  *             for x in transcripts:             # <<<<<<<<<<<<<<
@@ -7154,19 +7090,19 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
       ++__pyx_t_9;
       __pyx_v_x = __pyx_t_10;
 
-      /* "alphacluster/gencode.pyx":328
+      /* "alphacluster/gencode.pyx":324
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)
  *             for x in transcripts:
  *                 symbol = x.symbol.decode('utf8')             # <<<<<<<<<<<<<<
  *                 if symbol not in self.genes:
  *                     self.genes[symbol] = Gene(symbol.encode('utf8'))
  */
-      __pyx_t_5 = __Pyx_decode_cpp_string(__pyx_v_x.symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_decode_cpp_string(__pyx_v_x.symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_symbol, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "alphacluster/gencode.pyx":329
+      /* "alphacluster/gencode.pyx":325
  *             for x in transcripts:
  *                 symbol = x.symbol.decode('utf8')
  *                 if symbol not in self.genes:             # <<<<<<<<<<<<<<
@@ -7175,20 +7111,20 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
  */
       if (unlikely(__pyx_v_self->genes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 329, __pyx_L1_error)
+        __PYX_ERR(0, 325, __pyx_L1_error)
       }
-      __pyx_t_6 = (__Pyx_PyDict_ContainsTF(__pyx_v_symbol, __pyx_v_self->genes, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 329, __pyx_L1_error)
+      __pyx_t_6 = (__Pyx_PyDict_ContainsTF(__pyx_v_symbol, __pyx_v_self->genes, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 325, __pyx_L1_error)
       __pyx_t_2 = (__pyx_t_6 != 0);
       if (__pyx_t_2) {
 
-        /* "alphacluster/gencode.pyx":330
+        /* "alphacluster/gencode.pyx":326
  *                 symbol = x.symbol.decode('utf8')
  *                 if symbol not in self.genes:
  *                     self.genes[symbol] = Gene(symbol.encode('utf8'))             # <<<<<<<<<<<<<<
  *                 curr = self.genes[symbol]
  *                 curr.add_tx(x.tx, x.is_canonical)
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_3 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -7202,20 +7138,20 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
         }
         __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_utf8);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_12alphacluster_7gencode_Gene), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_12alphacluster_7gencode_Gene), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         if (unlikely(__pyx_v_self->genes == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 330, __pyx_L1_error)
+          __PYX_ERR(0, 326, __pyx_L1_error)
         }
-        if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_v_symbol, __pyx_t_1) < 0)) __PYX_ERR(0, 330, __pyx_L1_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_v_symbol, __pyx_t_1) < 0)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "alphacluster/gencode.pyx":329
+        /* "alphacluster/gencode.pyx":325
  *             for x in transcripts:
  *                 symbol = x.symbol.decode('utf8')
  *                 if symbol not in self.genes:             # <<<<<<<<<<<<<<
@@ -7224,7 +7160,7 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
  */
       }
 
-      /* "alphacluster/gencode.pyx":331
+      /* "alphacluster/gencode.pyx":327
  *                 if symbol not in self.genes:
  *                     self.genes[symbol] = Gene(symbol.encode('utf8'))
  *                 curr = self.genes[symbol]             # <<<<<<<<<<<<<<
@@ -7233,26 +7169,26 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
  */
       if (unlikely(__pyx_v_self->genes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 331, __pyx_L1_error)
+        __PYX_ERR(0, 327, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->genes, __pyx_v_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->genes, __pyx_v_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_12alphacluster_7gencode_Gene))))) __PYX_ERR(0, 331, __pyx_L1_error)
+      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_12alphacluster_7gencode_Gene))))) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_curr, ((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "alphacluster/gencode.pyx":332
+      /* "alphacluster/gencode.pyx":328
  *                     self.genes[symbol] = Gene(symbol.encode('utf8'))
  *                 curr = self.genes[symbol]
  *                 curr.add_tx(x.tx, x.is_canonical)             # <<<<<<<<<<<<<<
  *                 self.genes[symbol] = curr
  *         self._sort()
  */
-      __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_curr->__pyx_vtab)->add_tx(__pyx_v_curr, __pyx_v_x.tx, __pyx_v_x.is_canonical); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_curr->__pyx_vtab)->add_tx(__pyx_v_curr, __pyx_v_x.tx, __pyx_v_x.is_canonical); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "alphacluster/gencode.pyx":333
+      /* "alphacluster/gencode.pyx":329
  *                 curr = self.genes[symbol]
  *                 curr.add_tx(x.tx, x.is_canonical)
  *                 self.genes[symbol] = curr             # <<<<<<<<<<<<<<
@@ -7261,11 +7197,11 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
  */
       if (unlikely(__pyx_v_self->genes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 333, __pyx_L1_error)
+        __PYX_ERR(0, 329, __pyx_L1_error)
       }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_v_symbol, ((PyObject *)__pyx_v_curr)) < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_v_symbol, ((PyObject *)__pyx_v_curr)) < 0)) __PYX_ERR(0, 329, __pyx_L1_error)
 
-      /* "alphacluster/gencode.pyx":327
+      /* "alphacluster/gencode.pyx":323
  *         if gencode is not None:
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)
  *             for x in transcripts:             # <<<<<<<<<<<<<<
@@ -7274,7 +7210,7 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
  */
     }
 
-    /* "alphacluster/gencode.pyx":325
+    /* "alphacluster/gencode.pyx":321
  *         cdef vector[NamedTx] transcripts
  *         cdef Gene curr
  *         if gencode is not None:             # <<<<<<<<<<<<<<
@@ -7283,14 +7219,14 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
  */
   }
 
-  /* "alphacluster/gencode.pyx":334
+  /* "alphacluster/gencode.pyx":330
  *                 curr.add_tx(x.tx, x.is_canonical)
  *                 self.genes[symbol] = curr
  *         self._sort()             # <<<<<<<<<<<<<<
  * 
  *     def _sort(self):
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sort); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 334, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sort); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -7304,12 +7240,12 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":309
+  /* "alphacluster/gencode.pyx":305
  *     cdef dict genes
  *     cdef map[string, vector[GenePoint]] starts, ends
  *     def __cinit__(self, gencode=None, fasta=None, coding_only=True):             # <<<<<<<<<<<<<<
@@ -7334,7 +7270,7 @@ static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":336
+/* "alphacluster/gencode.pyx":332
  *         self._sort()
  * 
  *     def _sort(self):             # <<<<<<<<<<<<<<
@@ -7356,7 +7292,7 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_3_sort(PyObject *__py
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":355
+/* "alphacluster/gencode.pyx":351
  *         # sort start and end coords by position
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
@@ -7387,7 +7323,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda1", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_pos); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 355, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_pos); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7404,7 +7340,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":357
+/* "alphacluster/gencode.pyx":353
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
@@ -7435,7 +7371,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda2", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_pos); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_x, __pyx_n_u_pos); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7452,7 +7388,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":336
+/* "alphacluster/gencode.pyx":332
  *         self._sort()
  * 
  *     def _sort(self):             # <<<<<<<<<<<<<<
@@ -7490,7 +7426,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_sort", 0);
 
-  /* "alphacluster/gencode.pyx":339
+  /* "alphacluster/gencode.pyx":335
  *         ''' index by starts and ends, to speed finding genes in a region
  *         '''
  *         for symbol in self.genes:             # <<<<<<<<<<<<<<
@@ -7500,9 +7436,9 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
   __pyx_t_2 = 0;
   if (unlikely(__pyx_v_self->genes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 339, __pyx_L1_error)
+    __PYX_ERR(0, 335, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_dict_iterator(__pyx_v_self->genes, 1, ((PyObject *)NULL), (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 339, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_dict_iterator(__pyx_v_self->genes, 1, ((PyObject *)NULL), (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 335, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_1);
   __pyx_t_1 = __pyx_t_5;
@@ -7510,12 +7446,12 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
   while (1) {
     __pyx_t_6 = __Pyx_dict_iter_next(__pyx_t_1, __pyx_t_3, &__pyx_t_2, &__pyx_t_5, NULL, NULL, __pyx_t_4);
     if (unlikely(__pyx_t_6 == 0)) break;
-    if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 339, __pyx_L1_error)
+    if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 335, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_symbol, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "alphacluster/gencode.pyx":340
+    /* "alphacluster/gencode.pyx":336
  *         '''
  *         for symbol in self.genes:
  *             gene = self.genes[symbol]             # <<<<<<<<<<<<<<
@@ -7524,23 +7460,23 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
  */
     if (unlikely(__pyx_v_self->genes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 340, __pyx_L1_error)
+      __PYX_ERR(0, 336, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->genes, __pyx_v_symbol); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 340, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->genes, __pyx_v_symbol); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 336, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_gene, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "alphacluster/gencode.pyx":341
+    /* "alphacluster/gencode.pyx":337
  *         for symbol in self.genes:
  *             gene = self.genes[symbol]
  *             chrom = gene.chrom.encode('utf8')             # <<<<<<<<<<<<<<
  *             symbol = symbol.encode('utf8')
  * 
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_chrom); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 341, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_chrom); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_encode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 341, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_encode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -7555,20 +7491,20 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
     }
     __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_7, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_n_u_utf8);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 341, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF_SET(__pyx_v_chrom, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "alphacluster/gencode.pyx":342
+    /* "alphacluster/gencode.pyx":338
  *             gene = self.genes[symbol]
  *             chrom = gene.chrom.encode('utf8')
  *             symbol = symbol.encode('utf8')             # <<<<<<<<<<<<<<
  * 
  *             # ensure the chromosome is present
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_encode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_symbol, __pyx_n_s_encode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -7582,38 +7518,38 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
     }
     __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_7, __pyx_n_u_utf8) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_n_u_utf8);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 342, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF_SET(__pyx_v_symbol, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "alphacluster/gencode.pyx":345
+    /* "alphacluster/gencode.pyx":341
  * 
  *             # ensure the chromosome is present
  *             if self.starts.count(chrom) == 0:             # <<<<<<<<<<<<<<
  *                 self.starts[chrom] = []
  *             if self.ends.count(chrom) == 0:
  */
-    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 341, __pyx_L1_error)
     __pyx_t_10 = ((__pyx_v_self->starts.count(__pyx_t_9) == 0) != 0);
     if (__pyx_t_10) {
 
-      /* "alphacluster/gencode.pyx":346
+      /* "alphacluster/gencode.pyx":342
  *             # ensure the chromosome is present
  *             if self.starts.count(chrom) == 0:
  *                 self.starts[chrom] = []             # <<<<<<<<<<<<<<
  *             if self.ends.count(chrom) == 0:
  *                 self.ends[chrom] = []
  */
-      __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 342, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 342, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 342, __pyx_L1_error)
       (__pyx_v_self->starts[__pyx_t_9]) = __pyx_t_11;
 
-      /* "alphacluster/gencode.pyx":345
+      /* "alphacluster/gencode.pyx":341
  * 
  *             # ensure the chromosome is present
  *             if self.starts.count(chrom) == 0:             # <<<<<<<<<<<<<<
@@ -7622,32 +7558,32 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
  */
     }
 
-    /* "alphacluster/gencode.pyx":347
+    /* "alphacluster/gencode.pyx":343
  *             if self.starts.count(chrom) == 0:
  *                 self.starts[chrom] = []
  *             if self.ends.count(chrom) == 0:             # <<<<<<<<<<<<<<
  *                 self.ends[chrom] = []
  * 
  */
-    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L1_error)
+    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 343, __pyx_L1_error)
     __pyx_t_10 = ((__pyx_v_self->ends.count(__pyx_t_9) == 0) != 0);
     if (__pyx_t_10) {
 
-      /* "alphacluster/gencode.pyx":348
+      /* "alphacluster/gencode.pyx":344
  *                 self.starts[chrom] = []
  *             if self.ends.count(chrom) == 0:
  *                 self.ends[chrom] = []             # <<<<<<<<<<<<<<
  * 
  *             self.starts[chrom].push_back(GenePoint(gene.start, symbol))
  */
-      __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 348, __pyx_L1_error)
+      __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 344, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 348, __pyx_L1_error)
+      __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 344, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 348, __pyx_L1_error)
+      __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 344, __pyx_L1_error)
       (__pyx_v_self->ends[__pyx_t_9]) = __pyx_t_11;
 
-      /* "alphacluster/gencode.pyx":347
+      /* "alphacluster/gencode.pyx":343
  *             if self.starts.count(chrom) == 0:
  *                 self.starts[chrom] = []
  *             if self.ends.count(chrom) == 0:             # <<<<<<<<<<<<<<
@@ -7656,53 +7592,53 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
  */
     }
 
-    /* "alphacluster/gencode.pyx":350
+    /* "alphacluster/gencode.pyx":346
  *                 self.ends[chrom] = []
  * 
  *             self.starts[chrom].push_back(GenePoint(gene.start, symbol))             # <<<<<<<<<<<<<<
  *             self.ends[chrom].push_back(GenePoint(gene.end, symbol))
  * 
  */
-    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 350, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_start); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_start); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 346, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_12.pos = __pyx_t_6;
-    __pyx_t_13 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_13 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
     __pyx_t_12.symbol = __pyx_t_13;
     try {
       (__pyx_v_self->starts[__pyx_t_9]).push_back(__pyx_t_12);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 350, __pyx_L1_error)
+      __PYX_ERR(0, 346, __pyx_L1_error)
     }
 
-    /* "alphacluster/gencode.pyx":351
+    /* "alphacluster/gencode.pyx":347
  * 
  *             self.starts[chrom].push_back(GenePoint(gene.start, symbol))
  *             self.ends[chrom].push_back(GenePoint(gene.end, symbol))             # <<<<<<<<<<<<<<
  * 
  *         # sort start and end coords by position
  */
-    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 351, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_end); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_12.pos = __pyx_t_6;
-    __pyx_t_13 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_13 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L1_error)
     __pyx_t_12.symbol = __pyx_t_13;
     try {
       (__pyx_v_self->ends[__pyx_t_9]).push_back(__pyx_t_12);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 351, __pyx_L1_error)
+      __PYX_ERR(0, 347, __pyx_L1_error)
     }
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":354
+  /* "alphacluster/gencode.pyx":350
  * 
  *         # sort start and end coords by position
  *         for x, values in self.starts:             # <<<<<<<<<<<<<<
@@ -7715,7 +7651,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
     if (!(__pyx_t_14 != __pyx_t_15->end())) break;
     __pyx_t_16 = *__pyx_t_14;
     ++__pyx_t_14;
-    __pyx_t_1 = __pyx_convert_pair_to_py_std_3a__3a_string____std_3a__3a_vector_3c_struct__gencode_3a__3a_GenePoint_3e___(__pyx_t_16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
+    __pyx_t_1 = __pyx_convert_pair_to_py_std_3a__3a_string____std_3a__3a_vector_3c_struct__gencode_3a__3a_GenePoint_3e___(__pyx_t_16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
       PyObject* sequence = __pyx_t_1;
@@ -7723,7 +7659,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 354, __pyx_L1_error)
+        __PYX_ERR(0, 350, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -7736,15 +7672,15 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_8);
       #else
-      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 354, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 354, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 354, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_17 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -7752,7 +7688,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       __Pyx_GOTREF(__pyx_t_5);
       index = 1; __pyx_t_8 = __pyx_t_17(__pyx_t_7); if (unlikely(!__pyx_t_8)) goto __pyx_L9_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_8);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_7), 2) < 0) __PYX_ERR(0, 354, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_7), 2) < 0) __PYX_ERR(0, 350, __pyx_L1_error)
       __pyx_t_17 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L10_unpacking_done;
@@ -7760,7 +7696,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_17 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 354, __pyx_L1_error)
+      __PYX_ERR(0, 350, __pyx_L1_error)
       __pyx_L10_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_5);
@@ -7768,34 +7704,34 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
     __Pyx_XDECREF_SET(__pyx_v_values, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "alphacluster/gencode.pyx":355
+    /* "alphacluster/gencode.pyx":351
  *         # sort start and end coords by position
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
  *         for x, values in self.ends:
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])
  */
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_values);
     __Pyx_GIVEREF(__pyx_v_values);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_values);
-    __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_lambda1, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_alphacluster_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_lambda1, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_alphacluster_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_key, __pyx_t_5) < 0) __PYX_ERR(0, 355, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_key, __pyx_t_5) < 0) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_x); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_x); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 351, __pyx_L1_error)
     (__pyx_v_self->starts[__pyx_t_9]) = __pyx_t_11;
 
-    /* "alphacluster/gencode.pyx":354
+    /* "alphacluster/gencode.pyx":350
  * 
  *         # sort start and end coords by position
  *         for x, values in self.starts:             # <<<<<<<<<<<<<<
@@ -7804,7 +7740,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
  */
   }
 
-  /* "alphacluster/gencode.pyx":356
+  /* "alphacluster/gencode.pyx":352
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:             # <<<<<<<<<<<<<<
@@ -7817,7 +7753,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
     if (!(__pyx_t_14 != __pyx_t_15->end())) break;
     __pyx_t_16 = *__pyx_t_14;
     ++__pyx_t_14;
-    __pyx_t_5 = __pyx_convert_pair_to_py_std_3a__3a_string____std_3a__3a_vector_3c_struct__gencode_3a__3a_GenePoint_3e___(__pyx_t_16); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L1_error)
+    __pyx_t_5 = __pyx_convert_pair_to_py_std_3a__3a_string____std_3a__3a_vector_3c_struct__gencode_3a__3a_GenePoint_3e___(__pyx_t_16); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if ((likely(PyTuple_CheckExact(__pyx_t_5))) || (PyList_CheckExact(__pyx_t_5))) {
       PyObject* sequence = __pyx_t_5;
@@ -7825,7 +7761,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 356, __pyx_L1_error)
+        __PYX_ERR(0, 352, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -7838,15 +7774,15 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       __Pyx_INCREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 356, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 356, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_17 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -7854,7 +7790,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       __Pyx_GOTREF(__pyx_t_8);
       index = 1; __pyx_t_1 = __pyx_t_17(__pyx_t_7); if (unlikely(!__pyx_t_1)) goto __pyx_L13_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_7), 2) < 0) __PYX_ERR(0, 356, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_17(__pyx_t_7), 2) < 0) __PYX_ERR(0, 352, __pyx_L1_error)
       __pyx_t_17 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L14_unpacking_done;
@@ -7862,7 +7798,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_17 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 356, __pyx_L1_error)
+      __PYX_ERR(0, 352, __pyx_L1_error)
       __pyx_L14_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_8);
@@ -7870,34 +7806,34 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
     __Pyx_XDECREF_SET(__pyx_v_values, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":357
+    /* "alphacluster/gencode.pyx":353
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
  * 
  *     def __repr__(self):
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_values);
     __Pyx_GIVEREF(__pyx_v_values);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_values);
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_1lambda2, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_alphacluster_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_1lambda2, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_alphacluster_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_key, __pyx_t_8) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_key, __pyx_t_8) < 0) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_8); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_11 = __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(__pyx_t_8); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_x); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_x); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 353, __pyx_L1_error)
     (__pyx_v_self->ends[__pyx_t_9]) = __pyx_t_11;
 
-    /* "alphacluster/gencode.pyx":356
+    /* "alphacluster/gencode.pyx":352
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:             # <<<<<<<<<<<<<<
@@ -7906,7 +7842,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
  */
   }
 
-  /* "alphacluster/gencode.pyx":336
+  /* "alphacluster/gencode.pyx":332
  *         self._sort()
  * 
  *     def _sort(self):             # <<<<<<<<<<<<<<
@@ -7935,7 +7871,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_o
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":359
+/* "alphacluster/gencode.pyx":355
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -7969,7 +7905,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "alphacluster/gencode.pyx":360
+  /* "alphacluster/gencode.pyx":356
  * 
  *     def __repr__(self):
  *         return f'Gencode(n_genes={len(self)})'             # <<<<<<<<<<<<<<
@@ -7977,7 +7913,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(struct __py
  *         return len(self.genes)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
@@ -7985,8 +7921,8 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(struct __py
   __pyx_t_2 += 16;
   __Pyx_GIVEREF(__pyx_kp_u_Gencode_n_genes);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Gencode_n_genes);
-  __pyx_t_4 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 360, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_4, 0, ' ', 'd'); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_t_4 = PyObject_Length(((PyObject *)__pyx_v_self)); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 356, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_4, 0, ' ', 'd'); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
@@ -7996,14 +7932,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(struct __py
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__4);
   PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u__4);
-  __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_1, 3, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_1, 3, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":359
+  /* "alphacluster/gencode.pyx":355
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -8023,7 +7959,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(struct __py
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":361
+/* "alphacluster/gencode.pyx":357
  *     def __repr__(self):
  *         return f'Gencode(n_genes={len(self)})'
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -8054,7 +7990,7 @@ static Py_ssize_t __pyx_pf_12alphacluster_7gencode_7Gencode_6__len__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "alphacluster/gencode.pyx":362
+  /* "alphacluster/gencode.pyx":358
  *         return f'Gencode(n_genes={len(self)})'
  *     def __len__(self):
  *         return len(self.genes)             # <<<<<<<<<<<<<<
@@ -8065,14 +8001,14 @@ static Py_ssize_t __pyx_pf_12alphacluster_7gencode_7Gencode_6__len__(struct __py
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 362, __pyx_L1_error)
+    __PYX_ERR(0, 358, __pyx_L1_error)
   }
-  __pyx_t_2 = PyDict_Size(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 362, __pyx_L1_error)
+  __pyx_t_2 = PyDict_Size(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 358, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":361
+  /* "alphacluster/gencode.pyx":357
  *     def __repr__(self):
  *         return f'Gencode(n_genes={len(self)})'
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -8090,7 +8026,7 @@ static Py_ssize_t __pyx_pf_12alphacluster_7gencode_7Gencode_6__len__(struct __py
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":363
+/* "alphacluster/gencode.pyx":359
  *     def __len__(self):
  *         return len(self.genes)
  *     def __getitem__(self, symbol):             # <<<<<<<<<<<<<<
@@ -8120,7 +8056,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_8__getitem__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
 
-  /* "alphacluster/gencode.pyx":364
+  /* "alphacluster/gencode.pyx":360
  *         return len(self.genes)
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]             # <<<<<<<<<<<<<<
@@ -8130,15 +8066,15 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_8__getitem__(struct _
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(__pyx_v_self->genes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 364, __pyx_L1_error)
+    __PYX_ERR(0, 360, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->genes, __pyx_v_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->genes, __pyx_v_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":363
+  /* "alphacluster/gencode.pyx":359
  *     def __len__(self):
  *         return len(self.genes)
  *     def __getitem__(self, symbol):             # <<<<<<<<<<<<<<
@@ -8158,7 +8094,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_8__getitem__(struct _
 }
 static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "alphacluster/gencode.pyx":365
+/* "alphacluster/gencode.pyx":361
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -8191,7 +8127,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_10__iter__(struct __p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 365, __pyx_L1_error)
+    __PYX_ERR(0, 361, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -8199,7 +8135,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_10__iter__(struct __p
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12alphacluster_7gencode_7Gencode_12generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_Gencode___iter, __pyx_n_s_alphacluster_gencode); if (unlikely(!gen)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12alphacluster_7gencode_7Gencode_12generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_Gencode___iter, __pyx_n_s_alphacluster_gencode); if (unlikely(!gen)) __PYX_ERR(0, 361, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -8238,9 +8174,9 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_Cor
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 365, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 361, __pyx_L1_error)
 
-  /* "alphacluster/gencode.pyx":366
+  /* "alphacluster/gencode.pyx":362
  *         return self.genes[symbol]
  *     def __iter__(self):
  *         for x in self.genes:             # <<<<<<<<<<<<<<
@@ -8250,9 +8186,9 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_Cor
   __pyx_t_2 = 0;
   if (unlikely(__pyx_cur_scope->__pyx_v_self->genes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 366, __pyx_L1_error)
+    __PYX_ERR(0, 362, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_dict_iterator(__pyx_cur_scope->__pyx_v_self->genes, 1, ((PyObject *)NULL), (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 366, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_dict_iterator(__pyx_cur_scope->__pyx_v_self->genes, 1, ((PyObject *)NULL), (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_1);
   __pyx_t_1 = __pyx_t_5;
@@ -8260,14 +8196,14 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_Cor
   while (1) {
     __pyx_t_6 = __Pyx_dict_iter_next(__pyx_t_1, __pyx_t_3, &__pyx_t_2, &__pyx_t_5, NULL, NULL, __pyx_t_4);
     if (unlikely(__pyx_t_6 == 0)) break;
-    if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 366, __pyx_L1_error)
+    if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_x);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_x, __pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "alphacluster/gencode.pyx":367
+    /* "alphacluster/gencode.pyx":363
  *     def __iter__(self):
  *         for x in self.genes:
  *             yield x             # <<<<<<<<<<<<<<
@@ -8294,12 +8230,12 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_Cor
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_3;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 367, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 363, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "alphacluster/gencode.pyx":365
+  /* "alphacluster/gencode.pyx":361
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -8325,7 +8261,7 @@ static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_Cor
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":369
+/* "alphacluster/gencode.pyx":365
  *             yield x
  * 
  *     def add_gene(self, gene):             # <<<<<<<<<<<<<<
@@ -8360,25 +8296,25 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_gene", 0);
 
-  /* "alphacluster/gencode.pyx":372
+  /* "alphacluster/gencode.pyx":368
  *         ''' add another gene to the Gencode object
  *         '''
  *         if gene.symbol not in self.genes:             # <<<<<<<<<<<<<<
  *             self.genes[gene.symbol] = gene
  *         self._sort()
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (unlikely(__pyx_v_self->genes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 372, __pyx_L1_error)
+    __PYX_ERR(0, 368, __pyx_L1_error)
   }
-  __pyx_t_2 = (__Pyx_PyDict_ContainsTF(__pyx_t_1, __pyx_v_self->genes, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyDict_ContainsTF(__pyx_t_1, __pyx_v_self->genes, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 368, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "alphacluster/gencode.pyx":373
+    /* "alphacluster/gencode.pyx":369
  *         '''
  *         if gene.symbol not in self.genes:
  *             self.genes[gene.symbol] = gene             # <<<<<<<<<<<<<<
@@ -8387,14 +8323,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(struct __p
  */
     if (unlikely(__pyx_v_self->genes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 373, __pyx_L1_error)
+      __PYX_ERR(0, 369, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 373, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_gene, __pyx_n_s_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_t_1, __pyx_v_gene) < 0)) __PYX_ERR(0, 373, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_t_1, __pyx_v_gene) < 0)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "alphacluster/gencode.pyx":372
+    /* "alphacluster/gencode.pyx":368
  *         ''' add another gene to the Gencode object
  *         '''
  *         if gene.symbol not in self.genes:             # <<<<<<<<<<<<<<
@@ -8403,14 +8339,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(struct __p
  */
   }
 
-  /* "alphacluster/gencode.pyx":374
+  /* "alphacluster/gencode.pyx":370
  *         if gene.symbol not in self.genes:
  *             self.genes[gene.symbol] = gene
  *         self._sort()             # <<<<<<<<<<<<<<
  * 
  *     def nearest(self, str chrom, int pos):
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 370, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -8424,12 +8360,12 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(struct __p
   }
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":369
+  /* "alphacluster/gencode.pyx":365
  *             yield x
  * 
  *     def add_gene(self, gene):             # <<<<<<<<<<<<<<
@@ -8452,7 +8388,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(struct __p
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":376
+/* "alphacluster/gencode.pyx":372
  *         self._sort()
  * 
  *     def nearest(self, str chrom, int pos):             # <<<<<<<<<<<<<<
@@ -8495,11 +8431,11 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_16nearest(PyObject *_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pos)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("nearest", 1, 2, 2, 1); __PYX_ERR(0, 376, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("nearest", 1, 2, 2, 1); __PYX_ERR(0, 372, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "nearest") < 0)) __PYX_ERR(0, 376, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "nearest") < 0)) __PYX_ERR(0, 372, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -8508,17 +8444,17 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_16nearest(PyObject *_
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_chrom = ((PyObject*)values[0]);
-    __pyx_v_pos = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_pos == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 376, __pyx_L3_error)
+    __pyx_v_pos = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_pos == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 372, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("nearest", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 376, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("nearest", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 372, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("alphacluster.gencode.Gencode.nearest", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_chrom), (&PyUnicode_Type), 1, "chrom", 1))) __PYX_ERR(0, 376, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_chrom), (&PyUnicode_Type), 1, "chrom", 1))) __PYX_ERR(0, 372, __pyx_L1_error)
   __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), __pyx_v_chrom, __pyx_v_pos);
 
   /* function exit code */
@@ -8570,16 +8506,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   __Pyx_RefNannySetupContext("nearest", 0);
   __Pyx_INCREF(__pyx_v_chrom);
 
-  /* "alphacluster/gencode.pyx":380
+  /* "alphacluster/gencode.pyx":376
  *         '''
  * 	# sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 380, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 380, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 376, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8594,10 +8530,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_n_u_chr) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_n_u_chr);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 376, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 380, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 376, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_5) {
   } else {
@@ -8606,30 +8542,30 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   }
   if (unlikely(__pyx_v_chrom == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "startswith");
-    __PYX_ERR(0, 380, __pyx_L1_error)
+    __PYX_ERR(0, 376, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_PyUnicode_Tailmatch(__pyx_v_chrom, __pyx_n_u_chr, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 380, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Tailmatch(__pyx_v_chrom, __pyx_n_u_chr, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 376, __pyx_L1_error)
   __pyx_t_6 = ((!(__pyx_t_5 != 0)) != 0);
   __pyx_t_1 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":381
+    /* "alphacluster/gencode.pyx":377
  * 	# sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'             # <<<<<<<<<<<<<<
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]
  */
-    __pyx_t_2 = __Pyx_PyUnicode_Unicode(__pyx_v_chrom); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 381, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Unicode(__pyx_v_chrom); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 377, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_n_u_chr, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_n_u_chr, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 377, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_chrom, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "alphacluster/gencode.pyx":380
+    /* "alphacluster/gencode.pyx":376
  *         '''
  * 	# sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -8639,16 +8575,16 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     goto __pyx_L3;
   }
 
-  /* "alphacluster/gencode.pyx":382
+  /* "alphacluster/gencode.pyx":378
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
  *             chrom = chrom[3:]
  *         #chrom = f'chr{chrom}' if not chrom.startswith('chr') else chrom
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 382, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 382, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -8663,10 +8599,10 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   }
   __pyx_t_4 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_u_chr) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_u_chr);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 382, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 382, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 378, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = ((!__pyx_t_6) != 0);
   if (__pyx_t_5) {
@@ -8676,14 +8612,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   }
   if (unlikely(__pyx_v_chrom == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "startswith");
-    __PYX_ERR(0, 382, __pyx_L1_error)
+    __PYX_ERR(0, 378, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_PyUnicode_Tailmatch(__pyx_v_chrom, __pyx_n_u_chr, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 382, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Tailmatch(__pyx_v_chrom, __pyx_n_u_chr, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 378, __pyx_L1_error)
   __pyx_t_1 = (__pyx_t_5 != 0);
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":383
+    /* "alphacluster/gencode.pyx":379
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]             # <<<<<<<<<<<<<<
@@ -8692,14 +8628,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  */
     if (unlikely(__pyx_v_chrom == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 383, __pyx_L1_error)
+      __PYX_ERR(0, 379, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_PyUnicode_Substring(__pyx_v_chrom, 3, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 383, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Substring(__pyx_v_chrom, 3, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_chrom, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "alphacluster/gencode.pyx":382
+    /* "alphacluster/gencode.pyx":378
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -8709,7 +8645,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   }
   __pyx_L3:;
 
-  /* "alphacluster/gencode.pyx":385
+  /* "alphacluster/gencode.pyx":381
  *             chrom = chrom[3:]
  *         #chrom = f'chr{chrom}' if not chrom.startswith('chr') else chrom
  *         _chrom = chrom.encode('utf8')             # <<<<<<<<<<<<<<
@@ -8718,25 +8654,25 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  */
   if (unlikely(__pyx_v_chrom == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(0, 385, __pyx_L1_error)
+    __PYX_ERR(0, 381, __pyx_L1_error)
   }
-  __pyx_t_4 = PyUnicode_AsUTF8String(__pyx_v_chrom); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 385, __pyx_L1_error)
+  __pyx_t_4 = PyUnicode_AsUTF8String(__pyx_v_chrom); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v__chrom = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "alphacluster/gencode.pyx":388
+  /* "alphacluster/gencode.pyx":384
  * 
  *         # first, account for any overlapping genespython
  *         overlaps = self.in_region(chrom, pos-1, pos+1)  # NOTE: possibly fix?             # <<<<<<<<<<<<<<
  *         if len(overlaps) > 0:
  *             # if we have > 0 prioritise if the position is in the CDS
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_in_region); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_in_region); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 384, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyInt_From_long((__pyx_v_pos - 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_long((__pyx_v_pos - 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 384, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_pos + 1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_pos + 1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 384, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_8 = NULL;
   __pyx_t_9 = 0;
@@ -8753,7 +8689,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_v_chrom, __pyx_t_2, __pyx_t_7};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8763,7 +8699,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_v_chrom, __pyx_t_2, __pyx_t_7};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8771,7 +8707,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -8785,7 +8721,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     PyTuple_SET_ITEM(__pyx_t_10, 2+__pyx_t_9, __pyx_t_7);
     __pyx_t_2 = 0;
     __pyx_t_7 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -8793,18 +8729,18 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   __pyx_v_overlaps = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "alphacluster/gencode.pyx":389
+  /* "alphacluster/gencode.pyx":385
  *         # first, account for any overlapping genespython
  *         overlaps = self.in_region(chrom, pos-1, pos+1)  # NOTE: possibly fix?
  *         if len(overlaps) > 0:             # <<<<<<<<<<<<<<
  *             # if we have > 0 prioritise if the position is in the CDS
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]
  */
-  __pyx_t_11 = PyObject_Length(__pyx_v_overlaps); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 389, __pyx_L1_error)
+  __pyx_t_11 = PyObject_Length(__pyx_v_overlaps); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 385, __pyx_L1_error)
   __pyx_t_1 = ((__pyx_t_11 > 0) != 0);
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":391
+    /* "alphacluster/gencode.pyx":387
  *         if len(overlaps) > 0:
  *             # if we have > 0 prioritise if the position is in the CDS
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]             # <<<<<<<<<<<<<<
@@ -8812,32 +8748,32 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  *                 overlaps = cds_overlaps
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L11_error)
+      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 387, __pyx_L11_error)
       __Pyx_GOTREF(__pyx_t_4);
       if (likely(PyList_CheckExact(__pyx_v_overlaps)) || PyTuple_CheckExact(__pyx_v_overlaps)) {
         __pyx_t_3 = __pyx_v_overlaps; __Pyx_INCREF(__pyx_t_3); __pyx_t_11 = 0;
         __pyx_t_12 = NULL;
       } else {
-        __pyx_t_11 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_overlaps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L11_error)
+        __pyx_t_11 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_overlaps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_12 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 391, __pyx_L11_error)
+        __pyx_t_12 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 387, __pyx_L11_error)
       }
       for (;;) {
         if (likely(!__pyx_t_12)) {
           if (likely(PyList_CheckExact(__pyx_t_3))) {
             if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_3)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 391, __pyx_L11_error)
+            __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 387, __pyx_L11_error)
             #else
-            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L11_error)
+            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 387, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_10);
             #endif
           } else {
             if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 391, __pyx_L11_error)
+            __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 387, __pyx_L11_error)
             #else
-            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L11_error)
+            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 387, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_10);
             #endif
           }
@@ -8847,7 +8783,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 391, __pyx_L11_error)
+              else __PYX_ERR(0, 387, __pyx_L11_error)
             }
             break;
           }
@@ -8855,9 +8791,9 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
         }
         __Pyx_XDECREF_SET(__pyx_8genexpr4__pyx_v_x, __pyx_t_10);
         __pyx_t_10 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr4__pyx_v_x, __pyx_n_s_in_any_tx_cds); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 391, __pyx_L11_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr4__pyx_v_x, __pyx_n_s_in_any_tx_cds); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_pos); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 391, __pyx_L11_error)
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_pos); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 387, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_8 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -8872,13 +8808,13 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
         __pyx_t_10 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_2);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L11_error)
+        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 387, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 391, __pyx_L11_error)
+        __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 387, __pyx_L11_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if (__pyx_t_1) {
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_8genexpr4__pyx_v_x))) __PYX_ERR(0, 391, __pyx_L11_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_8genexpr4__pyx_v_x))) __PYX_ERR(0, 387, __pyx_L11_error)
         }
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8892,18 +8828,18 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     __pyx_v_cds_overlaps = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "alphacluster/gencode.pyx":392
+    /* "alphacluster/gencode.pyx":388
  *             # if we have > 0 prioritise if the position is in the CDS
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]
  *             if len(cds_overlaps) > 0:             # <<<<<<<<<<<<<<
  *                 overlaps = cds_overlaps
  *             # prioritise the gene with longest CDS (in the canonical tx)
  */
-    __pyx_t_11 = PyList_GET_SIZE(__pyx_v_cds_overlaps); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 392, __pyx_L1_error)
+    __pyx_t_11 = PyList_GET_SIZE(__pyx_v_cds_overlaps); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 388, __pyx_L1_error)
     __pyx_t_1 = ((__pyx_t_11 > 0) != 0);
     if (__pyx_t_1) {
 
-      /* "alphacluster/gencode.pyx":393
+      /* "alphacluster/gencode.pyx":389
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]
  *             if len(cds_overlaps) > 0:
  *                 overlaps = cds_overlaps             # <<<<<<<<<<<<<<
@@ -8913,7 +8849,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
       __Pyx_INCREF(__pyx_v_cds_overlaps);
       __Pyx_DECREF_SET(__pyx_v_overlaps, __pyx_v_cds_overlaps);
 
-      /* "alphacluster/gencode.pyx":392
+      /* "alphacluster/gencode.pyx":388
  *             # if we have > 0 prioritise if the position is in the CDS
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]
  *             if len(cds_overlaps) > 0:             # <<<<<<<<<<<<<<
@@ -8922,7 +8858,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  */
     }
 
-    /* "alphacluster/gencode.pyx":395
+    /* "alphacluster/gencode.pyx":391
  *                 overlaps = cds_overlaps
  *             # prioritise the gene with longest CDS (in the canonical tx)
  *             txs = [x.canonical for x in overlaps]             # <<<<<<<<<<<<<<
@@ -8930,32 +8866,32 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  *             idx = lengths.index(max(lengths))
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L19_error)
+      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L19_error)
       __Pyx_GOTREF(__pyx_t_4);
       if (likely(PyList_CheckExact(__pyx_v_overlaps)) || PyTuple_CheckExact(__pyx_v_overlaps)) {
         __pyx_t_3 = __pyx_v_overlaps; __Pyx_INCREF(__pyx_t_3); __pyx_t_11 = 0;
         __pyx_t_12 = NULL;
       } else {
-        __pyx_t_11 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_overlaps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L19_error)
+        __pyx_t_11 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_overlaps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_12 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 395, __pyx_L19_error)
+        __pyx_t_12 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 391, __pyx_L19_error)
       }
       for (;;) {
         if (likely(!__pyx_t_12)) {
           if (likely(PyList_CheckExact(__pyx_t_3))) {
             if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_3)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 395, __pyx_L19_error)
+            __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 391, __pyx_L19_error)
             #else
-            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 395, __pyx_L19_error)
+            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L19_error)
             __Pyx_GOTREF(__pyx_t_10);
             #endif
           } else {
             if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 395, __pyx_L19_error)
+            __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 391, __pyx_L19_error)
             #else
-            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 395, __pyx_L19_error)
+            __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L19_error)
             __Pyx_GOTREF(__pyx_t_10);
             #endif
           }
@@ -8965,7 +8901,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 395, __pyx_L19_error)
+              else __PYX_ERR(0, 391, __pyx_L19_error)
             }
             break;
           }
@@ -8973,9 +8909,9 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
         }
         __Pyx_XDECREF_SET(__pyx_8genexpr5__pyx_v_x, __pyx_t_10);
         __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr5__pyx_v_x, __pyx_n_s_canonical); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 395, __pyx_L19_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr5__pyx_v_x, __pyx_n_s_canonical); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_10);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_10))) __PYX_ERR(0, 395, __pyx_L19_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_10))) __PYX_ERR(0, 391, __pyx_L19_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8989,7 +8925,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     __pyx_v_txs = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "alphacluster/gencode.pyx":396
+    /* "alphacluster/gencode.pyx":392
  *             # prioritise the gene with longest CDS (in the canonical tx)
  *             txs = [x.canonical for x in overlaps]
  *             lengths = [x.get_coding_distance(x.get_cds_end())['pos'] for x in txs]             # <<<<<<<<<<<<<<
@@ -8997,22 +8933,22 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  *             return overlaps[idx]
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L25_error)
+      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 392, __pyx_L25_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = __pyx_v_txs; __Pyx_INCREF(__pyx_t_3); __pyx_t_11 = 0;
       for (;;) {
         if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 396, __pyx_L25_error)
+        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 392, __pyx_L25_error)
         #else
-        __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 396, __pyx_L25_error)
+        __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 392, __pyx_L25_error)
         __Pyx_GOTREF(__pyx_t_10);
         #endif
         __Pyx_XDECREF_SET(__pyx_8genexpr6__pyx_v_x, __pyx_t_10);
         __pyx_t_10 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr6__pyx_v_x, __pyx_n_s_get_coding_distance); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 396, __pyx_L25_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr6__pyx_v_x, __pyx_n_s_get_coding_distance); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 392, __pyx_L25_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr6__pyx_v_x, __pyx_n_s_get_cds_end); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 396, __pyx_L25_error)
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr6__pyx_v_x, __pyx_n_s_get_cds_end); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 392, __pyx_L25_error)
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_t_13 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -9026,7 +8962,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
         }
         __pyx_t_2 = (__pyx_t_13) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_13) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 396, __pyx_L25_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 392, __pyx_L25_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_8 = NULL;
@@ -9042,13 +8978,13 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
         __pyx_t_10 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_2);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 396, __pyx_L25_error)
+        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 392, __pyx_L25_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_10, __pyx_n_u_pos); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 396, __pyx_L25_error)
+        __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_10, __pyx_n_u_pos); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 392, __pyx_L25_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 396, __pyx_L25_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 392, __pyx_L25_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9062,22 +8998,22 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     __pyx_v_lengths = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "alphacluster/gencode.pyx":397
+    /* "alphacluster/gencode.pyx":393
  *             txs = [x.canonical for x in overlaps]
  *             lengths = [x.get_coding_distance(x.get_cds_end())['pos'] for x in txs]
  *             idx = lengths.index(max(lengths))             # <<<<<<<<<<<<<<
  *             return overlaps[idx]
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_v_lengths); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 397, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_v_lengths); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_index, __pyx_v_lengths, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 397, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_index, __pyx_v_lengths, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 393, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_idx = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "alphacluster/gencode.pyx":398
+    /* "alphacluster/gencode.pyx":394
  *             lengths = [x.get_coding_distance(x.get_cds_end())['pos'] for x in txs]
  *             idx = lengths.index(max(lengths))
  *             return overlaps[idx]             # <<<<<<<<<<<<<<
@@ -9085,13 +9021,13 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  *         # no overlaps observed, look for the nearest upstream or downstream gene
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_overlaps, __pyx_v_idx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_overlaps, __pyx_v_idx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 394, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "alphacluster/gencode.pyx":389
+    /* "alphacluster/gencode.pyx":385
  *         # first, account for any overlapping genespython
  *         overlaps = self.in_region(chrom, pos-1, pos+1)  # NOTE: possibly fix?
  *         if len(overlaps) > 0:             # <<<<<<<<<<<<<<
@@ -9100,7 +9036,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  */
   }
 
-  /* "alphacluster/gencode.pyx":401
+  /* "alphacluster/gencode.pyx":397
  * 
  *         # no overlaps observed, look for the nearest upstream or downstream gene
  *         cdef GenePoint site = GenePoint(pos, b'A');             # <<<<<<<<<<<<<<
@@ -9108,38 +9044,38 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  *         #cdef int j = upper_bound(self.ends[_chrom].begin(), self.ends[_chrom].begin(), site, CompFunc) - self.ends[_chrom].begin()
  */
   __pyx_t_14.pos = __pyx_v_pos;
-  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_n_b_A); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_n_b_A); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 397, __pyx_L1_error)
   __pyx_t_14.symbol = __pyx_t_15;
   __pyx_v_site = __pyx_t_14;
 
-  /* "alphacluster/gencode.pyx":405
+  /* "alphacluster/gencode.pyx":401
  *         #cdef int j = upper_bound(self.ends[_chrom].begin(), self.ends[_chrom].begin(), site, CompFunc) - self.ends[_chrom].begin()
  * 
  *         cdef int i = l_bound(self.starts[_chrom], site)             # <<<<<<<<<<<<<<
  *         cdef int j = u_bound(self.ends[_chrom], site)
  * 
  */
-  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 405, __pyx_L1_error)
+  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 401, __pyx_L1_error)
   __pyx_v_i = gencode::l_bound((__pyx_v_self->starts[__pyx_t_15]), __pyx_v_site);
 
-  /* "alphacluster/gencode.pyx":406
+  /* "alphacluster/gencode.pyx":402
  * 
  *         cdef int i = l_bound(self.starts[_chrom], site)
  *         cdef int j = u_bound(self.ends[_chrom], site)             # <<<<<<<<<<<<<<
  * 
  *         i = min(i, self.starts[_chrom].size() - 1)
  */
-  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 406, __pyx_L1_error)
+  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 402, __pyx_L1_error)
   __pyx_v_j = gencode::u_bound((__pyx_v_self->ends[__pyx_t_15]), __pyx_v_site);
 
-  /* "alphacluster/gencode.pyx":408
+  /* "alphacluster/gencode.pyx":404
  *         cdef int j = u_bound(self.ends[_chrom], site)
  * 
  *         i = min(i, self.starts[_chrom].size() - 1)             # <<<<<<<<<<<<<<
  *         j = min(j, self.starts[_chrom].size() - 1)
  * 
  */
-  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 404, __pyx_L1_error)
   __pyx_t_16 = ((__pyx_v_self->starts[__pyx_t_15]).size() - 1);
   __pyx_t_9 = __pyx_v_i;
   if (((__pyx_t_16 < __pyx_t_9) != 0)) {
@@ -9149,14 +9085,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   }
   __pyx_v_i = __pyx_t_17;
 
-  /* "alphacluster/gencode.pyx":409
+  /* "alphacluster/gencode.pyx":405
  * 
  *         i = min(i, self.starts[_chrom].size() - 1)
  *         j = min(j, self.starts[_chrom].size() - 1)             # <<<<<<<<<<<<<<
  * 
  *         downstream = self[self.starts[_chrom][i].symbol.decode('utf8')]
  */
-  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 409, __pyx_L1_error)
+  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 405, __pyx_L1_error)
   __pyx_t_17 = ((__pyx_v_self->starts[__pyx_t_15]).size() - 1);
   __pyx_t_9 = __pyx_v_j;
   if (((__pyx_t_17 < __pyx_t_9) != 0)) {
@@ -9166,48 +9102,48 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   }
   __pyx_v_j = __pyx_t_16;
 
-  /* "alphacluster/gencode.pyx":411
+  /* "alphacluster/gencode.pyx":407
  *         j = min(j, self.starts[_chrom].size() - 1)
  * 
  *         downstream = self[self.starts[_chrom][i].symbol.decode('utf8')]             # <<<<<<<<<<<<<<
  *         upstream = self[self.starts[_chrom][j].symbol.decode('utf8')]
  * 
  */
-  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 411, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_decode_cpp_string(((__pyx_v_self->starts[__pyx_t_15])[__pyx_v_i]).symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 407, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_decode_cpp_string(((__pyx_v_self->starts[__pyx_t_15])[__pyx_v_i]).symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self), __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_downstream = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "alphacluster/gencode.pyx":412
+  /* "alphacluster/gencode.pyx":408
  * 
  *         downstream = self[self.starts[_chrom][i].symbol.decode('utf8')]
  *         upstream = self[self.starts[_chrom][j].symbol.decode('utf8')]             # <<<<<<<<<<<<<<
  * 
  *         if upstream.distance(chrom, pos) <= downstream.distance(chrom, pos):
  */
-  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 412, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_decode_cpp_string(((__pyx_v_self->starts[__pyx_t_15])[__pyx_v_j]).symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_decode_cpp_string(((__pyx_v_self->starts[__pyx_t_15])[__pyx_v_j]).symbol, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_upstream = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "alphacluster/gencode.pyx":414
+  /* "alphacluster/gencode.pyx":410
  *         upstream = self[self.starts[_chrom][j].symbol.decode('utf8')]
  * 
  *         if upstream.distance(chrom, pos) <= downstream.distance(chrom, pos):             # <<<<<<<<<<<<<<
  *             return upstream
  *         else:
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_upstream, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_upstream, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_pos); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_pos); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_10 = NULL;
   __pyx_t_9 = 0;
@@ -9224,7 +9160,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_chrom, __pyx_t_7};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -9233,14 +9169,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_chrom, __pyx_t_7};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_10) {
       __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -9251,14 +9187,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_9, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_downstream, __pyx_n_s_distance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_downstream, __pyx_n_s_distance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_pos); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_pos); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_10 = NULL;
   __pyx_t_9 = 0;
@@ -9275,7 +9211,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_chrom, __pyx_t_7};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -9284,14 +9220,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_chrom, __pyx_t_7};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_10) {
       __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -9302,19 +9238,19 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     __Pyx_GIVEREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_9, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 414, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_LE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_LE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_1) {
 
-    /* "alphacluster/gencode.pyx":415
+    /* "alphacluster/gencode.pyx":411
  * 
  *         if upstream.distance(chrom, pos) <= downstream.distance(chrom, pos):
  *             return upstream             # <<<<<<<<<<<<<<
@@ -9326,7 +9262,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     __pyx_r = __pyx_v_upstream;
     goto __pyx_L0;
 
-    /* "alphacluster/gencode.pyx":414
+    /* "alphacluster/gencode.pyx":410
  *         upstream = self[self.starts[_chrom][j].symbol.decode('utf8')]
  * 
  *         if upstream.distance(chrom, pos) <= downstream.distance(chrom, pos):             # <<<<<<<<<<<<<<
@@ -9335,7 +9271,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
  */
   }
 
-  /* "alphacluster/gencode.pyx":417
+  /* "alphacluster/gencode.pyx":413
  *             return upstream
  *         else:
  *             return downstream             # <<<<<<<<<<<<<<
@@ -9349,7 +9285,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
     goto __pyx_L0;
   }
 
-  /* "alphacluster/gencode.pyx":376
+  /* "alphacluster/gencode.pyx":372
  *         self._sort()
  * 
  *     def nearest(self, str chrom, int pos):             # <<<<<<<<<<<<<<
@@ -9386,7 +9322,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __py
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":419
+/* "alphacluster/gencode.pyx":415
  *             return downstream
  * 
  *     def in_region(self, str _chrom, int start, int end, int max_window=2500000):             # <<<<<<<<<<<<<<
@@ -9435,13 +9371,13 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_18in_region(PyObject 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_start)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("in_region", 0, 3, 4, 1); __PYX_ERR(0, 419, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("in_region", 0, 3, 4, 1); __PYX_ERR(0, 415, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_end)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("in_region", 0, 3, 4, 2); __PYX_ERR(0, 419, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("in_region", 0, 3, 4, 2); __PYX_ERR(0, 415, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -9451,7 +9387,7 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_18in_region(PyObject 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "in_region") < 0)) __PYX_ERR(0, 419, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "in_region") < 0)) __PYX_ERR(0, 415, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9465,23 +9401,23 @@ static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_18in_region(PyObject 
       }
     }
     __pyx_v__chrom = ((PyObject*)values[0]);
-    __pyx_v_start = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 419, __pyx_L3_error)
-    __pyx_v_end = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 419, __pyx_L3_error)
+    __pyx_v_start = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 415, __pyx_L3_error)
+    __pyx_v_end = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 415, __pyx_L3_error)
     if (values[3]) {
-      __pyx_v_max_window = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_max_window == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 419, __pyx_L3_error)
+      __pyx_v_max_window = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_max_window == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 415, __pyx_L3_error)
     } else {
       __pyx_v_max_window = ((int)0x2625A0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("in_region", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 419, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("in_region", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 415, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("alphacluster.gencode.Gencode.in_region", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v__chrom), (&PyUnicode_Type), 1, "_chrom", 1))) __PYX_ERR(0, 419, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v__chrom), (&PyUnicode_Type), 1, "_chrom", 1))) __PYX_ERR(0, 415, __pyx_L1_error)
   __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), __pyx_v__chrom, __pyx_v_start, __pyx_v_end, __pyx_v_max_window);
 
   /* function exit code */
@@ -9509,7 +9445,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("in_region", 0);
 
-  /* "alphacluster/gencode.pyx":433
+  /* "alphacluster/gencode.pyx":429
  *             list of Gene objects
  *         '''
  *         symbols = _in_region(_chrom.encode('utf8'), start, end, self.starts,             # <<<<<<<<<<<<<<
@@ -9518,14 +9454,14 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __
  */
   if (unlikely(__pyx_v__chrom == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(0, 433, __pyx_L1_error)
+    __PYX_ERR(0, 429, __pyx_L1_error)
   }
-  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v__chrom); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v__chrom); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_convert_string_from_py_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 433, __pyx_L1_error)
+  __pyx_t_2 = __pyx_convert_string_from_py_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":434
+  /* "alphacluster/gencode.pyx":430
  *         '''
  *         symbols = _in_region(_chrom.encode('utf8'), start, end, self.starts,
  *             self.ends, max_window)             # <<<<<<<<<<<<<<
@@ -9536,11 +9472,11 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __
     __pyx_t_3 = gencode::_in_region(__pyx_t_2, __pyx_v_start, __pyx_v_end, __pyx_v_self->starts, __pyx_v_self->ends, __pyx_v_max_window);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 433, __pyx_L1_error)
+    __PYX_ERR(0, 429, __pyx_L1_error)
   }
   __pyx_v_symbols = __pyx_t_3;
 
-  /* "alphacluster/gencode.pyx":435
+  /* "alphacluster/gencode.pyx":431
  *         symbols = _in_region(_chrom.encode('utf8'), start, end, self.starts,
  *             self.ends, max_window)
  *         return [self[x.decode('utf8')] for x in symbols]             # <<<<<<<<<<<<<<
@@ -9549,7 +9485,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_4 = __pyx_v_symbols.begin();
     for (;;) {
@@ -9557,12 +9493,12 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __
       __pyx_t_2 = *__pyx_t_4;
       ++__pyx_t_4;
       __pyx_8genexpr7__pyx_v_x = __pyx_t_2;
-      __pyx_t_5 = __Pyx_decode_cpp_string(__pyx_8genexpr7__pyx_v_x, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_decode_cpp_string(__pyx_8genexpr7__pyx_v_x, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 431, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self), __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 435, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_self), __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 431, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 435, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 431, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   } /* exit inner scope */
@@ -9570,7 +9506,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "alphacluster/gencode.pyx":419
+  /* "alphacluster/gencode.pyx":415
  *             return downstream
  * 
  *     def in_region(self, str _chrom, int start, int end, int max_window=2500000):             # <<<<<<<<<<<<<<
@@ -9591,7 +9527,7 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __
   return __pyx_r;
 }
 
-/* "alphacluster/gencode.pyx":437
+/* "alphacluster/gencode.pyx":433
  *         return [self[x.decode('utf8')] for x in symbols]
  * 
  *     def __exit__(self):             # <<<<<<<<<<<<<<
@@ -9624,15 +9560,15 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_19__exit__(CYTHON_UNU
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__exit__", 0);
 
-  /* "alphacluster/gencode.pyx":441
+  /* "alphacluster/gencode.pyx":437
  *         '''
  *         global __genome_
  *         __genome_.close()             # <<<<<<<<<<<<<<
  *         __genome_ = None
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_genome); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_genome); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_close); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_close); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -9647,19 +9583,19 @@ static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_19__exit__(CYTHON_UNU
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":442
+  /* "alphacluster/gencode.pyx":438
  *         global __genome_
  *         __genome_.close()
  *         __genome_ = None             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, Py_None) < 0) __PYX_ERR(0, 442, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, Py_None) < 0) __PYX_ERR(0, 438, __pyx_L1_error)
 
-  /* "alphacluster/gencode.pyx":437
+  /* "alphacluster/gencode.pyx":433
  *         return [self[x.decode('utf8')] for x in symbols]
  * 
  *     def __exit__(self):             # <<<<<<<<<<<<<<
@@ -11694,13 +11630,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_chr = __Pyx_GetBuiltinName(__pyx_n_s_chr); if (!__pyx_builtin_chr) __PYX_ERR(0, 77, __pyx_L1_error)
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 175, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 230, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 270, __pyx_L1_error)
-  __pyx_builtin_max = __Pyx_GetBuiltinName(__pyx_n_s_max); if (!__pyx_builtin_max) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_builtin_chr = __Pyx_GetBuiltinName(__pyx_n_s_chr); if (!__pyx_builtin_chr) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_builtin_max = __Pyx_GetBuiltinName(__pyx_n_s_max); if (!__pyx_builtin_max) __PYX_ERR(0, 267, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
-  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 355, __pyx_L1_error)
+  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 351, __pyx_L1_error)
   __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) __PYX_ERR(1, 18, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -11711,47 +11647,47 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "alphacluster/gencode.pyx":175
+  /* "alphacluster/gencode.pyx":173
  *         if self._transcripts.size() > 0:
  *             return chr(self._transcripts[0].get_strand())
  *         raise IndexError('no transcripts in gene yet')             # <<<<<<<<<<<<<<
  * 
  *     cdef _convert_exons(self, vector[Region] exons):
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_no_transcripts_in_gene_yet); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_no_transcripts_in_gene_yet); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "alphacluster/gencode.pyx":230
+  /* "alphacluster/gencode.pyx":226
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no coding transcripts')             # <<<<<<<<<<<<<<
  *         return max_tx
  * 
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_no_coding_transcripts); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_no_coding_transcripts); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "alphacluster/gencode.pyx":253
+  /* "alphacluster/gencode.pyx":249
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no exonic transcripts')             # <<<<<<<<<<<<<<
  *         return max_tx
  * 
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_no_exonic_transcripts); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_no_exonic_transcripts); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "alphacluster/gencode.pyx":298
+  /* "alphacluster/gencode.pyx":294
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]             # <<<<<<<<<<<<<<
  * 
  *         if self.chrom != chrom:
  */
-  __pyx_slice__9 = PySlice_New(__pyx_int_3, Py_None, Py_None); if (unlikely(!__pyx_slice__9)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_slice__9 = PySlice_New(__pyx_int_3, Py_None, Py_None); if (unlikely(!__pyx_slice__9)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__9);
   __Pyx_GIVEREF(__pyx_slice__9);
 
@@ -11882,28 +11818,28 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_12alphacluster_7gencode_Gene._max_by_cds = (Tx (*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<Tx> ))__pyx_f_12alphacluster_7gencode_4Gene__max_by_cds;
   __pyx_vtable_12alphacluster_7gencode_Gene._exonic_len = (int (*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx))__pyx_f_12alphacluster_7gencode_4Gene__exonic_len;
   __pyx_vtable_12alphacluster_7gencode_Gene._max_by_exonic = (Tx (*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<Tx> ))__pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic;
-  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_12alphacluster_7gencode_Gene.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12alphacluster_7gencode_Gene.tp_dictoffset && __pyx_type_12alphacluster_7gencode_Gene.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_12alphacluster_7gencode_Gene.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_12alphacluster_7gencode_Gene.tp_dict, __pyx_vtabptr_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gene_2, (PyObject *)&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_12alphacluster_7gencode_Gene.tp_dict, __pyx_vtabptr_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gene_2, (PyObject *)&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
   __pyx_ptype_12alphacluster_7gencode_Gene = &__pyx_type_12alphacluster_7gencode_Gene;
-  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 302, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_12alphacluster_7gencode_Gencode.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12alphacluster_7gencode_Gencode.tp_dictoffset && __pyx_type_12alphacluster_7gencode_Gencode.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_12alphacluster_7gencode_Gencode.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gencode, (PyObject *)&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gencode, (PyObject *)&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 302, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 302, __pyx_L1_error)
   __pyx_ptype_12alphacluster_7gencode_Gencode = &__pyx_type_12alphacluster_7gencode_Gencode;
-  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds) < 0) __PYX_ERR(0, 286, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds) < 0) __PYX_ERR(0, 282, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds.tp_print = 0;
   #endif
@@ -11911,7 +11847,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds = &__pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds;
-  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr.tp_print = 0;
   #endif
@@ -11919,7 +11855,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_12alphacluster_7gencode___pyx_scope_struct_1_genexpr = &__pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr;
-  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__) < 0) __PYX_ERR(0, 365, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__) < 0) __PYX_ERR(0, 361, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__.tp_print = 0;
   #endif
@@ -12238,14 +12174,14 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "alphacluster/gencode.pyx":83
+  /* "alphacluster/gencode.pyx":81
  *     return transcripts
  * 
  * __genome_ = None             # <<<<<<<<<<<<<<
  * 
  * cdef class Gene:
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, Py_None) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, Py_None) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
 
   /* "alphacluster/gencode.pyx":1
  * # cython: language_level=3, boundscheck=False, emit_linenums=True             # <<<<<<<<<<<<<<

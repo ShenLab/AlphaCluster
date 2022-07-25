@@ -228,12 +228,14 @@ def analyse_de_novos(WeightedChoice choices, list three_d_locations, int iterati
     #cdef mapcpp[int,vector[double]] _three_d_locations = {int(k) : v for k,v in three_d_locations.iteritems()}	
     cdef vector[vector[double]] _three_d_locations = three_d_locations
     #cdef double[:,:] _three_d_locations = three_d_locations
+    print("degree value is" + str(p))
     return _analyse_de_novos(deref(choices.thisptr), _three_d_locations, iterations,  N, observed_value, p, dist_file_output)
 
 def analyse_de_novos_west(WeightedChoice choices, list three_d_locations, int iterations, double lambda_, int N, double observed_value, double p):
     #cdef mapcpp[int,vector[double]] _three_d_locations = {int(k) : v for k,v in three_d_locations.iteritems()}	
     cdef vector[vector[double]] _three_d_locations = three_d_locations
     #cdef double[:,:] _three_d_locations = three_d_locations
+    print("degree value is" + str(p))
     return _analyse_de_novos_west(deref(choices.thisptr), _three_d_locations, iterations,  lambda_, N, observed_value, p)
 
 def analyse_de_novos_coevol(WeightedChoice choices, list coevol, int iterations, int N, double observed_value, double p, string dist_file_output):

@@ -352,7 +352,6 @@ std::vector<double> _simulate_distribution(Chooser & choices,
     std::sort(mean_distances.begin(), mean_distances.end());
     
     if(dist_file_output != ""){
-      std::cout << "HERE IT IS " << dist_file_output << "\n" << std::endl;
       std::ofstream ofs(dist_file_output);
       std::ostream_iterator<double> output_iterator(ofs, "\n");
       std::copy(mean_distances.begin(), mean_distances.end(), output_iterator);
@@ -435,7 +434,7 @@ std::vector<double> _simulate_distribution(Chooser & choices,
     double scores[de_novo_count];
     // run through the required iterations
 
-    std::cout << "starting with" << iterations <<" iterations" << std::endl;
+    std::cout << "Running simulationwith" << iterations <<" iterations" << std::endl;
     for (int n=0; n < iterations; n++) {
       // randomly select de novo sites for the iteration
       choices.generate_choices(positions, scores, de_novo_count);
@@ -447,7 +446,6 @@ std::vector<double> _simulate_distribution(Chooser & choices,
 
     std::sort(mean_distances.begin(), mean_distances.end());
     if(dist_file_output != ""){
-      std::cout << "HERE IT IS" << dist_file_output << "\n" << std::endl;
       std::ofstream ofs(dist_file_output);
       std::ostream_iterator<double> output_iterator(ofs, "\n");
       std::copy(mean_distances.begin(), mean_distances.end(), output_iterator);
@@ -680,7 +678,6 @@ double _analyse_de_novos(Chooser & choices,
         three_d_locations_array[i][1] = three_d_locations[i][1];
         three_d_locations_array[i][2] = three_d_locations[i][2];	
     }
-    std::cout << "Starting simulation" << std::endl;
     while (iterations < 100000000 && sim_prob == minimum_prob) {
         int iters_to_run = iterations - dist.size();
         
