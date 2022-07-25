@@ -1,7 +1,7 @@
 ![travis](https://travis-ci.org/jeremymcrae/alphacluster.svg?branch=master)
 
 <p align="center">
-  <img src="img/img1.gif">
+   <img src="img/alphacluster_logo.svg">
 </p>
 
 # AlphaCluster
@@ -17,8 +17,9 @@ measured by 1 dimmensional level (the distance metric is base-pair
 seperation). Our code greatly extends the initial test by:
 - incorporating 3-dimmensional clustering analysis
 - extending clustering analysis to protein complexes
+- incorporating predictive damaging scores
 - incorporating co-evolutionary clustering analysis
-- extending to include inherited variants
+
 
 ## How it works
 <p align="center">
