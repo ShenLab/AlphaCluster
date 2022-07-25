@@ -114,7 +114,7 @@ for atom in atoms:
             continue
         #print(atom.chain)
         #print(atom.residue_number)
-        multimer_file.write('%s\t%d\t%f\t%f\t%f\n' % (atom.chain, atom.residue_number, atom.x, atom.y, atom.z))
+        multimer_file.write('%s\t%d\t%f\t%f\t%f\n' % (atom.chain, atom.residue_number, atom.x, atom.y, atom.z, atom.residue))
     else:
         multimer_file.write('%s\t%f\t%f\t%f\n' % (atom.name, atom.x, atom.y, atom.z))
     if atom.warnings:
