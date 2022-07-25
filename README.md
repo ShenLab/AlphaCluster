@@ -51,8 +51,8 @@ pip install alphacluster
 ```
 or, if you plan to make local development on the package: 
 ```sh
-git clone https://github.com/ShenLab/MVP3D.git --recurse-submodules
-cd MVP3D
+git clone https://github.com/ShenLab/AlphaCluster.git --recurse-submodules
+cd AlphaCluster
 pip install . --use-feature=in-tree-build 
 ```
 
