@@ -23,7 +23,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 from itertools import combinations
 
 cdef class Transcript:
-    def __cinit__(self, name, chrom, start, end, strand, exons=None,
+    def __cinit__(self, name, chrom, start, end, cds_start, cds_end, strand, exons=None,
             cds=None, sequence=None, offset=0):
         ''' construct a Transcript object
         
@@ -35,11 +35,13 @@ cdef class Transcript:
             cds: list of tuples defining start and end positions of CDS regions
             sequence: DNA sequence of genome region of the transcript.
             offset: how many base pairs the DNA sequence extends outwards
+	    cds_start:
+	    cds_ent:
         '''
         
         name = name.encode('utf8')
         chrom = chrom.encode('utf8')
-        self.thisptr = new Tx(name, chrom, start, end, ord(strand))
+        self.thisptr = new Tx(name, chrom, start, end, cds_start, cds_end, ord(strand))
         
         if exons is not None and cds is not None:
             self.set_exons(exons, cds)
@@ -47,7 +49,6 @@ cdef class Transcript:
             
             if sequence is not None:
                 self.add_genomic_sequence(sequence, offset)
-    
     def __dealloc__(self):
         del self.thisptr
     
@@ -73,7 +74,7 @@ cdef class Transcript:
         
         return 'Transcript(name="{}", chrom="{}", start={}, end={}, strand="{}", ' \
             'exons={}, cds={}, sequence={}, offset={})'.format(self.get_name(),
-                self.get_chrom(), self.get_start(), self.get_end(),
+                self.get_chrom(), self.get_start(), self.get_end(), self.get_cds_start(), self.get_cds_end(),
                 self.get_strand(), exons, cds, seq, self.get_genomic_offset())
     
     def __str__(self):

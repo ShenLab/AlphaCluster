@@ -40,6 +40,8 @@ cdef extern from "gencode.h" namespace "gencode":
     
     vector[NamedTx] open_gencode(string, bool)
     bool CompFunc(const GenePoint &l, const GenePoint &r)
+    int l_bound(vector[GenePoint] & starts, const GenePoint& site)
+    int u_bound(vector[GenePoint] & ends, const GenePoint& site)
     vector[string] _in_region(string chrom, int start, int end, 
         map[string, vector[GenePoint]] & starts, map[string, vector[GenePoint]] & ends,
         int max_window) except+
@@ -68,11 +70,13 @@ cpdef _open_gencode(gtf_path, coding_only=True):
         chrom = tx.get_chrom().decode('utf8')
         start = tx.get_start()
         end = tx.get_end()
+        cds_start = tx.get_cds_start()
+        cds_end = tx.get_cds_end()
         exons = _convert_exons(tx.get_exons())
         cds = _convert_exons(tx.get_cds())
         strand = chr(tx.get_strand())
         tx_id = tx.get_name().decode('utf8')
-        transcript = Transcript(tx_id, chrom, start, end, strand, exons, cds, offset=0)
+        transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)
         transcripts.append((x.symbol.decode('utf8'), transcript, x.is_canonical))
     return transcripts
 
@@ -185,6 +189,8 @@ cdef class Gene:
         chrom = tx.get_chrom().decode('utf8')
         start = tx.get_start()
         end = tx.get_end()
+        cds_start = tx.get_cds_start()
+        cds_end = tx.get_cds_end()
         exons = self._convert_exons(tx.get_exons())
         cds = self._convert_exons(tx.get_cds())
         seq = tx.get_genomic_sequence().decode('utf8')
@@ -196,7 +202,7 @@ cdef class Gene:
         if strand == '-' and seq is not None:
             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')
         tx_id = tx.get_name().decode('utf8')
-        return Transcript(tx_id, chrom, start, end, strand, exons, cds, seq, offset=offset)
+        return Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, seq, offset=offset)
     
     @property
     def transcripts(self):
@@ -393,9 +399,12 @@ cdef class Gencode:
         
         # no overlaps observed, look for the nearest upstream or downstream gene
         cdef GenePoint site = GenePoint(pos, b'A');
-        cdef int i = lower_bound(self.starts[_chrom].begin(), self.starts[_chrom].end(), site, CompFunc) - self.starts[_chrom].begin()
-        cdef int j = upper_bound(self.ends[_chrom].begin(), self.ends[_chrom].begin(), site, CompFunc) - self.ends[_chrom].begin()
-        
+        #cdef int i = lower_bound(self.starts[_chrom].begin(), self.starts[_chrom].end(), site, CompFunc) - self.starts[_chrom].begin()
+        #cdef int j = upper_bound(self.ends[_chrom].begin(), self.ends[_chrom].begin(), site, CompFunc) - self.ends[_chrom].begin()
+	
+        cdef int i = l_bound(self.starts[_chrom], site)
+        cdef int j = u_bound(self.ends[_chrom], site)
+
         i = min(i, self.starts[_chrom].size() - 1)
         j = min(j, self.starts[_chrom].size() - 1)
         

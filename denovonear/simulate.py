@@ -34,7 +34,7 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
     """
     
     if len(cds_positions) < 2:
-        return (float('nan'), float('nan'), float('nan'))
+        return (float('nan'), float('nan'), len(cds_positions))
     
     rename = {"lof": "loss_of_function"}
     if consequence in rename:
@@ -45,9 +45,11 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
     #    distances = get_distances(cds_positions)
     #print(cds_positions)
     print("Residues impacted are:")
-    for cds_pos in cds_positions:
-        print(floor(float(cds_pos)/3)+1)
+    print([floor(float(cds_pos)/3)+1 for cds_pos in cds_positions])
+    #for cds_pos in cds_positions:
+    #    print(floor(float(cds_pos)/3)+1)
 
+    print("HERE 2")
     #Handle thresholding of input
     if threshold != None:
         print("THRESHOLDING")
@@ -55,6 +57,8 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
         temp_pos = []        
         temp_sco = []
         for i, val in enumerate(de_novos_scores):
+            print(i)
+            print(val)
             if val >= float(threshold):
                 temp_pos.append(cds_positions[i])
                 temp_sco.append(de_novos_scores[i])
@@ -63,14 +67,25 @@ def get_p_value(rates, three_d_locations, iterations, consequence, cds_positions
         print(cds_positions)
         print(de_novos_scores)
         if len(cds_positions) < 2:
-            return (float('nan'), float('nan'))
+            return (float('nan'), float('nan'), len(cds_positions))
 
     print(cds_positions)
     #print(floor(float(cds_positions[0]/3)))
     #print(floor(float(cds_positions[1]/3)))
     #print(len(three_d_locations))
     three_d_locations_xyz = [[row[0],row[1], row[2]] for row in three_d_locations]
-    #print(three_d_locations_xyz)
+
+    for c in cds_positions:
+        print(c)
+        print(floor(float(c)/3.0)+1)
+        print(three_d_locations_xyz[floor(float(c)/3.0)])
+
+    aa_positions = [floor(float(c)/3.0) for c in cds_positions]
+        
+    print("Let's see what happens next")
+    print(cds_positions)
+    print(aa_positions)
+    three_d_locations_xyz = [[0,0,0]] + three_d_locations_xyz 
     distances = get_distances(cds_positions,
                               three_d_locations_xyz)
     print(distances)
@@ -273,6 +288,7 @@ def get_p_value_multi(chains,
     #distances = get_distances_multi(cds_positions, three_d_locations)
     distances = []
     idx = 0
+    print(de_novo_locations)
     for i in range(len(de_novo_locations)):
         for j in range(i+1, len(de_novo_locations)):
             distance = pow(
@@ -285,12 +301,10 @@ def get_p_value_multi(chains,
     assert(len(distances) == len(de_novo_locations)*(len(de_novo_locations)-1)/2)
             
     observed = geomean(distances, p, 3.5)
-    print(observed)
-
     if de_novo_scores[0] != -1 :
         distances = scale_distances(distances, de_novo_scores)
     observed = geomean(distances, p, 3.5)
-    print(observed)
+    print("observed geomean = " + str(observed))
     # call a cython wrapped C++ library to handle the simulations
 
     print("calling analyse_de_novos")
@@ -304,6 +318,11 @@ def get_p_value_multi(chains,
     chains = [a.encode('utf-8') for a in chains]
     proteins = [a.encode('utf-8') for a in proteins]
     print(chains)
+    print(proteins)
+    print(de_novo_count_per_chain)
+    print(len(de_novo_locations))
+    print(weights_vector)
+    
     sim_prob = analyse_de_novos_multi(chains,
                                       proteins,
                                       de_novo_count_per_chain,

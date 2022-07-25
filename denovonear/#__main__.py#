@@ -638,7 +638,6 @@ def clustering_multi(output, args):
 
     #Load locations of amino acids from the multimer file
     #three_d_locations +=  load_three_d_multimer(args.multimer_dir, args.multimer)
-
     three_d_locations = load_three_d_locations_from_pdb(args.multimer_dir, args.multimer)
     print(three_d_locations)
     

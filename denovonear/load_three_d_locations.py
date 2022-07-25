@@ -83,7 +83,8 @@ d = {'CYS': 'C',
      'VAL':'V',
      'GLU': 'E',
      'TYR': 'Y',
-     'MET': 'M'}
+     'MET': 'M',
+     'UNK': 'UNK'}
 
 def load_three_d_locations_from_pdb(path_dir, gene):
     """ sort out all the necessary sequences and positions for a gene
@@ -119,6 +120,8 @@ def load_three_d_locations_from_pdb(path_dir, gene):
                     #y = float(list[7])
                     #z = float(list[8])
                     residue = d[line[17:20].strip()]
+                    if residue == 'UNK':
+                        continue
                     chain = line[20:22].strip()
                     atom_count = line[22:27].strip()
                     x = float(line[30:38].strip())

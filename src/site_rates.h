@@ -55,6 +55,23 @@ class SitesChecks {
 		double threshold) :
       _tx { tx }, use_cds_coords { cds_coords } { init(mut, scores, threshold);};  
 
+    SitesChecks(Tx tx,
+		std::vector<std::vector<std::string>> mut,
+		bool cds_coords,
+		std::map<int,std::map<char,double>> scores,
+		double threshold,
+		int start_codon,
+		int end_codon) :
+      _tx { tx }, use_cds_coords { cds_coords } { init(mut, scores, threshold, start_codon, end_codon);};  
+
+    SitesChecks(Tx tx,
+		std::vector<std::vector<std::string>> mut,
+		bool cds_coords,
+		std::map<int,std::map<char,double>> scores,
+		double threshold,
+		std::vector<int> residues) :		
+      _tx { tx }, use_cds_coords { cds_coords } { init(mut, scores, threshold, residues);};  
+  
     SitesChecks(Tx tx, std::vector<std::vector<std::string>> mut, bool cds_coords, Tx mask) :
          _tx { tx }, masked { mask }, use_cds_coords { cds_coords } { has_mask = true; init(mut); };
     Chooser * __getitem__(std::string category) { return &rates[category]; };
@@ -80,6 +97,16 @@ class SitesChecks {
     void init(std::vector<std::vector<std::string>> mut,
 	      std::map<int,std::map<char,double>> scores,
 	      double threshold);  
+    void init(std::vector<std::vector<std::string>> mut,
+	      std::map<int,std::map<char,double>> scores,
+	      double threshold,
+	      std::vector<int> residues);  
+    void init(std::vector<std::vector<std::string>> mut,
+	      std::map<int,std::map<char,double>> scores,
+	      double threshold,
+	      int start_codon,
+	      int end_codon);  
+
     bool has_mask = false;
     bool use_cds_coords = true;
     bool scores_set = false;

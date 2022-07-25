@@ -59,6 +59,9 @@ void Chooser::add_choice(int site, double prob, char ref, char alt, int offset, 
     
     sites.push_back(AlleleChoice {site, ref, alt, prob, offset, score});
     prob_per_site[site] += prob;
+
+    //std::cout << site << " " << ref << " " << alt << " " << offset << " " << score << std::endl;
+    
     reset_sampler();
 }
 

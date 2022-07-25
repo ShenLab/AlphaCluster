@@ -15,7 +15,7 @@ Region _get_gene_range(Tx & tx) {
     
     int start = std::min(boundary_1, boundary_2);
     int end = std::max(boundary_1, boundary_2);
-    
+
     return Region {start, end};
 }
 
@@ -49,8 +49,16 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut) {
     initialise_choices();
     // check the consequence alternates for each base in the coding sequence
     Region region = _get_gene_range(_tx);
+    //std::cout << "TEST " << _tx.get_cds_start() << " and " << _tx.get_cds_end() << std::endl;
+
+    //std::cout << "TEST " << region.start << " and " << region.end << std::endl;
+
+    int start = std::min(_tx.get_cds_start(), _tx.get_cds_end());
+    int end = std::max(_tx.get_cds_start(), _tx.get_cds_end());
+      
     
-    for (int i=region.start; i < region.end + 1; i++ ) {
+    //for (int i=region.start; i < region.end + 1; i++ ) {
+    for (int i = start; i < end + 1; i++ ) {
         check_position(i);
     }
 }
@@ -100,11 +108,11 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
   //    scores[pos_alt_val.first][alt_val.first] = alt_val.second; 
   //}
   if(scores_map.size() != 0 ) {
-    std::cout << "we have scores ladies and gentlemen" << std::endl;
+    //std::cout << "we have scores ladies and gentlemen" << std::endl;
     scores = scores_map;
     scores_set = true;
   } else {
-    std::cout << "no scores here " << std::endl;
+    //std::cout << "no scores here " << std::endl;
     scores_set = false;
   }
     //for (auto x : scores_map)
@@ -121,11 +129,11 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
 		       std::vector<int> residues)
 {
   if(scores_map.size() != 0 ) {
-    std::cout << "we have scores ladies and gentlemen" << std::endl;
+    //std::cout << "we have scores ladies and gentlemen" << std::endl;
     scores = scores_map;
     scores_set = true;
   } else {
-    std::cout << "no scores here " << std::endl;
+    //std::cout << "no scores here " << std::endl;
     scores_set = false;
   }
 
@@ -157,9 +165,9 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
 		       double threshold)
 {
   if(scores_map.size() != 0 ) {
-    std::cout << "we have scores ladies and gentlemen" << std::endl;
+    //std::cout << "we have scores ladies and gentlemen" << std::endl;
     scores = scores_map;
-    std::cout << "scores loaded = " << scores.size() << std::endl;
+    //std::cout << "scores loaded = " << scores.size() << std::endl;
     std::ofstream stream("scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
     for(auto& kv : scores) {
       for (auto& kv2 : kv.second) {
@@ -169,7 +177,62 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
     stream.close();
     scores_set = true;
   } else {
-    std::cout << "no scores here " << std::endl;
+    //std::cout << "no scores here " << std::endl;
+    scores_set = false;
+  }
+
+    // convert the rates data to a nested map
+    for (auto line : mut) {
+        mut_dict[line[0]][line[1]] = std::stod(line[2]);
+    }
+    
+    // calculate the length of sequences used in the mutation rate dictionary
+    // This means we can flexibly use 3-mers, 5-mers, 7-mers etc if desired.
+    std::string str = mut_dict.begin()->first;
+    kmer_length = str.length();
+    mid_pos = kmer_length/2;
+    
+    initialise_choices();
+    // check the consequence alternates for each base in the coding sequence
+    Region region = _get_gene_range(_tx);
+
+    for (int i=region.start; i < region.end + 1; i++ ) {
+      check_position(i, threshold);
+    }
+    
+    std::ofstream stream("above_scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
+    for(auto& site : rates["missense"].get_sites()) {
+      int bp = _tx.get_position_on_chrom(site.pos);
+      //int codon = _tx.get_codon_number(bp);
+      int codon = _tx.get_codon_number_for_cds_position(site.pos);
+      stream << site.pos << "\t" << bp <<"\t" << "codon " << codon << "\t" << _tx.get_codon_sequence(codon)<< "\t" << site.ref << "\t"<< site.alt << "\t" << site.score << '\n';
+    }
+    stream.close();
+    
+    std::ofstream stream2("transcript_site_rates_level.out"); //To Write into a File, Use "ofstream"
+    stream2 << _tx.get_cds_sequence();
+    stream2.close();
+}
+
+void SitesChecks::init(std::vector<std::vector<std::string>> mut,
+		       std::map<int, std::map<char,double>> scores_map,
+		       double threshold,
+		       std::vector<int> residues)
+{
+  if(scores_map.size() != 0 ) {
+    //std::cout << "we have scores ladies and gentlemen" << std::endl;
+    scores = scores_map;
+    //std::cout << "scores loaded = " << scores.size() << std::endl;
+    std::ofstream stream("scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
+    for(auto& kv : scores) {
+      for (auto& kv2 : kv.second) {
+	stream << kv.first << "\t" << kv2.first << "\t"<< kv2.second << '\n';
+      }
+    }
+    stream.close();
+    scores_set = true;
+  } else {
+    //std::cout << "no scores here " << std::endl;
     scores_set = false;
   }
 
@@ -191,7 +254,9 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
     int codon;
     for (int i=region.start; i < region.end + 1; i++ ) {
       codon = _tx.get_codon_info(i).codon_number;
-      check_position(i, threshold);
+      if(std::count(residues.begin(), residues.end(), codon)) {
+	check_position(i, threshold);
+      }
     }
     
     std::ofstream stream("above_scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
@@ -207,6 +272,69 @@ void SitesChecks::init(std::vector<std::vector<std::string>> mut,
     stream2 << _tx.get_cds_sequence();
     stream2.close();
 }
+
+
+void SitesChecks::init(std::vector<std::vector<std::string>> mut,
+		       std::map<int, std::map<char,double>> scores_map,
+		       double threshold,
+		       int start_codon,
+		       int end_codon)
+{
+  if(scores_map.size() != 0 ) {
+    //std::cout << "we have scores ladies and gentlemen" << std::endl;
+    scores = scores_map;
+    //std::cout << "scores loaded = " << scores.size() << std::endl;
+    std::ofstream stream("scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
+    for(auto& kv : scores) {
+      for (auto& kv2 : kv.second) {
+	stream << kv.first << "\t" << kv2.first << "\t"<< kv2.second << '\n';
+      }
+    }
+    stream.close();
+    scores_set = true;
+  } else {
+    //std::cout << "no scores here " << std::endl;
+    scores_set = false;
+  }
+
+    // convert the rates data to a nested map
+    for (auto line : mut) {
+        mut_dict[line[0]][line[1]] = std::stod(line[2]);
+    }
+    
+    // calculate the length of sequences used in the mutation rate dictionary
+    // This means we can flexibly use 3-mers, 5-mers, 7-mers etc if desired.
+    std::string str = mut_dict.begin()->first;
+    kmer_length = str.length();
+    mid_pos = kmer_length/2;
+    
+    initialise_choices();
+    // check the consequence alternates for each base in the coding sequence
+    Region region = _get_gene_range(_tx);
+
+    int codon;
+    for (int i=region.start; i < region.end + 1; i++ ) {
+      codon = _tx.get_codon_info(i).codon_number;
+      if(codon >= std::min(start_codon,end_codon) && codon <= std::max(start_codon,end_codon)) {
+	check_position(i, threshold);
+      }
+    }
+    
+    std::ofstream stream("above_scores" + std::to_string(threshold) + ".out"); //To Write into a File, Use "ofstream"
+    for(auto& site : rates["missense"].get_sites()) {
+      int bp = _tx.get_position_on_chrom(site.pos);
+      //int codon = _tx.get_codon_number(bp);
+      int codon = _tx.get_codon_number_for_cds_position(site.pos);
+      stream << site.pos << "\t" << bp <<"\t" << "codon " << codon << "\t" << _tx.get_codon_sequence(codon)<< "\t" << site.ref << "\t"<< site.alt << "\t" << site.score << '\n';
+    }
+    stream.close();
+    
+    std::ofstream stream2("transcript_site_rates_level.out"); //To Write into a File, Use "ofstream"
+    stream2 << _tx.get_cds_sequence();
+    stream2.close();
+}
+
+
 
 void SitesChecks::initialise_choices() {
     // initialise a WeightedChoice object for each consequence category
@@ -308,6 +436,8 @@ void SitesChecks::check_position(int bp, double threshold /*= -2*/) {
     int cds_pos = codon.cds_pos;
     int offset = codon.offset;
 
+    //std::cout<< "CODON NUMBER = " << codon.codon_number << std::endl;
+    
     // drop the initial base, since we want to mutate to other bases
     std::vector<char> alts(bases);
     char ref = seq[mid_pos];

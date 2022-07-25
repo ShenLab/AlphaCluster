@@ -166,6 +166,20 @@ bool CompFunc(const GenePoint &l, const GenePoint &r) {
     return l.pos < r.pos;
 }
 
+int l_bound(std::vector<GenePoint> & chrom_starts, const GenePoint& site){
+  return std::lower_bound(chrom_starts.begin(),
+                          chrom_starts.end(),
+                          site,
+                          CompFunc) - chrom_starts.begin();
+}
+
+int u_bound(std::vector<GenePoint> & chrom_ends, const GenePoint& site){
+  return std::upper_bound(chrom_ends.begin(),
+                          chrom_ends.end(),
+                          site,
+                          CompFunc) - chrom_ends.begin();
+}
+  
 std::vector<std::string> _in_region(std::string chrom, int start, int end, 
         std::map<std::string, std::vector<GenePoint>> & starts, 
         std::map<std::string, std::vector<GenePoint>> & ends,

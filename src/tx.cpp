@@ -43,6 +43,25 @@ Tx::Tx(std::string transcript_id, std::string chromosome,
     tx_strand = strand;
 }
 
+Tx::Tx(std::string transcript_id, std::string chromosome,
+       int start_pos, int end_pos, int cds_start, int cds_end, char strand) {
+    
+    name = transcript_id;
+    
+    chrom = chromosome;
+    tx_start = start_pos;
+    tx_end = end_pos;
+    
+    if ( strand != '+' && strand != '-' ) {
+        throw std::invalid_argument( "unknown strand type" );
+    }
+    tx_strand = strand;
+
+    set_cds_start(cds_start,0);
+    set_cds_end(cds_end,0);
+}
+
+
 // set exon ranges to the class object
 //
 // @param exon_ranges list of lists e.g. [[5, 10], [20, 30]]

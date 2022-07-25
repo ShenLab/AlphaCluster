@@ -41,6 +41,8 @@ struct GenePoint {
 std::vector<NamedTx> open_gencode(std::string path, bool coding=true);
 
 bool CompFunc(const GenePoint &l, const GenePoint &r);
+int l_bound(std::vector<GenePoint> & chrom_starts, const GenePoint &site);
+int u_bound(std::vector<GenePoint> & chrom_ends, const GenePoint &site);
 std::vector<std::string> _in_region(std::string chrom, int start, int end, 
     std::map<std::string, std::vector<GenePoint>> & starts, 
     std::map<std::string, std::vector<GenePoint>> & ends,

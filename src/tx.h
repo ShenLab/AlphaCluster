@@ -54,6 +54,10 @@ class Tx {
  public:
     Tx(std::string transcript_id, std::string chromosome, int start_pos,
         int end_pos, char strand);
+
+    Tx(std::string transcript_id, std::string chromosome, int start_pos,
+       int end_pos, int cds_start, int cds_end, char strand);
+  
     Tx() {};
     void set_exons(std::vector<std::vector<int>> exon_ranges,
         std::vector<std::vector<int>> cds_ranges);

@@ -19,7 +19,11 @@ cdef extern from "site_rates.h":
         SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]]) except +
 	#For score and threshold inclusion
         SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]], double) except +
-        
+	#For score, threshold and start/end codon inclusion
+        SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]], double, vector[int]) except +
+	#For score, threshold and start/end codon inclusion
+        SitesChecks(Tx, vector[vector[string]], bool, mapcpp[int,mapcpp[char,double]], double, int, int) except +
+                
         #SitesChecks(Tx, vector[vector[string]], bool, Tx) except +
         #SitesChecks(Tx, vector[vector[string]], bool, vector[double]) except +
         #SitesChecks(Tx, vector[vector[string]], bool, int, int) except +		
@@ -46,16 +50,20 @@ cdef class SiteRates:
                   vector[vector[string]] rates,
                   mapcpp[int, mapcpp[char,double]] scores,
 	          double threshold = -2,
-		  vector[int] residues = [],
-    	          start = None,
-		  end = None, 
+    	          start_codon = None,
+		  end_codon = None,
+                  vector[int] residues = [],
                   Transcript masked_sites=None,
 		  cds_coords=True):
 
         if transcript is None:
             raise ValueError('no transcript supplied')
 
-        if threshold is not -2:
+        if start_codon is not None:
+            self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores, threshold, start_codon, end_codon)
+        elif residues != []:
+            self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores, threshold, residues)
+        elif threshold is not -2:
             self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores, threshold)
         else:
             self._checks = new SitesChecks(deref(transcript.thisptr), rates, cds_coords, scores)

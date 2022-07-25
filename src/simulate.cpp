@@ -340,11 +340,6 @@ std::vector<double> _simulate_distribution(Chooser & choices,
     for (int n=0; n < iterations; n++) {
         // randomly select de novo sites for the iteration
       choices.generate_choices(positions, scores, de_novo_count);
-      //for (int i=0; i < de_novo_count; i++) {
-        //    positions[i] = choices.choice().pos;
-        //}
-        // convert the positions into distances between all pairs, and get the
-        // geometric mean distance of all the distances
         _get_distances(positions, de_novo_count, distances);
 
 	if(scores[0] != -1)
@@ -447,7 +442,7 @@ std::vector<double> _simulate_distribution(Chooser & choices,
       _get_distances(positions, three_d_locations, de_novo_count, distances);
       if(scores[0] != -1)
 	_scale_distances(distances, scores, de_novo_count);
-      mean_distances[n] = _geomean(distances, distance_len, p, 3.5);
+      mean_distances[n] = _geomean(distances, distance_len, p, 3.5/*1*/);
     }
 
     std::sort(mean_distances.begin(), mean_distances.end());
@@ -744,7 +739,7 @@ std::vector<double> _simulate_distribution_multi(std::vector<std::string> chains
         @de_novo_count number of de novos to simulate per iteration
         @return a list of mean distances for each iteration
     */
-
+  
     // use a vector to return the mean distances, easier to call from python
     std::vector<double> mean_distances(iterations);
     
@@ -754,17 +749,21 @@ std::vector<double> _simulate_distribution_multi(std::vector<std::string> chains
     //    double scores[de_novo_count];
     std::vector<double> scores;
     // run through the required iterations
-
+    int m = 0;
     for (int n=0; n < iterations; n++) {
       // randomly select de novo sites for the iteration
       std::map<int, std::vector<int>> positions;
       std::map<int, std::vector<double>> scores_vector;      
-      std::vector<int> xyz_positions;
-      int m = 0;
+      std::vector<double> xyz_positions;
+      std::vector<int> positions_rec;
+      m = 0;
       std::vector<std::string> seen_proteins;
       for( auto c : chains) {
 	//	std::cout << "chain is " << c << " and protein is " << proteins[m] << " and it has " << de_novo_count_per_chain[m] << " de novos"<< std::endl;
 
+	if( de_novo_count_per_chain[m] == 0 )
+	  continue;
+	
 	// Is this current chain of a protein we have already seen?
 	// If so, do not regenerate random choices but use the
 	// same ones generated before.
@@ -773,8 +772,11 @@ std::vector<double> _simulate_distribution_multi(std::vector<std::string> chains
 	if(protein_not_seen_before) {
 	  //generate the random choices
 	  choices[proteins[m]].generate_choices(positions[m],
-				      scores_vector[m],
-				      de_novo_count_per_chain[m]);
+						scores_vector[m],
+						de_novo_count_per_chain[m]);
+	  //for(auto p : positions[m])
+	  //  std::cout << p << " ";
+	  //std::cout <<std::endl;
 	  seen_proteins.push_back(proteins[m]);
 	} else {
 	  //recycle choices on the chain
@@ -790,14 +792,17 @@ std::vector<double> _simulate_distribution_multi(std::vector<std::string> chains
 	//Set three d locations for current chain and add to list
 	int codon;
 	for (auto p : positions[m]){
-	  codon = floor((float)p / 3);
-	  for( auto i : three_d_locations[m][codon])
+	  codon = floor((float)p / 3) + 1;
+	  positions_rec.push_back(codon);
+	  for( auto i : three_d_locations[m][codon]){
 	    xyz_positions.push_back(i);
+	  }
 	}
 	
 	//Add scores at proper index
-	for (auto score : scores_vector[m])
+	for (auto score : scores_vector[m]){
 	  scores.push_back(score);
+	}
 	m = m + 1;
       }
       
@@ -816,17 +821,44 @@ std::vector<double> _simulate_distribution_multi(std::vector<std::string> chains
       //assert(idx == distance_len);
       if(scores[0] != -1)
 	_scale_distances(distances, scores.data(), de_novo_count);
-      mean_distances[n] = _geomean(distances, distance_len, p, 3.5);
+      mean_distances[n] = _geomean(distances, distance_len, p, 3.5/*1 multi*/);
+
+      if(std::isnan(mean_distances[n]) || std::isinf(mean_distances[n])){
+	std::cout << "HERE" << std::endl;
+	for(int it = 0; it < distance_len; it++){
+	  std::cout << distances[it] << " ";
+	}
+
+	for(int it = 0; it < de_novo_count; it++){
+	  std::cout << xyz_positions[3*it] << " " <<xyz_positions[3*it + 1] << " " <<xyz_positions[3*it+2]<< " " 
+		    << positions_rec[it] << std::endl;
+	}
+	
+      }
+      
     }
 
     std::sort(mean_distances.begin(), mean_distances.end());
+
+
+    int l = mean_distances.size();
+    std::cout <<l << std::endl;
+    std::cout << mean_distances[floor(l/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*2/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*3/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*4/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*5/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*6/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*7/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*8/10)]<< std::endl;
+    std::cout << mean_distances[floor(l*9/10)]<< std::endl;       std::cout << mean_distances[floor(l)-1]<< std::endl;
+
     if(dist_file_output != ""){
       std::ofstream ofs(dist_file_output);
       std::ostream_iterator<double> output_iterator(ofs, "\n");
       std::copy(mean_distances.begin(), mean_distances.end(), output_iterator);
     }
 
-    
     return mean_distances;
 }
 
@@ -857,6 +889,14 @@ double _analyse_de_novos_multi(std::vector<std::string> chains,
     double sim_prob = minimum_prob;
     std::vector<double> dist;
 
+    //for(auto c : three_d_locations){
+    //  for(auto v : c) {
+    //	std::cout << v.first << std::endl;
+    //  std::cout << v.second[0] << " " << v.second[1] << " " << v.second[2] << std::endl;
+    //  }
+    // }
+
+    
     // int aa_count = three_d_locations.size();
     //double three_d_locations_array[aa_count][3];
     //for (int i=0; i<aa_count; i++) {

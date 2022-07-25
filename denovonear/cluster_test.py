@@ -1,6 +1,8 @@
 from math import log, isnan, floor
 import os
 from scipy.stats import chi2
+from difflib import SequenceMatcher
+
 from load_inherited import load_inherited
 from load_gene import load_gene, get_de_novos_in_transcript, minimise_transcripts
 from denovonear.load_mutation_rates import load_mutation_rates
@@ -8,6 +10,22 @@ from denovonear.load_de_novos import load_de_novos
 from denovonear.site_specific_rates import SiteRates
 #from denovonear.genotype_rates import GenotypeRates
 from simulate import get_p_value, get_p_value_1d, get_p_value_coevol, get_p_value_multi, get_p_value_entropy
+
+def lcs_func(s1, s2):
+    matrix = [["" for x in range(len(s2))] for x in range(len(s1))]
+    for i in range(len(s1)):
+        for j in range(len(s2)):
+            if s1[i] == s2[j]:
+                if i == 0 or j == 0:
+                    matrix[i][j] = s1[i]
+                else:
+                    matrix[i][j] = matrix[i-1][j-1] + s1[i]
+            else:
+                matrix[i][j] = max(matrix[i-1][j], matrix[i][j-1], key=len)
+
+    cs = matrix[-1][-1]
+
+    return len(cs), cs
 
 def create_windows(variants, window_size = 5000):
     windows = []
@@ -101,10 +119,6 @@ def cluster_de_novos(symbol,
     print(len(transcripts))
     for transcript in transcripts:
         print(transcript.get_name())
-        #print(transcript.get_end())
-        #print(transcript.get_cds_end())
-        #print(transcript.get_cds_sequence())
-        #print(transcript.translate(transcript.get_cds_sequence()))
         try:
             t_aa = "".join(list(transcript.translate(transcript.get_cds_sequence())))
             p_aa = "".join([row[3] for row in three_d_locations])
@@ -114,33 +128,34 @@ def cluster_de_novos(symbol,
             print(t_aa)
             print("Uniprot")
             print(p_aa)
-            assert p_aa in t_aa
+            
+            #Find longest common substring
+            match = SequenceMatcher(None, p_aa, t_aa).find_longest_match()
+            lcs = p_aa[match.a:match.a + match.size]
+            print("Longest Common Substring")
+            print(lcs)
+            
             #find offsets
-            start_offset = t_aa.find(p_aa)
-            end_offset = t_aa[::-1].find(p_aa[::-1])-1
+            #start_offset = t_aa.find(p_aa)
+            #end_offset = t_aa[::-1].find(p_aa[::-1])-1
+            start_offset = t_aa.find(lcs)
+            end_offset = t_aa[::-1].find(lcs[::-1])-1
+
             print(start_offset)
             print(end_offset)
             if(start_offset != 0):
-                print("And then")
                 transcript.set_cds_start(transcript.get_cds_start(),start_offset*3)
             if(end_offset != 0):
                 transcript.set_cds_end(transcript.get_cds_end(),end_offset*-3)                
-            #assert p_aa[offset-1:] == t_aa
-            #print("game time")
-            #transcript.add_cds_sequence(p_aa)
-            #print(transcript.get_cds_sequence())
-            #print("then we hit the field like")
-            #transcript.add_genomic_sequence(transcript.get_genomic_sequence(), offset)
-            #transcript.set_genomic_offset(offset)
-            #print(transcript.get_genomic_sequence())
-            #print("all day like")
-            #t_aa = "".join(list(transcript.translate(transcript.get_cds_sequence())))
-            #print(t_aa)
         except:
             print("AlphaFold and transcript disagree for transcript " + transcript.get_name())
             continue
-                
-        
+
+        print("Transcript start" + str(transcript.get_start()))
+        print("Transcript end" + str(transcript.get_end()))
+        print("Missense positions are:")
+        print(missense)
+            
         iteration += 1
         missense_events = get_de_novos_in_transcript(transcript, missense)
         nonsense_events = get_de_novos_in_transcript(transcript, nonsense)
@@ -167,7 +182,14 @@ def cluster_de_novos(symbol,
                         scores[int(pos)] = {}
                     scores[int(pos)][ord(alt)] = float(score)
                     
-            missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"]]
+            try:
+                missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"] if pos in missense_events and int(pos) in scores and ord(alt) in scores[int(pos)]]
+            except KeyError:
+                print("No score exists for this position")
+                return(None)
+            except:
+                print("Error while loading scores for missense positions")
+                return(None)
             nonsense_scores = [-1 for x in nonsense_events]                        
         elif scores_file is not None:
             for line in scores_file.fetch(transcript.get_chrom()[3:],
@@ -181,7 +203,33 @@ def cluster_de_novos(symbol,
                 if int(pos) not in scores:
                     scores[int(pos)] = {}
                 scores[int(pos)][ord(alt)] = float(score)
-            missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"]]
+            #missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"] if pos in missense_events]
+            #for pos,alt in variants["missense"]:
+            #    print(pos)
+            #    print(alt)
+            #    print(ord(alt))
+                #print(scores[int(pos)])
+                #print(scores[int(pos)][ord(alt)])
+            #print("done")
+            #try:
+            if True:
+                missense_scores = []
+                for pos,alt in variants["missense"]:
+                    if pos in missense_events and int(pos) in scores:
+                        if ord(alt) in scores[int(pos)]:
+                            #print(pos)
+                            #print(alt)
+                            #print(scores[int(pos)][ord(alt)])
+                            missense_scores.append(scores[int(pos)][ord(alt)])
+                #missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"] if pos in missense_events and int(pos) in scores]
+                #missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"] if pos in missense_events and int(pos) in scores and ord(alt) in scores[int(pos)]]
+                #missense_scores = [scores[int(pos)][ord(alt)] for pos,alt in variants["missense"] if pos in missense_events]
+            #except KeyError:
+            #    print("No score exists for this position")
+            #    return(None)
+            #except:
+            #    print("Error while loading scores for missense positions")
+            #    return(None)
             nonsense_scores = [-1 for x in nonsense_events]            
         else:
             missense_scores = [-1 for x in missense_events]
@@ -214,7 +262,9 @@ def cluster_de_novos(symbol,
         if(dist_file_output != None):
             missense_dist_file_output = dist_file_output + symbol + ".missense.3d.dist"
             nonsense_dist_file_output = dist_file_output + symbol + ".nonsense.3d.dist" + dist_file_output
-            
+
+
+        print("HERE")
         (miss_dist, miss_prob, miss_count) = get_p_value(rates,
                                              three_d_locations,
                                              iterations,
@@ -413,6 +463,8 @@ def cluster_de_novos_multi(multimer_name,
                            variants,
                            three_d_locations,
                            genes,#ensembl,
+                           scale,
+                           threshold = None,
                            p = 0,
                            dist_file_output = "",
                            iterations=1000000,
@@ -449,15 +501,14 @@ def cluster_de_novos_multi(multimer_name,
 
     # Get list of valid amino acids
     residues = {}
-    for chain,residue_number,x,y,z in three_d_locations:
+    for x,y,z,residue,residue_number,chain in three_d_locations:
         if chain not in residues:
             residues[chain] = set()
         residues[chain].add(int(residue_number))
         
-
     # Make three_d_locations into list of dictionary
     three_d_list_of_dict = [{}]*len(all_chains)
-    for chain,residue_number,x,y,z in three_d_locations:
+    for x,y,z,residue,residue_number,chain in three_d_locations:
         if chain in all_chains:
             chain_number = all_chains.index(chain)
             three_d_list_of_dict[int(chain_number)][int(residue_number)] = [float(x),float(y),float(z)]
@@ -469,49 +520,79 @@ def cluster_de_novos_multi(multimer_name,
     
     for protein, chains in proteins_to_chains.items():
         missense = [int(pos) for pos,alt in variants[protein]["missense"]]
-#        nonsense = [pos for pos,alt in variants[protein]["nonsense"]]
     
         try:
-            transcript = genes[protein].canonical            
-            #transcript = await best_transcript(ensembl,protein,missense)
-
+            #Currently use the canonical transcript
+            transcript = genes[protein].canonical
+            print("BEFORE")
+            print(transcript.get_cds_start())
+            print(transcript.get_cds_end())                       
         except IndexError as e:
             print(e)
             return None
-        print(protein)
-        print(missense)
-        missense_events = get_de_novos_in_transcript(transcript, missense)
-        print(missense_events)
-        #        nonsense_events = get_de_novos_in_transcript(transcript, nonsense)
-        
-        missense_cds_positions[protein] = [ int(transcript.get_coding_distance(x)['pos']) for x in missense_events ]
-        #        nonsense_cds_positions[protein] = [ transcript.get_coding_distance(x)['pos'] for x in nonsense_events ]
-        print(missense_cds_positions[protein])
 
+        # Collect residues in the PDB model
         these_residues = set(residues[chains[0]])
         for chain in chains:
             these_residues = set.intersection(residues[chain], these_residues)
         
+        # Confirm that transcript and protein align well
+        t_aa = "".join(list(transcript.translate(transcript.get_cds_sequence())))
+        p_aa = "".join([row[3] for row in three_d_locations if row[5] == chain])
+        print(len(t_aa))
+        print(len(p_aa))
+        print("Transcript")
+        print(t_aa)
+        print("Uniprot")
+        print(p_aa)
+            
+        #Find longest common substring
+        match = SequenceMatcher(None, p_aa, t_aa).find_longest_match()
+        lcs = p_aa[match.a:match.a + match.size]
+
+        lcs_len,lcs = lcs_func(t_aa,p_aa)
+        
+        print("Longest Common Substring")
+        print(lcs)
+            
+        #find offsets
+        #start_offset = t_aa.find(p_aa)
+        #end_offset = t_aa[::-1].find(p_aa[::-1])-1
+        start_offset = t_aa.find(lcs)
+        end_offset = t_aa[::-1].find(lcs[::-1])-1
+        
+        print(start_offset)
+        print(end_offset)
+
+        start_codon = start_offset
+        end_codon = len(t_aa)-end_offset-2
+        #if(start_offset != 0):
+        #    transcript.set_cds_start(transcript.get_cds_start(),start_offset*3)
+        #if(end_offset != 0):
+        #    transcript.set_cds_end(transcript.get_cds_end(),end_offset*-3)                
+
+        print("AFTER")
+        print(transcript.get_cds_start())
+        print(transcript.get_cds_end())                                 
+                                 
+        #missense_events = get_de_novos_in_transcript(transcript, missense)
+        #print(missense_events)
+        #missense_cds_positions[protein] = [ int(transcript.get_coding_distance(x)['pos']) for x in missense_events ]
+        #print(missense_cds_positions[protein])
         # Trim down de novos to those in the 3d multimer model valid amino acids
+        #print([floor(float(cds_pos)/3) for cds_pos in missense_cds_positions[protein]])
+        #missense_cds_positions[protein] = [cds_pos for cds_pos in missense_cds_positions[protein] if floor(float(cds_pos)/3) in these_residues]
 
-        print([floor(float(cds_pos)/3) for cds_pos in missense_cds_positions[protein]])
-        for cds_pos in missense_cds_positions[protein]:
-            print(cds_pos)
-            print(floor(float(cds_pos)/3))
-            print(floor(float(cds_pos)/3) in these_residues)
-            print(transcript.get_position_on_chrom(cds_pos,0))
-        missense_cds_positions[protein] = [cds_pos for cds_pos in missense_cds_positions[protein] if floor(float(cds_pos)/3) in these_residues]
-
+        # Load missense variants for this protein
         missense_records = {}
         missense_records_map = {}
-        missense_records[protein] = [(pos, int(transcript.get_coding_distance(pos)['pos']), alt) for pos,alt in variants[protein]["missense"]]        
+        missense_records[protein] = [(pos, int(transcript.get_coding_distance(pos)['pos']), alt) for pos,alt in variants[protein]["missense"]]
+
+        # Trim down to missense variants in the PDB model
         missense_records_map[protein] = {pos:alt for pos, cds_pos, alt in missense_records[protein] if floor(float(cds_pos)/3) in these_residues}
-        print(missense_records[protein])
-        print(missense_records_map[protein])
-        #        nonsense_cds_positions[protein] = [cds_pos in nonsense_cds_positions if these_residues.contains(floor(cds_pos/3))]
-        # Mark how many de novos to expect on chains corresponding to this protein
-        for chain in chains:
-            de_novo_count_per_chain[all_chains.index(chain)] = len(missense_cds_positions[protein])
+
+        print([floor(float(cds_pos)/3) for pos, cds_pos, alt in missense_records[protein] if floor(float(cds_pos)/3) in these_residues])
+
 
         # Import scores
         scores = {}
@@ -528,33 +609,93 @@ def cluster_de_novos_multi(multimer_name,
                         scores[protein][int(pos)] = {}
                     scores[protein][int(pos)][ord(alt)] = float(score)
 
+        # Remove missense variants below threshold
+        print("This is threshold = " + str(threshold))
+        if threshold is not None:
+            missense_records[protein] = [(pos, cds_pos,alt) for pos, cds_pos,alt in missense_records[protein] if floor(float(cds_pos)/3) in these_residues and float(scores[protein][int(pos)][ord(alt)]) > float(threshold)]
+            missense_records_map[protein] = {pos:alt for pos, cds_pos, alt in missense_records[protein] }
+            
+        # Mark how many de novos to expect on chains corresponding to this protein
+        for chain in chains:
+            #de_novo_count_per_chain[all_chains.index(chain)] = len(missense_cds_positions[protein])
+            de_novo_count_per_chain[all_chains.index(chain)] = len(missense_records[protein])
+
 
         # Collect the missense for this protein
         for chain in chains:
-            for cds_pos in missense_cds_positions[protein]:
-                all_missense_locations.append(three_d_list_of_dict[all_chains.index(chain)][floor(cds_pos/3)])
+            #for cds_pos in missense_cds_positions[protein]:
+            for pos,cds_pos,alt in missense_records[protein]:
+                # Collect positions
+                print(cds_pos)
+                print(floor(float(cds_pos/3))+1)
+                print(three_d_list_of_dict[all_chains.index(chain)][floor(float(cds_pos/3))+1])
+                all_missense_locations.append(three_d_list_of_dict[all_chains.index(chain)][floor(float(cds_pos/3))+1])
+
+                # Collect scores
                 if scores[protein] != {}:
-                    print(transcript.get_position_on_chrom(cds_pos,0))
-                    print(scores[protein][transcript.get_position_on_chrom(cds_pos,0)])
-                    alt = missense_records_map[protein][transcript.get_position_on_chrom(cds_pos,0)]
-                    all_missense_scores.append(scores[protein][transcript.get_position_on_chrom(cds_pos,0)][ord(alt)])
+                    all_missense_scores.append(scores[protein][pos][ord(alt)])
+                    #alt = missense_records_map[protein][transcript.get_position_on_chrom(cds_pos,0)]
+                    #all_missense_scores.append(scores[protein][transcript.get_position_on_chrom(cds_pos,0)][ord(alt)])
                 else:
                     all_missense_scores.append(-1)
 
-        
-        #create and append the rate object for protein
-        rates.append({"protein" : protein, "rate" : SiteRates(transcript, mut_dict, scores[protein])})
+        #Create and append the rate object for protein
+        #rates.append({"protein" : protein, "rate" : SiteRates(transcript, mut_dict, scores[protein])})
+        if len(missense_records[protein]) > 0:
+            if True >= 0:
+                #rates.append({"protein" : protein, "rate" : SiteRates(transcript, mut_dict, scores[protein], float(threshold))})
+                #rates.append({"protein" : protein,
+                #              "rate" : SiteRates(transcript,
+                #                                 mut_dict,
+                #                                 scores[protein],
+                #                                 float(-2),
+                #                                 start_codon,
+                #                                 end_codon)})
 
-        for rate in rates:
-            print(rate["rate"]["missense"].get_summed_rate())
-            print(len(rate["rate"]["missense"]))
+                rates.append({"protein" : protein,
+                              "rate" : SiteRates(transcript,
+                                                 mut_dict,
+                                                 scores[protein],
+                                                 float(-2),
+                                                 residues = list(these_residues))})
+
+            else:
+                rates.append({"protein" : protein, "rate" : SiteRates(transcript, mut_dict, scores[protein])})
+
+        #for rate in rates:
+        #    print(rate["rate"]["missense"].get_summed_rate())
+        #    print(len(rate["rate"]["missense"]))
 
     missense_dist_file_output=""
     nonsense_dist_file_output=""
     if(dist_file_output != None):
         missense_dist_file_output = dist_file_output + multimer_name+ ".missense.3d.dist"
         nonsense_dist_file_output = dist_file_output + multimer_name + ".nonsense.3d.dist" 
-       
+
+
+    # Remove missense variants below threshold
+    #if threshold:
+    #    temp_scores = []
+    #    temp_locations = []
+    #    for i in range(len(all_missense_scores)):
+    #        if float(all_missense_scores[i]) >= float(threshold):
+    #            temp_scores.append(all_missense_scores[i])
+    #            temp_locations.append(all_missense_locations[i])
+    #    all_missense_scores = temp_scores
+    #    all_missense_locations = temp_locations
+
+    #print("Variants above threshold")
+    #print(all_missense_scores)
+    #print(all_missense_locations)
+    print("DE NOVO COUNT PER CHAIN")
+    print(de_novo_count_per_chain)
+    #for i in reversed(range(len(de_novo_count_per_chain))):
+    #    if de_novo_count_per_chain[i] == 0:
+    #        de_novo_count_per_chain.pop(i)
+    #        proteins.pop(i)
+    #        all_chains.pop(i)
+    #        three_d_list_of_dict.pop(i)
+    #print(de_novo_count_per_chain)            
     (miss_dist, miss_prob) = get_p_value_multi(all_chains,
                                                proteins,
                                                de_novo_count_per_chain,
@@ -579,7 +720,8 @@ def cluster_de_novos_multi(multimer_name,
 #    dists["nons_dist"].append(nons_dist)
     probs["miss_prob"].append(miss_prob)
 #    probs["nons_prob"].append(nons_prob)
-    results["missense"] += [[transcript.get_start(), transcript.get_end(), len(missense_events), miss_dist, miss_prob]]
+    results["missense"] += [[transcript.get_start(), transcript.get_end(), len(all_missense_locations), miss_dist, miss_prob]]
+#    results["missense"] += [[transcript.get_start(), transcript.get_end(), len(missense_events), miss_dist, miss_prob]]
 #    results["nonsense"] += [[transcript.get_start(), transcript.get_end(), len(nonsense_events), nons_dist, nons_prob]]        
     # remove the de novos analysed in the current transcript, so that
     # analysis of subsequent transcripts uses independent events. NOTE THAT
