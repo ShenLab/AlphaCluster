@@ -1,7 +1,7 @@
 ![travis](https://travis-ci.org/jeremymcrae/alphacluster.svg?branch=master)
 
 <p align="center">
-   <img src="img/alphacluster_logo.svg">
+   <img width="200px" src="img/alphacluster_logo.svg">
 </p>
 
 # AlphaCluster
