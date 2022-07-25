@@ -11,8 +11,8 @@ from libcpp.map cimport map
 
 from pyfaidx import Fasta
 
-from denovonear.transcript cimport Tx, Region, CDS_coords
-from denovonear.transcript import Transcript
+from alphacluster.transcript cimport Tx, Region, CDS_coords
+from alphacluster.transcript import Transcript
 
 cdef extern from "gtf.h" namespace "gencode":
     cdef struct GTFLine:

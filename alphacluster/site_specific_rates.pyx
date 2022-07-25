@@ -8,8 +8,8 @@ from libcpp cimport bool
 from cython.operator cimport dereference as deref
 from libcpp.map cimport map as mapcpp
 
-from denovonear.weights cimport Chooser, WeightedChoice
-from denovonear.transcript cimport Tx, Transcript, Region, Codon
+from alphacluster.weights cimport Chooser, WeightedChoice
+from alphacluster.transcript cimport Tx, Transcript, Region, Codon
 
 cdef extern from "site_rates.h":
     cdef cppclass SitesChecks:

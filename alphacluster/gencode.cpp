@@ -19,16 +19,16 @@
         "libraries": [
             "z"
         ],
-        "name": "denovonear.gencode",
+        "name": "alphacluster.gencode",
         "sources": [
-            "denovonear/gencode.pyx",
+            "alphacluster/gencode.pyx",
             "src/gencode.cpp",
             "src/gtf.cpp",
             "src/tx.cpp",
             "src/gzstream/gzstream.C"
         ]
     },
-    "module_name": "denovonear.gencode"
+    "module_name": "alphacluster.gencode"
 }
 END: Cython Metadata */
 
@@ -736,8 +736,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__denovonear__gencode
-#define __PYX_HAVE_API__denovonear__gencode
+#define __PYX_HAVE__alphacluster__gencode
+#define __PYX_HAVE_API__alphacluster__gencode
 /* Early includes */
 #include <algorithm>
 #include "ios"
@@ -973,54 +973,54 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "denovonear/gencode.pyx",
+  "alphacluster/gencode.pyx",
   "stringsource",
-  "denovonear/transcript.pxd",
+  "alphacluster/transcript.pxd",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_10denovonear_10transcript_Transcript;
-struct __pyx_obj_10denovonear_7gencode_Gene;
-struct __pyx_obj_10denovonear_7gencode_Gencode;
-struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds;
-struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr;
-struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__;
-struct __pyx_opt_args_10denovonear_7gencode__open_gencode;
+struct __pyx_obj_12alphacluster_10transcript_Transcript;
+struct __pyx_obj_12alphacluster_7gencode_Gene;
+struct __pyx_obj_12alphacluster_7gencode_Gencode;
+struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds;
+struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr;
+struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__;
+struct __pyx_opt_args_12alphacluster_7gencode__open_gencode;
 
-/* "denovonear/gencode.pyx":62
+/* "alphacluster/gencode.pyx":62
  *     return [[y.start, y.end] for y in exons]
  * 
  * cpdef _open_gencode(gtf_path, coding_only=True):             # <<<<<<<<<<<<<<
  *     ''' python function for unit testing loading transcripts from GTF
  *     '''
  */
-struct __pyx_opt_args_10denovonear_7gencode__open_gencode {
+struct __pyx_opt_args_12alphacluster_7gencode__open_gencode {
   int __pyx_n;
   PyObject *coding_only;
 };
 
-/* "denovonear/transcript.pxd":93
+/* "alphacluster/transcript.pxd":93
  *         int offset
  * 
  * cdef class Transcript:             # <<<<<<<<<<<<<<
  *     cdef Tx *thisptr # hold a C++ instance which we're wrapping
  */
-struct __pyx_obj_10denovonear_10transcript_Transcript {
+struct __pyx_obj_12alphacluster_10transcript_Transcript {
   PyObject_HEAD
   Tx *thisptr;
 };
 
 
-/* "denovonear/gencode.pyx":85
+/* "alphacluster/gencode.pyx":85
  * __genome_ = None
  * 
  * cdef class Gene:             # <<<<<<<<<<<<<<
  *     cdef string _symbol
  *     cdef vector[Tx] _transcripts
  */
-struct __pyx_obj_10denovonear_7gencode_Gene {
+struct __pyx_obj_12alphacluster_7gencode_Gene {
   PyObject_HEAD
-  struct __pyx_vtabstruct_10denovonear_7gencode_Gene *__pyx_vtab;
+  struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *__pyx_vtab;
   std::string _symbol;
   std::vector<Tx>  _transcripts;
   std::vector<int>  _canonical;
@@ -1030,14 +1030,14 @@ struct __pyx_obj_10denovonear_7gencode_Gene {
 };
 
 
-/* "denovonear/gencode.pyx":306
+/* "alphacluster/gencode.pyx":306
  *         return min(abs(self.start - pos), abs(self.end - pos))
  * 
  * cdef class Gencode:             # <<<<<<<<<<<<<<
  *     cdef dict genes
  *     cdef map[string, vector[GenePoint]] starts, ends
  */
-struct __pyx_obj_10denovonear_7gencode_Gencode {
+struct __pyx_obj_12alphacluster_7gencode_Gencode {
   PyObject_HEAD
   PyObject *genes;
   std::map<std::string,std::vector<struct gencode::GenePoint> >  starts;
@@ -1045,44 +1045,44 @@ struct __pyx_obj_10denovonear_7gencode_Gencode {
 };
 
 
-/* "denovonear/gencode.pyx":286
+/* "alphacluster/gencode.pyx":286
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
  *         ''' find if a pos is in coding region of any transcript of a gene
  *         '''
  */
-struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds {
+struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds {
   PyObject_HEAD
   PyObject *__pyx_v_pos;
-  struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self;
+  struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self;
 };
 
 
-/* "denovonear/gencode.pyx":289
+/* "alphacluster/gencode.pyx":289
  *         ''' find if a pos is in coding region of any transcript of a gene
  *         '''
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)             # <<<<<<<<<<<<<<
  * 
  *     def distance(self, chrom, pos):
  */
-struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr {
+struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr {
   PyObject_HEAD
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *__pyx_outer_scope;
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *__pyx_outer_scope;
   Tx __pyx_v_tx;
 };
 
 
-/* "denovonear/gencode.pyx":365
+/* "alphacluster/gencode.pyx":365
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]
  *     def __iter__(self):             # <<<<<<<<<<<<<<
  *         for x in self.genes:
  *             yield x
  */
-struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ {
+struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ {
   PyObject_HEAD
-  struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self;
+  struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self;
   PyObject *__pyx_v_x;
   PyObject *__pyx_t_0;
   Py_ssize_t __pyx_t_1;
@@ -1092,7 +1092,7 @@ struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ {
 
 
 
-/* "denovonear/gencode.pyx":85
+/* "alphacluster/gencode.pyx":85
  * __genome_ = None
  * 
  * cdef class Gene:             # <<<<<<<<<<<<<<
@@ -1100,16 +1100,16 @@ struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ {
  *     cdef vector[Tx] _transcripts
  */
 
-struct __pyx_vtabstruct_10denovonear_7gencode_Gene {
-  PyObject *(*add_tx)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx, int);
-  PyObject *(*_convert_exons)(struct __pyx_obj_10denovonear_7gencode_Gene *, std::vector<struct Region> );
-  PyObject *(*_to_Transcript)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx);
-  int (*_cds_len)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx);
-  Tx (*_max_by_cds)(struct __pyx_obj_10denovonear_7gencode_Gene *, std::vector<Tx> );
-  int (*_exonic_len)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx);
-  Tx (*_max_by_exonic)(struct __pyx_obj_10denovonear_7gencode_Gene *, std::vector<Tx> );
+struct __pyx_vtabstruct_12alphacluster_7gencode_Gene {
+  PyObject *(*add_tx)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx, int);
+  PyObject *(*_convert_exons)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<struct Region> );
+  PyObject *(*_to_Transcript)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx);
+  int (*_cds_len)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx);
+  Tx (*_max_by_cds)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<Tx> );
+  int (*_exonic_len)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx);
+  Tx (*_max_by_exonic)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<Tx> );
 };
-static struct __pyx_vtabstruct_10denovonear_7gencode_Gene *__pyx_vtabptr_10denovonear_7gencode_Gene;
+static struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *__pyx_vtabptr_12alphacluster_7gencode_Gene;
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -1978,13 +1978,13 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx, int __pyx_v_is_canonical); /* proto*/
-static PyObject *__pyx_f_10denovonear_7gencode_4Gene__convert_exons(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, std::vector<struct Region>  __pyx_v_exons); /* proto*/
-static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx); /* proto*/
-static int __pyx_f_10denovonear_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx); /* proto*/
-static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts); /* proto*/
-static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx); /* proto*/
-static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts); /* proto*/
+static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx, int __pyx_v_is_canonical); /* proto*/
+static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, std::vector<struct Region>  __pyx_v_exons); /* proto*/
+static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx); /* proto*/
+static int __pyx_f_12alphacluster_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx); /* proto*/
+static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts); /* proto*/
+static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx); /* proto*/
+static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts); /* proto*/
 
 /* Module declarations from 'libcpp' */
 
@@ -2000,18 +2000,18 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
 
 /* Module declarations from 'libcpp.map' */
 
-/* Module declarations from 'denovonear.transcript' */
-static PyTypeObject *__pyx_ptype_10denovonear_10transcript_Transcript = 0;
+/* Module declarations from 'alphacluster.transcript' */
+static PyTypeObject *__pyx_ptype_12alphacluster_10transcript_Transcript = 0;
 
-/* Module declarations from 'denovonear.gencode' */
-static PyTypeObject *__pyx_ptype_10denovonear_7gencode_Gene = 0;
-static PyTypeObject *__pyx_ptype_10denovonear_7gencode_Gencode = 0;
-static PyTypeObject *__pyx_ptype_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds = 0;
-static PyTypeObject *__pyx_ptype_10denovonear_7gencode___pyx_scope_struct_1_genexpr = 0;
-static PyTypeObject *__pyx_ptype_10denovonear_7gencode___pyx_scope_struct_2___iter__ = 0;
-static PyObject *__pyx_f_10denovonear_7gencode__parse_gtfline(std::string, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_10denovonear_7gencode__convert_exons(std::vector<struct Region> ); /*proto*/
-static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_10denovonear_7gencode__open_gencode *__pyx_optional_args); /*proto*/
+/* Module declarations from 'alphacluster.gencode' */
+static PyTypeObject *__pyx_ptype_12alphacluster_7gencode_Gene = 0;
+static PyTypeObject *__pyx_ptype_12alphacluster_7gencode_Gencode = 0;
+static PyTypeObject *__pyx_ptype_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds = 0;
+static PyTypeObject *__pyx_ptype_12alphacluster_7gencode___pyx_scope_struct_1_genexpr = 0;
+static PyTypeObject *__pyx_ptype_12alphacluster_7gencode___pyx_scope_struct_2___iter__ = 0;
+static PyObject *__pyx_f_12alphacluster_7gencode__parse_gtfline(std::string, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_12alphacluster_7gencode__convert_exons(std::vector<struct Region> ); /*proto*/
+static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_12alphacluster_7gencode__open_gencode *__pyx_optional_args); /*proto*/
 static std::string __pyx_convert_string_from_py_std__in_string(PyObject *); /*proto*/
 static CYTHON_INLINE PyObject *__pyx_convert_PyObject_string_to_py_std__in_string(std::string const &); /*proto*/
 static CYTHON_INLINE PyObject *__pyx_convert_PyUnicode_string_to_py_std__in_string(std::string const &); /*proto*/
@@ -2024,11 +2024,11 @@ static struct gencode::GenePoint __pyx_convert__from_py_struct__gencode_3a__3a_G
 static std::vector<struct gencode::GenePoint>  __pyx_convert_vector_from_py_struct__gencode_3a__3a_GenePoint(PyObject *); /*proto*/
 static PyObject *__pyx_convert_vector_to_py_struct__gencode_3a__3a_GenePoint(const std::vector<struct gencode::GenePoint>  &); /*proto*/
 static PyObject *__pyx_convert_pair_to_py_std_3a__3a_string____std_3a__3a_vector_3c_struct__gencode_3a__3a_GenePoint_3e___(std::pair<std::string,std::vector<struct gencode::GenePoint> >  const &); /*proto*/
-#define __Pyx_MODULE_NAME "denovonear.gencode"
-extern int __pyx_module_is_main_denovonear__gencode;
-int __pyx_module_is_main_denovonear__gencode = 0;
+#define __Pyx_MODULE_NAME "alphacluster.gencode"
+extern int __pyx_module_is_main_alphacluster__gencode;
+int __pyx_module_is_main_alphacluster__gencode = 0;
 
-/* Implementation of 'denovonear.gencode' */
+/* Implementation of 'alphacluster.gencode' */
 static PyObject *__pyx_builtin_chr;
 static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_ValueError;
@@ -2119,16 +2119,16 @@ static const char __pyx_k_Gencode_n_genes[] = "Gencode(n_genes=";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_transcript_type[] = "transcript_type";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_denovonear_gencode[] = "denovonear.gencode";
 static const char __pyx_k_get_genomic_offset[] = "get_genomic_offset";
 static const char __pyx_k_reverse_complement[] = "reverse_complement";
 static const char __pyx_k_sort_locals_lambda[] = "_sort.<locals>.<lambda>";
 static const char __pyx_k_get_coding_distance[] = "get_coding_distance";
+static const char __pyx_k_alphacluster_gencode[] = "alphacluster.gencode";
 static const char __pyx_k_get_genomic_sequence[] = "get_genomic_sequence";
 static const char __pyx_k_opening_genome_fasta[] = "opening genome fasta: ";
-static const char __pyx_k_denovonear_transcript[] = "denovonear.transcript";
 static const char __pyx_k_no_coding_transcripts[] = "no coding transcripts";
 static const char __pyx_k_no_exonic_transcripts[] = "no exonic transcripts";
+static const char __pyx_k_alphacluster_transcript[] = "alphacluster.transcript";
 static const char __pyx_k_no_transcripts_in_gene_yet[] = "no transcripts in gene yet";
 static const char __pyx_k_opening_gencode_annotations[] = "opening gencode annotations: ";
 static const char __pyx_k_in_any_tx_cds_locals_genexpr[] = "in_any_tx_cds.<locals>.genexpr";
@@ -2155,6 +2155,8 @@ static PyObject *__pyx_kp_u__2;
 static PyObject *__pyx_kp_u__3;
 static PyObject *__pyx_kp_u__4;
 static PyObject *__pyx_kp_u__6;
+static PyObject *__pyx_n_s_alphacluster_gencode;
+static PyObject *__pyx_n_s_alphacluster_transcript;
 static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_n_s_bisect;
 static PyObject *__pyx_n_s_canonical;
@@ -2165,8 +2167,6 @@ static PyObject *__pyx_n_s_chrom_2;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
 static PyObject *__pyx_n_s_coding_only;
-static PyObject *__pyx_n_s_denovonear_gencode;
-static PyObject *__pyx_n_s_denovonear_transcript;
 static PyObject *__pyx_n_s_distance;
 static PyObject *__pyx_n_s_encode;
 static PyObject *__pyx_n_s_end;
@@ -2237,45 +2237,45 @@ static PyObject *__pyx_n_s_transcript_type;
 static PyObject *__pyx_n_s_tx_id;
 static PyObject *__pyx_n_s_upper;
 static PyObject *__pyx_n_u_utf8;
-static PyObject *__pyx_pf_10denovonear_7gencode__parse_gtfline(CYTHON_UNUSED PyObject *__pyx_self, std::string __pyx_v_line); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_2_open_gencode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_gtf_path, PyObject *__pyx_v_coding_only); /* proto */
-static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_symbol); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v__tx); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5chrom___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static int __pyx_pf_10denovonear_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5start___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static int __pyx_pf_10denovonear_7gencode_4Gene_5start_2__set__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_3end___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static int __pyx_pf_10denovonear_7gencode_4Gene_3end_2__set__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_13in_any_tx_cds_genexpr(PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_pos); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_chrom, PyObject *__pyx_v_pos); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gencode, PyObject *__pyx_v_fasta, PyObject *__pyx_v_coding_only); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode__parse_gtfline(CYTHON_UNUSED PyObject *__pyx_self, std::string __pyx_v_line); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_2_open_gencode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_gtf_path, PyObject *__pyx_v_coding_only); /* proto */
+static int __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_symbol); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v__tx); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6symbol___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5chrom___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static int __pyx_pf_12alphacluster_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5start___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static int __pyx_pf_12alphacluster_7gencode_4Gene_5start_2__set__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_3end___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static int __pyx_pf_12alphacluster_7gencode_4Gene_3end_2__set__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_13in_any_tx_cds_genexpr(PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6in_any_tx_cds(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_pos); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_chrom, PyObject *__pyx_v_pos); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gencode, PyObject *__pyx_v_fasta, PyObject *__pyx_v_coding_only); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self); /* proto */
-static Py_ssize_t __pyx_pf_10denovonear_7gencode_7Gencode_6__len__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_8__getitem__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_symbol); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_10__iter__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gene); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_chrom, int __pyx_v_pos); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v__chrom, int __pyx_v_start, int __pyx_v_end, int __pyx_v_max_window); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_19__exit__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_10denovonear_7gencode_Gene(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_10denovonear_7gencode_Gencode(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_2___iter__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self); /* proto */
+static Py_ssize_t __pyx_pf_12alphacluster_7gencode_7Gencode_6__len__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_8__getitem__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_symbol); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_10__iter__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gene); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_chrom, int __pyx_v_pos); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v__chrom, int __pyx_v_start, int __pyx_v_end, int __pyx_v_max_window); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_19__exit__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_12alphacluster_7gencode_Gene(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_12alphacluster_7gencode_Gencode(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_2___iter__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static __Pyx_CachedCFunction __pyx_umethod_PyList_Type_index = {0, &__pyx_n_s_index, 0, 0, 0};
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
@@ -2295,7 +2295,7 @@ static PyObject *__pyx_tuple__14;
 static PyObject *__pyx_tuple__15;
 /* Late includes */
 
-/* "denovonear/gencode.pyx":49
+/* "alphacluster/gencode.pyx":49
  *         int max_window) except+
  * 
  * cpdef _parse_gtfline(string line):             # <<<<<<<<<<<<<<
@@ -2303,8 +2303,8 @@ static PyObject *__pyx_tuple__15;
  *     '''
  */
 
-static PyObject *__pyx_pw_10denovonear_7gencode_1_parse_gtfline(PyObject *__pyx_self, PyObject *__pyx_arg_line); /*proto*/
-static PyObject *__pyx_f_10denovonear_7gencode__parse_gtfline(std::string __pyx_v_line, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_1_parse_gtfline(PyObject *__pyx_self, PyObject *__pyx_arg_line); /*proto*/
+static PyObject *__pyx_f_12alphacluster_7gencode__parse_gtfline(std::string __pyx_v_line, CYTHON_UNUSED int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2313,7 +2313,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__parse_gtfline(std::string __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_parse_gtfline", 0);
 
-  /* "denovonear/gencode.pyx":52
+  /* "alphacluster/gencode.pyx":52
  *     ''' python function for unit testing GTF parsing
  *     '''
  *     return parse_gtfline(line)             # <<<<<<<<<<<<<<
@@ -2327,7 +2327,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__parse_gtfline(std::string __pyx_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":49
+  /* "alphacluster/gencode.pyx":49
  *         int max_window) except+
  * 
  * cpdef _parse_gtfline(string line):             # <<<<<<<<<<<<<<
@@ -2338,7 +2338,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__parse_gtfline(std::string __pyx_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode._parse_gtfline", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode._parse_gtfline", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2347,9 +2347,9 @@ static PyObject *__pyx_f_10denovonear_7gencode__parse_gtfline(std::string __pyx_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_1_parse_gtfline(PyObject *__pyx_self, PyObject *__pyx_arg_line); /*proto*/
-static char __pyx_doc_10denovonear_7gencode__parse_gtfline[] = " python function for unit testing GTF parsing\n    ";
-static PyObject *__pyx_pw_10denovonear_7gencode_1_parse_gtfline(PyObject *__pyx_self, PyObject *__pyx_arg_line) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_1_parse_gtfline(PyObject *__pyx_self, PyObject *__pyx_arg_line); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode__parse_gtfline[] = " python function for unit testing GTF parsing\n    ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_1_parse_gtfline(PyObject *__pyx_self, PyObject *__pyx_arg_line) {
   std::string __pyx_v_line;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -2362,18 +2362,18 @@ static PyObject *__pyx_pw_10denovonear_7gencode_1_parse_gtfline(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("denovonear.gencode._parse_gtfline", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode._parse_gtfline", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10denovonear_7gencode__parse_gtfline(__pyx_self, ((std::string)__pyx_v_line));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode__parse_gtfline(__pyx_self, ((std::string)__pyx_v_line));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode__parse_gtfline(CYTHON_UNUSED PyObject *__pyx_self, std::string __pyx_v_line) {
+static PyObject *__pyx_pf_12alphacluster_7gencode__parse_gtfline(CYTHON_UNUSED PyObject *__pyx_self, std::string __pyx_v_line) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2382,7 +2382,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode__parse_gtfline(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_parse_gtfline", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10denovonear_7gencode__parse_gtfline(__pyx_v_line, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12alphacluster_7gencode__parse_gtfline(__pyx_v_line, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2391,7 +2391,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode__parse_gtfline(CYTHON_UNUSED PyO
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode._parse_gtfline", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode._parse_gtfline", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2399,7 +2399,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode__parse_gtfline(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":54
+/* "alphacluster/gencode.pyx":54
  *     return parse_gtfline(line)
  * 
  * cdef _convert_exons(vector[Region] exons):             # <<<<<<<<<<<<<<
@@ -2407,7 +2407,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode__parse_gtfline(CYTHON_UNUSED PyO
  * 
  */
 
-static PyObject *__pyx_f_10denovonear_7gencode__convert_exons(std::vector<struct Region>  __pyx_v_exons) {
+static PyObject *__pyx_f_12alphacluster_7gencode__convert_exons(std::vector<struct Region>  __pyx_v_exons) {
   struct Region __pyx_7genexpr__pyx_v_y;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2422,7 +2422,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__convert_exons(std::vector<struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_convert_exons", 0);
 
-  /* "denovonear/gencode.pyx":60
+  /* "alphacluster/gencode.pyx":60
  *     Transcript object.
  *     '''
  *     return [[y.start, y.end] for y in exons]             # <<<<<<<<<<<<<<
@@ -2459,7 +2459,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__convert_exons(std::vector<struct
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":54
+  /* "alphacluster/gencode.pyx":54
  *     return parse_gtfline(line)
  * 
  * cdef _convert_exons(vector[Region] exons):             # <<<<<<<<<<<<<<
@@ -2473,7 +2473,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__convert_exons(std::vector<struct
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("denovonear.gencode._convert_exons", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode._convert_exons", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2481,7 +2481,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__convert_exons(std::vector<struct
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":62
+/* "alphacluster/gencode.pyx":62
  *     return [[y.start, y.end] for y in exons]
  * 
  * cpdef _open_gencode(gtf_path, coding_only=True):             # <<<<<<<<<<<<<<
@@ -2489,8 +2489,8 @@ static PyObject *__pyx_f_10denovonear_7gencode__convert_exons(std::vector<struct
  *     '''
  */
 
-static PyObject *__pyx_pw_10denovonear_7gencode_3_open_gencode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_gtf_path, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_10denovonear_7gencode__open_gencode *__pyx_optional_args) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_3_open_gencode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_12alphacluster_7gencode__open_gencode(PyObject *__pyx_v_gtf_path, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_12alphacluster_7gencode__open_gencode *__pyx_optional_args) {
   PyObject *__pyx_v_coding_only = ((PyObject *)Py_True);
   std::vector<struct gencode::NamedTx>  __pyx_v__transcripts;
   PyObject *__pyx_v_transcripts = NULL;
@@ -2530,7 +2530,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     }
   }
 
-  /* "denovonear/gencode.pyx":65
+  /* "alphacluster/gencode.pyx":65
  *     ''' python function for unit testing loading transcripts from GTF
  *     '''
  *     cdef vector[NamedTx] _transcripts = open_gencode(gtf_path.encode('utf8'), coding_only)             # <<<<<<<<<<<<<<
@@ -2559,7 +2559,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
   __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_coding_only); if (unlikely((__pyx_t_5 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L1_error)
   __pyx_v__transcripts = gencode::open_gencode(__pyx_t_4, __pyx_t_5);
 
-  /* "denovonear/gencode.pyx":67
+  /* "alphacluster/gencode.pyx":67
  *     cdef vector[NamedTx] _transcripts = open_gencode(gtf_path.encode('utf8'), coding_only)
  * 
  *     transcripts = []             # <<<<<<<<<<<<<<
@@ -2571,7 +2571,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
   __pyx_v_transcripts = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":68
+  /* "alphacluster/gencode.pyx":68
  * 
  *     transcripts = []
  *     for x in _transcripts:             # <<<<<<<<<<<<<<
@@ -2585,7 +2585,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     ++__pyx_t_6;
     __pyx_v_x = __pyx_t_7;
 
-    /* "denovonear/gencode.pyx":69
+    /* "alphacluster/gencode.pyx":69
  *     transcripts = []
  *     for x in _transcripts:
  *         tx = x.tx             # <<<<<<<<<<<<<<
@@ -2595,7 +2595,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     __pyx_t_8 = __pyx_v_x.tx;
     __pyx_v_tx = __pyx_t_8;
 
-    /* "denovonear/gencode.pyx":70
+    /* "alphacluster/gencode.pyx":70
  *     for x in _transcripts:
  *         tx = x.tx
  *         chrom = tx.get_chrom().decode('utf8')             # <<<<<<<<<<<<<<
@@ -2607,7 +2607,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     __Pyx_XDECREF_SET(__pyx_v_chrom, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":71
+    /* "alphacluster/gencode.pyx":71
  *         tx = x.tx
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()             # <<<<<<<<<<<<<<
@@ -2616,7 +2616,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
  */
     __pyx_v_start = __pyx_v_tx.get_start();
 
-    /* "denovonear/gencode.pyx":72
+    /* "alphacluster/gencode.pyx":72
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()
  *         end = tx.get_end()             # <<<<<<<<<<<<<<
@@ -2625,7 +2625,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
  */
     __pyx_v_end = __pyx_v_tx.get_end();
 
-    /* "denovonear/gencode.pyx":73
+    /* "alphacluster/gencode.pyx":73
  *         start = tx.get_start()
  *         end = tx.get_end()
  *         cds_start = tx.get_cds_start()             # <<<<<<<<<<<<<<
@@ -2634,7 +2634,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
  */
     __pyx_v_cds_start = __pyx_v_tx.get_cds_start();
 
-    /* "denovonear/gencode.pyx":74
+    /* "alphacluster/gencode.pyx":74
  *         end = tx.get_end()
  *         cds_start = tx.get_cds_start()
  *         cds_end = tx.get_cds_end()             # <<<<<<<<<<<<<<
@@ -2643,31 +2643,31 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
  */
     __pyx_v_cds_end = __pyx_v_tx.get_cds_end();
 
-    /* "denovonear/gencode.pyx":75
+    /* "alphacluster/gencode.pyx":75
  *         cds_start = tx.get_cds_start()
  *         cds_end = tx.get_cds_end()
  *         exons = _convert_exons(tx.get_exons())             # <<<<<<<<<<<<<<
  *         cds = _convert_exons(tx.get_cds())
  *         strand = chr(tx.get_strand())
  */
-    __pyx_t_1 = __pyx_f_10denovonear_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_exons, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":76
+    /* "alphacluster/gencode.pyx":76
  *         cds_end = tx.get_cds_end()
  *         exons = _convert_exons(tx.get_exons())
  *         cds = _convert_exons(tx.get_cds())             # <<<<<<<<<<<<<<
  *         strand = chr(tx.get_strand())
  *         tx_id = tx.get_name().decode('utf8')
  */
-    __pyx_t_1 = __pyx_f_10denovonear_7gencode__convert_exons(__pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_cds, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":77
+    /* "alphacluster/gencode.pyx":77
  *         exons = _convert_exons(tx.get_exons())
  *         cds = _convert_exons(tx.get_cds())
  *         strand = chr(tx.get_strand())             # <<<<<<<<<<<<<<
@@ -2682,7 +2682,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     __Pyx_XDECREF_SET(__pyx_v_strand, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "denovonear/gencode.pyx":78
+    /* "alphacluster/gencode.pyx":78
  *         cds = _convert_exons(tx.get_cds())
  *         strand = chr(tx.get_strand())
  *         tx_id = tx.get_name().decode('utf8')             # <<<<<<<<<<<<<<
@@ -2694,7 +2694,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     __Pyx_XDECREF_SET(__pyx_v_tx_id, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "denovonear/gencode.pyx":79
+    /* "alphacluster/gencode.pyx":79
  *         strand = chr(tx.get_strand())
  *         tx_id = tx.get_name().decode('utf8')
  *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)             # <<<<<<<<<<<<<<
@@ -2751,7 +2751,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     __Pyx_XDECREF_SET(__pyx_v_transcript, __pyx_t_9);
     __pyx_t_9 = 0;
 
-    /* "denovonear/gencode.pyx":80
+    /* "alphacluster/gencode.pyx":80
  *         tx_id = tx.get_name().decode('utf8')
  *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)
  *         transcripts.append((x.symbol.decode('utf8'), transcript, x.is_canonical))             # <<<<<<<<<<<<<<
@@ -2776,7 +2776,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
     __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_transcripts, __pyx_t_11); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-    /* "denovonear/gencode.pyx":68
+    /* "alphacluster/gencode.pyx":68
  * 
  *     transcripts = []
  *     for x in _transcripts:             # <<<<<<<<<<<<<<
@@ -2785,7 +2785,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
  */
   }
 
-  /* "denovonear/gencode.pyx":81
+  /* "alphacluster/gencode.pyx":81
  *         transcript = Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, offset=0)
  *         transcripts.append((x.symbol.decode('utf8'), transcript, x.is_canonical))
  *     return transcripts             # <<<<<<<<<<<<<<
@@ -2797,7 +2797,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
   __pyx_r = __pyx_v_transcripts;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":62
+  /* "alphacluster/gencode.pyx":62
  *     return [[y.start, y.end] for y in exons]
  * 
  * cpdef _open_gencode(gtf_path, coding_only=True):             # <<<<<<<<<<<<<<
@@ -2813,7 +2813,7 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("denovonear.gencode._open_gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode._open_gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_transcripts);
@@ -2829,9 +2829,9 @@ static PyObject *__pyx_f_10denovonear_7gencode__open_gencode(PyObject *__pyx_v_g
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_3_open_gencode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_2_open_gencode[] = " python function for unit testing loading transcripts from GTF\n    ";
-static PyObject *__pyx_pw_10denovonear_7gencode_3_open_gencode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_3_open_gencode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_2_open_gencode[] = " python function for unit testing loading transcripts from GTF\n    ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_3_open_gencode(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_gtf_path = 0;
   PyObject *__pyx_v_coding_only = 0;
   int __pyx_lineno = 0;
@@ -2886,22 +2886,22 @@ static PyObject *__pyx_pw_10denovonear_7gencode_3_open_gencode(PyObject *__pyx_s
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_open_gencode", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 62, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("denovonear.gencode._open_gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode._open_gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10denovonear_7gencode_2_open_gencode(__pyx_self, __pyx_v_gtf_path, __pyx_v_coding_only);
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_2_open_gencode(__pyx_self, __pyx_v_gtf_path, __pyx_v_coding_only);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_2_open_gencode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_gtf_path, PyObject *__pyx_v_coding_only) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_2_open_gencode(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_gtf_path, PyObject *__pyx_v_coding_only) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  struct __pyx_opt_args_10denovonear_7gencode__open_gencode __pyx_t_2;
+  struct __pyx_opt_args_12alphacluster_7gencode__open_gencode __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2909,7 +2909,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_2_open_gencode(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.coding_only = __pyx_v_coding_only;
-  __pyx_t_1 = __pyx_f_10denovonear_7gencode__open_gencode(__pyx_v_gtf_path, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12alphacluster_7gencode__open_gencode(__pyx_v_gtf_path, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2918,7 +2918,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_2_open_gencode(CYTHON_UNUSED PyO
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode._open_gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode._open_gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2926,7 +2926,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_2_open_gencode(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":91
+/* "alphacluster/gencode.pyx":91
  *     cdef str _chrom
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):             # <<<<<<<<<<<<<<
@@ -2935,8 +2935,8 @@ static PyObject *__pyx_pf_10denovonear_7gencode_2_open_gencode(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static int __pyx_pw_10denovonear_7gencode_4Gene_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_10denovonear_7gencode_4Gene_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_12alphacluster_7gencode_4Gene_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_12alphacluster_7gencode_4Gene_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_symbol = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -2976,18 +2976,18 @@ static int __pyx_pw_10denovonear_7gencode_4Gene_1__cinit__(PyObject *__pyx_v_sel
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 91, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gene.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene___cinit__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), __pyx_v_symbol);
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), __pyx_v_symbol);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_symbol) {
+static int __pyx_pf_12alphacluster_7gencode_4Gene___cinit__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_symbol) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3002,7 +3002,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
   __Pyx_RefNannySetupContext("__cinit__", 0);
   __Pyx_INCREF(__pyx_v_symbol);
 
-  /* "denovonear/gencode.pyx":92
+  /* "alphacluster/gencode.pyx":92
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):
  *         if isinstance(symbol, str):             # <<<<<<<<<<<<<<
@@ -3013,7 +3013,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "denovonear/gencode.pyx":93
+    /* "alphacluster/gencode.pyx":93
  *     def __cinit__(self, symbol):
  *         if isinstance(symbol, str):
  *             symbol = symbol.encode('utf8')             # <<<<<<<<<<<<<<
@@ -3040,7 +3040,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
     __Pyx_DECREF_SET(__pyx_v_symbol, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "denovonear/gencode.pyx":92
+    /* "alphacluster/gencode.pyx":92
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):
  *         if isinstance(symbol, str):             # <<<<<<<<<<<<<<
@@ -3049,7 +3049,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
  */
   }
 
-  /* "denovonear/gencode.pyx":94
+  /* "alphacluster/gencode.pyx":94
  *         if isinstance(symbol, str):
  *             symbol = symbol.encode('utf8')
  *         self._symbol = symbol             # <<<<<<<<<<<<<<
@@ -3059,7 +3059,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
   __pyx_t_6 = __pyx_convert_string_from_py_std__in_string(__pyx_v_symbol); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 94, __pyx_L1_error)
   __pyx_v_self->_symbol = __pyx_t_6;
 
-  /* "denovonear/gencode.pyx":95
+  /* "alphacluster/gencode.pyx":95
  *             symbol = symbol.encode('utf8')
  *         self._symbol = symbol
  *         self.start = 999999999             # <<<<<<<<<<<<<<
@@ -3068,7 +3068,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
  */
   if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start, __pyx_int_999999999) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
 
-  /* "denovonear/gencode.pyx":96
+  /* "alphacluster/gencode.pyx":96
  *         self._symbol = symbol
  *         self.start = 999999999
  *         self.end = -999999999             # <<<<<<<<<<<<<<
@@ -3077,7 +3077,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
  */
   if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end, __pyx_int_neg_999999999) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
 
-  /* "denovonear/gencode.pyx":91
+  /* "alphacluster/gencode.pyx":91
  *     cdef str _chrom
  *     cdef int _start, _end
  *     def __cinit__(self, symbol):             # <<<<<<<<<<<<<<
@@ -3092,7 +3092,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_symbol);
@@ -3100,7 +3100,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":98
+/* "alphacluster/gencode.pyx":98
  *         self.end = -999999999
  * 
  *     cdef add_tx(self, Tx tx, int is_canonical):             # <<<<<<<<<<<<<<
@@ -3108,7 +3108,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene___cinit__(struct __pyx_obj_10den
  *         self._canonical.push_back(is_canonical)
  */
 
-static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx, int __pyx_v_is_canonical) {
+static PyObject *__pyx_f_12alphacluster_7gencode_4Gene_add_tx(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx, int __pyx_v_is_canonical) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3122,7 +3122,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_tx", 0);
 
-  /* "denovonear/gencode.pyx":99
+  /* "alphacluster/gencode.pyx":99
  * 
  *     cdef add_tx(self, Tx tx, int is_canonical):
  *         self._transcripts.push_back(tx)             # <<<<<<<<<<<<<<
@@ -3136,7 +3136,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
     __PYX_ERR(0, 99, __pyx_L1_error)
   }
 
-  /* "denovonear/gencode.pyx":100
+  /* "alphacluster/gencode.pyx":100
  *     cdef add_tx(self, Tx tx, int is_canonical):
  *         self._transcripts.push_back(tx)
  *         self._canonical.push_back(is_canonical)             # <<<<<<<<<<<<<<
@@ -3150,7 +3150,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
     __PYX_ERR(0, 100, __pyx_L1_error)
   }
 
-  /* "denovonear/gencode.pyx":101
+  /* "alphacluster/gencode.pyx":101
  *         self._transcripts.push_back(tx)
  *         self._canonical.push_back(is_canonical)
  *         self.chrom = tx.get_chrom().decode('utf8')             # <<<<<<<<<<<<<<
@@ -3162,7 +3162,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
   if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_chrom, __pyx_t_1) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":102
+  /* "alphacluster/gencode.pyx":102
  *         self._canonical.push_back(is_canonical)
  *         self.chrom = tx.get_chrom().decode('utf8')
  *         self.start = min(self.start, tx.get_start())             # <<<<<<<<<<<<<<
@@ -3194,7 +3194,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
   if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_start, __pyx_t_1) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":103
+  /* "alphacluster/gencode.pyx":103
  *         self.chrom = tx.get_chrom().decode('utf8')
  *         self.start = min(self.start, tx.get_start())
  *         self.end = max(self.end, tx.get_end())             # <<<<<<<<<<<<<<
@@ -3226,7 +3226,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
   if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_end, __pyx_t_1) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":98
+  /* "alphacluster/gencode.pyx":98
  *         self.end = -999999999
  * 
  *     cdef add_tx(self, Tx tx, int is_canonical):             # <<<<<<<<<<<<<<
@@ -3242,7 +3242,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.add_tx", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.add_tx", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3250,7 +3250,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":105
+/* "alphacluster/gencode.pyx":105
  *         self.end = max(self.end, tx.get_end())
  * 
  *     def add_transcript(self, _tx):             # <<<<<<<<<<<<<<
@@ -3259,20 +3259,20 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene_add_tx(struct __pyx_obj_10d
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_3add_transcript(PyObject *__pyx_v_self, PyObject *__pyx_v__tx); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_4Gene_2add_transcript[] = " add a Transcript to the gene object\n        \n        This ends up coping the data from the Transcript object, rather than\n        reusing the Tx object contained in the Trnascript, but it's not too much\n        time wasted, so long as we don't do this millions of times.\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_3add_transcript(PyObject *__pyx_v_self, PyObject *__pyx_v__tx) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_3add_transcript(PyObject *__pyx_v_self, PyObject *__pyx_v__tx); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_4Gene_2add_transcript[] = " add a Transcript to the gene object\n        \n        This ends up coping the data from the Transcript object, rather than\n        reusing the Tx object contained in the Trnascript, but it's not too much\n        time wasted, so long as we don't do this millions of times.\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_3add_transcript(PyObject *__pyx_v_self, PyObject *__pyx_v__tx) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_transcript (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v__tx));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v__tx));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v__tx) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_2add_transcript(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v__tx) {
   std::string __pyx_v_tx_id;
   std::string __pyx_v_chrom;
   int __pyx_v_start;
@@ -3305,7 +3305,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_transcript", 0);
 
-  /* "denovonear/gencode.pyx":112
+  /* "alphacluster/gencode.pyx":112
  *         time wasted, so long as we don't do this millions of times.
  *         '''
  *         assert isinstance(_tx, Transcript)             # <<<<<<<<<<<<<<
@@ -3325,7 +3325,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   }
   #endif
 
-  /* "denovonear/gencode.pyx":114
+  /* "alphacluster/gencode.pyx":114
  *         assert isinstance(_tx, Transcript)
  *         # construct a new Tx obect by copying out the relevant data
  *         cdef string tx_id = _tx.get_name().encode('utf8')             # <<<<<<<<<<<<<<
@@ -3371,7 +3371,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_tx_id = __pyx_t_6;
 
-  /* "denovonear/gencode.pyx":115
+  /* "alphacluster/gencode.pyx":115
  *         # construct a new Tx obect by copying out the relevant data
  *         cdef string tx_id = _tx.get_name().encode('utf8')
  *         cdef string chrom = _tx.get_chrom().encode('utf8')             # <<<<<<<<<<<<<<
@@ -3417,7 +3417,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_chrom = __pyx_t_6;
 
-  /* "denovonear/gencode.pyx":116
+  /* "alphacluster/gencode.pyx":116
  *         cdef string tx_id = _tx.get_name().encode('utf8')
  *         cdef string chrom = _tx.get_chrom().encode('utf8')
  *         cdef int start = _tx.get_start()             # <<<<<<<<<<<<<<
@@ -3445,7 +3445,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_start = __pyx_t_7;
 
-  /* "denovonear/gencode.pyx":117
+  /* "alphacluster/gencode.pyx":117
  *         cdef string chrom = _tx.get_chrom().encode('utf8')
  *         cdef int start = _tx.get_start()
  *         cdef int end = _tx.get_end()             # <<<<<<<<<<<<<<
@@ -3473,7 +3473,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_end = __pyx_t_7;
 
-  /* "denovonear/gencode.pyx":118
+  /* "alphacluster/gencode.pyx":118
  *         cdef int start = _tx.get_start()
  *         cdef int end = _tx.get_end()
  *         cdef char strand = ord(_tx.get_strand())             # <<<<<<<<<<<<<<
@@ -3501,7 +3501,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_strand = __pyx_t_8;
 
-  /* "denovonear/gencode.pyx":122
+  /* "alphacluster/gencode.pyx":122
  *         cdef vector[vector[int]] cds
  *         cdef vector[int] exon
  *         for x in _tx.get_exons():             # <<<<<<<<<<<<<<
@@ -3568,7 +3568,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":123
+    /* "alphacluster/gencode.pyx":123
  *         cdef vector[int] exon
  *         for x in _tx.get_exons():
  *             exon = [x['start'], x['end']]             # <<<<<<<<<<<<<<
@@ -3591,7 +3591,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_exon = __pyx_t_11;
 
-    /* "denovonear/gencode.pyx":124
+    /* "alphacluster/gencode.pyx":124
  *         for x in _tx.get_exons():
  *             exon = [x['start'], x['end']]
  *             exons.push_back(exon)             # <<<<<<<<<<<<<<
@@ -3605,7 +3605,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
       __PYX_ERR(0, 124, __pyx_L1_error)
     }
 
-    /* "denovonear/gencode.pyx":122
+    /* "alphacluster/gencode.pyx":122
  *         cdef vector[vector[int]] cds
  *         cdef vector[int] exon
  *         for x in _tx.get_exons():             # <<<<<<<<<<<<<<
@@ -3615,7 +3615,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "denovonear/gencode.pyx":125
+  /* "alphacluster/gencode.pyx":125
  *             exon = [x['start'], x['end']]
  *             exons.push_back(exon)
  *         for x in _tx.get_cds():             # <<<<<<<<<<<<<<
@@ -3682,7 +3682,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "denovonear/gencode.pyx":126
+    /* "alphacluster/gencode.pyx":126
  *             exons.push_back(exon)
  *         for x in _tx.get_cds():
  *             exon = [x['start'], x['end']]             # <<<<<<<<<<<<<<
@@ -3705,7 +3705,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_exon = __pyx_t_11;
 
-    /* "denovonear/gencode.pyx":127
+    /* "alphacluster/gencode.pyx":127
  *         for x in _tx.get_cds():
  *             exon = [x['start'], x['end']]
  *             cds.push_back(exon)             # <<<<<<<<<<<<<<
@@ -3719,7 +3719,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
       __PYX_ERR(0, 127, __pyx_L1_error)
     }
 
-    /* "denovonear/gencode.pyx":125
+    /* "alphacluster/gencode.pyx":125
  *             exon = [x['start'], x['end']]
  *             exons.push_back(exon)
  *         for x in _tx.get_cds():             # <<<<<<<<<<<<<<
@@ -3729,7 +3729,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "denovonear/gencode.pyx":129
+  /* "alphacluster/gencode.pyx":129
  *             cds.push_back(exon)
  * 
  *         cdef Tx tx = Tx(tx_id, chrom, start, end, strand)             # <<<<<<<<<<<<<<
@@ -3744,7 +3744,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   }
   __pyx_v_tx = __pyx_t_12;
 
-  /* "denovonear/gencode.pyx":130
+  /* "alphacluster/gencode.pyx":130
  * 
  *         cdef Tx tx = Tx(tx_id, chrom, start, end, strand)
  *         tx.set_exons(exons, cds)             # <<<<<<<<<<<<<<
@@ -3758,7 +3758,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
     __PYX_ERR(0, 130, __pyx_L1_error)
   }
 
-  /* "denovonear/gencode.pyx":131
+  /* "alphacluster/gencode.pyx":131
  *         cdef Tx tx = Tx(tx_id, chrom, start, end, strand)
  *         tx.set_exons(exons, cds)
  *         tx.set_cds(cds)             # <<<<<<<<<<<<<<
@@ -3772,7 +3772,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
     __PYX_ERR(0, 131, __pyx_L1_error)
   }
 
-  /* "denovonear/gencode.pyx":133
+  /* "alphacluster/gencode.pyx":133
  *         tx.set_cds(cds)
  * 
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')             # <<<<<<<<<<<<<<
@@ -3818,7 +3818,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_seq = __pyx_t_6;
 
-  /* "denovonear/gencode.pyx":134
+  /* "alphacluster/gencode.pyx":134
  * 
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')
  *         cdef int offset = _tx.get_genomic_offset()             # <<<<<<<<<<<<<<
@@ -3846,7 +3846,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_offset = __pyx_t_7;
 
-  /* "denovonear/gencode.pyx":135
+  /* "alphacluster/gencode.pyx":135
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:             # <<<<<<<<<<<<<<
@@ -3860,7 +3860,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __pyx_t_2 = ((__pyx_t_9 > 0) != 0);
   if (__pyx_t_2) {
 
-    /* "denovonear/gencode.pyx":136
+    /* "alphacluster/gencode.pyx":136
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:
  *             if chr(strand) == '-':             # <<<<<<<<<<<<<<
@@ -3876,7 +3876,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_2) {
 
-      /* "denovonear/gencode.pyx":137
+      /* "alphacluster/gencode.pyx":137
  *         if len(seq) > 0:
  *             if chr(strand) == '-':
  *                 _tx.reverse_complement(seq)             # <<<<<<<<<<<<<<
@@ -3905,7 +3905,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "denovonear/gencode.pyx":138
+      /* "alphacluster/gencode.pyx":138
  *             if chr(strand) == '-':
  *                 _tx.reverse_complement(seq)
  *                 seq = _tx.reverse_complement(seq).encode('utf8')             # <<<<<<<<<<<<<<
@@ -3954,7 +3954,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_seq = __pyx_t_6;
 
-      /* "denovonear/gencode.pyx":136
+      /* "alphacluster/gencode.pyx":136
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:
  *             if chr(strand) == '-':             # <<<<<<<<<<<<<<
@@ -3963,7 +3963,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
  */
     }
 
-    /* "denovonear/gencode.pyx":139
+    /* "alphacluster/gencode.pyx":139
  *                 _tx.reverse_complement(seq)
  *                 seq = _tx.reverse_complement(seq).encode('utf8')
  *             tx.add_genomic_sequence(seq, offset)             # <<<<<<<<<<<<<<
@@ -3977,7 +3977,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
       __PYX_ERR(0, 139, __pyx_L1_error)
     }
 
-    /* "denovonear/gencode.pyx":135
+    /* "alphacluster/gencode.pyx":135
  *         cdef string seq = _tx.get_genomic_sequence().encode('utf8')
  *         cdef int offset = _tx.get_genomic_offset()
  *         if len(seq) > 0:             # <<<<<<<<<<<<<<
@@ -3986,18 +3986,18 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
  */
   }
 
-  /* "denovonear/gencode.pyx":140
+  /* "alphacluster/gencode.pyx":140
  *                 seq = _tx.reverse_complement(seq).encode('utf8')
  *             tx.add_genomic_sequence(seq, offset)
  *         self.add_tx(tx, False)             # <<<<<<<<<<<<<<
  * 
  *     def __repr__(self):
  */
-  __pyx_t_4 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->add_tx(__pyx_v_self, __pyx_v_tx, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_4 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->add_tx(__pyx_v_self, __pyx_v_tx, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "denovonear/gencode.pyx":105
+  /* "alphacluster/gencode.pyx":105
  *         self.end = max(self.end, tx.get_end())
  * 
  *     def add_transcript(self, _tx):             # <<<<<<<<<<<<<<
@@ -4014,7 +4014,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.add_transcript", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.add_transcript", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_x);
@@ -4023,7 +4023,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":142
+/* "alphacluster/gencode.pyx":142
  *         self.add_tx(tx, False)
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4032,19 +4032,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_2add_transcript(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_5__repr__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_5__repr__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_5__repr__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_5__repr__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_4__repr__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_4__repr__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   PyObject *__pyx_v_chrom = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4058,7 +4058,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "denovonear/gencode.pyx":143
+  /* "alphacluster/gencode.pyx":143
  * 
  *     def __repr__(self):
  *         chrom = self.chrom             # <<<<<<<<<<<<<<
@@ -4070,7 +4070,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj
   __pyx_v_chrom = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":144
+  /* "alphacluster/gencode.pyx":144
  *     def __repr__(self):
  *         chrom = self.chrom
  *         return f'Gene("{self.symbol}", {chrom}:{self.start}-{self.end})'             # <<<<<<<<<<<<<<
@@ -4146,7 +4146,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":142
+  /* "alphacluster/gencode.pyx":142
  *         self.add_tx(tx, False)
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4159,7 +4159,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_chrom);
@@ -4168,7 +4168,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":147
+/* "alphacluster/gencode.pyx":147
  * 
  *     @property
  *     def symbol(self):             # <<<<<<<<<<<<<<
@@ -4177,19 +4177,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_4__repr__(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_6symbol_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_6symbol_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_6symbol_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_6symbol_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_6symbol___get__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6symbol___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4198,7 +4198,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "denovonear/gencode.pyx":148
+  /* "alphacluster/gencode.pyx":148
  *     @property
  *     def symbol(self):
  *         return self._symbol.decode('utf8')             # <<<<<<<<<<<<<<
@@ -4212,7 +4212,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(struct __p
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":147
+  /* "alphacluster/gencode.pyx":147
  * 
  *     @property
  *     def symbol(self):             # <<<<<<<<<<<<<<
@@ -4223,7 +4223,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(struct __p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.symbol.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.symbol.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4231,7 +4231,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(struct __p
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":151
+/* "alphacluster/gencode.pyx":151
  * 
  *     @property
  *     def chrom(self):             # <<<<<<<<<<<<<<
@@ -4240,24 +4240,24 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6symbol___get__(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_5chrom_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_5chrom_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_5chrom_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_5chrom_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_5chrom___get__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_5chrom___get__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5chrom___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5chrom___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "denovonear/gencode.pyx":152
+  /* "alphacluster/gencode.pyx":152
  *     @property
  *     def chrom(self):
  *         return self._chrom             # <<<<<<<<<<<<<<
@@ -4269,7 +4269,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5chrom___get__(struct __py
   __pyx_r = __pyx_v_self->_chrom;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":151
+  /* "alphacluster/gencode.pyx":151
  * 
  *     @property
  *     def chrom(self):             # <<<<<<<<<<<<<<
@@ -4284,7 +4284,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5chrom___get__(struct __py
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":154
+/* "alphacluster/gencode.pyx":154
  *         return self._chrom
  *     @chrom.setter
  *     def chrom(self, value):             # <<<<<<<<<<<<<<
@@ -4293,19 +4293,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5chrom___get__(struct __py
  */
 
 /* Python wrapper */
-static int __pyx_pw_10denovonear_7gencode_4Gene_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_10denovonear_7gencode_4Gene_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_12alphacluster_7gencode_4Gene_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_12alphacluster_7gencode_4Gene_5chrom_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_5chrom_2__set__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_5chrom_2__set__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10denovonear_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_12alphacluster_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4314,7 +4314,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "denovonear/gencode.pyx":155
+  /* "alphacluster/gencode.pyx":155
  *     @chrom.setter
  *     def chrom(self, value):
  *         self._chrom = value             # <<<<<<<<<<<<<<
@@ -4330,7 +4330,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj
   __pyx_v_self->_chrom = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":154
+  /* "alphacluster/gencode.pyx":154
  *         return self._chrom
  *     @chrom.setter
  *     def chrom(self, value):             # <<<<<<<<<<<<<<
@@ -4343,14 +4343,14 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.chrom.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.chrom.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":158
+/* "alphacluster/gencode.pyx":158
  * 
  *     @property
  *     def start(self):             # <<<<<<<<<<<<<<
@@ -4359,19 +4359,19 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5chrom_2__set__(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_5start_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_5start_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_5start_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_5start_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_5start___get__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_5start___get__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5start___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_5start___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4380,7 +4380,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5start___get__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "denovonear/gencode.pyx":159
+  /* "alphacluster/gencode.pyx":159
  *     @property
  *     def start(self):
  *         return self._start             # <<<<<<<<<<<<<<
@@ -4394,7 +4394,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5start___get__(struct __py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":158
+  /* "alphacluster/gencode.pyx":158
  * 
  *     @property
  *     def start(self):             # <<<<<<<<<<<<<<
@@ -4405,7 +4405,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5start___get__(struct __py
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.start.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.start.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4413,7 +4413,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5start___get__(struct __py
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":161
+/* "alphacluster/gencode.pyx":161
  *         return self._start
  *     @start.setter
  *     def start(self, value):             # <<<<<<<<<<<<<<
@@ -4422,19 +4422,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_5start___get__(struct __py
  */
 
 /* Python wrapper */
-static int __pyx_pw_10denovonear_7gencode_4Gene_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_10denovonear_7gencode_4Gene_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_12alphacluster_7gencode_4Gene_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_12alphacluster_7gencode_4Gene_5start_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_5start_2__set__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_5start_2__set__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10denovonear_7gencode_4Gene_5start_2__set__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_12alphacluster_7gencode_4Gene_5start_2__set__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4443,7 +4443,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5start_2__set__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "denovonear/gencode.pyx":162
+  /* "alphacluster/gencode.pyx":162
  *     @start.setter
  *     def start(self, value):
  *         self._start = value             # <<<<<<<<<<<<<<
@@ -4453,7 +4453,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5start_2__set__(struct __pyx_obj
   __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L1_error)
   __pyx_v_self->_start = __pyx_t_1;
 
-  /* "denovonear/gencode.pyx":161
+  /* "alphacluster/gencode.pyx":161
  *         return self._start
  *     @start.setter
  *     def start(self, value):             # <<<<<<<<<<<<<<
@@ -4465,14 +4465,14 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5start_2__set__(struct __pyx_obj
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gene.start.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.start.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":165
+/* "alphacluster/gencode.pyx":165
  * 
  *     @property
  *     def end(self):             # <<<<<<<<<<<<<<
@@ -4481,19 +4481,19 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_5start_2__set__(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_3end_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_3end_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_3end_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_3end_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_3end___get__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_3end___get__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_3end___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_3end___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4502,7 +4502,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_3end___get__(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "denovonear/gencode.pyx":166
+  /* "alphacluster/gencode.pyx":166
  *     @property
  *     def end(self):
  *         return self._end             # <<<<<<<<<<<<<<
@@ -4516,7 +4516,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_3end___get__(struct __pyx_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":165
+  /* "alphacluster/gencode.pyx":165
  * 
  *     @property
  *     def end(self):             # <<<<<<<<<<<<<<
@@ -4527,7 +4527,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_3end___get__(struct __pyx_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.end.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.end.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4535,7 +4535,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_3end___get__(struct __pyx_
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":168
+/* "alphacluster/gencode.pyx":168
  *         return self._end
  *     @end.setter
  *     def end(self, value):             # <<<<<<<<<<<<<<
@@ -4544,19 +4544,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_3end___get__(struct __pyx_
  */
 
 /* Python wrapper */
-static int __pyx_pw_10denovonear_7gencode_4Gene_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_10denovonear_7gencode_4Gene_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_12alphacluster_7gencode_4Gene_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_12alphacluster_7gencode_4Gene_3end_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_3end_2__set__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_3end_2__set__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10denovonear_7gencode_4Gene_3end_2__set__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_12alphacluster_7gencode_4Gene_3end_2__set__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4565,7 +4565,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_3end_2__set__(struct __pyx_obj_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "denovonear/gencode.pyx":169
+  /* "alphacluster/gencode.pyx":169
  *     @end.setter
  *     def end(self, value):
  *         self._end = value             # <<<<<<<<<<<<<<
@@ -4575,7 +4575,7 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_3end_2__set__(struct __pyx_obj_1
   __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L1_error)
   __pyx_v_self->_end = __pyx_t_1;
 
-  /* "denovonear/gencode.pyx":168
+  /* "alphacluster/gencode.pyx":168
  *         return self._end
  *     @end.setter
  *     def end(self, value):             # <<<<<<<<<<<<<<
@@ -4587,14 +4587,14 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_3end_2__set__(struct __pyx_obj_1
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gene.end.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.end.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":172
+/* "alphacluster/gencode.pyx":172
  * 
  *     @property
  *     def strand(self):             # <<<<<<<<<<<<<<
@@ -4603,19 +4603,19 @@ static int __pyx_pf_10denovonear_7gencode_4Gene_3end_2__set__(struct __pyx_obj_1
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_6strand_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_6strand_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_6strand_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_6strand_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6strand___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4626,7 +4626,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "denovonear/gencode.pyx":173
+  /* "alphacluster/gencode.pyx":173
  *     @property
  *     def strand(self):
  *         if self._transcripts.size() > 0:             # <<<<<<<<<<<<<<
@@ -4636,7 +4636,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
   __pyx_t_1 = ((__pyx_v_self->_transcripts.size() > 0) != 0);
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":174
+    /* "alphacluster/gencode.pyx":174
  *     def strand(self):
  *         if self._transcripts.size() > 0:
  *             return chr(self._transcripts[0].get_strand())             # <<<<<<<<<<<<<<
@@ -4653,7 +4653,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "denovonear/gencode.pyx":173
+    /* "alphacluster/gencode.pyx":173
  *     @property
  *     def strand(self):
  *         if self._transcripts.size() > 0:             # <<<<<<<<<<<<<<
@@ -4662,7 +4662,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
  */
   }
 
-  /* "denovonear/gencode.pyx":175
+  /* "alphacluster/gencode.pyx":175
  *         if self._transcripts.size() > 0:
  *             return chr(self._transcripts[0].get_strand())
  *         raise IndexError('no transcripts in gene yet')             # <<<<<<<<<<<<<<
@@ -4675,7 +4675,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __PYX_ERR(0, 175, __pyx_L1_error)
 
-  /* "denovonear/gencode.pyx":172
+  /* "alphacluster/gencode.pyx":172
  * 
  *     @property
  *     def strand(self):             # <<<<<<<<<<<<<<
@@ -4687,7 +4687,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.strand.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.strand.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4695,7 +4695,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":177
+/* "alphacluster/gencode.pyx":177
  *         raise IndexError('no transcripts in gene yet')
  * 
  *     cdef _convert_exons(self, vector[Region] exons):             # <<<<<<<<<<<<<<
@@ -4703,7 +4703,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6strand___get__(struct __p
  * 
  */
 
-static PyObject *__pyx_f_10denovonear_7gencode_4Gene__convert_exons(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, std::vector<struct Region>  __pyx_v_exons) {
+static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__convert_exons(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, std::vector<struct Region>  __pyx_v_exons) {
   struct Region __pyx_8genexpr1__pyx_v_y;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4718,7 +4718,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__convert_exons(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_convert_exons", 0);
 
-  /* "denovonear/gencode.pyx":183
+  /* "alphacluster/gencode.pyx":183
  *         Transcript object.
  *         '''
  *         return [[y.start, y.end] for y in exons]             # <<<<<<<<<<<<<<
@@ -4755,7 +4755,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__convert_exons(CYTHON_UNUSE
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":177
+  /* "alphacluster/gencode.pyx":177
  *         raise IndexError('no transcripts in gene yet')
  * 
  *     cdef _convert_exons(self, vector[Region] exons):             # <<<<<<<<<<<<<<
@@ -4769,7 +4769,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__convert_exons(CYTHON_UNUSE
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("denovonear.gencode.Gene._convert_exons", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene._convert_exons", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4777,7 +4777,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__convert_exons(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":185
+/* "alphacluster/gencode.pyx":185
  *         return [[y.start, y.end] for y in exons]
  * 
  *     cdef _to_Transcript(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -4785,7 +4785,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__convert_exons(CYTHON_UNUSE
  *         '''
  */
 
-static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx) {
+static PyObject *__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx) {
   PyObject *__pyx_v_offset = NULL;
   PyObject *__pyx_v_chrom = NULL;
   PyObject *__pyx_v_start = NULL;
@@ -4813,7 +4813,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_to_Transcript", 0);
 
-  /* "denovonear/gencode.pyx":188
+  /* "alphacluster/gencode.pyx":188
  *         ''' construct Transcript (python object) from Tx (c++ object)
  *         '''
  *         offset = 5 if tx.get_genomic_offset() == 0 else tx.get_genomic_offset()             # <<<<<<<<<<<<<<
@@ -4832,7 +4832,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_v_offset = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":189
+  /* "alphacluster/gencode.pyx":189
  *         '''
  *         offset = 5 if tx.get_genomic_offset() == 0 else tx.get_genomic_offset()
  *         chrom = tx.get_chrom().decode('utf8')             # <<<<<<<<<<<<<<
@@ -4844,7 +4844,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_v_chrom = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":190
+  /* "alphacluster/gencode.pyx":190
  *         offset = 5 if tx.get_genomic_offset() == 0 else tx.get_genomic_offset()
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()             # <<<<<<<<<<<<<<
@@ -4856,7 +4856,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_v_start = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":191
+  /* "alphacluster/gencode.pyx":191
  *         chrom = tx.get_chrom().decode('utf8')
  *         start = tx.get_start()
  *         end = tx.get_end()             # <<<<<<<<<<<<<<
@@ -4868,7 +4868,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_v_end = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":192
+  /* "alphacluster/gencode.pyx":192
  *         start = tx.get_start()
  *         end = tx.get_end()
  *         cds_start = tx.get_cds_start()             # <<<<<<<<<<<<<<
@@ -4877,7 +4877,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
  */
   __pyx_v_cds_start = __pyx_v_tx.get_cds_start();
 
-  /* "denovonear/gencode.pyx":193
+  /* "alphacluster/gencode.pyx":193
  *         end = tx.get_end()
  *         cds_start = tx.get_cds_start()
  *         cds_end = tx.get_cds_end()             # <<<<<<<<<<<<<<
@@ -4886,31 +4886,31 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
  */
   __pyx_v_cds_end = __pyx_v_tx.get_cds_end();
 
-  /* "denovonear/gencode.pyx":194
+  /* "alphacluster/gencode.pyx":194
  *         cds_start = tx.get_cds_start()
  *         cds_end = tx.get_cds_end()
  *         exons = self._convert_exons(tx.get_exons())             # <<<<<<<<<<<<<<
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_exons = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":195
+  /* "alphacluster/gencode.pyx":195
  *         cds_end = tx.get_cds_end()
  *         exons = self._convert_exons(tx.get_exons())
  *         cds = self._convert_exons(tx.get_cds())             # <<<<<<<<<<<<<<
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_convert_exons(__pyx_v_self, __pyx_v_tx.get_cds()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_cds = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":196
+  /* "alphacluster/gencode.pyx":196
  *         exons = self._convert_exons(tx.get_exons())
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')             # <<<<<<<<<<<<<<
@@ -4922,7 +4922,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_v_seq = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":197
+  /* "alphacluster/gencode.pyx":197
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':             # <<<<<<<<<<<<<<
@@ -4932,7 +4932,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_seq, __pyx_kp_u__6, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
   if (__pyx_t_3) {
 
-    /* "denovonear/gencode.pyx":198
+    /* "alphacluster/gencode.pyx":198
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':
  *             seq = None             # <<<<<<<<<<<<<<
@@ -4942,7 +4942,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
     __Pyx_INCREF(Py_None);
     __Pyx_DECREF_SET(__pyx_v_seq, Py_None);
 
-    /* "denovonear/gencode.pyx":197
+    /* "alphacluster/gencode.pyx":197
  *         cds = self._convert_exons(tx.get_cds())
  *         seq = tx.get_genomic_sequence().decode('utf8')
  *         if seq == '':             # <<<<<<<<<<<<<<
@@ -4951,7 +4951,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
  */
   }
 
-  /* "denovonear/gencode.pyx":199
+  /* "alphacluster/gencode.pyx":199
  *         if seq == '':
  *             seq = None
  *         if seq is None and __genome_ is not None:             # <<<<<<<<<<<<<<
@@ -4974,7 +4974,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "denovonear/gencode.pyx":200
+    /* "alphacluster/gencode.pyx":200
  *             seq = None
  *         if seq is None and __genome_ is not None:
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()             # <<<<<<<<<<<<<<
@@ -5025,7 +5025,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
     __Pyx_DECREF_SET(__pyx_v_seq, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":199
+    /* "alphacluster/gencode.pyx":199
  *         if seq == '':
  *             seq = None
  *         if seq is None and __genome_ is not None:             # <<<<<<<<<<<<<<
@@ -5034,7 +5034,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
  */
   }
 
-  /* "denovonear/gencode.pyx":201
+  /* "alphacluster/gencode.pyx":201
  *         if seq is None and __genome_ is not None:
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()
  *         strand = chr(tx.get_strand())             # <<<<<<<<<<<<<<
@@ -5049,7 +5049,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_v_strand = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "denovonear/gencode.pyx":202
+  /* "alphacluster/gencode.pyx":202
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()
  *         strand = chr(tx.get_strand())
  *         if strand == '-' and seq is not None:             # <<<<<<<<<<<<<<
@@ -5068,7 +5068,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "denovonear/gencode.pyx":203
+    /* "alphacluster/gencode.pyx":203
  *         strand = chr(tx.get_strand())
  *         if strand == '-' and seq is not None:
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')             # <<<<<<<<<<<<<<
@@ -5099,7 +5099,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
     __Pyx_DECREF_SET(__pyx_v_seq, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "denovonear/gencode.pyx":202
+    /* "alphacluster/gencode.pyx":202
  *             seq = __genome_[chrom][start-1-offset:end-1+offset].seq.upper()
  *         strand = chr(tx.get_strand())
  *         if strand == '-' and seq is not None:             # <<<<<<<<<<<<<<
@@ -5108,7 +5108,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
  */
   }
 
-  /* "denovonear/gencode.pyx":204
+  /* "alphacluster/gencode.pyx":204
  *         if strand == '-' and seq is not None:
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')
  *         tx_id = tx.get_name().decode('utf8')             # <<<<<<<<<<<<<<
@@ -5120,7 +5120,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_v_tx_id = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "denovonear/gencode.pyx":205
+  /* "alphacluster/gencode.pyx":205
  *             seq = tx.reverse_complement(seq.encode('utf8')).decode('utf8')
  *         tx_id = tx.get_name().decode('utf8')
  *         return Transcript(tx_id, chrom, start, end, cds_start, cds_end, strand, exons, cds, seq, offset=offset)             # <<<<<<<<<<<<<<
@@ -5178,7 +5178,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":185
+  /* "alphacluster/gencode.pyx":185
  *         return [[y.start, y.end] for y in exons]
  * 
  *     cdef _to_Transcript(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5193,7 +5193,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("denovonear.gencode.Gene._to_Transcript", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene._to_Transcript", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_offset);
@@ -5210,7 +5210,7 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":208
+/* "alphacluster/gencode.pyx":208
  * 
  *     @property
  *     def transcripts(self):             # <<<<<<<<<<<<<<
@@ -5219,19 +5219,19 @@ static PyObject *__pyx_f_10denovonear_7gencode_4Gene__to_Transcript(struct __pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_11transcripts_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_11transcripts_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_11transcripts_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_11transcripts_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_11transcripts___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   Tx __pyx_8genexpr2__pyx_v_x;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -5245,7 +5245,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "denovonear/gencode.pyx":211
+  /* "alphacluster/gencode.pyx":211
  *         ''' get list of Transcripts for gene, with genomic DNA included
  *         '''
  *         return [self._to_Transcript(x) for x in self._transcripts]             # <<<<<<<<<<<<<<
@@ -5263,7 +5263,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(stru
       __pyx_t_4 = *__pyx_t_2;
       ++__pyx_t_2;
       __pyx_8genexpr2__pyx_v_x = __pyx_t_4;
-      __pyx_t_5 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_8genexpr2__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_5 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_8genexpr2__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -5273,7 +5273,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(stru
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":208
+  /* "alphacluster/gencode.pyx":208
  * 
  *     @property
  *     def transcripts(self):             # <<<<<<<<<<<<<<
@@ -5285,7 +5285,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(stru
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.transcripts.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.transcripts.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5293,7 +5293,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(stru
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":213
+/* "alphacluster/gencode.pyx":213
  *         return [self._to_Transcript(x) for x in self._transcripts]
  * 
  *     cdef int _cds_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5301,7 +5301,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_11transcripts___get__(stru
  *         '''
  */
 
-static int __pyx_f_10denovonear_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx) {
+static int __pyx_f_12alphacluster_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx) {
   struct CDS_coords __pyx_v_coords;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
@@ -5311,7 +5311,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_cds_len", 0);
 
-  /* "denovonear/gencode.pyx":216
+  /* "alphacluster/gencode.pyx":216
  *         ''' get length of coding sequence for a Tx object based transcript
  *         '''
  *         cdef CDS_coords coords = tx.get_coding_distance(tx.get_cds_end())             # <<<<<<<<<<<<<<
@@ -5326,7 +5326,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __p
   }
   __pyx_v_coords = __pyx_t_1;
 
-  /* "denovonear/gencode.pyx":217
+  /* "alphacluster/gencode.pyx":217
  *         '''
  *         cdef CDS_coords coords = tx.get_coding_distance(tx.get_cds_end())
  *         return coords.position + 1             # <<<<<<<<<<<<<<
@@ -5336,7 +5336,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __p
   __pyx_r = (__pyx_v_coords.position + 1);
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":213
+  /* "alphacluster/gencode.pyx":213
  *         return [self._to_Transcript(x) for x in self._transcripts]
  * 
  *     cdef int _cds_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5346,14 +5346,14 @@ static int __pyx_f_10denovonear_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __p
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_WriteUnraisable("denovonear.gencode.Gene._cds_len", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("alphacluster.gencode.Gene._cds_len", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":219
+/* "alphacluster/gencode.pyx":219
  *         return coords.position + 1
  * 
  *     cdef Tx _max_by_cds(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5361,7 +5361,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__cds_len(CYTHON_UNUSED struct __p
  *         '''
  */
 
-static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts) {
+static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_cds(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts) {
   Tx __pyx_v_max_tx;
   long __pyx_v_length;
   Tx __pyx_v_tx;
@@ -5377,7 +5377,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_max_by_cds", 0);
 
-  /* "denovonear/gencode.pyx":223
+  /* "alphacluster/gencode.pyx":223
  *         '''
  *         cdef Tx max_tx
  *         length = 0             # <<<<<<<<<<<<<<
@@ -5386,7 +5386,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
  */
   __pyx_v_length = 0;
 
-  /* "denovonear/gencode.pyx":224
+  /* "alphacluster/gencode.pyx":224
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5400,16 +5400,16 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
     ++__pyx_t_1;
     __pyx_v_tx = __pyx_t_2;
 
-    /* "denovonear/gencode.pyx":225
+    /* "alphacluster/gencode.pyx":225
  *         length = 0
  *         for tx in transcripts:
  *             curr_len = self._cds_len(tx)             # <<<<<<<<<<<<<<
  *             if curr_len > length:
  *                 length = curr_len
  */
-    __pyx_v_curr_len = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_cds_len(__pyx_v_self, __pyx_v_tx);
+    __pyx_v_curr_len = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_cds_len(__pyx_v_self, __pyx_v_tx);
 
-    /* "denovonear/gencode.pyx":226
+    /* "alphacluster/gencode.pyx":226
  *         for tx in transcripts:
  *             curr_len = self._cds_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5419,7 +5419,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
     __pyx_t_3 = ((__pyx_v_curr_len > __pyx_v_length) != 0);
     if (__pyx_t_3) {
 
-      /* "denovonear/gencode.pyx":227
+      /* "alphacluster/gencode.pyx":227
  *             curr_len = self._cds_len(tx)
  *             if curr_len > length:
  *                 length = curr_len             # <<<<<<<<<<<<<<
@@ -5428,7 +5428,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
  */
       __pyx_v_length = __pyx_v_curr_len;
 
-      /* "denovonear/gencode.pyx":228
+      /* "alphacluster/gencode.pyx":228
  *             if curr_len > length:
  *                 length = curr_len
  *                 max_tx = tx             # <<<<<<<<<<<<<<
@@ -5437,7 +5437,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
  */
       __pyx_v_max_tx = __pyx_v_tx;
 
-      /* "denovonear/gencode.pyx":226
+      /* "alphacluster/gencode.pyx":226
  *         for tx in transcripts:
  *             curr_len = self._cds_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5446,7 +5446,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
  */
     }
 
-    /* "denovonear/gencode.pyx":224
+    /* "alphacluster/gencode.pyx":224
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5455,7 +5455,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
  */
   }
 
-  /* "denovonear/gencode.pyx":229
+  /* "alphacluster/gencode.pyx":229
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5465,7 +5465,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
   __pyx_t_3 = ((__pyx_v_length == 0) != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "denovonear/gencode.pyx":230
+    /* "alphacluster/gencode.pyx":230
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no coding transcripts')             # <<<<<<<<<<<<<<
@@ -5478,7 +5478,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_ERR(0, 230, __pyx_L1_error)
 
-    /* "denovonear/gencode.pyx":229
+    /* "alphacluster/gencode.pyx":229
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5487,7 +5487,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
  */
   }
 
-  /* "denovonear/gencode.pyx":231
+  /* "alphacluster/gencode.pyx":231
  *         if length == 0:
  *             raise ValueError('no coding transcripts')
  *         return max_tx             # <<<<<<<<<<<<<<
@@ -5497,7 +5497,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
   __pyx_r = __pyx_v_max_tx;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":219
+  /* "alphacluster/gencode.pyx":219
  *         return coords.position + 1
  * 
  *     cdef Tx _max_by_cds(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5508,14 +5508,14 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("denovonear.gencode.Gene._max_by_cds", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene._max_by_cds", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_pretend_to_initialize(&__pyx_r);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":233
+/* "alphacluster/gencode.pyx":233
  *         return max_tx
  * 
  *     cdef int _exonic_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5523,7 +5523,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_cds(struct __pyx_obj_10den
  *         '''
  */
 
-static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx) {
+static int __pyx_f_12alphacluster_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, Tx __pyx_v_tx) {
   PyObject *__pyx_v_length = NULL;
   PyObject *__pyx_v_start = NULL;
   PyObject *__pyx_v_end = NULL;
@@ -5543,7 +5543,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_exonic_len", 0);
 
-  /* "denovonear/gencode.pyx":236
+  /* "alphacluster/gencode.pyx":236
  *         ''' get length of exonic sequence for a Tx object based transcript
  *         '''
  *         length = 0             # <<<<<<<<<<<<<<
@@ -5553,14 +5553,14 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_length = __pyx_int_0;
 
-  /* "denovonear/gencode.pyx":237
+  /* "alphacluster/gencode.pyx":237
  *         '''
  *         length = 0
  *         for start, end in _convert_exons(tx.get_exons()):             # <<<<<<<<<<<<<<
  *             length += abs(end - start) + 1
  *         return length
  */
-  __pyx_t_1 = __pyx_f_10denovonear_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12alphacluster_7gencode__convert_exons(__pyx_v_tx.get_exons()); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
@@ -5653,7 +5653,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
     __Pyx_XDECREF_SET(__pyx_v_end, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "denovonear/gencode.pyx":238
+    /* "alphacluster/gencode.pyx":238
  *         length = 0
  *         for start, end in _convert_exons(tx.get_exons()):
  *             length += abs(end - start) + 1             # <<<<<<<<<<<<<<
@@ -5674,7 +5674,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
     __Pyx_DECREF_SET(__pyx_v_length, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "denovonear/gencode.pyx":237
+    /* "alphacluster/gencode.pyx":237
  *         '''
  *         length = 0
  *         for start, end in _convert_exons(tx.get_exons()):             # <<<<<<<<<<<<<<
@@ -5684,7 +5684,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "denovonear/gencode.pyx":239
+  /* "alphacluster/gencode.pyx":239
  *         for start, end in _convert_exons(tx.get_exons()):
  *             length += abs(end - start) + 1
  *         return length             # <<<<<<<<<<<<<<
@@ -5695,7 +5695,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
   __pyx_r = __pyx_t_9;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":233
+  /* "alphacluster/gencode.pyx":233
  *         return max_tx
  * 
  *     cdef int _exonic_len(self, Tx tx):             # <<<<<<<<<<<<<<
@@ -5710,7 +5710,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_WriteUnraisable("denovonear.gencode.Gene._exonic_len", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("alphacluster.gencode.Gene._exonic_len", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_length);
@@ -5720,7 +5720,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":242
+/* "alphacluster/gencode.pyx":242
  *         # return sum(abs(x.end - x.start) + 1 for x in tx.get_exons())
  * 
  *     cdef Tx _max_by_exonic(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5728,7 +5728,7 @@ static int __pyx_f_10denovonear_7gencode_4Gene__exonic_len(CYTHON_UNUSED struct 
  *         '''
  */
 
-static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts) {
+static Tx __pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, std::vector<Tx>  __pyx_v_transcripts) {
   Tx __pyx_v_max_tx;
   long __pyx_v_length;
   Tx __pyx_v_tx;
@@ -5744,7 +5744,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_max_by_exonic", 0);
 
-  /* "denovonear/gencode.pyx":246
+  /* "alphacluster/gencode.pyx":246
  *         '''
  *         cdef Tx max_tx
  *         length = 0             # <<<<<<<<<<<<<<
@@ -5753,7 +5753,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
  */
   __pyx_v_length = 0;
 
-  /* "denovonear/gencode.pyx":247
+  /* "alphacluster/gencode.pyx":247
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5767,16 +5767,16 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
     ++__pyx_t_1;
     __pyx_v_tx = __pyx_t_2;
 
-    /* "denovonear/gencode.pyx":248
+    /* "alphacluster/gencode.pyx":248
  *         length = 0
  *         for tx in transcripts:
  *             curr_len = self._exonic_len(tx)             # <<<<<<<<<<<<<<
  *             if curr_len > length:
  *                 length = curr_len
  */
-    __pyx_v_curr_len = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_exonic_len(__pyx_v_self, __pyx_v_tx);
+    __pyx_v_curr_len = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_exonic_len(__pyx_v_self, __pyx_v_tx);
 
-    /* "denovonear/gencode.pyx":249
+    /* "alphacluster/gencode.pyx":249
  *         for tx in transcripts:
  *             curr_len = self._exonic_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5786,7 +5786,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
     __pyx_t_3 = ((__pyx_v_curr_len > __pyx_v_length) != 0);
     if (__pyx_t_3) {
 
-      /* "denovonear/gencode.pyx":250
+      /* "alphacluster/gencode.pyx":250
  *             curr_len = self._exonic_len(tx)
  *             if curr_len > length:
  *                 length = curr_len             # <<<<<<<<<<<<<<
@@ -5795,7 +5795,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
  */
       __pyx_v_length = __pyx_v_curr_len;
 
-      /* "denovonear/gencode.pyx":251
+      /* "alphacluster/gencode.pyx":251
  *             if curr_len > length:
  *                 length = curr_len
  *                 max_tx = tx             # <<<<<<<<<<<<<<
@@ -5804,7 +5804,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
  */
       __pyx_v_max_tx = __pyx_v_tx;
 
-      /* "denovonear/gencode.pyx":249
+      /* "alphacluster/gencode.pyx":249
  *         for tx in transcripts:
  *             curr_len = self._exonic_len(tx)
  *             if curr_len > length:             # <<<<<<<<<<<<<<
@@ -5813,7 +5813,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
  */
     }
 
-    /* "denovonear/gencode.pyx":247
+    /* "alphacluster/gencode.pyx":247
  *         cdef Tx max_tx
  *         length = 0
  *         for tx in transcripts:             # <<<<<<<<<<<<<<
@@ -5822,7 +5822,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
  */
   }
 
-  /* "denovonear/gencode.pyx":252
+  /* "alphacluster/gencode.pyx":252
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5832,7 +5832,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
   __pyx_t_3 = ((__pyx_v_length == 0) != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "denovonear/gencode.pyx":253
+    /* "alphacluster/gencode.pyx":253
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no exonic transcripts')             # <<<<<<<<<<<<<<
@@ -5845,7 +5845,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_ERR(0, 253, __pyx_L1_error)
 
-    /* "denovonear/gencode.pyx":252
+    /* "alphacluster/gencode.pyx":252
  *                 length = curr_len
  *                 max_tx = tx
  *         if length == 0:             # <<<<<<<<<<<<<<
@@ -5854,7 +5854,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
  */
   }
 
-  /* "denovonear/gencode.pyx":254
+  /* "alphacluster/gencode.pyx":254
  *         if length == 0:
  *             raise ValueError('no exonic transcripts')
  *         return max_tx             # <<<<<<<<<<<<<<
@@ -5864,7 +5864,7 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
   __pyx_r = __pyx_v_max_tx;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":242
+  /* "alphacluster/gencode.pyx":242
  *         # return sum(abs(x.end - x.start) + 1 for x in tx.get_exons())
  * 
  *     cdef Tx _max_by_exonic(self, vector[Tx] transcripts) except *:             # <<<<<<<<<<<<<<
@@ -5875,14 +5875,14 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("denovonear.gencode.Gene._max_by_exonic", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene._max_by_exonic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_pretend_to_initialize(&__pyx_r);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":257
+/* "alphacluster/gencode.pyx":257
  * 
  *     @property
  *     def canonical(self):             # <<<<<<<<<<<<<<
@@ -5891,19 +5891,19 @@ static Tx __pyx_f_10denovonear_7gencode_4Gene__max_by_exonic(struct __pyx_obj_10
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_9canonical_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_9canonical_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_9canonical_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_9canonical_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_9canonical___get__(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   std::vector<Tx>  __pyx_v_canonical;
   std::vector<Tx> ::size_type __pyx_v_i;
   PyObject *__pyx_v_max_score = NULL;
@@ -5928,7 +5928,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "denovonear/gencode.pyx":270
+  /* "alphacluster/gencode.pyx":270
  *         '''
  *         cdef vector[Tx] canonical
  *         for i in range(self._transcripts.size()):             # <<<<<<<<<<<<<<
@@ -5940,7 +5940,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "denovonear/gencode.pyx":271
+    /* "alphacluster/gencode.pyx":271
  *         cdef vector[Tx] canonical
  *         for i in range(self._transcripts.size()):
  *             max_score = max(self._canonical)             # <<<<<<<<<<<<<<
@@ -5955,7 +5955,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     __Pyx_XDECREF_SET(__pyx_v_max_score, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "denovonear/gencode.pyx":272
+    /* "alphacluster/gencode.pyx":272
  *         for i in range(self._transcripts.size()):
  *             max_score = max(self._canonical)
  *             if self._canonical[i] == max_score:             # <<<<<<<<<<<<<<
@@ -5970,7 +5970,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_6) {
 
-      /* "denovonear/gencode.pyx":273
+      /* "alphacluster/gencode.pyx":273
  *             max_score = max(self._canonical)
  *             if self._canonical[i] == max_score:
  *                 canonical.push_back(self._transcripts[i])             # <<<<<<<<<<<<<<
@@ -5984,7 +5984,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
         __PYX_ERR(0, 273, __pyx_L1_error)
       }
 
-      /* "denovonear/gencode.pyx":272
+      /* "alphacluster/gencode.pyx":272
  *         for i in range(self._transcripts.size()):
  *             max_score = max(self._canonical)
  *             if self._canonical[i] == max_score:             # <<<<<<<<<<<<<<
@@ -5994,7 +5994,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     }
   }
 
-  /* "denovonear/gencode.pyx":275
+  /* "alphacluster/gencode.pyx":275
  *                 canonical.push_back(self._transcripts[i])
  * 
  *         if canonical.size() == 0:             # <<<<<<<<<<<<<<
@@ -6004,7 +6004,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
   __pyx_t_6 = ((__pyx_v_canonical.size() == 0) != 0);
   if (__pyx_t_6) {
 
-    /* "denovonear/gencode.pyx":276
+    /* "alphacluster/gencode.pyx":276
  * 
  *         if canonical.size() == 0:
  *             canonical = self._transcripts             # <<<<<<<<<<<<<<
@@ -6014,7 +6014,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     __pyx_t_7 = __pyx_v_self->_transcripts;
     __pyx_v_canonical = __pyx_t_7;
 
-    /* "denovonear/gencode.pyx":275
+    /* "alphacluster/gencode.pyx":275
  *                 canonical.push_back(self._transcripts[i])
  * 
  *         if canonical.size() == 0:             # <<<<<<<<<<<<<<
@@ -6023,7 +6023,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
  */
   }
 
-  /* "denovonear/gencode.pyx":279
+  /* "alphacluster/gencode.pyx":279
  * 
  *         cdef Tx max_tx
  *         try:             # <<<<<<<<<<<<<<
@@ -6039,17 +6039,17 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "denovonear/gencode.pyx":280
+      /* "alphacluster/gencode.pyx":280
  *         cdef Tx max_tx
  *         try:
  *             max_tx = self._max_by_cds(canonical)             # <<<<<<<<<<<<<<
  *         except ValueError:
  *             max_tx = self._max_by_exonic(canonical)
  */
-      __pyx_t_11 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_cds(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L7_error)
+      __pyx_t_11 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_cds(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L7_error)
       __pyx_v_max_tx = __pyx_t_11;
 
-      /* "denovonear/gencode.pyx":279
+      /* "alphacluster/gencode.pyx":279
  * 
  *         cdef Tx max_tx
  *         try:             # <<<<<<<<<<<<<<
@@ -6065,7 +6065,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "denovonear/gencode.pyx":281
+    /* "alphacluster/gencode.pyx":281
  *         try:
  *             max_tx = self._max_by_cds(canonical)
  *         except ValueError:             # <<<<<<<<<<<<<<
@@ -6074,20 +6074,20 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
  */
     __pyx_t_12 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
     if (__pyx_t_12) {
-      __Pyx_AddTraceback("denovonear.gencode.Gene.canonical.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("alphacluster.gencode.Gene.canonical.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_13) < 0) __PYX_ERR(0, 281, __pyx_L9_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_13);
 
-      /* "denovonear/gencode.pyx":282
+      /* "alphacluster/gencode.pyx":282
  *             max_tx = self._max_by_cds(canonical)
  *         except ValueError:
  *             max_tx = self._max_by_exonic(canonical)             # <<<<<<<<<<<<<<
  * 
  *         return self._to_Transcript(max_tx)
  */
-      __pyx_t_11 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_exonic(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 282, __pyx_L9_except_error)
+      __pyx_t_11 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_max_by_exonic(__pyx_v_self, __pyx_v_canonical); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 282, __pyx_L9_except_error)
       __pyx_v_max_tx = __pyx_t_11;
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6097,7 +6097,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     goto __pyx_L9_except_error;
     __pyx_L9_except_error:;
 
-    /* "denovonear/gencode.pyx":279
+    /* "alphacluster/gencode.pyx":279
  * 
  *         cdef Tx max_tx
  *         try:             # <<<<<<<<<<<<<<
@@ -6117,7 +6117,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
     __pyx_L12_try_end:;
   }
 
-  /* "denovonear/gencode.pyx":284
+  /* "alphacluster/gencode.pyx":284
  *             max_tx = self._max_by_exonic(canonical)
  * 
  *         return self._to_Transcript(max_tx)             # <<<<<<<<<<<<<<
@@ -6125,13 +6125,13 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
  *     def in_any_tx_cds(self, pos):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_13 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_v_max_tx); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_13 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_self->__pyx_vtab)->_to_Transcript(__pyx_v_self, __pyx_v_max_tx); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __pyx_r = __pyx_t_13;
   __pyx_t_13 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":257
+  /* "alphacluster/gencode.pyx":257
  * 
  *     @property
  *     def canonical(self):             # <<<<<<<<<<<<<<
@@ -6144,7 +6144,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.canonical.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.canonical.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_max_score);
@@ -6153,7 +6153,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":286
+/* "alphacluster/gencode.pyx":286
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
@@ -6162,21 +6162,21 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_9canonical___get__(struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_7in_any_tx_cds(PyObject *__pyx_v_self, PyObject *__pyx_v_pos); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_4Gene_6in_any_tx_cds[] = " find if a pos is in coding region of any transcript of a gene\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_7in_any_tx_cds(PyObject *__pyx_v_self, PyObject *__pyx_v_pos) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_7in_any_tx_cds(PyObject *__pyx_v_self, PyObject *__pyx_v_pos); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_4Gene_6in_any_tx_cds[] = " find if a pos is in coding region of any transcript of a gene\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_7in_any_tx_cds(PyObject *__pyx_v_self, PyObject *__pyx_v_pos) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("in_any_tx_cds (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_pos));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_6in_any_tx_cds(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v_pos));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "denovonear/gencode.pyx":289
+/* "alphacluster/gencode.pyx":289
  *         ''' find if a pos is in coding region of any transcript of a gene
  *         '''
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)             # <<<<<<<<<<<<<<
@@ -6184,27 +6184,27 @@ static PyObject *__pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator
  *     def distance(self, chrom, pos):
  */
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_13in_any_tx_cds_genexpr(PyObject *__pyx_self) {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_13in_any_tx_cds_genexpr(PyObject *__pyx_self) {
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *)__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_1_genexpr(__pyx_ptype_10denovonear_7gencode___pyx_scope_struct_1_genexpr, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_1_genexpr(__pyx_ptype_12alphacluster_7gencode___pyx_scope_struct_1_genexpr, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 289, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
-  __pyx_cur_scope->__pyx_outer_scope = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *) __pyx_self;
+  __pyx_cur_scope->__pyx_outer_scope = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *) __pyx_self;
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_in_any_tx_cds_locals_genexpr, __pyx_n_s_denovonear_gencode); if (unlikely(!gen)) __PYX_ERR(0, 289, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_in_any_tx_cds_locals_genexpr, __pyx_n_s_alphacluster_gencode); if (unlikely(!gen)) __PYX_ERR(0, 289, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6212,7 +6212,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_13in_any_tx_cds_genexpr(Py
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gene.in_any_tx_cds.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.in_any_tx_cds.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
   __Pyx_XGIVEREF(__pyx_r);
@@ -6220,9 +6220,9 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_13in_any_tx_cds_genexpr(Py
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *__pyx_cur_scope = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *__pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   std::vector<Tx> ::iterator __pyx_t_1;
   std::vector<Tx>  *__pyx_t_2;
@@ -6283,7 +6283,7 @@ static PyObject *__pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":286
+/* "alphacluster/gencode.pyx":286
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
@@ -6291,9 +6291,9 @@ static PyObject *__pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator
  *         '''
  */
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_pos) {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *__pyx_cur_scope;
-  PyObject *__pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator1 = 0;
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_6in_any_tx_cds(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_pos) {
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *__pyx_cur_scope;
+  PyObject *__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1 = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6302,9 +6302,9 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __py
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("in_any_tx_cds", 0);
-  __pyx_cur_scope = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *)__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds(__pyx_ptype_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *)__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds(__pyx_ptype_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 286, __pyx_L1_error)
   } else {
@@ -6317,7 +6317,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __py
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_pos);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_pos);
 
-  /* "denovonear/gencode.pyx":289
+  /* "alphacluster/gencode.pyx":289
  *         ''' find if a pos is in coding region of any transcript of a gene
  *         '''
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)             # <<<<<<<<<<<<<<
@@ -6325,7 +6325,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __py
  *     def distance(self, chrom, pos):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_pf_10denovonear_7gencode_4Gene_13in_any_tx_cds_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_1 = __pyx_pf_12alphacluster_7gencode_4Gene_13in_any_tx_cds_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = __Pyx_Generator_Next(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -6334,7 +6334,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __py
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":286
+  /* "alphacluster/gencode.pyx":286
  *         return self._to_Transcript(max_tx)
  * 
  *     def in_any_tx_cds(self, pos):             # <<<<<<<<<<<<<<
@@ -6346,17 +6346,17 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __py
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.in_any_tx_cds", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.in_any_tx_cds", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_gb_10denovonear_7gencode_4Gene_13in_any_tx_cds_2generator1);
+  __Pyx_XDECREF(__pyx_gb_12alphacluster_7gencode_4Gene_13in_any_tx_cds_2generator1);
   __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":291
+/* "alphacluster/gencode.pyx":291
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)
  * 
  *     def distance(self, chrom, pos):             # <<<<<<<<<<<<<<
@@ -6365,9 +6365,9 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_6in_any_tx_cds(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_9distance(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_4Gene_8distance[] = " get distance to nearest boundary of a gene\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_9distance(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_9distance(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_4Gene_8distance[] = " get distance to nearest boundary of a gene\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_9distance(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_chrom = 0;
   PyObject *__pyx_v_pos = 0;
   int __pyx_lineno = 0;
@@ -6418,18 +6418,18 @@ static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_9distance(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("distance", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 291, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gene.distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_8distance(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), __pyx_v_chrom, __pyx_v_pos);
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_8distance(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), __pyx_v_chrom, __pyx_v_pos);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_chrom, PyObject *__pyx_v_pos) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_8distance(struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, PyObject *__pyx_v_chrom, PyObject *__pyx_v_pos) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -6445,7 +6445,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   __Pyx_RefNannySetupContext("distance", 0);
   __Pyx_INCREF(__pyx_v_chrom);
 
-  /* "denovonear/gencode.pyx":295
+  /* "alphacluster/gencode.pyx":295
  *         '''
  *         # sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -6503,7 +6503,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":296
+    /* "alphacluster/gencode.pyx":296
  *         # sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'             # <<<<<<<<<<<<<<
@@ -6518,7 +6518,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
     __Pyx_DECREF_SET(__pyx_v_chrom, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "denovonear/gencode.pyx":295
+    /* "alphacluster/gencode.pyx":295
  *         '''
  *         # sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -6528,7 +6528,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "denovonear/gencode.pyx":297
+  /* "alphacluster/gencode.pyx":297
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -6586,7 +6586,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":298
+    /* "alphacluster/gencode.pyx":298
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]             # <<<<<<<<<<<<<<
@@ -6598,7 +6598,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
     __Pyx_DECREF_SET(__pyx_v_chrom, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "denovonear/gencode.pyx":297
+    /* "alphacluster/gencode.pyx":297
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -6608,7 +6608,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   }
   __pyx_L3:;
 
-  /* "denovonear/gencode.pyx":300
+  /* "alphacluster/gencode.pyx":300
  *             chrom = chrom[3:]
  * 
  *         if self.chrom != chrom:             # <<<<<<<<<<<<<<
@@ -6623,7 +6623,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":301
+    /* "alphacluster/gencode.pyx":301
  * 
  *         if self.chrom != chrom:
  *             return None             # <<<<<<<<<<<<<<
@@ -6634,7 +6634,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "denovonear/gencode.pyx":300
+    /* "alphacluster/gencode.pyx":300
  *             chrom = chrom[3:]
  * 
  *         if self.chrom != chrom:             # <<<<<<<<<<<<<<
@@ -6643,7 +6643,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
  */
   }
 
-  /* "denovonear/gencode.pyx":302
+  /* "alphacluster/gencode.pyx":302
  *         if self.chrom != chrom:
  *             return None
  *         if self.start <= pos <= self.end:             # <<<<<<<<<<<<<<
@@ -6665,7 +6665,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":303
+    /* "alphacluster/gencode.pyx":303
  *             return None
  *         if self.start <= pos <= self.end:
  *             return 0             # <<<<<<<<<<<<<<
@@ -6677,7 +6677,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
     __pyx_r = __pyx_int_0;
     goto __pyx_L0;
 
-    /* "denovonear/gencode.pyx":302
+    /* "alphacluster/gencode.pyx":302
  *         if self.chrom != chrom:
  *             return None
  *         if self.start <= pos <= self.end:             # <<<<<<<<<<<<<<
@@ -6686,7 +6686,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
  */
   }
 
-  /* "denovonear/gencode.pyx":304
+  /* "alphacluster/gencode.pyx":304
  *         if self.start <= pos <= self.end:
  *             return 0
  *         return min(abs(self.start - pos), abs(self.end - pos))             # <<<<<<<<<<<<<<
@@ -6727,7 +6727,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":291
+  /* "alphacluster/gencode.pyx":291
  *         return any(tx.in_coding_region(pos) for tx in self._transcripts)
  * 
  *     def distance(self, chrom, pos):             # <<<<<<<<<<<<<<
@@ -6741,7 +6741,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_chrom);
@@ -6757,19 +6757,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_8distance(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_10__reduce_cython__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_10__reduce_cython__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6799,7 +6799,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_10__reduce_cython__(CYTHON
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -6814,19 +6814,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_10__reduce_cython__(CYTHON
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_4Gene_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_4Gene_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_4Gene_12__setstate_cython__(((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_4Gene_12__setstate_cython__(((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_4Gene_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6856,14 +6856,14 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_12__setstate_cython__(CYTH
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gene.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gene.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":309
+/* "alphacluster/gencode.pyx":309
  *     cdef dict genes
  *     cdef map[string, vector[GenePoint]] starts, ends
  *     def __cinit__(self, gencode=None, fasta=None, coding_only=True):             # <<<<<<<<<<<<<<
@@ -6872,8 +6872,8 @@ static PyObject *__pyx_pf_10denovonear_7gencode_4Gene_12__setstate_cython__(CYTH
  */
 
 /* Python wrapper */
-static int __pyx_pw_10denovonear_7gencode_7Gencode_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_10denovonear_7gencode_7Gencode_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_12alphacluster_7gencode_7Gencode_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_12alphacluster_7gencode_7Gencode_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_gencode = 0;
   PyObject *__pyx_v_fasta = 0;
   PyObject *__pyx_v_coding_only = 0;
@@ -6945,20 +6945,20 @@ static int __pyx_pw_10denovonear_7gencode_7Gencode_1__cinit__(PyObject *__pyx_v_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 309, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self), __pyx_v_gencode, __pyx_v_fasta, __pyx_v_coding_only);
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), __pyx_v_gencode, __pyx_v_fasta, __pyx_v_coding_only);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gencode, PyObject *__pyx_v_fasta, PyObject *__pyx_v_coding_only) {
+static int __pyx_pf_12alphacluster_7gencode_7Gencode___cinit__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gencode, PyObject *__pyx_v_fasta, PyObject *__pyx_v_coding_only) {
   std::vector<struct gencode::NamedTx>  __pyx_v_transcripts;
-  struct __pyx_obj_10denovonear_7gencode_Gene *__pyx_v_curr = 0;
+  struct __pyx_obj_12alphacluster_7gencode_Gene *__pyx_v_curr = 0;
   struct gencode::NamedTx __pyx_v_x;
   PyObject *__pyx_v_symbol = NULL;
   int __pyx_r;
@@ -6978,7 +6978,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "denovonear/gencode.pyx":317
+  /* "alphacluster/gencode.pyx":317
  *             coding: restrict to protein_coding only by default
  *         '''
  *         self.genes = {}             # <<<<<<<<<<<<<<
@@ -6993,7 +6993,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   __pyx_v_self->genes = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":318
+  /* "alphacluster/gencode.pyx":318
  *         '''
  *         self.genes = {}
  *         if fasta:             # <<<<<<<<<<<<<<
@@ -7003,7 +7003,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_fasta); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 318, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "denovonear/gencode.pyx":319
+    /* "alphacluster/gencode.pyx":319
  *         self.genes = {}
  *         if fasta:
  *             logging.info(f'opening genome fasta: {fasta}')             # <<<<<<<<<<<<<<
@@ -7038,7 +7038,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":321
+    /* "alphacluster/gencode.pyx":321
  *             logging.info(f'opening genome fasta: {fasta}')
  *             global __genome_
  *             __genome_ = Fasta(str(fasta))             # <<<<<<<<<<<<<<
@@ -7068,7 +7068,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
     if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, __pyx_t_1) < 0) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":318
+    /* "alphacluster/gencode.pyx":318
  *         '''
  *         self.genes = {}
  *         if fasta:             # <<<<<<<<<<<<<<
@@ -7077,7 +7077,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
  */
   }
 
-  /* "denovonear/gencode.pyx":322
+  /* "alphacluster/gencode.pyx":322
  *             global __genome_
  *             __genome_ = Fasta(str(fasta))
  *         logging.info(f'opening gencode annotations: {gencode}')             # <<<<<<<<<<<<<<
@@ -7112,7 +7112,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":325
+  /* "alphacluster/gencode.pyx":325
  *         cdef vector[NamedTx] transcripts
  *         cdef Gene curr
  *         if gencode is not None:             # <<<<<<<<<<<<<<
@@ -7123,7 +7123,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   __pyx_t_6 = (__pyx_t_2 != 0);
   if (__pyx_t_6) {
 
-    /* "denovonear/gencode.pyx":326
+    /* "alphacluster/gencode.pyx":326
  *         cdef Gene curr
  *         if gencode is not None:
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)             # <<<<<<<<<<<<<<
@@ -7140,7 +7140,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
     __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_coding_only); if (unlikely((__pyx_t_8 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 326, __pyx_L1_error)
     __pyx_v_transcripts = gencode::open_gencode(__pyx_t_7, __pyx_t_8);
 
-    /* "denovonear/gencode.pyx":327
+    /* "alphacluster/gencode.pyx":327
  *         if gencode is not None:
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)
  *             for x in transcripts:             # <<<<<<<<<<<<<<
@@ -7154,7 +7154,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
       ++__pyx_t_9;
       __pyx_v_x = __pyx_t_10;
 
-      /* "denovonear/gencode.pyx":328
+      /* "alphacluster/gencode.pyx":328
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)
  *             for x in transcripts:
  *                 symbol = x.symbol.decode('utf8')             # <<<<<<<<<<<<<<
@@ -7166,7 +7166,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
       __Pyx_XDECREF_SET(__pyx_v_symbol, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "denovonear/gencode.pyx":329
+      /* "alphacluster/gencode.pyx":329
  *             for x in transcripts:
  *                 symbol = x.symbol.decode('utf8')
  *                 if symbol not in self.genes:             # <<<<<<<<<<<<<<
@@ -7181,7 +7181,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
       __pyx_t_2 = (__pyx_t_6 != 0);
       if (__pyx_t_2) {
 
-        /* "denovonear/gencode.pyx":330
+        /* "alphacluster/gencode.pyx":330
  *                 symbol = x.symbol.decode('utf8')
  *                 if symbol not in self.genes:
  *                     self.genes[symbol] = Gene(symbol.encode('utf8'))             # <<<<<<<<<<<<<<
@@ -7205,7 +7205,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
         if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10denovonear_7gencode_Gene), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_12alphacluster_7gencode_Gene), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         if (unlikely(__pyx_v_self->genes == Py_None)) {
@@ -7215,7 +7215,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
         if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_v_symbol, __pyx_t_1) < 0)) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "denovonear/gencode.pyx":329
+        /* "alphacluster/gencode.pyx":329
  *             for x in transcripts:
  *                 symbol = x.symbol.decode('utf8')
  *                 if symbol not in self.genes:             # <<<<<<<<<<<<<<
@@ -7224,7 +7224,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
  */
       }
 
-      /* "denovonear/gencode.pyx":331
+      /* "alphacluster/gencode.pyx":331
  *                 if symbol not in self.genes:
  *                     self.genes[symbol] = Gene(symbol.encode('utf8'))
  *                 curr = self.genes[symbol]             # <<<<<<<<<<<<<<
@@ -7237,22 +7237,22 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
       }
       __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->genes, __pyx_v_symbol); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_10denovonear_7gencode_Gene))))) __PYX_ERR(0, 331, __pyx_L1_error)
-      __Pyx_XDECREF_SET(__pyx_v_curr, ((struct __pyx_obj_10denovonear_7gencode_Gene *)__pyx_t_1));
+      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_12alphacluster_7gencode_Gene))))) __PYX_ERR(0, 331, __pyx_L1_error)
+      __Pyx_XDECREF_SET(__pyx_v_curr, ((struct __pyx_obj_12alphacluster_7gencode_Gene *)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "denovonear/gencode.pyx":332
+      /* "alphacluster/gencode.pyx":332
  *                     self.genes[symbol] = Gene(symbol.encode('utf8'))
  *                 curr = self.genes[symbol]
  *                 curr.add_tx(x.tx, x.is_canonical)             # <<<<<<<<<<<<<<
  *                 self.genes[symbol] = curr
  *         self._sort()
  */
-      __pyx_t_1 = ((struct __pyx_vtabstruct_10denovonear_7gencode_Gene *)__pyx_v_curr->__pyx_vtab)->add_tx(__pyx_v_curr, __pyx_v_x.tx, __pyx_v_x.is_canonical); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_12alphacluster_7gencode_Gene *)__pyx_v_curr->__pyx_vtab)->add_tx(__pyx_v_curr, __pyx_v_x.tx, __pyx_v_x.is_canonical); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "denovonear/gencode.pyx":333
+      /* "alphacluster/gencode.pyx":333
  *                 curr = self.genes[symbol]
  *                 curr.add_tx(x.tx, x.is_canonical)
  *                 self.genes[symbol] = curr             # <<<<<<<<<<<<<<
@@ -7265,7 +7265,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
       }
       if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_v_symbol, ((PyObject *)__pyx_v_curr)) < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
 
-      /* "denovonear/gencode.pyx":327
+      /* "alphacluster/gencode.pyx":327
  *         if gencode is not None:
  *             transcripts = open_gencode(str(gencode).encode('utf8'), coding_only)
  *             for x in transcripts:             # <<<<<<<<<<<<<<
@@ -7274,7 +7274,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
  */
     }
 
-    /* "denovonear/gencode.pyx":325
+    /* "alphacluster/gencode.pyx":325
  *         cdef vector[NamedTx] transcripts
  *         cdef Gene curr
  *         if gencode is not None:             # <<<<<<<<<<<<<<
@@ -7283,7 +7283,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
  */
   }
 
-  /* "denovonear/gencode.pyx":334
+  /* "alphacluster/gencode.pyx":334
  *                 curr.add_tx(x.tx, x.is_canonical)
  *                 self.genes[symbol] = curr
  *         self._sort()             # <<<<<<<<<<<<<<
@@ -7309,7 +7309,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":309
+  /* "alphacluster/gencode.pyx":309
  *     cdef dict genes
  *     cdef map[string, vector[GenePoint]] starts, ends
  *     def __cinit__(self, gencode=None, fasta=None, coding_only=True):             # <<<<<<<<<<<<<<
@@ -7325,7 +7325,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_curr);
@@ -7334,7 +7334,7 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":336
+/* "alphacluster/gencode.pyx":336
  *         self._sort()
  * 
  *     def _sort(self):             # <<<<<<<<<<<<<<
@@ -7343,20 +7343,20 @@ static int __pyx_pf_10denovonear_7gencode_7Gencode___cinit__(struct __pyx_obj_10
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_3_sort(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_7Gencode_2_sort[] = " index by starts and ends, to speed finding genes in a region\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_3_sort(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_3_sort(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_7Gencode_2_sort[] = " index by starts and ends, to speed finding genes in a region\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_3_sort(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_sort (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_2_sort(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":355
+/* "alphacluster/gencode.pyx":355
  *         # sort start and end coords by position
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
@@ -7365,9 +7365,9 @@ static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_3_sort(PyObject *__pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_5_sort_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
-static PyMethodDef __pyx_mdef_10denovonear_7gencode_7Gencode_5_sort_lambda1 = {"lambda1", (PyCFunction)__pyx_pw_10denovonear_7gencode_7Gencode_5_sort_lambda1, METH_O, 0};
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_5_sort_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_5_sort_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
+static PyMethodDef __pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_lambda1 = {"lambda1", (PyCFunction)__pyx_pw_12alphacluster_7gencode_7Gencode_5_sort_lambda1, METH_O, 0};
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_5_sort_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_x) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("lambda1 (wrapper)", 0);
@@ -7396,7 +7396,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode._sort.lambda1", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode._sort.lambda1", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7404,7 +7404,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":357
+/* "alphacluster/gencode.pyx":357
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
@@ -7413,9 +7413,9 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_5_sort_1lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
-static PyMethodDef __pyx_mdef_10denovonear_7gencode_7Gencode_5_sort_1lambda2 = {"lambda2", (PyCFunction)__pyx_pw_10denovonear_7gencode_7Gencode_5_sort_1lambda2, METH_O, 0};
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_5_sort_1lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_5_sort_1lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
+static PyMethodDef __pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_1lambda2 = {"lambda2", (PyCFunction)__pyx_pw_12alphacluster_7gencode_7Gencode_5_sort_1lambda2, METH_O, 0};
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_5_sort_1lambda2(PyObject *__pyx_self, PyObject *__pyx_v_x) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("lambda2 (wrapper)", 0);
@@ -7444,7 +7444,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode._sort.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode._sort.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7452,7 +7452,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":336
+/* "alphacluster/gencode.pyx":336
  *         self._sort()
  * 
  *     def _sort(self):             # <<<<<<<<<<<<<<
@@ -7460,7 +7460,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
  *         '''
  */
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_2_sort(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self) {
   PyObject *__pyx_v_symbol = NULL;
   PyObject *__pyx_v_gene = NULL;
   PyObject *__pyx_v_chrom = NULL;
@@ -7490,7 +7490,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_sort", 0);
 
-  /* "denovonear/gencode.pyx":339
+  /* "alphacluster/gencode.pyx":339
  *         ''' index by starts and ends, to speed finding genes in a region
  *         '''
  *         for symbol in self.genes:             # <<<<<<<<<<<<<<
@@ -7515,7 +7515,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __Pyx_XDECREF_SET(__pyx_v_symbol, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "denovonear/gencode.pyx":340
+    /* "alphacluster/gencode.pyx":340
  *         '''
  *         for symbol in self.genes:
  *             gene = self.genes[symbol]             # <<<<<<<<<<<<<<
@@ -7531,7 +7531,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __Pyx_XDECREF_SET(__pyx_v_gene, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "denovonear/gencode.pyx":341
+    /* "alphacluster/gencode.pyx":341
  *         for symbol in self.genes:
  *             gene = self.genes[symbol]
  *             chrom = gene.chrom.encode('utf8')             # <<<<<<<<<<<<<<
@@ -7561,7 +7561,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __Pyx_XDECREF_SET(__pyx_v_chrom, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "denovonear/gencode.pyx":342
+    /* "alphacluster/gencode.pyx":342
  *             gene = self.genes[symbol]
  *             chrom = gene.chrom.encode('utf8')
  *             symbol = symbol.encode('utf8')             # <<<<<<<<<<<<<<
@@ -7588,7 +7588,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __Pyx_DECREF_SET(__pyx_v_symbol, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "denovonear/gencode.pyx":345
+    /* "alphacluster/gencode.pyx":345
  * 
  *             # ensure the chromosome is present
  *             if self.starts.count(chrom) == 0:             # <<<<<<<<<<<<<<
@@ -7599,7 +7599,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __pyx_t_10 = ((__pyx_v_self->starts.count(__pyx_t_9) == 0) != 0);
     if (__pyx_t_10) {
 
-      /* "denovonear/gencode.pyx":346
+      /* "alphacluster/gencode.pyx":346
  *             # ensure the chromosome is present
  *             if self.starts.count(chrom) == 0:
  *                 self.starts[chrom] = []             # <<<<<<<<<<<<<<
@@ -7613,7 +7613,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
       __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
       (__pyx_v_self->starts[__pyx_t_9]) = __pyx_t_11;
 
-      /* "denovonear/gencode.pyx":345
+      /* "alphacluster/gencode.pyx":345
  * 
  *             # ensure the chromosome is present
  *             if self.starts.count(chrom) == 0:             # <<<<<<<<<<<<<<
@@ -7622,7 +7622,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
  */
     }
 
-    /* "denovonear/gencode.pyx":347
+    /* "alphacluster/gencode.pyx":347
  *             if self.starts.count(chrom) == 0:
  *                 self.starts[chrom] = []
  *             if self.ends.count(chrom) == 0:             # <<<<<<<<<<<<<<
@@ -7633,7 +7633,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __pyx_t_10 = ((__pyx_v_self->ends.count(__pyx_t_9) == 0) != 0);
     if (__pyx_t_10) {
 
-      /* "denovonear/gencode.pyx":348
+      /* "alphacluster/gencode.pyx":348
  *                 self.starts[chrom] = []
  *             if self.ends.count(chrom) == 0:
  *                 self.ends[chrom] = []             # <<<<<<<<<<<<<<
@@ -7647,7 +7647,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
       __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 348, __pyx_L1_error)
       (__pyx_v_self->ends[__pyx_t_9]) = __pyx_t_11;
 
-      /* "denovonear/gencode.pyx":347
+      /* "alphacluster/gencode.pyx":347
  *             if self.starts.count(chrom) == 0:
  *                 self.starts[chrom] = []
  *             if self.ends.count(chrom) == 0:             # <<<<<<<<<<<<<<
@@ -7656,7 +7656,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
  */
     }
 
-    /* "denovonear/gencode.pyx":350
+    /* "alphacluster/gencode.pyx":350
  *                 self.ends[chrom] = []
  * 
  *             self.starts[chrom].push_back(GenePoint(gene.start, symbol))             # <<<<<<<<<<<<<<
@@ -7678,7 +7678,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
       __PYX_ERR(0, 350, __pyx_L1_error)
     }
 
-    /* "denovonear/gencode.pyx":351
+    /* "alphacluster/gencode.pyx":351
  * 
  *             self.starts[chrom].push_back(GenePoint(gene.start, symbol))
  *             self.ends[chrom].push_back(GenePoint(gene.end, symbol))             # <<<<<<<<<<<<<<
@@ -7702,7 +7702,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":354
+  /* "alphacluster/gencode.pyx":354
  * 
  *         # sort start and end coords by position
  *         for x, values in self.starts:             # <<<<<<<<<<<<<<
@@ -7768,7 +7768,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __Pyx_XDECREF_SET(__pyx_v_values, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "denovonear/gencode.pyx":355
+    /* "alphacluster/gencode.pyx":355
  *         # sort start and end coords by position
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
@@ -7782,7 +7782,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_values);
     __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_10denovonear_7gencode_7Gencode_5_sort_lambda1, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_denovonear_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 355, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_lambda1, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_alphacluster_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_key, __pyx_t_5) < 0) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -7795,7 +7795,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_x); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 355, __pyx_L1_error)
     (__pyx_v_self->starts[__pyx_t_9]) = __pyx_t_11;
 
-    /* "denovonear/gencode.pyx":354
+    /* "alphacluster/gencode.pyx":354
  * 
  *         # sort start and end coords by position
  *         for x, values in self.starts:             # <<<<<<<<<<<<<<
@@ -7804,7 +7804,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
  */
   }
 
-  /* "denovonear/gencode.pyx":356
+  /* "alphacluster/gencode.pyx":356
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:             # <<<<<<<<<<<<<<
@@ -7870,7 +7870,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __Pyx_XDECREF_SET(__pyx_v_values, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":357
+    /* "alphacluster/gencode.pyx":357
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])             # <<<<<<<<<<<<<<
@@ -7884,7 +7884,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_values);
     __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_10denovonear_7gencode_7Gencode_5_sort_1lambda2, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_denovonear_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_12alphacluster_7gencode_7Gencode_5_sort_1lambda2, 0, __pyx_n_s_sort_locals_lambda, NULL, __pyx_n_s_alphacluster_gencode, __pyx_d, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_key, __pyx_t_8) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -7897,7 +7897,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
     __pyx_t_9 = __pyx_convert_string_from_py_std__in_string(__pyx_v_x); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 357, __pyx_L1_error)
     (__pyx_v_self->ends[__pyx_t_9]) = __pyx_t_11;
 
-    /* "denovonear/gencode.pyx":356
+    /* "alphacluster/gencode.pyx":356
  *         for x, values in self.starts:
  *             self.starts[x] = sorted(values, key=lambda x: x['pos'])
  *         for x, values in self.ends:             # <<<<<<<<<<<<<<
@@ -7906,7 +7906,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
  */
   }
 
-  /* "denovonear/gencode.pyx":336
+  /* "alphacluster/gencode.pyx":336
  *         self._sort()
  * 
  *     def _sort(self):             # <<<<<<<<<<<<<<
@@ -7922,7 +7922,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode._sort", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode._sort", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_symbol);
@@ -7935,7 +7935,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":359
+/* "alphacluster/gencode.pyx":359
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -7944,19 +7944,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_2_sort(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_5__repr__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_5__repr__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_5__repr__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_5__repr__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_4__repr__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7969,7 +7969,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "denovonear/gencode.pyx":360
+  /* "alphacluster/gencode.pyx":360
  * 
  *     def __repr__(self):
  *         return f'Gencode(n_genes={len(self)})'             # <<<<<<<<<<<<<<
@@ -8003,7 +8003,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(struct __pyx_
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":359
+  /* "alphacluster/gencode.pyx":359
  *             self.ends[x] = sorted(values, key=lambda x: x['pos'])
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -8015,7 +8015,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(struct __pyx_
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8023,7 +8023,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(struct __pyx_
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":361
+/* "alphacluster/gencode.pyx":361
  *     def __repr__(self):
  *         return f'Gencode(n_genes={len(self)})'
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -8032,19 +8032,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_4__repr__(struct __pyx_
  */
 
 /* Python wrapper */
-static Py_ssize_t __pyx_pw_10denovonear_7gencode_7Gencode_7__len__(PyObject *__pyx_v_self); /*proto*/
-static Py_ssize_t __pyx_pw_10denovonear_7gencode_7Gencode_7__len__(PyObject *__pyx_v_self) {
+static Py_ssize_t __pyx_pw_12alphacluster_7gencode_7Gencode_7__len__(PyObject *__pyx_v_self); /*proto*/
+static Py_ssize_t __pyx_pw_12alphacluster_7gencode_7Gencode_7__len__(PyObject *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_6__len__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_6__len__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static Py_ssize_t __pyx_pf_10denovonear_7gencode_7Gencode_6__len__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self) {
+static Py_ssize_t __pyx_pf_12alphacluster_7gencode_7Gencode_6__len__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8054,7 +8054,7 @@ static Py_ssize_t __pyx_pf_10denovonear_7gencode_7Gencode_6__len__(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "denovonear/gencode.pyx":362
+  /* "alphacluster/gencode.pyx":362
  *         return f'Gencode(n_genes={len(self)})'
  *     def __len__(self):
  *         return len(self.genes)             # <<<<<<<<<<<<<<
@@ -8072,7 +8072,7 @@ static Py_ssize_t __pyx_pf_10denovonear_7gencode_7Gencode_6__len__(struct __pyx_
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":361
+  /* "alphacluster/gencode.pyx":361
  *     def __repr__(self):
  *         return f'Gencode(n_genes={len(self)})'
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -8083,14 +8083,14 @@ static Py_ssize_t __pyx_pf_10denovonear_7gencode_7Gencode_6__len__(struct __pyx_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__len__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__len__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":363
+/* "alphacluster/gencode.pyx":363
  *     def __len__(self):
  *         return len(self.genes)
  *     def __getitem__(self, symbol):             # <<<<<<<<<<<<<<
@@ -8099,19 +8099,19 @@ static Py_ssize_t __pyx_pf_10denovonear_7gencode_7Gencode_6__len__(struct __pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_9__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_symbol); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_9__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_symbol) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_9__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_symbol); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_9__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_symbol) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_8__getitem__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self), ((PyObject *)__pyx_v_symbol));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_8__getitem__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), ((PyObject *)__pyx_v_symbol));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_8__getitem__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_symbol) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_8__getitem__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_symbol) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8120,7 +8120,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_8__getitem__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
 
-  /* "denovonear/gencode.pyx":364
+  /* "alphacluster/gencode.pyx":364
  *         return len(self.genes)
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]             # <<<<<<<<<<<<<<
@@ -8138,7 +8138,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_8__getitem__(struct __p
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":363
+  /* "alphacluster/gencode.pyx":363
  *     def __len__(self):
  *         return len(self.genes)
  *     def __getitem__(self, symbol):             # <<<<<<<<<<<<<<
@@ -8149,16 +8149,16 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_8__getitem__(struct __p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "denovonear/gencode.pyx":365
+/* "alphacluster/gencode.pyx":365
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -8167,29 +8167,29 @@ static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_Corou
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_11__iter__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_11__iter__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_11__iter__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_11__iter__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__iter__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_10__iter__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_10__iter__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_10__iter__(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self) {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *__pyx_cur_scope;
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_10__iter__(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self) {
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__iter__", 0);
-  __pyx_cur_scope = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *)__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_2___iter__(__pyx_ptype_10denovonear_7gencode___pyx_scope_struct_2___iter__, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *)__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_2___iter__(__pyx_ptype_12alphacluster_7gencode___pyx_scope_struct_2___iter__, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 365, __pyx_L1_error)
   } else {
@@ -8199,7 +8199,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_10__iter__(struct __pyx
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_10denovonear_7gencode_7Gencode_12generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_Gencode___iter, __pyx_n_s_denovonear_gencode); if (unlikely(!gen)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_12alphacluster_7gencode_7Gencode_12generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_Gencode___iter, __pyx_n_s_alphacluster_gencode); if (unlikely(!gen)) __PYX_ERR(0, 365, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -8207,7 +8207,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_10__iter__(struct __pyx
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__iter__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__iter__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
   __Pyx_XGIVEREF(__pyx_r);
@@ -8215,9 +8215,9 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_10__iter__(struct __pyx
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_12alphacluster_7gencode_7Gencode_12generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *__pyx_cur_scope = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *)__pyx_generator->closure);
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *__pyx_cur_scope = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -8240,7 +8240,7 @@ static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_Corou
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 365, __pyx_L1_error)
 
-  /* "denovonear/gencode.pyx":366
+  /* "alphacluster/gencode.pyx":366
  *         return self.genes[symbol]
  *     def __iter__(self):
  *         for x in self.genes:             # <<<<<<<<<<<<<<
@@ -8267,7 +8267,7 @@ static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_Corou
     __Pyx_GIVEREF(__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "denovonear/gencode.pyx":367
+    /* "alphacluster/gencode.pyx":367
  *     def __iter__(self):
  *         for x in self.genes:
  *             yield x             # <<<<<<<<<<<<<<
@@ -8299,7 +8299,7 @@ static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_Corou
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "denovonear/gencode.pyx":365
+  /* "alphacluster/gencode.pyx":365
  *     def __getitem__(self, symbol):
  *         return self.genes[symbol]
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -8325,7 +8325,7 @@ static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_Corou
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":369
+/* "alphacluster/gencode.pyx":369
  *             yield x
  * 
  *     def add_gene(self, gene):             # <<<<<<<<<<<<<<
@@ -8334,20 +8334,20 @@ static PyObject *__pyx_gb_10denovonear_7gencode_7Gencode_12generator(__pyx_Corou
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_14add_gene(PyObject *__pyx_v_self, PyObject *__pyx_v_gene); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_7Gencode_13add_gene[] = " add another gene to the Gencode object\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_14add_gene(PyObject *__pyx_v_self, PyObject *__pyx_v_gene) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_14add_gene(PyObject *__pyx_v_self, PyObject *__pyx_v_gene); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_7Gencode_13add_gene[] = " add another gene to the Gencode object\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_14add_gene(PyObject *__pyx_v_self, PyObject *__pyx_v_gene) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_gene (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self), ((PyObject *)__pyx_v_gene));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), ((PyObject *)__pyx_v_gene));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gene) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_13add_gene(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_gene) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8360,7 +8360,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_gene", 0);
 
-  /* "denovonear/gencode.pyx":372
+  /* "alphacluster/gencode.pyx":372
  *         ''' add another gene to the Gencode object
  *         '''
  *         if gene.symbol not in self.genes:             # <<<<<<<<<<<<<<
@@ -8378,7 +8378,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "denovonear/gencode.pyx":373
+    /* "alphacluster/gencode.pyx":373
  *         '''
  *         if gene.symbol not in self.genes:
  *             self.genes[gene.symbol] = gene             # <<<<<<<<<<<<<<
@@ -8394,7 +8394,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
     if (unlikely(PyDict_SetItem(__pyx_v_self->genes, __pyx_t_1, __pyx_v_gene) < 0)) __PYX_ERR(0, 373, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "denovonear/gencode.pyx":372
+    /* "alphacluster/gencode.pyx":372
  *         ''' add another gene to the Gencode object
  *         '''
  *         if gene.symbol not in self.genes:             # <<<<<<<<<<<<<<
@@ -8403,7 +8403,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
  */
   }
 
-  /* "denovonear/gencode.pyx":374
+  /* "alphacluster/gencode.pyx":374
  *         if gene.symbol not in self.genes:
  *             self.genes[gene.symbol] = gene
  *         self._sort()             # <<<<<<<<<<<<<<
@@ -8429,7 +8429,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":369
+  /* "alphacluster/gencode.pyx":369
  *             yield x
  * 
  *     def add_gene(self, gene):             # <<<<<<<<<<<<<<
@@ -8444,7 +8444,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.add_gene", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.add_gene", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8452,7 +8452,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":376
+/* "alphacluster/gencode.pyx":376
  *         self._sort()
  * 
  *     def nearest(self, str chrom, int pos):             # <<<<<<<<<<<<<<
@@ -8461,9 +8461,9 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_13add_gene(struct __pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_16nearest(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_7Gencode_15nearest[] = " find the nearest gene to a genomic chrom, pos coordinate\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_16nearest(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_16nearest(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_7Gencode_15nearest[] = " find the nearest gene to a genomic chrom, pos coordinate\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_16nearest(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_chrom = 0;
   int __pyx_v_pos;
   int __pyx_lineno = 0;
@@ -8514,12 +8514,12 @@ static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_16nearest(PyObject *__p
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("nearest", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 376, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.nearest", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.nearest", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_chrom), (&PyUnicode_Type), 1, "chrom", 1))) __PYX_ERR(0, 376, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_15nearest(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self), __pyx_v_chrom, __pyx_v_pos);
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), __pyx_v_chrom, __pyx_v_pos);
 
   /* function exit code */
   goto __pyx_L0;
@@ -8530,7 +8530,7 @@ static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_16nearest(PyObject *__p
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_chrom, int __pyx_v_pos) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_15nearest(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v_chrom, int __pyx_v_pos) {
   PyObject *__pyx_v__chrom = NULL;
   PyObject *__pyx_v_overlaps = NULL;
   PyObject *__pyx_v_cds_overlaps = NULL;
@@ -8570,7 +8570,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __Pyx_RefNannySetupContext("nearest", 0);
   __Pyx_INCREF(__pyx_v_chrom);
 
-  /* "denovonear/gencode.pyx":380
+  /* "alphacluster/gencode.pyx":380
  *         '''
  * 	# sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -8614,7 +8614,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":381
+    /* "alphacluster/gencode.pyx":381
  * 	# sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'             # <<<<<<<<<<<<<<
@@ -8629,7 +8629,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __Pyx_DECREF_SET(__pyx_v_chrom, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "denovonear/gencode.pyx":380
+    /* "alphacluster/gencode.pyx":380
  *         '''
  * 	# sanatize the chromosome first
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -8639,7 +8639,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     goto __pyx_L3;
   }
 
-  /* "denovonear/gencode.pyx":382
+  /* "alphacluster/gencode.pyx":382
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -8683,7 +8683,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":383
+    /* "alphacluster/gencode.pyx":383
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]             # <<<<<<<<<<<<<<
@@ -8699,7 +8699,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __Pyx_DECREF_SET(__pyx_v_chrom, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "denovonear/gencode.pyx":382
+    /* "alphacluster/gencode.pyx":382
  *         if self.chrom.startswith('chr') and not chrom.startswith('chr'):
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):             # <<<<<<<<<<<<<<
@@ -8709,7 +8709,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   }
   __pyx_L3:;
 
-  /* "denovonear/gencode.pyx":385
+  /* "alphacluster/gencode.pyx":385
  *             chrom = chrom[3:]
  *         #chrom = f'chr{chrom}' if not chrom.startswith('chr') else chrom
  *         _chrom = chrom.encode('utf8')             # <<<<<<<<<<<<<<
@@ -8725,7 +8725,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_v__chrom = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "denovonear/gencode.pyx":388
+  /* "alphacluster/gencode.pyx":388
  * 
  *         # first, account for any overlapping genespython
  *         overlaps = self.in_region(chrom, pos-1, pos+1)  # NOTE: possibly fix?             # <<<<<<<<<<<<<<
@@ -8793,7 +8793,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_v_overlaps = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "denovonear/gencode.pyx":389
+  /* "alphacluster/gencode.pyx":389
  *         # first, account for any overlapping genespython
  *         overlaps = self.in_region(chrom, pos-1, pos+1)  # NOTE: possibly fix?
  *         if len(overlaps) > 0:             # <<<<<<<<<<<<<<
@@ -8804,7 +8804,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_t_1 = ((__pyx_t_11 > 0) != 0);
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":391
+    /* "alphacluster/gencode.pyx":391
  *         if len(overlaps) > 0:
  *             # if we have > 0 prioritise if the position is in the CDS
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]             # <<<<<<<<<<<<<<
@@ -8892,7 +8892,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __pyx_v_cds_overlaps = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "denovonear/gencode.pyx":392
+    /* "alphacluster/gencode.pyx":392
  *             # if we have > 0 prioritise if the position is in the CDS
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]
  *             if len(cds_overlaps) > 0:             # <<<<<<<<<<<<<<
@@ -8903,7 +8903,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __pyx_t_1 = ((__pyx_t_11 > 0) != 0);
     if (__pyx_t_1) {
 
-      /* "denovonear/gencode.pyx":393
+      /* "alphacluster/gencode.pyx":393
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]
  *             if len(cds_overlaps) > 0:
  *                 overlaps = cds_overlaps             # <<<<<<<<<<<<<<
@@ -8913,7 +8913,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
       __Pyx_INCREF(__pyx_v_cds_overlaps);
       __Pyx_DECREF_SET(__pyx_v_overlaps, __pyx_v_cds_overlaps);
 
-      /* "denovonear/gencode.pyx":392
+      /* "alphacluster/gencode.pyx":392
  *             # if we have > 0 prioritise if the position is in the CDS
  *             cds_overlaps = [x for x in overlaps if x.in_any_tx_cds(pos)]
  *             if len(cds_overlaps) > 0:             # <<<<<<<<<<<<<<
@@ -8922,7 +8922,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
  */
     }
 
-    /* "denovonear/gencode.pyx":395
+    /* "alphacluster/gencode.pyx":395
  *                 overlaps = cds_overlaps
  *             # prioritise the gene with longest CDS (in the canonical tx)
  *             txs = [x.canonical for x in overlaps]             # <<<<<<<<<<<<<<
@@ -8989,7 +8989,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __pyx_v_txs = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "denovonear/gencode.pyx":396
+    /* "alphacluster/gencode.pyx":396
  *             # prioritise the gene with longest CDS (in the canonical tx)
  *             txs = [x.canonical for x in overlaps]
  *             lengths = [x.get_coding_distance(x.get_cds_end())['pos'] for x in txs]             # <<<<<<<<<<<<<<
@@ -9062,7 +9062,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __pyx_v_lengths = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "denovonear/gencode.pyx":397
+    /* "alphacluster/gencode.pyx":397
  *             txs = [x.canonical for x in overlaps]
  *             lengths = [x.get_coding_distance(x.get_cds_end())['pos'] for x in txs]
  *             idx = lengths.index(max(lengths))             # <<<<<<<<<<<<<<
@@ -9077,7 +9077,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __pyx_v_idx = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "denovonear/gencode.pyx":398
+    /* "alphacluster/gencode.pyx":398
  *             lengths = [x.get_coding_distance(x.get_cds_end())['pos'] for x in txs]
  *             idx = lengths.index(max(lengths))
  *             return overlaps[idx]             # <<<<<<<<<<<<<<
@@ -9091,7 +9091,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "denovonear/gencode.pyx":389
+    /* "alphacluster/gencode.pyx":389
  *         # first, account for any overlapping genespython
  *         overlaps = self.in_region(chrom, pos-1, pos+1)  # NOTE: possibly fix?
  *         if len(overlaps) > 0:             # <<<<<<<<<<<<<<
@@ -9100,7 +9100,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
  */
   }
 
-  /* "denovonear/gencode.pyx":401
+  /* "alphacluster/gencode.pyx":401
  * 
  *         # no overlaps observed, look for the nearest upstream or downstream gene
  *         cdef GenePoint site = GenePoint(pos, b'A');             # <<<<<<<<<<<<<<
@@ -9112,7 +9112,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_t_14.symbol = __pyx_t_15;
   __pyx_v_site = __pyx_t_14;
 
-  /* "denovonear/gencode.pyx":405
+  /* "alphacluster/gencode.pyx":405
  *         #cdef int j = upper_bound(self.ends[_chrom].begin(), self.ends[_chrom].begin(), site, CompFunc) - self.ends[_chrom].begin()
  * 
  *         cdef int i = l_bound(self.starts[_chrom], site)             # <<<<<<<<<<<<<<
@@ -9122,7 +9122,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 405, __pyx_L1_error)
   __pyx_v_i = gencode::l_bound((__pyx_v_self->starts[__pyx_t_15]), __pyx_v_site);
 
-  /* "denovonear/gencode.pyx":406
+  /* "alphacluster/gencode.pyx":406
  * 
  *         cdef int i = l_bound(self.starts[_chrom], site)
  *         cdef int j = u_bound(self.ends[_chrom], site)             # <<<<<<<<<<<<<<
@@ -9132,7 +9132,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_t_15 = __pyx_convert_string_from_py_std__in_string(__pyx_v__chrom); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 406, __pyx_L1_error)
   __pyx_v_j = gencode::u_bound((__pyx_v_self->ends[__pyx_t_15]), __pyx_v_site);
 
-  /* "denovonear/gencode.pyx":408
+  /* "alphacluster/gencode.pyx":408
  *         cdef int j = u_bound(self.ends[_chrom], site)
  * 
  *         i = min(i, self.starts[_chrom].size() - 1)             # <<<<<<<<<<<<<<
@@ -9149,7 +9149,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   }
   __pyx_v_i = __pyx_t_17;
 
-  /* "denovonear/gencode.pyx":409
+  /* "alphacluster/gencode.pyx":409
  * 
  *         i = min(i, self.starts[_chrom].size() - 1)
  *         j = min(j, self.starts[_chrom].size() - 1)             # <<<<<<<<<<<<<<
@@ -9166,7 +9166,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   }
   __pyx_v_j = __pyx_t_16;
 
-  /* "denovonear/gencode.pyx":411
+  /* "alphacluster/gencode.pyx":411
  *         j = min(j, self.starts[_chrom].size() - 1)
  * 
  *         downstream = self[self.starts[_chrom][i].symbol.decode('utf8')]             # <<<<<<<<<<<<<<
@@ -9182,7 +9182,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_v_downstream = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "denovonear/gencode.pyx":412
+  /* "alphacluster/gencode.pyx":412
  * 
  *         downstream = self[self.starts[_chrom][i].symbol.decode('utf8')]
  *         upstream = self[self.starts[_chrom][j].symbol.decode('utf8')]             # <<<<<<<<<<<<<<
@@ -9198,7 +9198,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __pyx_v_upstream = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "denovonear/gencode.pyx":414
+  /* "alphacluster/gencode.pyx":414
  *         upstream = self[self.starts[_chrom][j].symbol.decode('utf8')]
  * 
  *         if upstream.distance(chrom, pos) <= downstream.distance(chrom, pos):             # <<<<<<<<<<<<<<
@@ -9314,7 +9314,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_1) {
 
-    /* "denovonear/gencode.pyx":415
+    /* "alphacluster/gencode.pyx":415
  * 
  *         if upstream.distance(chrom, pos) <= downstream.distance(chrom, pos):
  *             return upstream             # <<<<<<<<<<<<<<
@@ -9326,7 +9326,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     __pyx_r = __pyx_v_upstream;
     goto __pyx_L0;
 
-    /* "denovonear/gencode.pyx":414
+    /* "alphacluster/gencode.pyx":414
  *         upstream = self[self.starts[_chrom][j].symbol.decode('utf8')]
  * 
  *         if upstream.distance(chrom, pos) <= downstream.distance(chrom, pos):             # <<<<<<<<<<<<<<
@@ -9335,7 +9335,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
  */
   }
 
-  /* "denovonear/gencode.pyx":417
+  /* "alphacluster/gencode.pyx":417
  *             return upstream
  *         else:
  *             return downstream             # <<<<<<<<<<<<<<
@@ -9349,7 +9349,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
     goto __pyx_L0;
   }
 
-  /* "denovonear/gencode.pyx":376
+  /* "alphacluster/gencode.pyx":376
  *         self._sort()
  * 
  *     def nearest(self, str chrom, int pos):             # <<<<<<<<<<<<<<
@@ -9366,7 +9366,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.nearest", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.nearest", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v__chrom);
@@ -9386,7 +9386,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":419
+/* "alphacluster/gencode.pyx":419
  *             return downstream
  * 
  *     def in_region(self, str _chrom, int start, int end, int max_window=2500000):             # <<<<<<<<<<<<<<
@@ -9395,9 +9395,9 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_15nearest(struct __pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_18in_region(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_7Gencode_17in_region[] = " find genes within a genomic region\n        \n        Args:\n            chrom: chromosome to search on\n            start: start position of region\n            end: end position of region\n            max_window: some genes encapsulate the region, which means we have \n                to account for gene lengths of up to 2.3 Mb in the human genome.\n                This permits extra search space in other organisms.\n        \n        Returns:\n            list of Gene objects\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_18in_region(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_18in_region(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_7Gencode_17in_region[] = " find genes within a genomic region\n        \n        Args:\n            chrom: chromosome to search on\n            start: start position of region\n            end: end position of region\n            max_window: some genes encapsulate the region, which means we have \n                to account for gene lengths of up to 2.3 Mb in the human genome.\n                This permits extra search space in other organisms.\n        \n        Returns:\n            list of Gene objects\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_18in_region(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v__chrom = 0;
   int __pyx_v_start;
   int __pyx_v_end;
@@ -9477,12 +9477,12 @@ static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_18in_region(PyObject *_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("in_region", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 419, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.in_region", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.in_region", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v__chrom), (&PyUnicode_Type), 1, "_chrom", 1))) __PYX_ERR(0, 419, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_17in_region(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self), __pyx_v__chrom, __pyx_v_start, __pyx_v_end, __pyx_v_max_window);
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), __pyx_v__chrom, __pyx_v_start, __pyx_v_end, __pyx_v_max_window);
 
   /* function exit code */
   goto __pyx_L0;
@@ -9493,7 +9493,7 @@ static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_18in_region(PyObject *_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v__chrom, int __pyx_v_start, int __pyx_v_end, int __pyx_v_max_window) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_17in_region(struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, PyObject *__pyx_v__chrom, int __pyx_v_start, int __pyx_v_end, int __pyx_v_max_window) {
   std::vector<std::string>  __pyx_v_symbols;
   std::string __pyx_8genexpr7__pyx_v_x;
   PyObject *__pyx_r = NULL;
@@ -9509,7 +9509,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("in_region", 0);
 
-  /* "denovonear/gencode.pyx":433
+  /* "alphacluster/gencode.pyx":433
  *             list of Gene objects
  *         '''
  *         symbols = _in_region(_chrom.encode('utf8'), start, end, self.starts,             # <<<<<<<<<<<<<<
@@ -9525,7 +9525,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __py
   __pyx_t_2 = __pyx_convert_string_from_py_std__in_string(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":434
+  /* "alphacluster/gencode.pyx":434
  *         '''
  *         symbols = _in_region(_chrom.encode('utf8'), start, end, self.starts,
  *             self.ends, max_window)             # <<<<<<<<<<<<<<
@@ -9540,7 +9540,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __py
   }
   __pyx_v_symbols = __pyx_t_3;
 
-  /* "denovonear/gencode.pyx":435
+  /* "alphacluster/gencode.pyx":435
  *         symbols = _in_region(_chrom.encode('utf8'), start, end, self.starts,
  *             self.ends, max_window)
  *         return [self[x.decode('utf8')] for x in symbols]             # <<<<<<<<<<<<<<
@@ -9570,7 +9570,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "denovonear/gencode.pyx":419
+  /* "alphacluster/gencode.pyx":419
  *             return downstream
  * 
  *     def in_region(self, str _chrom, int start, int end, int max_window=2500000):             # <<<<<<<<<<<<<<
@@ -9583,7 +9583,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __py
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.in_region", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.in_region", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -9591,7 +9591,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __py
   return __pyx_r;
 }
 
-/* "denovonear/gencode.pyx":437
+/* "alphacluster/gencode.pyx":437
  *         return [self[x.decode('utf8')] for x in symbols]
  * 
  *     def __exit__(self):             # <<<<<<<<<<<<<<
@@ -9600,20 +9600,20 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_17in_region(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_20__exit__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_10denovonear_7gencode_7Gencode_19__exit__[] = " cleanup at exit\n        ";
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_20__exit__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_20__exit__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_12alphacluster_7gencode_7Gencode_19__exit__[] = " cleanup at exit\n        ";
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_20__exit__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__exit__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_19__exit__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_19__exit__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_19__exit__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_19__exit__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -9624,7 +9624,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_19__exit__(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__exit__", 0);
 
-  /* "denovonear/gencode.pyx":441
+  /* "alphacluster/gencode.pyx":441
  *         '''
  *         global __genome_
  *         __genome_.close()             # <<<<<<<<<<<<<<
@@ -9652,14 +9652,14 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_19__exit__(CYTHON_UNUSE
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":442
+  /* "alphacluster/gencode.pyx":442
  *         global __genome_
  *         __genome_.close()
  *         __genome_ = None             # <<<<<<<<<<<<<<
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, Py_None) < 0) __PYX_ERR(0, 442, __pyx_L1_error)
 
-  /* "denovonear/gencode.pyx":437
+  /* "alphacluster/gencode.pyx":437
  *         return [self[x.decode('utf8')] for x in symbols]
  * 
  *     def __exit__(self):             # <<<<<<<<<<<<<<
@@ -9674,7 +9674,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_19__exit__(CYTHON_UNUSE
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__exit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__exit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -9689,19 +9689,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_19__exit__(CYTHON_UNUSE
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_22__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_22__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_22__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_22__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_21__reduce_cython__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_21__reduce_cython__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -9731,7 +9731,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_21__reduce_cython__(CYT
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -9746,19 +9746,19 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_21__reduce_cython__(CYT
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_24__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_10denovonear_7gencode_7Gencode_24__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_24__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_12alphacluster_7gencode_7Gencode_24__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10denovonear_7gencode_7Gencode_23__setstate_cython__(((struct __pyx_obj_10denovonear_7gencode_Gencode *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_12alphacluster_7gencode_7Gencode_23__setstate_cython__(((struct __pyx_obj_12alphacluster_7gencode_Gencode *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10denovonear_7gencode_Gencode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_12alphacluster_7gencode_7Gencode_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_12alphacluster_7gencode_Gencode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -9788,7 +9788,7 @@ static PyObject *__pyx_pf_10denovonear_7gencode_7Gencode_23__setstate_cython__(C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("denovonear.gencode.Gencode.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("alphacluster.gencode.Gencode.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -10837,10 +10837,10 @@ static PyObject *__pyx_convert_pair_to_py_std_3a__3a_string____std_3a__3a_vector
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static struct __pyx_vtabstruct_10denovonear_7gencode_Gene __pyx_vtable_10denovonear_7gencode_Gene;
+static struct __pyx_vtabstruct_12alphacluster_7gencode_Gene __pyx_vtable_12alphacluster_7gencode_Gene;
 
-static PyObject *__pyx_tp_new_10denovonear_7gencode_Gene(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_10denovonear_7gencode_Gene *p;
+static PyObject *__pyx_tp_new_12alphacluster_7gencode_Gene(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_12alphacluster_7gencode_Gene *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -10848,21 +10848,21 @@ static PyObject *__pyx_tp_new_10denovonear_7gencode_Gene(PyTypeObject *t, PyObje
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_10denovonear_7gencode_Gene *)o);
-  p->__pyx_vtab = __pyx_vtabptr_10denovonear_7gencode_Gene;
+  p = ((struct __pyx_obj_12alphacluster_7gencode_Gene *)o);
+  p->__pyx_vtab = __pyx_vtabptr_12alphacluster_7gencode_Gene;
   new((void*)&(p->_symbol)) std::string();
   new((void*)&(p->_transcripts)) std::vector<Tx> ();
   new((void*)&(p->_canonical)) std::vector<int> ();
   p->_chrom = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  if (unlikely(__pyx_pw_10denovonear_7gencode_4Gene_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_12alphacluster_7gencode_4Gene_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_10denovonear_7gencode_Gene(PyObject *o) {
-  struct __pyx_obj_10denovonear_7gencode_Gene *p = (struct __pyx_obj_10denovonear_7gencode_Gene *)o;
+static void __pyx_tp_dealloc_12alphacluster_7gencode_Gene(PyObject *o) {
+  struct __pyx_obj_12alphacluster_7gencode_Gene *p = (struct __pyx_obj_12alphacluster_7gencode_Gene *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -10875,17 +10875,17 @@ static void __pyx_tp_dealloc_10denovonear_7gencode_Gene(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyObject *__pyx_getprop_10denovonear_7gencode_4Gene_symbol(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10denovonear_7gencode_4Gene_6symbol_1__get__(o);
+static PyObject *__pyx_getprop_12alphacluster_7gencode_4Gene_symbol(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_12alphacluster_7gencode_4Gene_6symbol_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_10denovonear_7gencode_4Gene_chrom(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10denovonear_7gencode_4Gene_5chrom_1__get__(o);
+static PyObject *__pyx_getprop_12alphacluster_7gencode_4Gene_chrom(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_12alphacluster_7gencode_4Gene_5chrom_1__get__(o);
 }
 
-static int __pyx_setprop_10denovonear_7gencode_4Gene_chrom(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_12alphacluster_7gencode_4Gene_chrom(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_10denovonear_7gencode_4Gene_5chrom_3__set__(o, v);
+    return __pyx_pw_12alphacluster_7gencode_4Gene_5chrom_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -10893,13 +10893,13 @@ static int __pyx_setprop_10denovonear_7gencode_4Gene_chrom(PyObject *o, PyObject
   }
 }
 
-static PyObject *__pyx_getprop_10denovonear_7gencode_4Gene_start(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10denovonear_7gencode_4Gene_5start_1__get__(o);
+static PyObject *__pyx_getprop_12alphacluster_7gencode_4Gene_start(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_12alphacluster_7gencode_4Gene_5start_1__get__(o);
 }
 
-static int __pyx_setprop_10denovonear_7gencode_4Gene_start(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_12alphacluster_7gencode_4Gene_start(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_10denovonear_7gencode_4Gene_5start_3__set__(o, v);
+    return __pyx_pw_12alphacluster_7gencode_4Gene_5start_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -10907,13 +10907,13 @@ static int __pyx_setprop_10denovonear_7gencode_4Gene_start(PyObject *o, PyObject
   }
 }
 
-static PyObject *__pyx_getprop_10denovonear_7gencode_4Gene_end(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10denovonear_7gencode_4Gene_3end_1__get__(o);
+static PyObject *__pyx_getprop_12alphacluster_7gencode_4Gene_end(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_12alphacluster_7gencode_4Gene_3end_1__get__(o);
 }
 
-static int __pyx_setprop_10denovonear_7gencode_4Gene_end(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_12alphacluster_7gencode_4Gene_end(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_10denovonear_7gencode_4Gene_3end_3__set__(o, v);
+    return __pyx_pw_12alphacluster_7gencode_4Gene_3end_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -10921,44 +10921,44 @@ static int __pyx_setprop_10denovonear_7gencode_4Gene_end(PyObject *o, PyObject *
   }
 }
 
-static PyObject *__pyx_getprop_10denovonear_7gencode_4Gene_strand(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10denovonear_7gencode_4Gene_6strand_1__get__(o);
+static PyObject *__pyx_getprop_12alphacluster_7gencode_4Gene_strand(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_12alphacluster_7gencode_4Gene_6strand_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_10denovonear_7gencode_4Gene_transcripts(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10denovonear_7gencode_4Gene_11transcripts_1__get__(o);
+static PyObject *__pyx_getprop_12alphacluster_7gencode_4Gene_transcripts(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_12alphacluster_7gencode_4Gene_11transcripts_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_10denovonear_7gencode_4Gene_canonical(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10denovonear_7gencode_4Gene_9canonical_1__get__(o);
+static PyObject *__pyx_getprop_12alphacluster_7gencode_4Gene_canonical(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_12alphacluster_7gencode_4Gene_9canonical_1__get__(o);
 }
 
-static PyMethodDef __pyx_methods_10denovonear_7gencode_Gene[] = {
-  {"add_transcript", (PyCFunction)__pyx_pw_10denovonear_7gencode_4Gene_3add_transcript, METH_O, __pyx_doc_10denovonear_7gencode_4Gene_2add_transcript},
-  {"in_any_tx_cds", (PyCFunction)__pyx_pw_10denovonear_7gencode_4Gene_7in_any_tx_cds, METH_O, __pyx_doc_10denovonear_7gencode_4Gene_6in_any_tx_cds},
-  {"distance", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10denovonear_7gencode_4Gene_9distance, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10denovonear_7gencode_4Gene_8distance},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_10denovonear_7gencode_4Gene_11__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_10denovonear_7gencode_4Gene_13__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_12alphacluster_7gencode_Gene[] = {
+  {"add_transcript", (PyCFunction)__pyx_pw_12alphacluster_7gencode_4Gene_3add_transcript, METH_O, __pyx_doc_12alphacluster_7gencode_4Gene_2add_transcript},
+  {"in_any_tx_cds", (PyCFunction)__pyx_pw_12alphacluster_7gencode_4Gene_7in_any_tx_cds, METH_O, __pyx_doc_12alphacluster_7gencode_4Gene_6in_any_tx_cds},
+  {"distance", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12alphacluster_7gencode_4Gene_9distance, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12alphacluster_7gencode_4Gene_8distance},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_12alphacluster_7gencode_4Gene_11__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_12alphacluster_7gencode_4Gene_13__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_10denovonear_7gencode_Gene[] = {
-  {(char *)"symbol", __pyx_getprop_10denovonear_7gencode_4Gene_symbol, 0, (char *)0, 0},
-  {(char *)"chrom", __pyx_getprop_10denovonear_7gencode_4Gene_chrom, __pyx_setprop_10denovonear_7gencode_4Gene_chrom, (char *)0, 0},
-  {(char *)"start", __pyx_getprop_10denovonear_7gencode_4Gene_start, __pyx_setprop_10denovonear_7gencode_4Gene_start, (char *)0, 0},
-  {(char *)"end", __pyx_getprop_10denovonear_7gencode_4Gene_end, __pyx_setprop_10denovonear_7gencode_4Gene_end, (char *)0, 0},
-  {(char *)"strand", __pyx_getprop_10denovonear_7gencode_4Gene_strand, 0, (char *)0, 0},
-  {(char *)"transcripts", __pyx_getprop_10denovonear_7gencode_4Gene_transcripts, 0, (char *)" get list of Transcripts for gene, with genomic DNA included\n        ", 0},
-  {(char *)"canonical", __pyx_getprop_10denovonear_7gencode_4Gene_canonical, 0, (char *)" find the canonical transcript for a gene.\n        \n        Canonical is defined as:\n            - transcript with Ensembl_canonical tag (peferred)\n            - transcript with longest CDS tagged with appris_principal in the GTF\n            - if no appris_principal tags for any tx, use the tx with longest CDS\n            # TODO: for the last case, maybe check the protein coding subset first\n        \n        Occasionally there are multiple transcripts tagged as appris_principal\n        and with the same longest CDS, we use the first one of those.\n        ", 0},
+static struct PyGetSetDef __pyx_getsets_12alphacluster_7gencode_Gene[] = {
+  {(char *)"symbol", __pyx_getprop_12alphacluster_7gencode_4Gene_symbol, 0, (char *)0, 0},
+  {(char *)"chrom", __pyx_getprop_12alphacluster_7gencode_4Gene_chrom, __pyx_setprop_12alphacluster_7gencode_4Gene_chrom, (char *)0, 0},
+  {(char *)"start", __pyx_getprop_12alphacluster_7gencode_4Gene_start, __pyx_setprop_12alphacluster_7gencode_4Gene_start, (char *)0, 0},
+  {(char *)"end", __pyx_getprop_12alphacluster_7gencode_4Gene_end, __pyx_setprop_12alphacluster_7gencode_4Gene_end, (char *)0, 0},
+  {(char *)"strand", __pyx_getprop_12alphacluster_7gencode_4Gene_strand, 0, (char *)0, 0},
+  {(char *)"transcripts", __pyx_getprop_12alphacluster_7gencode_4Gene_transcripts, 0, (char *)" get list of Transcripts for gene, with genomic DNA included\n        ", 0},
+  {(char *)"canonical", __pyx_getprop_12alphacluster_7gencode_4Gene_canonical, 0, (char *)" find the canonical transcript for a gene.\n        \n        Canonical is defined as:\n            - transcript with Ensembl_canonical tag (peferred)\n            - transcript with longest CDS tagged with appris_principal in the GTF\n            - if no appris_principal tags for any tx, use the tx with longest CDS\n            # TODO: for the last case, maybe check the protein coding subset first\n        \n        Occasionally there are multiple transcripts tagged as appris_principal\n        and with the same longest CDS, we use the first one of those.\n        ", 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_10denovonear_7gencode_Gene = {
+static PyTypeObject __pyx_type_12alphacluster_7gencode_Gene = {
   PyVarObject_HEAD_INIT(0, 0)
-  "denovonear.gencode.Gene", /*tp_name*/
-  sizeof(struct __pyx_obj_10denovonear_7gencode_Gene), /*tp_basicsize*/
+  "alphacluster.gencode.Gene", /*tp_name*/
+  sizeof(struct __pyx_obj_12alphacluster_7gencode_Gene), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_10denovonear_7gencode_Gene, /*tp_dealloc*/
+  __pyx_tp_dealloc_12alphacluster_7gencode_Gene, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -10973,7 +10973,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gene = {
   #if PY_MAJOR_VERSION >= 3
   0, /*tp_as_async*/
   #endif
-  __pyx_pw_10denovonear_7gencode_4Gene_5__repr__, /*tp_repr*/
+  __pyx_pw_12alphacluster_7gencode_4Gene_5__repr__, /*tp_repr*/
   0, /*tp_as_number*/
   0, /*tp_as_sequence*/
   0, /*tp_as_mapping*/
@@ -10991,9 +10991,9 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gene = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_10denovonear_7gencode_Gene, /*tp_methods*/
+  __pyx_methods_12alphacluster_7gencode_Gene, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_10denovonear_7gencode_Gene, /*tp_getset*/
+  __pyx_getsets_12alphacluster_7gencode_Gene, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -11001,7 +11001,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gene = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_10denovonear_7gencode_Gene, /*tp_new*/
+  __pyx_tp_new_12alphacluster_7gencode_Gene, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -11025,8 +11025,8 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gene = {
   #endif
 };
 
-static PyObject *__pyx_tp_new_10denovonear_7gencode_Gencode(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_10denovonear_7gencode_Gencode *p;
+static PyObject *__pyx_tp_new_12alphacluster_7gencode_Gencode(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_12alphacluster_7gencode_Gencode *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -11034,19 +11034,19 @@ static PyObject *__pyx_tp_new_10denovonear_7gencode_Gencode(PyTypeObject *t, PyO
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_10denovonear_7gencode_Gencode *)o);
+  p = ((struct __pyx_obj_12alphacluster_7gencode_Gencode *)o);
   new((void*)&(p->starts)) std::map<std::string,std::vector<struct gencode::GenePoint> > ();
   new((void*)&(p->ends)) std::map<std::string,std::vector<struct gencode::GenePoint> > ();
   p->genes = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  if (unlikely(__pyx_pw_10denovonear_7gencode_7Gencode_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_12alphacluster_7gencode_7Gencode_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_10denovonear_7gencode_Gencode(PyObject *o) {
-  struct __pyx_obj_10denovonear_7gencode_Gencode *p = (struct __pyx_obj_10denovonear_7gencode_Gencode *)o;
+static void __pyx_tp_dealloc_12alphacluster_7gencode_Gencode(PyObject *o) {
+  struct __pyx_obj_12alphacluster_7gencode_Gencode *p = (struct __pyx_obj_12alphacluster_7gencode_Gencode *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -11059,24 +11059,24 @@ static void __pyx_tp_dealloc_10denovonear_7gencode_Gencode(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static int __pyx_tp_traverse_10denovonear_7gencode_Gencode(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12alphacluster_7gencode_Gencode(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_10denovonear_7gencode_Gencode *p = (struct __pyx_obj_10denovonear_7gencode_Gencode *)o;
+  struct __pyx_obj_12alphacluster_7gencode_Gencode *p = (struct __pyx_obj_12alphacluster_7gencode_Gencode *)o;
   if (p->genes) {
     e = (*v)(p->genes, a); if (e) return e;
   }
   return 0;
 }
 
-static int __pyx_tp_clear_10denovonear_7gencode_Gencode(PyObject *o) {
+static int __pyx_tp_clear_12alphacluster_7gencode_Gencode(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_10denovonear_7gencode_Gencode *p = (struct __pyx_obj_10denovonear_7gencode_Gencode *)o;
+  struct __pyx_obj_12alphacluster_7gencode_Gencode *p = (struct __pyx_obj_12alphacluster_7gencode_Gencode *)o;
   tmp = ((PyObject*)p->genes);
   p->genes = ((PyObject*)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
-static PyObject *__pyx_sq_item_10denovonear_7gencode_Gencode(PyObject *o, Py_ssize_t i) {
+static PyObject *__pyx_sq_item_12alphacluster_7gencode_Gencode(PyObject *o, Py_ssize_t i) {
   PyObject *r;
   PyObject *x = PyInt_FromSsize_t(i); if(!x) return 0;
   r = Py_TYPE(o)->tp_as_mapping->mp_subscript(o, x);
@@ -11084,22 +11084,22 @@ static PyObject *__pyx_sq_item_10denovonear_7gencode_Gencode(PyObject *o, Py_ssi
   return r;
 }
 
-static PyMethodDef __pyx_methods_10denovonear_7gencode_Gencode[] = {
-  {"_sort", (PyCFunction)__pyx_pw_10denovonear_7gencode_7Gencode_3_sort, METH_NOARGS, __pyx_doc_10denovonear_7gencode_7Gencode_2_sort},
-  {"add_gene", (PyCFunction)__pyx_pw_10denovonear_7gencode_7Gencode_14add_gene, METH_O, __pyx_doc_10denovonear_7gencode_7Gencode_13add_gene},
-  {"nearest", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10denovonear_7gencode_7Gencode_16nearest, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10denovonear_7gencode_7Gencode_15nearest},
-  {"in_region", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10denovonear_7gencode_7Gencode_18in_region, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10denovonear_7gencode_7Gencode_17in_region},
-  {"__exit__", (PyCFunction)__pyx_pw_10denovonear_7gencode_7Gencode_20__exit__, METH_NOARGS, __pyx_doc_10denovonear_7gencode_7Gencode_19__exit__},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_10denovonear_7gencode_7Gencode_22__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_10denovonear_7gencode_7Gencode_24__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_12alphacluster_7gencode_Gencode[] = {
+  {"_sort", (PyCFunction)__pyx_pw_12alphacluster_7gencode_7Gencode_3_sort, METH_NOARGS, __pyx_doc_12alphacluster_7gencode_7Gencode_2_sort},
+  {"add_gene", (PyCFunction)__pyx_pw_12alphacluster_7gencode_7Gencode_14add_gene, METH_O, __pyx_doc_12alphacluster_7gencode_7Gencode_13add_gene},
+  {"nearest", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12alphacluster_7gencode_7Gencode_16nearest, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12alphacluster_7gencode_7Gencode_15nearest},
+  {"in_region", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12alphacluster_7gencode_7Gencode_18in_region, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12alphacluster_7gencode_7Gencode_17in_region},
+  {"__exit__", (PyCFunction)__pyx_pw_12alphacluster_7gencode_7Gencode_20__exit__, METH_NOARGS, __pyx_doc_12alphacluster_7gencode_7Gencode_19__exit__},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_12alphacluster_7gencode_7Gencode_22__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_12alphacluster_7gencode_7Gencode_24__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
 static PySequenceMethods __pyx_tp_as_sequence_Gencode = {
-  __pyx_pw_10denovonear_7gencode_7Gencode_7__len__, /*sq_length*/
+  __pyx_pw_12alphacluster_7gencode_7Gencode_7__len__, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
-  __pyx_sq_item_10denovonear_7gencode_Gencode, /*sq_item*/
+  __pyx_sq_item_12alphacluster_7gencode_Gencode, /*sq_item*/
   0, /*sq_slice*/
   0, /*sq_ass_item*/
   0, /*sq_ass_slice*/
@@ -11109,17 +11109,17 @@ static PySequenceMethods __pyx_tp_as_sequence_Gencode = {
 };
 
 static PyMappingMethods __pyx_tp_as_mapping_Gencode = {
-  __pyx_pw_10denovonear_7gencode_7Gencode_7__len__, /*mp_length*/
-  __pyx_pw_10denovonear_7gencode_7Gencode_9__getitem__, /*mp_subscript*/
+  __pyx_pw_12alphacluster_7gencode_7Gencode_7__len__, /*mp_length*/
+  __pyx_pw_12alphacluster_7gencode_7Gencode_9__getitem__, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_10denovonear_7gencode_Gencode = {
+static PyTypeObject __pyx_type_12alphacluster_7gencode_Gencode = {
   PyVarObject_HEAD_INIT(0, 0)
-  "denovonear.gencode.Gencode", /*tp_name*/
-  sizeof(struct __pyx_obj_10denovonear_7gencode_Gencode), /*tp_basicsize*/
+  "alphacluster.gencode.Gencode", /*tp_name*/
+  sizeof(struct __pyx_obj_12alphacluster_7gencode_Gencode), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_10denovonear_7gencode_Gencode, /*tp_dealloc*/
+  __pyx_tp_dealloc_12alphacluster_7gencode_Gencode, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -11134,7 +11134,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gencode = {
   #if PY_MAJOR_VERSION >= 3
   0, /*tp_as_async*/
   #endif
-  __pyx_pw_10denovonear_7gencode_7Gencode_5__repr__, /*tp_repr*/
+  __pyx_pw_12alphacluster_7gencode_7Gencode_5__repr__, /*tp_repr*/
   0, /*tp_as_number*/
   &__pyx_tp_as_sequence_Gencode, /*tp_as_sequence*/
   &__pyx_tp_as_mapping_Gencode, /*tp_as_mapping*/
@@ -11146,13 +11146,13 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gencode = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_10denovonear_7gencode_Gencode, /*tp_traverse*/
-  __pyx_tp_clear_10denovonear_7gencode_Gencode, /*tp_clear*/
+  __pyx_tp_traverse_12alphacluster_7gencode_Gencode, /*tp_traverse*/
+  __pyx_tp_clear_12alphacluster_7gencode_Gencode, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
-  __pyx_pw_10denovonear_7gencode_7Gencode_11__iter__, /*tp_iter*/
+  __pyx_pw_12alphacluster_7gencode_7Gencode_11__iter__, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_10denovonear_7gencode_Gencode, /*tp_methods*/
+  __pyx_methods_12alphacluster_7gencode_Gencode, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -11162,7 +11162,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gencode = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_10denovonear_7gencode_Gencode, /*tp_new*/
+  __pyx_tp_new_12alphacluster_7gencode_Gencode, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -11186,14 +11186,14 @@ static PyTypeObject __pyx_type_10denovonear_7gencode_Gencode = {
   #endif
 };
 
-static struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *__pyx_freelist_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds[8];
-static int __pyx_freecount_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds = 0;
+static struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *__pyx_freelist_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds[8];
+static int __pyx_freecount_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds = 0;
 
-static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds)))) {
-    o = (PyObject*)__pyx_freelist_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds[--__pyx_freecount_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds];
-    memset(o, 0, sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds)))) {
+    o = (PyObject*)__pyx_freelist_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds[--__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds];
+    memset(o, 0, sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -11203,21 +11203,21 @@ static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct__in_any_t
   return o;
 }
 
-static void __pyx_tp_dealloc_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds(PyObject *o) {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *p = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *)o;
+static void __pyx_tp_dealloc_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds(PyObject *o) {
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *p = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *)o;
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_pos);
   Py_CLEAR(p->__pyx_v_self);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds)))) {
-    __pyx_freelist_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds[__pyx_freecount_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds++] = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds)))) {
+    __pyx_freelist_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds[__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds++] = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *p = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *)o;
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *p = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *)o;
   if (p->__pyx_v_pos) {
     e = (*v)(p->__pyx_v_pos, a); if (e) return e;
   }
@@ -11227,24 +11227,24 @@ static int __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct__in_any_tx
   return 0;
 }
 
-static int __pyx_tp_clear_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds(PyObject *o) {
+static int __pyx_tp_clear_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *p = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds *)o;
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *p = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds *)o;
   tmp = ((PyObject*)p->__pyx_v_pos);
   p->__pyx_v_pos = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   tmp = ((PyObject*)p->__pyx_v_self);
-  p->__pyx_v_self = ((struct __pyx_obj_10denovonear_7gencode_Gene *)Py_None); Py_INCREF(Py_None);
+  p->__pyx_v_self = ((struct __pyx_obj_12alphacluster_7gencode_Gene *)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds = {
+static PyTypeObject __pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds = {
   PyVarObject_HEAD_INIT(0, 0)
-  "denovonear.gencode.__pyx_scope_struct__in_any_tx_cds", /*tp_name*/
-  sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds), /*tp_basicsize*/
+  "alphacluster.gencode.__pyx_scope_struct__in_any_tx_cds", /*tp_name*/
+  sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_dealloc*/
+  __pyx_tp_dealloc_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -11271,8 +11271,8 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_traverse*/
-  __pyx_tp_clear_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_clear*/
+  __pyx_tp_traverse_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_traverse*/
+  __pyx_tp_clear_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
@@ -11287,7 +11287,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_new*/
+  __pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -11311,53 +11311,53 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_
   #endif
 };
 
-static struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *__pyx_freelist_10denovonear_7gencode___pyx_scope_struct_1_genexpr[8];
-static int __pyx_freecount_10denovonear_7gencode___pyx_scope_struct_1_genexpr = 0;
+static struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *__pyx_freelist_12alphacluster_7gencode___pyx_scope_struct_1_genexpr[8];
+static int __pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_1_genexpr = 0;
 
-static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_1_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *p;
+static PyObject *__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_1_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *p;
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_1_genexpr > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr)))) {
-    o = (PyObject*)__pyx_freelist_10denovonear_7gencode___pyx_scope_struct_1_genexpr[--__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_1_genexpr];
-    memset(o, 0, sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_1_genexpr > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr)))) {
+    o = (PyObject*)__pyx_freelist_12alphacluster_7gencode___pyx_scope_struct_1_genexpr[--__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_1_genexpr];
+    memset(o, 0, sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
     o = (*t->tp_alloc)(t, 0);
     if (unlikely(!o)) return 0;
   }
-  p = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *)o);
+  p = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)o);
   new((void*)&(p->__pyx_v_tx)) Tx();
   return o;
 }
 
-static void __pyx_tp_dealloc_10denovonear_7gencode___pyx_scope_struct_1_genexpr(PyObject *o) {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *)o;
+static void __pyx_tp_dealloc_12alphacluster_7gencode___pyx_scope_struct_1_genexpr(PyObject *o) {
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)o;
   PyObject_GC_UnTrack(o);
   __Pyx_call_destructor(p->__pyx_v_tx);
   Py_CLEAR(p->__pyx_outer_scope);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_1_genexpr < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr)))) {
-    __pyx_freelist_10denovonear_7gencode___pyx_scope_struct_1_genexpr[__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_1_genexpr++] = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_1_genexpr < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr)))) {
+    __pyx_freelist_12alphacluster_7gencode___pyx_scope_struct_1_genexpr[__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_1_genexpr++] = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct_1_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12alphacluster_7gencode___pyx_scope_struct_1_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr *)o;
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *p = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr *)o;
   if (p->__pyx_outer_scope) {
     e = (*v)(((PyObject *)p->__pyx_outer_scope), a); if (e) return e;
   }
   return 0;
 }
 
-static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexpr = {
+static PyTypeObject __pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "denovonear.gencode.__pyx_scope_struct_1_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_1_genexpr), /*tp_basicsize*/
+  "alphacluster.gencode.__pyx_scope_struct_1_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_1_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_10denovonear_7gencode___pyx_scope_struct_1_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_12alphacluster_7gencode___pyx_scope_struct_1_genexpr, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -11384,7 +11384,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexp
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct_1_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_12alphacluster_7gencode___pyx_scope_struct_1_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -11400,7 +11400,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexp
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_1_genexpr, /*tp_new*/
+  __pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_1_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -11424,14 +11424,14 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexp
   #endif
 };
 
-static struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *__pyx_freelist_10denovonear_7gencode___pyx_scope_struct_2___iter__[8];
-static int __pyx_freecount_10denovonear_7gencode___pyx_scope_struct_2___iter__ = 0;
+static struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *__pyx_freelist_12alphacluster_7gencode___pyx_scope_struct_2___iter__[8];
+static int __pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_2___iter__ = 0;
 
-static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_2___iter__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_2___iter__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_2___iter__ > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__)))) {
-    o = (PyObject*)__pyx_freelist_10denovonear_7gencode___pyx_scope_struct_2___iter__[--__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_2___iter__];
-    memset(o, 0, sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__));
+  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_2___iter__ > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__)))) {
+    o = (PyObject*)__pyx_freelist_12alphacluster_7gencode___pyx_scope_struct_2___iter__[--__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_2___iter__];
+    memset(o, 0, sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else {
@@ -11441,22 +11441,22 @@ static PyObject *__pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_2___iter_
   return o;
 }
 
-static void __pyx_tp_dealloc_10denovonear_7gencode___pyx_scope_struct_2___iter__(PyObject *o) {
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *p = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *)o;
+static void __pyx_tp_dealloc_12alphacluster_7gencode___pyx_scope_struct_2___iter__(PyObject *o) {
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *p = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *)o;
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_self);
   Py_CLEAR(p->__pyx_v_x);
   Py_CLEAR(p->__pyx_t_0);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_2___iter__ < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__)))) {
-    __pyx_freelist_10denovonear_7gencode___pyx_scope_struct_2___iter__[__pyx_freecount_10denovonear_7gencode___pyx_scope_struct_2___iter__++] = ((struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *)o);
+  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_2___iter__ < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__)))) {
+    __pyx_freelist_12alphacluster_7gencode___pyx_scope_struct_2___iter__[__pyx_freecount_12alphacluster_7gencode___pyx_scope_struct_2___iter__++] = ((struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *)o);
   } else {
     (*Py_TYPE(o)->tp_free)(o);
   }
 }
 
-static int __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct_2___iter__(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_12alphacluster_7gencode___pyx_scope_struct_2___iter__(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *p = (struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__ *)o;
+  struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *p = (struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__ *)o;
   if (p->__pyx_v_self) {
     e = (*v)(((PyObject *)p->__pyx_v_self), a); if (e) return e;
   }
@@ -11469,12 +11469,12 @@ static int __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct_2___iter__
   return 0;
 }
 
-static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter__ = {
+static PyTypeObject __pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__ = {
   PyVarObject_HEAD_INIT(0, 0)
-  "denovonear.gencode.__pyx_scope_struct_2___iter__", /*tp_name*/
-  sizeof(struct __pyx_obj_10denovonear_7gencode___pyx_scope_struct_2___iter__), /*tp_basicsize*/
+  "alphacluster.gencode.__pyx_scope_struct_2___iter__", /*tp_name*/
+  sizeof(struct __pyx_obj_12alphacluster_7gencode___pyx_scope_struct_2___iter__), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_10denovonear_7gencode___pyx_scope_struct_2___iter__, /*tp_dealloc*/
+  __pyx_tp_dealloc_12alphacluster_7gencode___pyx_scope_struct_2___iter__, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -11501,7 +11501,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_10denovonear_7gencode___pyx_scope_struct_2___iter__, /*tp_traverse*/
+  __pyx_tp_traverse_12alphacluster_7gencode___pyx_scope_struct_2___iter__, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -11517,7 +11517,7 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_10denovonear_7gencode___pyx_scope_struct_2___iter__, /*tp_new*/
+  __pyx_tp_new_12alphacluster_7gencode___pyx_scope_struct_2___iter__, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -11542,8 +11542,8 @@ static PyTypeObject __pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter
 };
 
 static PyMethodDef __pyx_methods[] = {
-  {"_parse_gtfline", (PyCFunction)__pyx_pw_10denovonear_7gencode_1_parse_gtfline, METH_O, __pyx_doc_10denovonear_7gencode__parse_gtfline},
-  {"_open_gencode", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10denovonear_7gencode_3_open_gencode, METH_VARARGS|METH_KEYWORDS, __pyx_doc_10denovonear_7gencode_2_open_gencode},
+  {"_parse_gtfline", (PyCFunction)__pyx_pw_12alphacluster_7gencode_1_parse_gtfline, METH_O, __pyx_doc_12alphacluster_7gencode__parse_gtfline},
+  {"_open_gencode", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12alphacluster_7gencode_3_open_gencode, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12alphacluster_7gencode_2_open_gencode},
   {0, 0, 0, 0}
 };
 
@@ -11609,6 +11609,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
   {&__pyx_kp_u__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 1, 0, 0},
   {&__pyx_kp_u__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0, 0},
+  {&__pyx_n_s_alphacluster_gencode, __pyx_k_alphacluster_gencode, sizeof(__pyx_k_alphacluster_gencode), 0, 0, 1, 1},
+  {&__pyx_n_s_alphacluster_transcript, __pyx_k_alphacluster_transcript, sizeof(__pyx_k_alphacluster_transcript), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
   {&__pyx_n_s_bisect, __pyx_k_bisect, sizeof(__pyx_k_bisect), 0, 0, 1, 1},
   {&__pyx_n_s_canonical, __pyx_k_canonical, sizeof(__pyx_k_canonical), 0, 0, 1, 1},
@@ -11619,8 +11621,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
   {&__pyx_n_s_coding_only, __pyx_k_coding_only, sizeof(__pyx_k_coding_only), 0, 0, 1, 1},
-  {&__pyx_n_s_denovonear_gencode, __pyx_k_denovonear_gencode, sizeof(__pyx_k_denovonear_gencode), 0, 0, 1, 1},
-  {&__pyx_n_s_denovonear_transcript, __pyx_k_denovonear_transcript, sizeof(__pyx_k_denovonear_transcript), 0, 0, 1, 1},
   {&__pyx_n_s_distance, __pyx_k_distance, sizeof(__pyx_k_distance), 0, 0, 1, 1},
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
@@ -11711,7 +11711,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "denovonear/gencode.pyx":175
+  /* "alphacluster/gencode.pyx":175
  *         if self._transcripts.size() > 0:
  *             return chr(self._transcripts[0].get_strand())
  *         raise IndexError('no transcripts in gene yet')             # <<<<<<<<<<<<<<
@@ -11722,7 +11722,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "denovonear/gencode.pyx":230
+  /* "alphacluster/gencode.pyx":230
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no coding transcripts')             # <<<<<<<<<<<<<<
@@ -11733,7 +11733,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "denovonear/gencode.pyx":253
+  /* "alphacluster/gencode.pyx":253
  *                 max_tx = tx
  *         if length == 0:
  *             raise ValueError('no exonic transcripts')             # <<<<<<<<<<<<<<
@@ -11744,7 +11744,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "denovonear/gencode.pyx":298
+  /* "alphacluster/gencode.pyx":298
  *             chrom = f'chr{chrom}'
  *         elif not self.chrom.startswith('chr') and chrom.startswith('chr'):
  *             chrom = chrom[3:]             # <<<<<<<<<<<<<<
@@ -11874,59 +11874,59 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_vtabptr_10denovonear_7gencode_Gene = &__pyx_vtable_10denovonear_7gencode_Gene;
-  __pyx_vtable_10denovonear_7gencode_Gene.add_tx = (PyObject *(*)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx, int))__pyx_f_10denovonear_7gencode_4Gene_add_tx;
-  __pyx_vtable_10denovonear_7gencode_Gene._convert_exons = (PyObject *(*)(struct __pyx_obj_10denovonear_7gencode_Gene *, std::vector<struct Region> ))__pyx_f_10denovonear_7gencode_4Gene__convert_exons;
-  __pyx_vtable_10denovonear_7gencode_Gene._to_Transcript = (PyObject *(*)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx))__pyx_f_10denovonear_7gencode_4Gene__to_Transcript;
-  __pyx_vtable_10denovonear_7gencode_Gene._cds_len = (int (*)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx))__pyx_f_10denovonear_7gencode_4Gene__cds_len;
-  __pyx_vtable_10denovonear_7gencode_Gene._max_by_cds = (Tx (*)(struct __pyx_obj_10denovonear_7gencode_Gene *, std::vector<Tx> ))__pyx_f_10denovonear_7gencode_4Gene__max_by_cds;
-  __pyx_vtable_10denovonear_7gencode_Gene._exonic_len = (int (*)(struct __pyx_obj_10denovonear_7gencode_Gene *, Tx))__pyx_f_10denovonear_7gencode_4Gene__exonic_len;
-  __pyx_vtable_10denovonear_7gencode_Gene._max_by_exonic = (Tx (*)(struct __pyx_obj_10denovonear_7gencode_Gene *, std::vector<Tx> ))__pyx_f_10denovonear_7gencode_4Gene__max_by_exonic;
-  if (PyType_Ready(&__pyx_type_10denovonear_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_vtabptr_12alphacluster_7gencode_Gene = &__pyx_vtable_12alphacluster_7gencode_Gene;
+  __pyx_vtable_12alphacluster_7gencode_Gene.add_tx = (PyObject *(*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx, int))__pyx_f_12alphacluster_7gencode_4Gene_add_tx;
+  __pyx_vtable_12alphacluster_7gencode_Gene._convert_exons = (PyObject *(*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<struct Region> ))__pyx_f_12alphacluster_7gencode_4Gene__convert_exons;
+  __pyx_vtable_12alphacluster_7gencode_Gene._to_Transcript = (PyObject *(*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx))__pyx_f_12alphacluster_7gencode_4Gene__to_Transcript;
+  __pyx_vtable_12alphacluster_7gencode_Gene._cds_len = (int (*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx))__pyx_f_12alphacluster_7gencode_4Gene__cds_len;
+  __pyx_vtable_12alphacluster_7gencode_Gene._max_by_cds = (Tx (*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<Tx> ))__pyx_f_12alphacluster_7gencode_4Gene__max_by_cds;
+  __pyx_vtable_12alphacluster_7gencode_Gene._exonic_len = (int (*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, Tx))__pyx_f_12alphacluster_7gencode_4Gene__exonic_len;
+  __pyx_vtable_12alphacluster_7gencode_Gene._max_by_exonic = (Tx (*)(struct __pyx_obj_12alphacluster_7gencode_Gene *, std::vector<Tx> ))__pyx_f_12alphacluster_7gencode_4Gene__max_by_exonic;
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_10denovonear_7gencode_Gene.tp_print = 0;
+  __pyx_type_12alphacluster_7gencode_Gene.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_10denovonear_7gencode_Gene.tp_dictoffset && __pyx_type_10denovonear_7gencode_Gene.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_10denovonear_7gencode_Gene.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12alphacluster_7gencode_Gene.tp_dictoffset && __pyx_type_12alphacluster_7gencode_Gene.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12alphacluster_7gencode_Gene.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_10denovonear_7gencode_Gene.tp_dict, __pyx_vtabptr_10denovonear_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gene_2, (PyObject *)&__pyx_type_10denovonear_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_10denovonear_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
-  __pyx_ptype_10denovonear_7gencode_Gene = &__pyx_type_10denovonear_7gencode_Gene;
-  if (PyType_Ready(&__pyx_type_10denovonear_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_12alphacluster_7gencode_Gene.tp_dict, __pyx_vtabptr_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gene_2, (PyObject *)&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_12alphacluster_7gencode_Gene) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_ptype_12alphacluster_7gencode_Gene = &__pyx_type_12alphacluster_7gencode_Gene;
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_10denovonear_7gencode_Gencode.tp_print = 0;
+  __pyx_type_12alphacluster_7gencode_Gencode.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_10denovonear_7gencode_Gencode.tp_dictoffset && __pyx_type_10denovonear_7gencode_Gencode.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_10denovonear_7gencode_Gencode.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12alphacluster_7gencode_Gencode.tp_dictoffset && __pyx_type_12alphacluster_7gencode_Gencode.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12alphacluster_7gencode_Gencode.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gencode, (PyObject *)&__pyx_type_10denovonear_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_10denovonear_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
-  __pyx_ptype_10denovonear_7gencode_Gencode = &__pyx_type_10denovonear_7gencode_Gencode;
-  if (PyType_Ready(&__pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds) < 0) __PYX_ERR(0, 286, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Gencode, (PyObject *)&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_12alphacluster_7gencode_Gencode) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_ptype_12alphacluster_7gencode_Gencode = &__pyx_type_12alphacluster_7gencode_Gencode;
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds) < 0) __PYX_ERR(0, 286, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds.tp_print = 0;
+  __pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds.tp_dictoffset && __pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds.tp_dictoffset && __pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds = &__pyx_type_10denovonear_7gencode___pyx_scope_struct__in_any_tx_cds;
-  if (PyType_Ready(&__pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_ptype_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds = &__pyx_type_12alphacluster_7gencode___pyx_scope_struct__in_any_tx_cds;
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexpr.tp_print = 0;
+  __pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexpr.tp_dictoffset && __pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexpr.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr.tp_dictoffset && __pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_10denovonear_7gencode___pyx_scope_struct_1_genexpr = &__pyx_type_10denovonear_7gencode___pyx_scope_struct_1_genexpr;
-  if (PyType_Ready(&__pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter__) < 0) __PYX_ERR(0, 365, __pyx_L1_error)
+  __pyx_ptype_12alphacluster_7gencode___pyx_scope_struct_1_genexpr = &__pyx_type_12alphacluster_7gencode___pyx_scope_struct_1_genexpr;
+  if (PyType_Ready(&__pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__) < 0) __PYX_ERR(0, 365, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter__.tp_print = 0;
+  __pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter__.tp_dictoffset && __pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter__.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter__.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__.tp_dictoffset && __pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  __pyx_ptype_10denovonear_7gencode___pyx_scope_struct_2___iter__ = &__pyx_type_10denovonear_7gencode___pyx_scope_struct_2___iter__;
+  __pyx_ptype_12alphacluster_7gencode___pyx_scope_struct_2___iter__ = &__pyx_type_12alphacluster_7gencode___pyx_scope_struct_2___iter__;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11942,10 +11942,10 @@ static int __Pyx_modinit_type_import_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule("denovonear.transcript"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 93, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule("alphacluster.transcript"); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_10denovonear_10transcript_Transcript = __Pyx_ImportType(__pyx_t_1, "denovonear.transcript", "Transcript", sizeof(struct __pyx_obj_10denovonear_10transcript_Transcript), __Pyx_ImportType_CheckSize_Warn);
-   if (!__pyx_ptype_10denovonear_10transcript_Transcript) __PYX_ERR(2, 93, __pyx_L1_error)
+  __pyx_ptype_12alphacluster_10transcript_Transcript = __Pyx_ImportType(__pyx_t_1, "alphacluster.transcript", "Transcript", sizeof(struct __pyx_obj_12alphacluster_10transcript_Transcript), __Pyx_ImportType_CheckSize_Warn);
+   if (!__pyx_ptype_12alphacluster_10transcript_Transcript) __PYX_ERR(2, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -12144,14 +12144,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_denovonear__gencode) {
+  if (__pyx_module_is_main_alphacluster__gencode) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "denovonear.gencode")) {
-      if (unlikely(PyDict_SetItemString(modules, "denovonear.gencode", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "alphacluster.gencode")) {
+      if (unlikely(PyDict_SetItemString(modules, "alphacluster.gencode", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -12172,7 +12172,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "denovonear/gencode.pyx":3
+  /* "alphacluster/gencode.pyx":3
  * # cython: language_level=3, boundscheck=False, emit_linenums=True
  * 
  * import bisect             # <<<<<<<<<<<<<<
@@ -12184,7 +12184,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_bisect, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":4
+  /* "alphacluster/gencode.pyx":4
  * 
  * import bisect
  * import logging             # <<<<<<<<<<<<<<
@@ -12196,12 +12196,12 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_logging, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":12
+  /* "alphacluster/gencode.pyx":12
  * from libcpp.map cimport map
  * 
  * from pyfaidx import Fasta             # <<<<<<<<<<<<<<
  * 
- * from denovonear.transcript cimport Tx, Region, CDS_coords
+ * from alphacluster.transcript cimport Tx, Region, CDS_coords
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -12217,10 +12217,10 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "denovonear/gencode.pyx":15
+  /* "alphacluster/gencode.pyx":15
  * 
- * from denovonear.transcript cimport Tx, Region, CDS_coords
- * from denovonear.transcript import Transcript             # <<<<<<<<<<<<<<
+ * from alphacluster.transcript cimport Tx, Region, CDS_coords
+ * from alphacluster.transcript import Transcript             # <<<<<<<<<<<<<<
  * 
  * cdef extern from "gtf.h" namespace "gencode":
  */
@@ -12229,7 +12229,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_Transcript);
   __Pyx_GIVEREF(__pyx_n_s_Transcript);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_Transcript);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_denovonear_transcript, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_alphacluster_transcript, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Transcript); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
@@ -12238,7 +12238,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "denovonear/gencode.pyx":83
+  /* "alphacluster/gencode.pyx":83
  *     return transcripts
  * 
  * __genome_ = None             # <<<<<<<<<<<<<<
@@ -12247,7 +12247,7 @@ if (!__Pyx_RefNanny) {
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_genome, Py_None) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
 
-  /* "denovonear/gencode.pyx":1
+  /* "alphacluster/gencode.pyx":1
  * # cython: language_level=3, boundscheck=False, emit_linenums=True             # <<<<<<<<<<<<<<
  * 
  * import bisect
@@ -12273,11 +12273,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init denovonear.gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init alphacluster.gencode", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init denovonear.gencode");
+    PyErr_SetString(PyExc_ImportError, "init alphacluster.gencode");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

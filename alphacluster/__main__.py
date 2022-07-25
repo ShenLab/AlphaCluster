@@ -13,23 +13,23 @@ from scipy.stats import poisson
 from math import floor, log
 from difflib import SequenceMatcher
 
-from rate_limiter import RateLimiter
-from load_mutation_rates import load_mutation_rates
-from load_de_novos import load_de_novos, load_de_novos_chrom_pos_alt
-from load_inherited import load_inherited, load_inherited_controls
-from west_weights import generate_expected_buckets, generate_observed_buckets, generate_scores_from_buckets, get_pred_count
-from cluster_test import cluster_de_novos, cluster_de_novos_1d, de_novos_entropy, cluster_de_novos_coevol, cluster_de_novos_multi, fishers_method
-from load_three_d_locations import load_three_d_locations, load_three_d_multimer, load_three_d_locations_from_pdb
-from load_coevol import load_basic_coevol_strength
-from load_pvalues import load_pvalues
-from load_gene import (load_gene, construct_gene_object,
+from alphacluster.rate_limiter import RateLimiter
+from alphacluster.load_mutation_rates import load_mutation_rates
+from alphacluster.load_de_novos import load_de_novos, load_de_novos_chrom_pos_alt
+from alphacluster.load_inherited import load_inherited, load_inherited_controls
+from alphacluster.west_weights import generate_expected_buckets, generate_observed_buckets, generate_scores_from_buckets, get_pred_count
+from alphacluster.cluster_test import cluster_de_novos, cluster_de_novos_1d, cluster_de_novos_coevol, cluster_de_novos_multi, fishers_method
+from alphacluster.load_three_d_locations import load_three_d_locations, load_three_d_multimer, load_three_d_locations_from_pdb
+from alphacluster.load_coevol import load_basic_coevol_strength
+from alphacluster.load_pvalues import load_pvalues
+from alphacluster.load_gene import (load_gene, construct_gene_object,
                                   count_de_novos_per_transcript, minimise_transcripts, get_transcript_ids,  get_de_novos_in_transcript)
-from simulate import get_p_value_west
+from alphacluster.simulate import get_p_value_west
 
-from denovonear.site_specific_rates import SiteRates
-from denovonear.frameshift_rate import include_frameshift_rates
-from denovonear.log_transform_rates import log_transform
-from denovonear.gencode import Gencode
+from alphacluster.site_specific_rates import SiteRates
+from alphacluster.frameshift_rate import include_frameshift_rates
+from alphacluster.log_transform_rates import log_transform
+from alphacluster.gencode import Gencode
 
 import operator as op
 from functools import reduce
@@ -91,20 +91,16 @@ def find_transcripts(args, output):
 def poisson_test(output, args):
     de_novos = load_de_novos(args.input)
     mut_dict = load_mutation_rates(args.rates)
-    if "protein" in args and args.protein in de_novos:
-            de_novos = {args.protein : de_novos[args.protein]}
+    if args.protein in de_novos:
+        de_novos = {args.protein : de_novos[args.protein]}
     else:
         return
-    print(de_novos)    
 
     for symbol in sorted(de_novos):
         genes = load_gencode([symbol], args.gencode, args.fasta)
         gene = genes[symbol]
 
         transcript = gene.canonical
-        # transcripts = gene.transcripts
-        # minimized =  minimise_transcripts_2(transcripts,de_novos = dnvs)
-        # transcripts = [x for x in transcripts if x.get_name() in minimized]
 
         dnvs = [i[0] for i in de_novos[symbol]["missense"]] + [i[0] for i in de_novos[symbol]["nonsense"]]
         missense = [x[0] for x in de_novos[symbol]["missense"]]
@@ -473,26 +469,25 @@ def genomic_to_residue_position(output, args):
 def clustering(output, args):
     de_novos = load_de_novos(args.input)
     mut_dict = load_mutation_rates(args.rates)
+
+    #set default iterations
     iterations = 1000000
+    
     # if protein specific run, limit the input variants to this protein/gene
     if "protein" in args and args.protein in de_novos:
             de_novos = {args.protein : de_novos[args.protein]}
     else:
         return
-    print(de_novos)
-    output_file_has_header_line = False
+
     for symbol in sorted(de_novos):
-        if len(de_novos[symbol]["missense"] + de_novos[symbol]["nonsense"]) < 2:
-            #with open(output, "x") as output_file:
-            #    output_file.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-            #    output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))
+        # Handle case where there are less than two de novo missense variants
+        if len(de_novos[symbol]["missense"]) < 2:
             output.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-            output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))     
+            output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))
             continue
-        #three_d_locations_list =  load_three_d_locations(args.protein_dir, symbol)
 
         three_d_aa = load_three_d_locations_from_pdb(args.protein_dir, symbol)
-        print(three_d_aa)
+
         if args.scores is not None:
             scores = pysam.TabixFile(args.scores)
         else:
@@ -502,7 +497,6 @@ def clustering(output, args):
             dbNSFP_score_obj = pysam.TabixFile(args.dbNSFP)
         else:
             dbNSFP_score_obj = None
-
             
         if args.pvalues_in is not None:
             pvalues_in = load_pvalues(args.pvalues_in)
@@ -512,7 +506,7 @@ def clustering(output, args):
             pvalues_in = None
 
         genes = load_gencode([symbol], args.gencode, args.fasta)
-        print("Length is " + str(len(three_d_aa)))
+
         (probs,results) =  cluster_de_novos(symbol,
                                             de_novos[symbol],
                                             three_d_aa,
@@ -530,98 +524,26 @@ def clustering(output, args):
                                             pvalues_in)
         
         if probs is None:
-            output.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-            output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))
+            # If there is a non-return error, don't print a results file
             continue
 
-        # with open(output, "x") as output_file:
-        #     output_file_has_header_line = True
-        #     output_file.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-        #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense",
-        #     len(de_novos[symbol]["missense"]), probs["miss_dist"], probs["miss_prob"]))
-        #     if("miss_prob_comb" in probs):
-        #         output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense_comb",
-        #         len(de_novos[symbol]["missense"]), probs["miss_dist_comb"], probs["miss_prob_comb"]))
-        #         output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense_pois",
-        #         len(de_novos[symbol]["missense"]), probs["miss_dist_pois"], probs["miss_prob_pois"]))
-        #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "nonsense",
-        #     len(de_novos[symbol]["nonsense"]), probs["nons_dist"], probs["nons_prob"]))
-
-        output_file_has_header_line = True
         output.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
         output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                        "missense",
-                                                        probs["miss_count"],
-                                                        probs["miss_dist"],
-                                                        probs["miss_prob"]))
+                                                   "missense",
+                                                   probs["miss_count"],
+                                                   probs["miss_dist"],
+                                                   probs["miss_prob"]))
         if("miss_prob_comb" in probs):
             output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                            "missense_comb",
-                                                            probs["miss_count"],
-                                                            probs["miss_dist_comb"],
-                                                            probs["miss_prob_comb"]))
+                                                       "missense_comb",
+                                                       probs["miss_count"],
+                                                       probs["miss_dist_comb"],
+                                                       probs["miss_prob_comb"]))
             output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                            "missense_pois",
-                                                            probs["miss_count"],
-                                                            probs["miss_dist_pois"],
-                                                            probs["miss_prob_pois"]))
-            output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                            "nonsense",
-                                                            probs["nons_count"],
-                                                            probs["nons_dist"],
-                                                            probs["nons_prob"]))
-
-def entropy(output, args):
-    # TODO: make load_de_denovos take args.protein as input
-    de_novos = load_de_novos(args.input)
-    mut_dict = load_mutation_rates(args.rates)
-    iterations = 1000000
-    # if protein specific run, limit the input variants to this protein/gene
-    if "protein" in args and args.protein in de_novos:
-            de_novos = {args.protein : de_novos[args.protein]}
-    else:
-        return
-    print(de_novos)
-    output_file_has_header_line = False
-    for symbol in sorted(de_novos):
-        if len(de_novos[symbol]["missense"] + de_novos[symbol]["nonsense"]) < 2:
-            with open(output, "x") as output_file:
-                output_file.write("gene_id\tmutation_category\tevents_n\tentropy\tprobability\n")
-                output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))
-            continue
-
-        genes = load_gencode([symbol], args.gencode, args.fasta)
-        (probs,results) =  de_novos_entropy(symbol,
-                                                 de_novos[symbol],
-                                                 genes[symbol],
-                                                 float(args.degree),
-                                                 args.dist_file_output,
-                                                 args.runs,#iterations,
-                                                 mut_dict)
-        if probs is None:
-            continue
-
-        # with open(output, "x") as output_file:
-        #     output_file_has_header_line = True
-        #     output_file.write("gene_id\tmutation_category\tevents_n\tentropy\tprobability\n")
-        #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense",
-        #     len(de_novos[symbol]["missense"]), probs["miss_dist"], probs["miss_prob"]))
-        #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "nonsense",
-        #     len(de_novos[symbol]["nonsense"]), probs["nons_dist"], probs["nons_prob"]))
-
-        
-        output_file_has_header_line = True
-        output.write("gene_id\tmutation_category\tevents_n\tentropy\tprobability\n")
-        output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                        "missense",
-                                                        len(de_novos[symbol]["missense"]),
-                                                        probs["miss_dist"],
-                                                        probs["miss_prob"]))
-        output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                        "nonsense",
-                                                        len(de_novos[symbol]["nonsense"]),
-                                                        probs["nons_dist"],
-                                                        probs["nons_prob"]))
+                                                       "missense_pois",
+                                                       probs["miss_count"],
+                                                       probs["miss_dist_pois"],
+                                                       probs["miss_prob_pois"]))
 
 
 def clustering_multi(output, args):
@@ -688,28 +610,6 @@ def clustering_multi(output, args):
     if probs is None:
         return
 
-    # with open(output, "x") as output_file:
-    #     output_file_has_header_line = True
-    #     # output_file.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-
-
-    #     symbol = ""
-    #     for p in args.proteins:
-    #         symbol += p+"_"
-    #     output_file.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-    #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense",
-    #                                                     len(de_novos[symbol]["missense"]), probs["miss_dist"], probs["miss_prob"]))
-    #     if("miss_prob_comb" in probs):
-    #                 output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense_comb",
-    #                                                     len(de_novos[symbol]["missense"]), probs["miss_dist_comb"], probs["miss_prob_comb"]))
-    #                 output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense_pois",
-    #             len(de_novos[symbol]["missense"]), probs["miss_dist_pois"], probs["miss_prob_pois"]))
-    #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "nonsense",
-    #                                                     len(de_novos[symbol]["nonsense"]), probs["nons_dist"], probs["nons_prob"]))
-
-
-        output_file_has_header_line = True
-        # output_file.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
         symbol = ""
         for p in args.proteins:
             symbol += p+"_"
@@ -730,11 +630,6 @@ def clustering_multi(output, args):
                                                                len(de_novos[symbol]["missense"]),
                                                                probs["miss_dist_pois"],
                                                                probs["miss_prob_pois"]))
-        output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                   "nonsense",
-                                                   len(de_novos[symbol]["nonsense"]),
-                                                   probs["nons_dist"],
-                                                   probs["nons_prob"]))
                 
 def clustering_coev(output, args):
     
@@ -788,20 +683,13 @@ def clustering_1d(output, args):
     mut_dict = load_mutation_rates(args.rates)
     iterations = 1000000
 
-    if "protein" in args:
-        if args.protein in de_novos:
+    if "protein" in args and args.protein in de_novos:
             de_novos = {args.protein : de_novos[args.protein]}
-        else:
-            return
     else:
         return
-    
+
     for symbol in sorted(de_novos):
-        #if len(de_novos[symbol]["missense"] + de_novos[symbol]["nonsense"]) < 2:
         if len(de_novos[symbol]["missense"]) < 2:
-            # with open(output, "x") as output_file:
-            #     output_file.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-            #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))
             output.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
             output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))
             continue
@@ -832,22 +720,7 @@ def clustering_1d(output, args):
                                      pvalues_in)
         
         if probs is None:
-            output.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")
-            output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense", len(de_novos[symbol]["missense"]), "N/A", "N/A"))
             continue
-
-        
-        # with open(output, "x") as output_file:
-        #     output_file.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")    
-        #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense",
-        #     len(de_novos[symbol]["missense"]), probs["miss_dist"], probs["miss_prob"]))
-        #     if("miss_dist_comb" in probs):
-        #         output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense_comb",
-        #         len(de_novos[symbol]["missense"]), probs["miss_dist_comb"], probs["miss_prob_comb"]))
-        #         output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "missense_pois",
-        #         len(de_novos[symbol]["missense"]), probs["miss_dist_pois"], probs["miss_prob_pois"]))
-        #     output_file.write("{}\t{}\t{}\t{}\t{}\n".format(symbol, "nonsense",
-        #     len(de_novos[symbol]["nonsense"]), probs["nons_dist"], probs["nons_prob"]))
 
         output.write("gene_id\tmutation_category\tevents_n\tdist\tprobability\n")    
         output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
@@ -866,13 +739,7 @@ def clustering_1d(output, args):
                                                             len(de_novos[symbol]["missense"]),
                                                             probs["miss_dist_pois"],
                                                             probs["miss_prob_pois"]))
-        output.write("{}\t{}\t{}\t{}\t{}\n".format(symbol,
-                                                        "nonsense",
-                                                        len(de_novos[symbol]["nonsense"]),
-                                                        probs["nons_dist"],
-                                                        probs["nons_prob"]))
             
-
 def load_genes(path):
     """ load a file listing gene and transcript IDs
     
@@ -965,7 +832,7 @@ def get_options():
     """ get the command line switches
     """
     
-    parser = argparse.ArgumentParser(description='denovonear cli interface')
+    parser = argparse.ArgumentParser(description='alphacluster cli interface')
     
     ############################################################################
     # CLI options in common
@@ -1021,24 +888,6 @@ def get_options():
 
     gen_to_aa.set_defaults(func=genomic_to_residue_position)
     
-    ############################################################################
-    # CLI options for entropy_test
-    entropy_test = subparsers.add_parser('entropy_test', parents=[parent],
-        description="Tests the proximity of de novo mutations in genes.")
-    entropy_test.add_argument("--in", dest="input", required=True, help="Path to "
-        "file listing known mutations in genes. See example file in data folder "
-        "for format.")
-    entropy_test.add_argument("--scores", dest="scores")
-    entropy_test.add_argument("--dbNSFP", dest="dbNSFP")
-    entropy_test.add_argument("--dbNSFP_annotator", dest="dbNSFP_annotator")    
-    entropy_test.add_argument("--runs", dest="runs", type=float, default = 1E6)    
-    entropy_test.add_argument("--protein", dest="protein", required=False)
-    entropy_test.add_argument("--inherited", dest="inherited", required=False)
-    entropy_test.add_argument("--pvalues_in", dest="pvalues_in", required=False)
-    entropy_test.add_argument("--degree", dest="degree", default = 0, type = float, required=False)
-    entropy_test.add_argument("--histogram_data", dest="dist_file_output", required=False)    
-    entropy_test.set_defaults(func=entropy)
-
     ############################################################################
     # CLI options for poisson_test
     poisson = subparsers.add_parser('poisson', parents=[parent],

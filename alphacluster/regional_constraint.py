@@ -24,7 +24,7 @@ import gzip
 from scipy.stats import chi2
 from intervaltree import IntervalTree
 
-from denovonear.load_gene import construct_gene_object
+from alphacluster.load_gene import construct_gene_object
 
 def parse_header(header):
     header = header.strip().split('\t')

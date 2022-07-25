@@ -4,10 +4,10 @@
 import asyncio
 import logging
 
-from denovonear.transcript import Transcript
-from denovonear.gencode import Gencode, Gene
+from alphacluster.transcript import Transcript
+from alphacluster.gencode import Gencode, Gene
 
-from denovonear.ensembl_requester import (get_protein_seq_for_transcript,
+from alphacluster.ensembl_requester import (get_protein_seq_for_transcript,
     get_genomic_seq_for_transcript, get_cds_seq_for_transcript,
     get_cds_ranges_for_transcript, get_exon_ranges_for_transcript,
     get_genes_for_hgnc_id, get_transcript_ids_for_ensembl_gene_id,

@@ -4,8 +4,8 @@ import pysam
 import os
 from itertools import product, chain
 
-from denovonear.site_specific_rates import SiteRates
-from denovonear.gencode import Gencode
+from alphacluster.site_specific_rates import SiteRates
+from alphacluster.gencode import Gencode
 
 def get_annotation_score(gene_scores, annotations_files, annotator, gene, chrom, pos, alt):
     pos = int(pos)

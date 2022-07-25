@@ -12,4 +12,4 @@ echo $gene >&2
 echo "${SLURM_ARRAY_TASK_ID}" >&2
 echo $SLURM_JOB_ID >&2
 
-python alphacluster/__main__.py cluster_coev --in data/ndd.released.hg38.txt --coev_dir coevol --protein $gene  --out NDD_coev/$gene.coev.out --gencode data/gencode.v38.annotation.gtf.gz --fasta data/genome.hg38rg.fa --run 900000
+python denovonear/__main__.py cluster_coev --in data/ndd.released.hg38.txt --coev_dir coevol --protein $gene  --out NDD_coev/$gene.coev.out --gencode data/gencode.v38.annotation.gtf.gz --fasta data/genome.hg38rg.fa --run 900000

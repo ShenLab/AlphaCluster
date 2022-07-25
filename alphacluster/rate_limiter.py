@@ -5,8 +5,8 @@ import asyncio
 
 import aiohttp
 
-from denovonear.rate_limiter_retries import ensembl_retry as retry
-from denovonear.rate_limiter_retries import ensembl_cache as cache
+from alphacluster.rate_limiter_retries import ensembl_retry as retry
+from alphacluster.rate_limiter_retries import ensembl_cache as cache
 
 class RateLimiter:
     ''' class to asynchronously perform http get requests

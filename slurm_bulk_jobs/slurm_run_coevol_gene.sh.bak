@@ -13,4 +13,4 @@ echo $gene >&2
 echo "${SLURM_ARRAY_TASK_ID}" >&2
 echo $SLURM_JOB_ID >&2
 
-alphacluster cluster_coev --in data/all_aff_updated.txt --coev_dir coevol --protein $gene --out out_coevol/$gene.coevol.out
+denovonear cluster_coev --in data/all_aff_updated.txt --coev_dir coevol --protein $gene --out out_coevol/$gene.coevol.out

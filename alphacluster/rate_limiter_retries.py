@@ -6,7 +6,7 @@ import functools
 
 import aiohttp
 
-from denovonear.ensembl_cache import EnsemblCache
+from alphacluster.ensembl_cache import EnsemblCache
 
 def ensembl_cache(folder=None):
     ''' store/retrive repeated ensembl requests from a persistent sqlite cache
