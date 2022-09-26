@@ -115,7 +115,7 @@ For the 3D (both singleton and multimer versions) and 1D clustering analysis, mi
 
 ### Scale scoring
 ### Scale thresholding
-
+```sh
 alphacluster cluster \
    --in data/asd.released.iid.hg38.txt \
    --protein CHD8 \
@@ -124,7 +124,7 @@ alphacluster cluster \
    --scores  /share/terra/rsrc/hg38/gMVP/gMVP_hg38.2021-02-28.txt.gz \
    --threshold .5 \
    --score_col 14
-
+```
 
 ## Output
 
