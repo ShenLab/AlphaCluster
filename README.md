@@ -75,10 +75,10 @@ space, 1-dimmensional space, "co-evolution" space for a single protein, or 3-dim
 The 3-dimmensional analysis of the package is acheived in the following command:
 ```sh
 alphacluster cluster \
-   --in data/example_de_novos.txt \
-   --protein_dir protein
-   --protein CDH8
-   --out output.txt
+   --in data/asd.released.iid.hg38.txt \
+   --protein_dir proteins \
+   --protein CHD8 \
+   --out output.txt \
 ```
 
 This will run the 3d clustering analysis for the given protein (CHD8) with
@@ -92,8 +92,9 @@ folder.
 The 1 dimmensional analysis is acheived via the following command:
 ```sh
 alphacluster cluster-1d \
-   --in data/example_de_novos.txt \
-   --protein CDH8
+   --in data/asd.released.iid.hg38.txt \
+   --protein CHD8 \
+   --protein_dir proteins \
    --out output.txt
 ```
 
@@ -101,9 +102,10 @@ alphacluster cluster-1d \
 The coevolutionary analysis is acheived via the following command:
 ```sh
 alphacluster cluster-coevol \
-   --in data/example_de_novos.txt \
+   --in data/asd.released.iid.hg38.txt \
    --coevol_dir coevol
-   --protein CDH8
+   --protein CHD8 \
+   --protein_dir proteins \
    --out output.txt
 ```
 
@@ -113,6 +115,16 @@ For the 3D (both singleton and multimer versions) and 1D clustering analysis, mi
 
 ### Scale scoring
 ### Scale thresholding
+
+alphacluster cluster \
+   --in data/asd.released.iid.hg38.txt \
+   --protein CHD8 \
+   --protein_dir proteins \
+   --out CHD8.demo_results.txt \
+   --scores  /share/terra/rsrc/hg38/gMVP/gMVP_hg38.2021-02-28.txt.gz \
+   --threshold .5 \
+   --score_col 14
+
 
 ## Output
 
