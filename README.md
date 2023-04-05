@@ -1,4 +1,3 @@
-![travis](https://travis-ci.org/jeremymcrae/alphacluster.svg?branch=master)
 
 <p align="center">
    <img width="200px" src="img/alphacluster_logo.svg">
@@ -183,3 +182,6 @@ See [enrichment tests](docs/enrichment.md) documentation.
 
 See [enrichment tests](docs/enrichment.md) documentation.
 
+## Citation
+
+The manuscript is currently under peer review. There is a preprint (Obiajulu et al) on Research Square: https://www.researchsquare.com/article/rs-1910518/v2
